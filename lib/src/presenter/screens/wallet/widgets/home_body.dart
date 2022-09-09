@@ -13,7 +13,7 @@ class WalletBody extends StatelessWidget {
     return Column(
       children: [
         const WalletVisibility(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.12),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.045),
         const AssetsListView(),
       ],
     );

@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../domain/entities/asset_model.dart';
+import '../../../provider/visible_provider.dart';
 
-class CryptoListTile extends StatelessWidget {
+class CryptoListTile extends HookConsumerWidget {
   const CryptoListTile({
     Key? key,
     required this.asset,
-    required this.visible,
     required this.balance,
     required this.variation,
   }) : super(key: key);
 
   final AssetModel asset;
-  final StateController<bool> visible;
   final String balance;
   final bool variation;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    bool visible = ref.watch(visibleProvider);
     return ListTile(
       leading: CircleAvatar(
         radius: 20,
@@ -41,7 +41,7 @@ class CryptoListTile extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            'R\$ ${visible.state ? balance : '*******'}',
+            visible ? balance : '*******',
             style: const TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 15,
@@ -55,15 +55,15 @@ class CryptoListTile extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: variation
-                  ? const Color.fromARGB(255, 134, 249, 230)
-                  : Colors.red.shade100,
+                  ? const Color.fromRGBO(214, 255, 223, 1)
+                  : const Color.fromRGBO(252, 228, 228, 1),
             ),
             child: Text(
               '${variation ? '+' : ''} ${asset.variation}%',
               style: TextStyle(
                 color: variation
-                    ? const Color.fromARGB(255, 47, 129, 116)
-                    : Colors.red,
+                    ? const Color.fromRGBO(12, 95, 44, 1)
+                    : const Color.fromRGBO(154, 20, 20, 1),
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),

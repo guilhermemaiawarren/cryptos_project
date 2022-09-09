@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/src/presenter/riverpod/user_provider.dart';
-import 'package:projeto_criptos/src/presenter/riverpod/visible_provider.dart';
 import 'package:projeto_criptos/utils/currency_formater.dart';
 
 import '../../../../domain/entities/asset_model.dart';
+import '../../../provider/user_provider.dart';
 import 'crypto_list_tile.dart';
 
 class AssetsListView extends HookConsumerWidget {
@@ -15,7 +14,6 @@ class AssetsListView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider.state);
-    final visible = ref.watch(visibleProvider.state);
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.4,
       child: ListView.builder(
@@ -30,7 +28,6 @@ class AssetsListView extends HookConsumerWidget {
               const Divider(thickness: 1),
               CryptoListTile(
                 asset: asset,
-                visible: visible,
                 balance: balance,
                 variation: variation,
               ),

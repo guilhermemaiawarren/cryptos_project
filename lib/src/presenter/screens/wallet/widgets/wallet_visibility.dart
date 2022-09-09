@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/src/presenter/riverpod/user_provider.dart';
-import 'package:projeto_criptos/src/presenter/riverpod/visible_provider.dart';
 
 import '../../../../../utils/currency_formater.dart';
+import '../../../provider/user_provider.dart';
+import '../../../provider/visible_provider.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
   const WalletVisibility({Key? key}) : super(key: key);
@@ -52,9 +52,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
             ],
           ),
           Text(
-            visible.state
-                ? 'R\$ $balance'
-                : '*****',
+            visible.state ? balance : '*****',
             style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 35,
