@@ -3,6 +3,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/src/presenter/riverpod/user_provider.dart';
 import 'package:projeto_criptos/src/presenter/riverpod/visible_provider.dart';
 
+import '../../../../../utils/currency_formater.dart';
+
 class WalletVisibility extends StatefulHookConsumerWidget {
   const WalletVisibility({Key? key}) : super(key: key);
 
@@ -16,6 +18,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
     final user = ref.watch(userProvider.state);
     var visible = ref.watch(visibleProvider.state);
     user.state.balance = user.state.increaseBalance(user.state.assets);
+    String balance = formatter.format(user.state.balance);
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
@@ -50,7 +53,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           ),
           Text(
             visible.state
-                ? 'R\$ ${user.state.balance.toStringAsFixed(2)}'
+                ? 'R\$ $balance'
                 : '*****',
             style: const TextStyle(
               fontWeight: FontWeight.bold,

@@ -37,7 +37,6 @@ dependencies:
   hooks_riverpod: ^1.0.4
   crypto_font_icons: ^1.0.1
   iconforest_icon_park: ^1.0.0+1
-  decimal: ^2.3.0
   intl: ^0.17.0
 
 dev_dependencies:
