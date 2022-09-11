@@ -1,23 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/src/presenter/screens/wallet/wallet_page.dart';
+
+import 'app_widget.dart';
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const WalletScreen(),
-      debugShowCheckedModeBanner: false,
-    );
-  }
+  runApp(const MyApp());
 }
