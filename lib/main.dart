@@ -12,5 +12,5 @@ import 'app_widget.dart';
 // }
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: AppWidget()));
 }
