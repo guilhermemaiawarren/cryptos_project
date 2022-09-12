@@ -19,193 +19,76 @@ class _AssetsListViewState extends ConsumerState<AssetsListView> {
     var visible = ref.watch(visibleProvider.state);
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.4,
-      child: ListView(
-        scrollDirection: Axis.vertical,
-        children: [
-          const Divider(thickness: 1),
-          ListTile(
-            leading: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.transparent,
-              backgroundImage: Image.asset('assets/icons/btc.png').image,
-            ),
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(assets[0].symbol),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? realFormatter
-                                .format(assets[0].coinBalance * assets[0].price)
-                            : '*******',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                        ),
-                      )
-                    : Container(
-                        width: 80,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-              ],
-            ),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  assets[0].name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey.shade600,
-                  ),
+      child: ListView.builder(
+        itemCount: assets.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              const Divider(thickness: 1),
+              ListTile(
+                leading: CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: Image.asset(assets[index].icon).image,
                 ),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? "${assets[0].coinBalance.toString()} ${assets[0].symbol}"
-                            : "-------",
-                      )
-                    : Container(
-                        width: 60,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-              ],
-            ),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-          ),
-          const Divider(thickness: 1),
-          ListTile(
-            leading: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.transparent,
-              backgroundImage: Image.asset('assets/icons/ethereum.png').image,
-            ),
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(assets[1].symbol),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? realFormatter
-                                .format(assets[1].coinBalance * assets[1].price)
-                            : '*******',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                        ),
-                      )
-                    : Container(
-                        width: 80,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-              ],
-            ),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  assets[1].name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey.shade600,
-                  ),
+                title: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(child: Text(assets[index].symbol)),
+                    visible.state
+                        ? Text(
+                            visible.state
+                                ? realFormatter.format(
+                                    assets[index].coinBalance * assets[index].price)
+                                : '*******',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          )
+                        : Container(
+                            width: 80,
+                            height: 16,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                    const SizedBox(width: 10),
+                    const Icon(Icons.keyboard_arrow_right),
+                  ],
                 ),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? "${assets[1].coinBalance.toString()} ${assets[1].symbol}"
-                            : "-------",
-                      )
-                    : Container(
-                        width: 60,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
+                subtitle: Row(
+                  children: [
+                    Text(
+                      assets[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: Colors.grey.shade600,
                       ),
-              ],
-            ),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-          ),
-          const Divider(thickness: 1),
-          ListTile(
-            leading: CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.transparent,
-              backgroundImage: Image.asset('assets/icons/litecoin.png').image,
-            ),
-            title: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(assets[2].symbol),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? realFormatter
-                                .format(assets[2].coinBalance * assets[2].price)
-                            : '*******',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 15,
-                        ),
-                      )
-                    : Container(
-                        width: 80,
-                        height: 16,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-              ],
-            ),
-            subtitle: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  assets[2].name,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.grey.shade600,
-                  ),
+                    ),
+                    const Spacer(),
+                    visible.state
+                        ? Text(
+                            visible.state
+                                ? "${assets[index].coinBalance.toString()} ${assets[index].symbol}"
+                                : "-------",
+                          )
+                        : Container(
+                            width: 60,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                          ),
+                    const SizedBox(width: 35),
+                  ],
                 ),
-                visible.state
-                    ? Text(
-                        visible.state
-                            ? "${assets[2].coinBalance.toString()} ${assets[2].symbol}"
-                            : "-------",
-                      )
-                    : Container(
-                        width: 60,
-                        height: 15,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-              ],
-            ),
-            trailing: const Icon(Icons.keyboard_arrow_right),
-          ),
-        ],
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AssetModel {
   String id;
@@ -7,8 +6,8 @@ class AssetModel {
   String name;
   double price;
   double variation;
-  IconData icon;
   double coinBalance;
+  String icon;
   AssetModel({
     required this.id,
     required this.serialId,
@@ -16,7 +15,7 @@ class AssetModel {
     required this.name,
     required this.price,
     required this.variation,
-    required this.icon,
     required this.coinBalance,
+    required this.icon,
   });
 }
