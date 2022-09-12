@@ -1,5 +1,5 @@
 
-class AssetModel {
+class AssetEntity {
   String id;
   int serialId;
   String symbol;
@@ -8,7 +8,7 @@ class AssetModel {
   double variation;
   double coinBalance;
   String icon;
-  AssetModel({
+  AssetEntity({
     required this.id,
     required this.serialId,
     required this.symbol,

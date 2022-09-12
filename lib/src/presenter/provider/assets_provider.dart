@@ -1,11 +1,11 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../domain/entities/asset_model.dart';
+import '../../domain/entities/asset.dart';
 
 var assetsProvider = Provider((ref) => assets);
 
-List<AssetModel> assets = [
-  AssetModel(
+List<AssetEntity> assets = [
+  AssetEntity(
     id: "inoaifsamd-321j0sdad-32ldmsal",
     serialId: 6097,
     symbol: "BTC",
@@ -15,7 +15,7 @@ List<AssetModel> assets = [
     coinBalance: 0.51,
     icon: 'assets/icons/btc.png'
   ),
-  AssetModel(
+  AssetEntity(
     id: "inoaifsamd-321j0sdad-dsasad",
     serialId: 6059,
     symbol: "ETH",
@@ -25,7 +25,7 @@ List<AssetModel> assets = [
     coinBalance: 0.85,
     icon: 'assets/icons/ethereum.png'
   ),
-  AssetModel(
+  AssetEntity(
     id: "inoaifsamd-321j0sdad-sdawa",
     serialId: 6075,
     symbol: "LTC",
