@@ -75,32 +75,33 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
                         walletBalance,
                         style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 35,
+                            fontSize: 30,
                             fontFamily: 'Montserrat'),
                       )
                     : Container(
                         width: 240,
-                        height: 43,
+                        height: 37,
                         decoration: BoxDecoration(
                           color: Colors.grey.shade300,
                           borderRadius: BorderRadius.circular(5),
                         ),
                       ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 Text(
                   'Valor total de moedas',
                   style: TextStyle(
                     color: Colors.grey.shade600,
-                    fontSize: 18,
+                    fontSize: 16,
                   ),
                 )
               ],
             ),
           ),
-          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+          const SizedBox(height: 20),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.65,
             child: ListView.builder(
+              physics: const ClampingScrollPhysics(),
               itemCount: assets.length,
               itemBuilder: (context, index) {
                 AssetEntity asset = assets[index];
