@@ -131,7 +131,7 @@ class _WalletScreenState extends ConsumerState<WalletScreen> {
                                 )
                               : Container(
                                   width: 110,
-                                  height: 23,
+                                  height: 18,
                                   decoration: BoxDecoration(
                                     color: Colors.grey.shade300,
                                     borderRadius: BorderRadius.circular(5),
