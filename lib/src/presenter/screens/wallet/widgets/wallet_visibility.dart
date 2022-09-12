@@ -41,8 +41,9 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
                 'Cripto',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  fontFamily: 'Montserrat',
                   letterSpacing: 0.3,
-                  fontSize: 35,
+                  fontSize: 32,
                   color: Color.fromRGBO(224, 43, 87, 1),
                 ),
               ),
@@ -64,11 +65,12 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 35,
+                    fontFamily: 'Montserrat'
                   ),
                 )
               : Container(
-                  width: 200,
-                  height: 41,
+                  width: 240,
+                  height: 43,
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.circular(5),
