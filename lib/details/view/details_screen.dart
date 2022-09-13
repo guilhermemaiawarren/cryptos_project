@@ -4,6 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 class DetailsScreen extends StatefulHookConsumerWidget {
   const DetailsScreen({Key? key}) : super(key: key);
 
+  static String route = '/details';
+
   @override
   ConsumerState<DetailsScreen> createState() => _DetailsScreenState();
 }
@@ -15,7 +17,9 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Container(),
+      body: const Center(
+        child: Text('Details page'),
+      ),
     );
   }
 }

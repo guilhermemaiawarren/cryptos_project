@@ -12,3 +12,13 @@ Uso do package device_preview para testes de responsividade.
 - Componentização de Widgets da Tela Carteira, usando StateProvider para compartilhar estado entre diferentes widgets
 - Implementação do Decimal
 - Arquitetura com microfrontends monorepo
+
+-- Card 4
+
+- Uso de PageView para controlar telas
+- Navegação por rotas será usado no próximo card, atualmente não há necessidade
+
+-- Card 5
+
+- Implementação de rotas nomeadas
+- Melhora no funcionamento do PageView
