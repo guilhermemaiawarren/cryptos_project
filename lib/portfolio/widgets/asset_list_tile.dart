@@ -18,6 +18,7 @@ class AssetListTile extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
+      onTap: () {},
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Colors.transparent,
