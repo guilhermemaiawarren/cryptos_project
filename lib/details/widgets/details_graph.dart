@@ -18,7 +18,8 @@ class DetailsGraph extends StatefulWidget {
 }
 
 class _DetailsGraphState extends State<DetailsGraph> {
-  int xDays = 4;
+  int xDays = 5;
+  int selectedIndex = 0;
 
   List<FlSpot> generateGraphic(int days) {
     List<FlSpot> spots = [];
@@ -36,7 +37,6 @@ class _DetailsGraphState extends State<DetailsGraph> {
     return spots;
   }
 
-  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -56,7 +56,7 @@ class _DetailsGraphState extends State<DetailsGraph> {
               ),
               titlesData: FlTitlesData(show: false),
               minX: 0,
-              minY: dtd(widget.model.currentPrice) * 0.75,
+              minY: dtd(widget.model.currentPrice) * 0.5,
               maxX: xDays.toDouble() - 1,
               maxY: dtd(widget.model.currentPrice) * 1.5,
               lineBarsData: [
@@ -75,52 +75,163 @@ class _DetailsGraphState extends State<DetailsGraph> {
         ),
         const Padding(padding: EdgeInsets.all(5)),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             InkWell(
               onTap: () {
-                generateGraphic(5);
                 setState(() {
+                  generateGraphic(5);
                   xDays = 5;
                 });
               },
-              child: const Text('5D'),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: xDays == 5
+                      ? const Color.fromRGBO(238, 240, 247, 1)
+                      : Colors.transparent,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
+                child: Text(
+                  '5D',
+                  style: TextStyle(
+                    color: Colors.grey.shade800,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ),
             InkWell(
               onTap: () {
-                generateGraphic(15);
                 setState(() {
+                  generateGraphic(15);
                   xDays = 15;
                 });
               },
-              child: const Text('15D'),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: xDays == 15
+                      ? const Color.fromRGBO(238, 240, 247, 1)
+                      : Colors.transparent,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Text(
+                  '15D',
+                  style: TextStyle(
+                    color: Colors.grey.shade800,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ),
             InkWell(
               onTap: () {
-                generateGraphic(30);
                 setState(() {
+                  generateGraphic(30);
                   xDays = 30;
                 });
               },
-              child: const Text('30D'),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: xDays == 30
+                      ? const Color.fromRGBO(238, 240, 247, 1)
+                      : Colors.transparent,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Text(
+                  '30D',
+                  style: TextStyle(
+                    color: Colors.grey.shade800,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ),
             InkWell(
               onTap: () {
-                generateGraphic(45);
                 setState(() {
+                  generateGraphic(45);
                   xDays = 45;
                 });
               },
-              child: const Text('45D'),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: xDays == 45
+                      ? const Color.fromRGBO(238, 240, 247, 1)
+                      : Colors.transparent,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Text(
+                  '45D',
+                  style: TextStyle(
+                    color: Colors.grey.shade800,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ),
             InkWell(
               onTap: () {
-                generateGraphic(90);
                 setState(() {
+                  generateGraphic(90);
                   xDays = 90;
                 });
               },
-              child: const Text('90D'),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: xDays == 90
+                      ? const Color.fromRGBO(238, 240, 247, 1)
+                      : Colors.transparent,
+                ),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8,
+                  vertical: 10,
+                ),
+                margin: const EdgeInsets.symmetric(
+                  horizontal: 5,
+                ),
+                child: Text(
+                  '90D',
+                  style: TextStyle(
+                    color: Colors.grey.shade800,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ),
           ],
         )

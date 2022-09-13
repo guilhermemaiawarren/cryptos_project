@@ -60,68 +60,95 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(asset.name),
+                    Text(
+                      model.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                        fontFamily: 'Montserrat',
+                        color: Color.fromRGBO(47, 47, 51, 1),
+                      ),
+                    ),
                     CircleAvatar(
                       backgroundColor: Colors.transparent,
-                      backgroundImage: Image.asset(asset.icon).image,
+                      backgroundImage: Image.asset(model.icon).image,
                     ),
                   ],
                 ),
-                Text(asset.symbol),
-                Text(
-                  currencyFormatter.format(
-                    dtd(asset.currentPrice),
+                Text(model.symbol),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: 15,
+                  ),
+                  child: Text(
+                    currencyFormatter.format(
+                      dtd(model.currentPrice),
+                    ),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Color.fromRGBO(47, 47, 51, 1),
+                      fontFamily: 'Montserrat',
+                    ),
                   ),
                 ),
                 DetailsGraph(
-                  model: asset,
+                  model: model,
                 ),
               ],
             ),
           ),
-          InfoCardDetails(
-            label: 'Preço Atual',
-            text: currencyFormatter.format(
-              dtd(asset.currentPrice),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 30,
             ),
-          ),
-          InfoCardDetails(
-            label: 'Variação 24H',
-            text: '${asset.variation.toString()}%',
-            style: TextStyle(
-              color: asset.variation > 0 ? Colors.green : Colors.red,
-            ),
-          ),
-          InfoCardDetails(
-            label: 'Quantidade',
-            text: '${asset.coinBalance.toString()} ${asset.symbol}',
-          ),
-          InfoCardDetails(
-            label: 'Valor',
-            text: currencyFormatter.format(
-              dtd(asset.coinBalance) * dtd(asset.currentPrice),
+            child: Column(
+              children: [
+                const Divider(thickness: 1),
+                InfoCardDetails(
+                  label: 'Preço Atual',
+                  text: currencyFormatter.format(
+                    dtd(model.currentPrice),
+                  ),
+                ),
+                const Divider(thickness: 1),
+                InfoCardDetails(
+                  label: 'Variação 24H',
+                  text:
+                      '${model.variation > 0 ? '+' : ''}${model.variation.toString()}%',
+                  color: model.variation > 0 ? Colors.green : Colors.red,
+                ),
+                const Divider(thickness: 1),
+                InfoCardDetails(
+                  label: 'Quantidade',
+                  text: '${model.coinBalance.toString()} ${model.symbol}',
+                ),
+                const Divider(thickness: 1),
+                InfoCardDetails(
+                  label: 'Valor',
+                  text: currencyFormatter.format(
+                    dtd(model.coinBalance) * dtd(model.currentPrice),
+                  ),
+                ),
+              ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 30,
+              horizontal: 25,
             ),
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => const Color.fromRGBO(224, 43, 87, 1),
-                ),
-                padding: MaterialStateProperty.resolveWith(
-                  (states) => const EdgeInsets.symmetric(
-                    vertical: 20,
-                  ),
-                ),
+            child: MaterialButton(
+              color: const Color.fromRGBO(224, 43, 87, 1),
+              height: 50,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
               onPressed: () {},
               child: const Text(
                 'Converter moeda',
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 17,
                 ),
               ),
             ),
@@ -137,31 +164,38 @@ class InfoCardDetails extends StatelessWidget {
     Key? key,
     required this.label,
     required this.text,
-    this.style,
+    this.color,
   }) : super(key: key);
 
   final String label;
   final String text;
-  final TextStyle? style;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 50, top: 5),
-      child: Column(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+      ),
+      child: Row(
         children: [
-          const Divider(
-            thickness: 1,
+          Text(
+            label,
+            style: const TextStyle(
+              color: Color.fromRGBO(117, 118, 128, 1),
+              fontSize: 20,
+            ),
           ),
-          Row(
-            children: [
-              Text(label),
-              const Spacer(),
-              Text(text, style: style),
-              const Padding(
-                padding: EdgeInsets.only(right: 35),
-              ),
-            ],
+          const Spacer(),
+          Text(
+            text,
+            style: TextStyle(
+              color: color ??const Color.fromRGBO(47, 47, 51, 1),
+              fontSize: 20,
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(right: 35),
           ),
         ],
       ),

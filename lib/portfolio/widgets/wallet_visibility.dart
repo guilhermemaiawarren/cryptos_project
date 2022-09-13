@@ -75,9 +75,10 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
               ? Text(
                   walletBalance,
                   style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                      fontFamily: 'Montserrat'),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontFamily: 'Montserrat',
+                  ),
                 )
               : Container(
                   width: 240,
