@@ -5,11 +5,10 @@ class MovesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
+    return const Scaffold(
+      body: Center(
+        child: Text('Soon'),
       ),
-      body: Container(),
     );
   }
 }
