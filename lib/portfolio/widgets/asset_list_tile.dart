@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/src/presenter/provider/visible_provider.dart';
+import 'package:projeto_criptos/portfolio/controller/visible_provider.dart';
+import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
-import '../../../../../utils/currency_formater.dart';
-import '../../../../domain/entities/asset.dart';
+import '../../shared/models/asset_model.dart';
+import '../../shared/utils/currency_formater.dart';
 
-class AssetListTile extends StatefulHookConsumerWidget {
+class AssetListTile extends HookConsumerWidget {
   const AssetListTile({
     Key? key,
     required this.asset,
   }) : super(key: key);
 
-  final AssetEntity asset;
+  final AssetModel asset;
 
   @override
-  ConsumerState<AssetListTile> createState() => _AssetListTileState();
-}
-
-class _AssetListTileState extends ConsumerState<AssetListTile> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Colors.transparent,
-        backgroundImage: Image.asset(widget.asset.icon).image,
+        backgroundImage: Image.asset(asset.icon).image,
       ),
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: Text(widget.asset.symbol)),
+          Expanded(child: Text(asset.symbol)),
           visible.state
               ? Text(
-                  realFormatter.format(widget.asset.coinBalance * widget.asset.price),
+                  currencyFormatter.format(
+                    dtd(asset.coinBalance) * dtd(asset.currentPrice),
+                  ),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 18,
@@ -54,7 +52,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
       subtitle: Row(
         children: [
           Text(
-            widget.asset.name,
+            asset.name,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
@@ -62,7 +60,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
           ),
           const Spacer(),
           visible.state
-              ? Text("${widget.asset.coinBalance.toString()} ${widget.asset.symbol}")
+              ? Text("${asset.coinBalance.toString()} ${asset.symbol}")
               : Container(
                   width: 60,
                   height: 15,

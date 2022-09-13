@@ -1,10 +1,12 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../../../utils/currency_formater.dart';
-import '../../../../domain/entities/asset.dart';
-import '../../../provider/assets_provider.dart';
-import '../../../provider/visible_provider.dart';
+import '../../shared/utils/currency_formater.dart';
+import '../../shared/utils/decimal_parse.dart';
+import '../../shared/models/asset_model.dart';
+import '../controller/assets_provider.dart';
+import '../controller/visible_provider.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
   const WalletVisibility({Key? key}) : super(key: key);
@@ -14,12 +16,18 @@ class WalletVisibility extends StatefulHookConsumerWidget {
 }
 
 class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
+  @override
+  void initState() {
+    super.initState();
+    ref.read(assetsProvider.notifier).getAllAssets();
+  }
+
   String walletBalanceFormatter() {
-    double balance = 0.0;
-    for (AssetEntity model in ref.watch(assetsProvider)) {
-      balance += model.coinBalance * model.price;
+    Decimal balance = dp('0.0');
+    for (AssetModel model in ref.watch(assetsProvider.notifier).state) {
+      balance += model.coinBalance * model.currentPrice;
     }
-    return realFormatter.format(balance);
+    return currencyFormatter.format(dtd(balance));
   }
 
   @override
@@ -30,7 +38,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
       padding: const EdgeInsets.only(
         left: 30,
         right: 30,
-        bottom: 20,
+        bottom: 30,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +93,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
               color: Colors.grey.shade600,
               fontSize: 16,
             ),
-          )
+          ),
         ],
       ),
     );
