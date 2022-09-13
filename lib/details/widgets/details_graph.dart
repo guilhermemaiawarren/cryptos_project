@@ -1,228 +1,130 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class _LineChart extends StatelessWidget {
-  const _LineChart();
+import 'package:projeto_criptos/shared/models/asset_model.dart';
+
+import '../../shared/utils/decimal_to_double.dart';
+
+class DetailsGraph extends StatefulWidget {
+  const DetailsGraph({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+
+  final AssetModel model;
 
   @override
-  Widget build(BuildContext context) {
-    return LineChart(
-      sampleData1,
-      swapAnimationDuration: const Duration(milliseconds: 250),
-    );
-  }
-
-  LineChartData get sampleData1 => LineChartData(
-        lineTouchData: lineTouchData1,
-        lineBarsData: lineBarsData1,
-        minX: 0,
-        maxX: 14,
-        maxY: 4,
-        minY: 0,
-      );
-
-  LineTouchData get lineTouchData1 => LineTouchData(
-        handleBuiltInTouches: true,
-        touchTooltipData: LineTouchTooltipData(
-          tooltipBgColor: Colors.blueGrey.withOpacity(0.8),
-        ),
-      );
-
-  FlTitlesData get titlesData1 => FlTitlesData(
-        bottomTitles: AxisTitles(
-          sideTitles: bottomTitles,
-        ),
-        rightTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        topTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
-        ),
-        leftTitles: AxisTitles(
-          sideTitles: leftTitles(),
-        ),
-      );
-
-  List<LineChartBarData> get lineBarsData1 => [
-        lineChartBarData1_1,
-      ];
-
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff75729e),
-      fontWeight: FontWeight.bold,
-      fontSize: 14,
-    );
-    String text;
-    switch (value.toInt()) {
-      case 1:
-        text = '1m';
-        break;
-      case 2:
-        text = '2m';
-        break;
-      case 3:
-        text = '3m';
-        break;
-      case 4:
-        text = '5m';
-        break;
-      case 5:
-        text = '6m';
-        break;
-      default:
-        return Container();
-    }
-
-    return Text(text, style: style, textAlign: TextAlign.center);
-  }
-
-  SideTitles leftTitles() => SideTitles(
-        getTitlesWidget: leftTitleWidgets,
-        showTitles: true,
-        interval: 1,
-        reservedSize: 40,
-      );
-
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff72719b),
-      fontWeight: FontWeight.bold,
-      fontSize: 16,
-    );
-    Widget text;
-    switch (value.toInt()) {
-      case 2:
-        text = const Text('SEPT', style: style);
-        break;
-      case 7:
-        text = const Text('OCT', style: style);
-        break;
-      case 12:
-        text = const Text('DEC', style: style);
-        break;
-      default:
-        text = const Text('');
-        break;
-    }
-
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 10,
-      child: text,
-    );
-  }
-
-  SideTitles get bottomTitles => SideTitles(
-        showTitles: true,
-        reservedSize: 32,
-        interval: 1,
-        getTitlesWidget: bottomTitleWidgets,
-      );
-
-  FlGridData get gridData => FlGridData(show: false);
-
-  FlBorderData get borderData => FlBorderData(
-        show: true,
-        border: const Border(
-          bottom: BorderSide(color: Color(0xff4e4965), width: 4),
-          left: BorderSide(color: Colors.transparent),
-          right: BorderSide(color: Colors.transparent),
-          top: BorderSide(color: Colors.transparent),
-        ),
-      );
-
-  LineChartBarData get lineChartBarData1_1 => LineChartBarData(
-        isCurved: true,
-        color: const Color(0xff4af699),
-        barWidth: 4,
-        isStrokeCapRound: true,
-        dotData: FlDotData(show: false),
-        belowBarData: BarAreaData(show: false),
-        spots: const [
-          FlSpot(1, 1),
-          FlSpot(3, 1.5),
-          FlSpot(5, 1.4),
-          FlSpot(7, 3.4),
-          FlSpot(10, 2),
-          FlSpot(12, 2.2),
-          FlSpot(13, 1.8),
-        ],
-      );
+  State<DetailsGraph> createState() => _DetailsGraphState();
 }
 
-class LineChartSample1 extends StatefulWidget {
-  const LineChartSample1({Key? key}) : super(key: key);
+class _DetailsGraphState extends State<DetailsGraph> {
+  int xDays = 4;
 
-  @override
-  State<StatefulWidget> createState() => LineChartSample1State();
-}
-
-class LineChartSample1State extends State<LineChartSample1> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.2,
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(18)),
-          gradient: LinearGradient(
-            colors: [
-              Color(0xff2c274c),
-              Color(0xff46426c),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
+  List<FlSpot> generateGraphic(int days) {
+    List<FlSpot> spots = [];
+    xDays = days;
+    for (int i = 0; i < days; i++) {
+      spots.add(
+        FlSpot(
+          double.parse(
+            (i++).toString(),
           ),
+          dtd(widget.model.prices[i]),
         ),
-        child: Stack(
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: const <Widget>[
-                SizedBox(
-                  height: 37,
-                ),
-                Text(
-                  'Unfold Shop 2018',
-                  style: TextStyle(
-                    color: Color(0xff827daa),
-                    fontSize: 16,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  'Monthly Sales',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 37,
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 16.0, left: 6.0),
-                    child: _LineChart(),
+      );
+    }
+    return spots;
+  }
+
+  int currentPageIndex = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        AspectRatio(
+          aspectRatio: 1.7,
+          child: LineChart(
+            LineChartData(
+              gridData: FlGridData(show: false),
+              borderData: FlBorderData(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey.shade300,
+                    width: 2,
                   ),
                 ),
+              ),
+              titlesData: FlTitlesData(show: false),
+              minX: 0,
+              minY: dtd(widget.model.currentPrice) * 0.75,
+              maxX: xDays.toDouble() - 1,
+              maxY: dtd(widget.model.currentPrice) * 1.5,
+              lineBarsData: [
+                LineChartBarData(
+                  barWidth: 3,
+                  isCurved: true,
+                  dotData: FlDotData(show: false),
+                  color: const Color.fromRGBO(224, 43, 87, 1),
+                  spots: generateGraphic(xDays),
+                )
               ],
             ),
-          ],
+            swapAnimationDuration: const Duration(milliseconds: 500),
+            swapAnimationCurve: Curves.linear,
+          ),
         ),
-      ),
+        const Padding(padding: EdgeInsets.all(5)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            InkWell(
+              onTap: () {
+                generateGraphic(5);
+                setState(() {
+                  xDays = 5;
+                });
+              },
+              child: const Text('5D'),
+            ),
+            InkWell(
+              onTap: () {
+                generateGraphic(15);
+                setState(() {
+                  xDays = 15;
+                });
+              },
+              child: const Text('15D'),
+            ),
+            InkWell(
+              onTap: () {
+                generateGraphic(30);
+                setState(() {
+                  xDays = 30;
+                });
+              },
+              child: const Text('30D'),
+            ),
+            InkWell(
+              onTap: () {
+                generateGraphic(45);
+                setState(() {
+                  xDays = 45;
+                });
+              },
+              child: const Text('45D'),
+            ),
+            InkWell(
+              onTap: () {
+                generateGraphic(90);
+                setState(() {
+                  xDays = 90;
+                });
+              },
+              child: const Text('90D'),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
