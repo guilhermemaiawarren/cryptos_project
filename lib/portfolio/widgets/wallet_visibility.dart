@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_parse.dart';
 import '../../shared/models/asset_model.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../controller/assets_provider.dart';
 import '../controller/visible_provider.dart';
 

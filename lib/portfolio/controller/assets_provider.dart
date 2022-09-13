@@ -3,8 +3,8 @@ import 'package:projeto_criptos/portfolio/controller/assets_notifier.dart';
 import 'package:projeto_criptos/portfolio/usecase/get_assets_usecase.dart';
 
 import '../../shared/models/asset_model.dart';
-import '../../shared/repository/assets_repository_impl.dart';
 import '../../shared/utils/decimal_parse.dart';
+import '../repo/assets_repository_impl.dart';
 
 final assetsListProvider = Provider((ref) {
   return [
