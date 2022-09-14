@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/variation_provider.dart';
 import '../controller/details_asset_provider.dart';
 
 import '../../shared/models/asset_model.dart';
@@ -13,10 +14,14 @@ class InfoColumn extends HookConsumerWidget {
   }) : super(key: key);
 
   late AssetModel model;
+  late int time;
+
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     model = ref.watch(detailsAssetProvider.notifier).state;
+    time = ref.watch(rangeVariationProvider.state).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -32,8 +37,9 @@ class InfoColumn extends HookConsumerWidget {
           ),
           const Divider(thickness: 1),
           InfoCardDetails(
-            label: 'Variação 24H',
-            text: '${model.variation > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
+            label: 'Variação $time${time == 24 ? 'H' : 'D'}',
+            text:
+                '${ref.read(variationProvider.state).state > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
             color: model.variation > 0 ? Colors.green : Colors.red,
             fontWeight: FontWeight.w500,
           ),

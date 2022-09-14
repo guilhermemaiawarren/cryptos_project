@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/variation_provider.dart';
 import '../../details/controller/details_asset_provider.dart';
 import '../../details/view/details_screen.dart';
 import '../controller/visible_provider.dart';
@@ -22,6 +23,7 @@ class AssetListTile extends HookConsumerWidget {
     return ListTile(
       onTap: () {
         ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
+        ref.read(variationProvider.state).state = asset.variation;
         Navigator.of(context).pushNamed(DetailsScreen.route);
       },
       leading: CircleAvatar(

@@ -53,7 +53,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 return spotIndexes.map((index) {
                   return TouchedSpotIndicatorData(
                     FlLine(
-                      color: const Color.fromRGBO(224, 43, 87, 0.7),
+                      color: const Color.fromRGBO(224, 43, 87, 1),
                       strokeWidth: 1,
                       dashArray: [3, 3],
                     ),
@@ -114,7 +114,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
               )
             ],
           ),
-          swapAnimationDuration: const Duration(milliseconds: 500),
+          swapAnimationDuration: const Duration(milliseconds: 350),
           swapAnimationCurve: Curves.easeIn,
         ),
       ),
