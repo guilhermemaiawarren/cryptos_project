@@ -21,6 +21,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late int xDays;
   List<FlSpot> generateGraphic(int days) {
     List<FlSpot> spots = [];
+    xDays = days;
     for (int i = 0; i < days; i++) {
       spots.add(
         FlSpot(
@@ -91,9 +92,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
               ),
             ),
             titlesData: FlTitlesData(show: false),
-            minX: 0,
-            minY: dtd(model.currentPrice) * 0.75,
-            maxX: xDays.toDouble() - 1,
+            minY: dtd(model.currentPrice) * 0.25,
             maxY: dtd(model.currentPrice) * 1.75,
             lineBarsData: [
               LineChartBarData(
