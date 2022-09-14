@@ -8,7 +8,7 @@ import 'package:projeto_criptos/details/widgets/graph_details.dart';
 import 'package:projeto_criptos/details/widgets/top_page_asset_container.dart';
 
 import '../../shared/models/asset_model.dart';
-import '../../shared/templates.dart/warren_button.dart';
+import '../../shared/templates/warren_button.dart';
 import '../widgets/info_column.dart';
 
 class DetailsScreen extends StatefulHookConsumerWidget {
@@ -28,7 +28,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
       appBar: const DetailsAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const TopPageAssetContainer(),
           const GraphDetails(),

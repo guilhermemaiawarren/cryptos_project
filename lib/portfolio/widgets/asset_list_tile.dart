@@ -75,7 +75,9 @@ class AssetListTile extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
-          const SizedBox(width: 35),
+          const Padding(
+            padding: EdgeInsets.only(left: 35),
+          ),
         ],
       ),
     );

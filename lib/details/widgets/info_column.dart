@@ -33,7 +33,7 @@ class InfoColumn extends HookConsumerWidget {
           const Divider(thickness: 1),
           InfoCardDetails(
             label: 'Variação 24H',
-            text: '${model.variation.toString()}%',
+            text: '${model.variation > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
             color: model.variation > 0 ? Colors.green : Colors.red,
           ),
           const Divider(thickness: 1),
