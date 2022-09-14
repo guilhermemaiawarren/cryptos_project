@@ -6,11 +6,13 @@ class InfoCardDetails extends StatelessWidget {
     required this.label,
     required this.text,
     this.color,
+    this.fontWeight,
   }) : super(key: key);
 
   final String label;
   final String text;
   final Color? color;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class InfoCardDetails extends StatelessWidget {
             text,
             style: TextStyle(
               color: color ?? const Color.fromRGBO(47, 47, 51, 1),
+              fontWeight: fontWeight ?? FontWeight.w400,
               fontSize: 20,
             ),
           ),
