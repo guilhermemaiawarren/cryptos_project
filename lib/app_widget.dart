@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/cripto_navigation/view/cripto_navigation.dart';
+import 'package:projeto_criptos/pages/view/pages.dart';
 import 'package:projeto_criptos/shared/routes/app_routes.dart';
 
 class AppWidget extends StatelessWidget {
@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: appRoutes,
-      initialRoute: CriptoNavigation.route,
+      initialRoute: Pages.route,
       debugShowCheckedModeBanner: false,
     );
   }
