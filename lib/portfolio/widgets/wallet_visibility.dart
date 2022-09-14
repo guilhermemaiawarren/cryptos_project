@@ -34,7 +34,6 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
   Widget build(BuildContext context) {
     var visible = ref.watch(visibleProvider.state);
-    String walletBalance = walletBalanceFormatter();
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -73,7 +72,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           ),
           visible.state
               ? Text(
-                  walletBalance,
+                  walletBalanceFormatter(),
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,

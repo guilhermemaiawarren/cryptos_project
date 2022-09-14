@@ -4,12 +4,12 @@ import '../../moves/view/moves_screen.dart';
 import '../../portfolio/view/portfolio_screen.dart';
 
 class PageViewController extends StatefulWidget {
-  PageViewController({
+  const PageViewController({
     Key? key,
     required this.onPageChanged,
     required this.controller,
   }) : super(key: key);
-  void Function(int)? onPageChanged;
+  final void Function(int)? onPageChanged;
   final PageController controller;
   @override
   State<PageViewController> createState() => _PageViewControllerState();

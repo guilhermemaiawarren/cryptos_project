@@ -20,10 +20,11 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   List<FlSpot> generateGraphic(int days) {
     List<FlSpot> spots = [];
     for (int i = 0; i < days; i++) {
+      model.prices.reversed;
       spots.add(
         FlSpot(
           double.parse(
-            (i++).toString(),
+            (i).toString(),
           ),
           dtd(model.prices[i]),
         ),

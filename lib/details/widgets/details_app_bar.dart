@@ -14,7 +14,7 @@ class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();
-          ref.read(xAxisProvider.state).state = 5;
+          ref.read(xAxisProvider.state).state = 4;
         },
         icon: const Icon(Icons.arrow_back),
         color: Colors.black,
