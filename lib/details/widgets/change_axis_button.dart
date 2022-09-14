@@ -14,17 +14,16 @@ class ChangeAxisButton extends StatefulHookConsumerWidget {
 class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
   @override
   Widget build(BuildContext context) {
-    int xDays = ref.watch(xAxisProvider.notifier).state;
     return InkWell(
       onTap: () {
         setState(() {
-          xDays = widget.buttonDays;
+          ref.read(xAxisProvider.state).state = widget.buttonDays;
         });
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: xDays == widget.buttonDays
+          color: ref.watch(xAxisProvider.state).state == widget.buttonDays
               ? const Color.fromRGBO(238, 240, 247, 1)
               : Colors.transparent,
         ),

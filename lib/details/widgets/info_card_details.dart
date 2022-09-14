@@ -15,34 +15,28 @@ class InfoCardDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 20,
-        left: 30,
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
       ),
-      child: Column(
+      child: Row(
         children: [
-          const Divider(thickness: 1),
-          Row(
-            children: [
-              Text(
-                label,
-                style: const TextStyle(
-                  color: Color.fromRGBO(117, 118, 128, 1),
-                  fontSize: 20,
-                ),
-              ),
-              const Spacer(),
-              Text(
-                text,
-                style: TextStyle(
-                  color: color ?? const Color.fromRGBO(47, 47, 51, 1),
-                  fontSize: 20,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(right: 35),
-              ),
-            ],
+          Text(
+            label,
+            style: const TextStyle(
+              color: Color.fromRGBO(117, 118, 128, 1),
+              fontSize: 20,
+            ),
+          ),
+          const Spacer(),
+          Text(
+            text,
+            style: TextStyle(
+              color: color ?? const Color.fromRGBO(47, 47, 51, 1),
+              fontSize: 20,
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(right: 35),
           ),
         ],
       ),

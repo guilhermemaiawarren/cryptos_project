@@ -7,9 +7,14 @@ import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../../shared/utils/decimal_to_double.dart';
 
-class GraphDetails extends HookConsumerWidget {
-  GraphDetails({Key? key}) : super(key: key);
+class GraphDetails extends StatefulHookConsumerWidget {
+  const GraphDetails({Key? key}) : super(key: key);
 
+  @override
+  ConsumerState<GraphDetails> createState() => _GraphDetailsState();
+}
+
+class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late AssetModel model;
   late int xDays;
   List<FlSpot> generateGraphic(int days) {
@@ -28,7 +33,7 @@ class GraphDetails extends HookConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     xDays = ref.watch(xAxisProvider.state).state;
     model = ref.read(detailsAssetProvider.notifier).state;
     return Padding(
