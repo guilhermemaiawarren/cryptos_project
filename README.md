@@ -23,5 +23,6 @@ Uso do package device_preview para testes de responsividade.
 - Implementação de rotas nomeadas
 - Melhora no funcionamento do PageView
 - Gráfico funcional
-- Gerenciamento de Estado para build da tela de detalhes
 - Provider para navegação entre telas
+- Implementação de StateNotifierProvider para tela de detalhes
+- Dados mockados para lista de valores das moedas

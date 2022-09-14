@@ -74,24 +74,20 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: 30,
+              horizontal: 25,
             ),
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => const Color.fromRGBO(224, 43, 87, 1),
-                ),
-                padding: MaterialStateProperty.resolveWith(
-                  (states) => const EdgeInsets.symmetric(
-                    vertical: 20,
-                  ),
-                ),
+            child: MaterialButton(
+              color: const Color.fromRGBO(224, 43, 87, 1),
+              height: 50,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
               onPressed: () {},
               child: const Text(
                 'Converter moeda',
                 style: TextStyle(
                   color: Colors.white,
+                  fontSize: 17,
                 ),
               ),
             ),
