@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/details/widgets/change_axis_button.dart';
+import 'change_axis_button.dart';
 
 class ChangeXAxisButtons extends StatelessWidget {
   const ChangeXAxisButtons({Key? key}) : super(key: key);

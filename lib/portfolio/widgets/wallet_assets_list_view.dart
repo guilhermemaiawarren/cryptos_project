@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/models/asset_model.dart';
-import 'package:projeto_criptos/portfolio/controller/assets_provider.dart';
+import '../../shared/models/asset_model.dart';
+import '../controller/assets_provider.dart';
 
 import 'asset_list_tile.dart';
 

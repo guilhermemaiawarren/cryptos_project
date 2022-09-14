@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'app_assets.dart';
+
 class WarrenButton extends StatelessWidget {
   const WarrenButton({
     Key? key,
@@ -13,7 +15,7 @@ class WarrenButton extends StatelessWidget {
         horizontal: 25,
       ),
       child: MaterialButton(
-        color: const Color.fromRGBO(224, 43, 87, 1),
+        color: AppAssets.magenta,
         height: 50,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

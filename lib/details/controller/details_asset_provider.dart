@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/models/asset_model.dart';
-import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
+import '../../shared/models/asset_model.dart';
+import '../../shared/utils/decimal_parse.dart';
 
 final detailsAssetProvider =
     StateNotifierProvider<DetailsAssetNotifier, AssetModel>(

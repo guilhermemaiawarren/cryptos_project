@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/usecase/get_assets_usecase.dart';
+import '../usecase/get_assets_usecase.dart';
 
 import '../../shared/models/asset_model.dart';
 

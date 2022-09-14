@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_parse.dart';
@@ -48,14 +49,14 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Cripto',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'Montserrat',
+                  fontFamily: AppAssets.montSerrat,
                   letterSpacing: 0.3,
                   fontSize: 32,
-                  color: Color.fromRGBO(224, 43, 87, 1),
+                  color: AppAssets.magenta,
                 ),
               ),
               IconButton(
@@ -73,10 +74,10 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           visible.state
               ? Text(
                   walletBalanceFormatter(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
-                    fontFamily: 'Montserrat',
+                    fontFamily: AppAssets.montSerrat,
                   ),
                 )
               : Container(

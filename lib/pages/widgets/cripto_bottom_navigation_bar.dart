@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/pages/widgets/page_index_provider.dart';
+import 'package:projeto_criptos/shared/templates/app_assets.dart';
+import 'page_index_provider.dart';
 
 class CriptoBottomNavigationBar extends StatefulHookConsumerWidget {
   const CriptoBottomNavigationBar(
@@ -21,19 +22,19 @@ class _CriptoBottomNavigationBarState
   Widget build(BuildContext context) {
     index = ref.watch(pageIndexProvider.state).state;
     return BottomNavigationBar(
-      selectedItemColor: const Color.fromRGBO(224, 43, 87, 1),
+      selectedItemColor: AppAssets.magenta,
       onTap: widget.onTap,
       currentIndex: ref.watch(pageIndexProvider.state).state,
-      items: const [
+      items: [
         BottomNavigationBarItem(
           icon: ImageIcon(
-            AssetImage('assets/icons/warren_logo.png'),
+            AssetImage(AppAssets.wrnIcon),
           ),
           label: 'Portfólio',
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(
-            AssetImage('assets/icons/cents.png'),
+            AssetImage(AppAssets.centsIcon),
           ),
           label: 'Movimentações',
         ),

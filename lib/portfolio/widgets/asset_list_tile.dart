@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/details_asset_provider.dart';
-import 'package:projeto_criptos/details/view/details_screen.dart';
-import 'package:projeto_criptos/portfolio/controller/visible_provider.dart';
+import '../../details/controller/details_asset_provider.dart';
+import '../../details/view/details_screen.dart';
+import '../controller/visible_provider.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';

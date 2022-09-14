@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/x_axis_provider.dart';
+import '../controller/x_axis_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
   const ChangeAxisButton({Key? key, required this.buttonDays})

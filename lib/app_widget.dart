@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/pages/view/pages.dart';
-import 'package:projeto_criptos/shared/routes/app_routes.dart';
+
+import 'pages/view/pages.dart';
+import 'shared/routes/app_routes.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/details_asset_provider.dart';
-import 'package:projeto_criptos/details/controller/x_axis_provider.dart';
-import 'package:projeto_criptos/shared/models/asset_model.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
-import 'package:projeto_criptos/shared/utils/currency_formater.dart';
+import '../controller/details_asset_provider.dart';
+import '../controller/x_axis_provider.dart';
+import '../../shared/models/asset_model.dart';
+import '../../shared/templates/app_assets.dart';
+import '../../shared/utils/currency_formater.dart';
 
 import '../../shared/utils/decimal_to_double.dart';
 
@@ -64,7 +64,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 }).toList();
               },
               touchTooltipData: LineTouchTooltipData(
-                tooltipBgColor: const Color.fromRGBO(224, 43, 87, 1),
+                tooltipBgColor: AppAssets.magenta,
                 tooltipPadding: const EdgeInsets.symmetric(
                   horizontal: 10,
                   vertical: 5,

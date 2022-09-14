@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/pages/widgets/cripto_bottom_navigation_bar.dart';
-import 'package:projeto_criptos/pages/widgets/page_index_provider.dart';
-import 'package:projeto_criptos/pages/widgets/page_view_controller.dart';
+import '../widgets/cripto_bottom_navigation_bar.dart';
+import '../widgets/page_index_provider.dart';
+import '../widgets/page_view_controller.dart';
 
 class Pages extends StatefulHookConsumerWidget {
   const Pages({Key? key}) : super(key: key);

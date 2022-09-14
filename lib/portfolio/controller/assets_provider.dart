@@ -1,6 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/assets_notifier.dart';
-import 'package:projeto_criptos/portfolio/usecase/get_assets_usecase.dart';
+import '../../shared/templates/app_assets.dart';
+import 'assets_notifier.dart';
+import '../usecase/get_assets_usecase.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/decimal_parse.dart';
@@ -16,7 +17,7 @@ final assetsListProvider = Provider((ref) {
       currentPrice: dp('109204.21'),
       variation: -8.5,
       coinBalance: dp('0.51'),
-      icon: 'assets/icons/btc.png',
+      icon: AppAssets.btcIcon,
       prices: [
         dp('109567.21'),
         dp('104214.63'),
@@ -119,7 +120,7 @@ final assetsListProvider = Provider((ref) {
       currentPrice: dp('8682.12'),
       variation: -12,
       coinBalance: dp('0.85'),
-      icon: 'assets/icons/ethereum.png',
+      icon: AppAssets.ethIcon,
       prices: [
         dp('8682.12'),
         dp('9000.12'),
@@ -221,7 +222,7 @@ final assetsListProvider = Provider((ref) {
       currentPrice: dp('280.56'),
       variation: 5.8,
       coinBalance: dp('45.21'),
-      icon: 'assets/icons/litecoin.png',
+      icon: AppAssets.ltcICon,
       prices: [
         dp('280.56'),
         dp('290.21'),

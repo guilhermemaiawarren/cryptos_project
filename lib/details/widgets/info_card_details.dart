@@ -36,6 +36,7 @@ class InfoCardDetails extends StatelessWidget {
               color: color ?? const Color.fromRGBO(47, 47, 51, 1),
               fontWeight: fontWeight ?? FontWeight.w400,
               fontSize: 20,
+              letterSpacing: 0.5,
             ),
           ),
           const Padding(

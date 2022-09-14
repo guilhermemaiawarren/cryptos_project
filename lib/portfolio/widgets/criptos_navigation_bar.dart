@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/templates/app_assets.dart';
+
 class CriptosNavigationBar extends StatefulWidget {
   const CriptosNavigationBar({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _CriptosNavigationBarState extends State<CriptosNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      selectedItemColor: const Color.fromRGBO(224, 43, 87, 1),
+      selectedItemColor: AppAssets.magenta,
       onTap: changeIndex,
       currentIndex: index,
       items: const [
