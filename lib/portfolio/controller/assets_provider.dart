@@ -118,7 +118,7 @@ final assetsListProvider = Provider((ref) {
       symbol: "ETH",
       name: "Ethereum",
       currentPrice: dp('8682.12'),
-      variation: -12,
+      variation: 0,
       coinBalance: dp('0.85'),
       icon: AppAssets.ethIcon,
       prices: [
@@ -202,7 +202,7 @@ final assetsListProvider = Provider((ref) {
         dp('8850.73'),
         dp('9300.00'),
         dp('9920.21'),
-    dp('10987.00'),
+        dp('10987.00'),
         dp('11250.12'),
         dp('12251.15'),
         dp('12170.67'),

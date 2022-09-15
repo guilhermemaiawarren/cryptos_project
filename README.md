@@ -27,4 +27,5 @@ Uso do package device_preview para testes de responsividade.
 - Implementação de StateNotifierProvider para passar o model para a tela de detalhes
 - Dados mockados para lista de valores das moedas
 - Componentização de widgets da tela de detalhes
+- Variação dinâmica na tela de detalhes
 

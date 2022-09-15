@@ -16,12 +16,17 @@ class AssetListTile extends HookConsumerWidget {
   }) : super(key: key);
 
   final AssetModel asset;
+  double updateDayVariation() {
+    asset.variation = (dtd(asset.prices[0]) / dtd(asset.prices[1]) - 1) * 100;
+    return asset.variation;
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
       onTap: () {
+        asset.variation = updateDayVariation();
         ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
         ref.read(variationProvider.notifier).state = asset.variation;
         Navigator.of(context).pushNamed(DetailsScreen.route);
