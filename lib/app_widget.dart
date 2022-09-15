@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/app_routes.dart';
 
-import 'shared/routes/app_routes.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: appRoutes,
-      initialRoute: '/',
+      initialRoute: '/portfolio',
       debugShowCheckedModeBanner: false,
     );
   }
