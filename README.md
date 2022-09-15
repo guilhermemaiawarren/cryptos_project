@@ -10,7 +10,7 @@ Uso do package device_preview para testes de responsividade.
 -- Card 3
 
 - Componentização de Widgets da Tela Carteira, usando StateProvider para compartilhar estado entre diferentes widgets
-- Implementação do Decimal
+- Implementação da lib Decimal
 - Arquitetura com microfrontends monorepo
 
 -- Card 4
