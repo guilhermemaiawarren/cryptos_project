@@ -12,24 +12,39 @@ class CriptoNavigation extends StatefulWidget {
 
 class _CriptoNavigationState extends State<CriptoNavigation> {
   int _index = 0;
-  void changeIndex(int value) {
+  
+  void changePage(int value) {
     setState(() {
       _index = value;
     });
   }
 
-  final List<Widget> _pages = [
-    const PortfolioScreen(),
-    const MovesScreen(),
-  ];
+  late PageController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = PageController(initialPage: _index);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages.elementAt(_index),
+      body: PageView(
+        onPageChanged: changePage,
+        controller: controller,
+        children: const [
+          PortfolioScreen(),
+          MovesScreen(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: const Color.fromRGBO(224, 43, 87, 1),
-        onTap: changeIndex,
+        onTap: (page) {
+          controller.animateToPage(page,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.easeIn);
+        },
         currentIndex: _index,
         items: const [
           BottomNavigationBarItem(
