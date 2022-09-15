@@ -10,17 +10,20 @@ final detailsAssetProvider =
 
 class DetailsAssetNotifier extends StateNotifier<AssetModel> {
   DetailsAssetNotifier()
-      : super(AssetModel(
-          coinBalance: dp('1'),
-          currentPrice: dp('1'),
-          icon: '',
-          id: '',
-          name: '',
-          prices: [],
-          serialId: 2,
-          symbol: '',
-          variation: 1.2,
-        ));
+      : super(
+          AssetModel(
+            coinBalance: dp('1'),
+            currentPrice: dp('1'),
+            icon: '',
+            id: '',
+            name: '',
+            prices: [],
+            serialId: 2,
+            symbol: '',
+            variation: 1.2,
+            dayPrices: [],
+          ),
+        );
 
   void changeDetailsAsset(AssetModel model) {
     state = model;

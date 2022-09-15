@@ -28,7 +28,7 @@ class AssetListTile extends HookConsumerWidget {
         asset.variation = updateDayVariation();
         ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
         ref.read(variationProvider.notifier).state = asset.variation;
-        Navigator.of(context).pushNamed('/details');
+        Navigator.pushNamed(context, '/details');
       },
       leading: CircleAvatar(
         radius: 20,

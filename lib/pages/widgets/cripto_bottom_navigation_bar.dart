@@ -25,7 +25,7 @@ class _CriptoBottomNavigationBarState
     return BottomNavigationBar(
       selectedItemColor: AppAssets.magenta,
       onTap: widget.onTap,
-      currentIndex: ref.watch(pageIndexProvider.state).state,
+      currentIndex: index,
       items: [
         BottomNavigationBarItem(
           icon: ImageIcon(

@@ -33,6 +33,7 @@ class _PagesState extends ConsumerState<Pages> {
     index = ref.read(pageIndexProvider.state).state;
     controller = PageController(initialPage: index);
   }
+
   List<Widget> pages = [
     const Pages(),
     const DetailsScreen(),

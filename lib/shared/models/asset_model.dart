@@ -1,6 +1,5 @@
 
 import 'package:decimal/decimal.dart';
-//TODO 24H Prices list
 class AssetModel {
   String id;
   int serialId;
@@ -11,6 +10,7 @@ class AssetModel {
   Decimal coinBalance;
   String icon;
   List<Decimal> prices;
+  List<Decimal> dayPrices;
   AssetModel({
     required this.id,
     required this.serialId,
@@ -21,5 +21,6 @@ class AssetModel {
     required this.coinBalance,
     required this.icon,
     required this.prices,
+    required this.dayPrices,
   });
 }
