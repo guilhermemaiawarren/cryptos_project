@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/variation_provider.dart';
+import '../controller/range_variation_provider.dart';
 import '../controller/x_axis_provider.dart';
 
 class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {

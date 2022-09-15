@@ -23,7 +23,7 @@ class AssetListTile extends HookConsumerWidget {
     return ListTile(
       onTap: () {
         ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
-        ref.read(variationProvider.state).state = asset.variation;
+        ref.read(variationProvider.notifier).state = asset.variation;
         Navigator.of(context).pushNamed(DetailsScreen.route);
       },
       leading: CircleAvatar(

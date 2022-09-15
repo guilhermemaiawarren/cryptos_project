@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/details_asset_provider.dart';
 import 'package:projeto_criptos/details/controller/variation_provider.dart';
 import '../../shared/models/asset_model.dart';
-import '../../shared/utils/decimal_to_double.dart';
+import '../controller/range_variation_provider.dart';
 import '../controller/x_axis_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
@@ -17,10 +17,6 @@ class ChangeAxisButton extends StatefulHookConsumerWidget {
 
 class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
   late AssetModel model;
-  double getVariation(int time) {
-    double variation = (dtd(model.prices.elementAt(time))/dtd(model.prices.first) - 1) * 100;
-    return variation;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +26,8 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
         setState(() {
           ref.read(xAxisProvider.state).state = widget.buttonDays;
           ref.read(rangeVariationProvider.state).state = widget.buttonDays;
-          model.variation = getVariation(widget.buttonDays);
-          model.variation;
+          ref.read(variationProvider.notifier).changeVariation(widget.buttonDays, model);
+          model.variation = ref.read(variationProvider.notifier).state;
         });
       },
       child: Container(

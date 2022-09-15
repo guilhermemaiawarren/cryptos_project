@@ -22,16 +22,19 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   List<FlSpot> generateGraphic(int days) {
     List<FlSpot> spots = [];
     xDays = days;
-    for (int i = 0; i < days; i++) {
+    for (int x = 0; x < days; x++) {
+      int yDay = x == 0 ? days - 1 : days - x - 1;
+      double y = dtd(model.prices[yDay]); 
       spots.add(
         FlSpot(
           double.parse(
-            (i).toString(),
+            (x).toString(),
           ),
-          dtd(model.prices[i]),
+          y
         ),
       );
     }
+
     return spots;
   }
 

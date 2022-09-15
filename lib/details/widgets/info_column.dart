@@ -6,6 +6,7 @@ import '../controller/details_asset_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
+import '../controller/range_variation_provider.dart';
 import 'info_card_details.dart';
 
 class InfoColumn extends HookConsumerWidget {
@@ -39,7 +40,7 @@ class InfoColumn extends HookConsumerWidget {
           InfoCardDetails(
             label: 'Variação $time${time == 24 ? 'H' : 'D'}',
             text:
-                '${ref.read(variationProvider.state).state > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
+                '${ref.watch(variationProvider.notifier).state > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
             color: model.variation > 0 ? Colors.green : Colors.red,
             fontWeight: FontWeight.w500,
           ),
