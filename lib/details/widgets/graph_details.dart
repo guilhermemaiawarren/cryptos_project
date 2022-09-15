@@ -67,9 +67,10 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 }).toList();
               },
               touchTooltipData: LineTouchTooltipData(
+                fitInsideHorizontally: true,
                 tooltipBgColor: AppAssets.magenta,
                 tooltipPadding: const EdgeInsets.symmetric(
-                  horizontal: 10,
+                  horizontal: 5,
                   vertical: 5,
                 ),
                 tooltipRoundedRadius: 15,

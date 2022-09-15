@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+import '../../shared/templates/app_assets.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_parse.dart';

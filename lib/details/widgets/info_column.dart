@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/variation_provider.dart';
+import '../controller/variation_provider.dart';
 import '../controller/details_asset_provider.dart';
 
 import '../../shared/models/asset_model.dart';

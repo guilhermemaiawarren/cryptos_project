@@ -16,7 +16,7 @@ class WarrenButton extends StatelessWidget {
       ),
       child: MaterialButton(
         color: AppAssets.magenta,
-        height: 50,
+        height: 60,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
