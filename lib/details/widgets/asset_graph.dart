@@ -24,16 +24,30 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
     xDays = days;
     for (int x = 0; x < days; x++) {
       int yDay = x == 0 ? days - 1 : days - x - 1;
-      double y = dtd(model.prices[yDay]); 
+      double y = dtd(model.prices[yDay]);
       spots.add(
         FlSpot(
-          double.parse(
-            (x).toString(),
-          ),
-          y
-        ),
+            double.parse(
+              (x).toString(),
+            ),
+            y),
       );
     }
+
+    return spots;
+  }
+
+  List<FlSpot> generateDailyGraphic(int day) {
+    List<FlSpot> spots = [
+      FlSpot(
+        day - 1,
+        dtd(model.prices[0]),
+      ),
+      FlSpot(
+        double.parse(day.toString()),
+        dtd(model.prices[1]),
+      ),
+    ];
 
     return spots;
   }
@@ -99,23 +113,41 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
             minY: dtd(model.currentPrice) * 0.25,
             maxY: dtd(model.currentPrice) * 1.75,
             lineBarsData: [
-              LineChartBarData(
-                belowBarData: BarAreaData(
-                  show: true,
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromRGBO(224, 43, 87, 0.3),
-                      Color.fromRGBO(224, 43, 87, 0.05),
-                    ],
-                  ),
-                ),
-                barWidth: 2,
-                dotData: FlDotData(show: false),
-                color: AppAssets.magenta,
-                spots: generateGraphic(xDays),
-              )
+              xDays != 1
+                  ? LineChartBarData(
+                      belowBarData: BarAreaData(
+                        show: true,
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromRGBO(224, 43, 87, 0.3),
+                            Color.fromRGBO(224, 43, 87, 0.05),
+                          ],
+                        ),
+                      ),
+                      barWidth: 2,
+                      dotData: FlDotData(show: false),
+                      color: AppAssets.magenta,
+                      spots: generateGraphic(xDays),
+                    )
+                  : LineChartBarData(
+                      belowBarData: BarAreaData(
+                        show: true,
+                        gradient: const LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color.fromRGBO(224, 43, 87, 0.3),
+                            Color.fromRGBO(224, 43, 87, 0.05),
+                          ],
+                        ),
+                      ),
+                      barWidth: 2,
+                      dotData: FlDotData(show: false),
+                      color: AppAssets.magenta,
+                      spots: generateDailyGraphic(xDays),
+                    )
             ],
           ),
           swapAnimationDuration: const Duration(milliseconds: 350),

@@ -12,6 +12,7 @@ class ChangeXAxisButtons extends StatelessWidget {
       ),
       child: Row(
         children: const [
+          ChangeAxisButton(buttonDays: 1),
           ChangeAxisButton(buttonDays: 5),
           ChangeAxisButton(buttonDays: 15),
           ChangeAxisButton(buttonDays: 30),

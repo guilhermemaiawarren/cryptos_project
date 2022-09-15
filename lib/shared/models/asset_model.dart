@@ -1,6 +1,6 @@
 
 import 'package:decimal/decimal.dart';
-
+//TODO 24H Prices list
 class AssetModel {
   String id;
   int serialId;

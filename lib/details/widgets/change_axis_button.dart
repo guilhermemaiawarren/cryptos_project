@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../controller/variation_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
-import '../controller/range_variation_provider.dart';
 import '../controller/x_axis_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
@@ -25,7 +24,6 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
       onTap: () {
         setState(() {
           ref.read(xAxisProvider.state).state = widget.buttonDays;
-          ref.read(rangeVariationProvider.state).state = widget.buttonDays;
           ref.read(variationProvider.notifier).changeVariation(widget.buttonDays, model);
           model.variation = ref.read(variationProvider.notifier).state;
         });

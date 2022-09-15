@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/range_variation_provider.dart';
 import '../controller/x_axis_provider.dart';
 
 class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
@@ -16,8 +15,7 @@ class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();
-          ref.read(xAxisProvider.state).state = 5;
-          ref.read(rangeVariationProvider.state).state = 24;
+          ref.read(xAxisProvider.state).state = 1;
         },
         icon: const Icon(Icons.arrow_back),
         color: Colors.black,

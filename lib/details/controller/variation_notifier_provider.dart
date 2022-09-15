@@ -11,6 +11,7 @@ class VariationNotifier extends StateNotifier<double> {
 
   void changeVariation(int time, AssetModel model) {
     double variation = 0;
+    time = time == 1 ? 2 : time;
     variation =
         (dtd(model.prices.first) / dtd(model.prices.elementAt(time - 1)) - 1) *
             100;
