@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared/models/asset_model.dart';
 
+import '../../shared/models/asset_model.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
 var variationProvider = StateNotifierProvider<VariationNotifier, double>(

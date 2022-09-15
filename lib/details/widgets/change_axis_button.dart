@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/details_asset_provider.dart';
-import '../controller/variation_provider.dart';
+import '../controller/details_asset_notifier_provider.dart';
+import '../controller/variation_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../controller/range_variation_provider.dart';
 import '../controller/x_axis_provider.dart';

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../details/controller/variation_provider.dart';
-import '../../details/controller/details_asset_provider.dart';
-import '../../details/view/details_screen.dart';
-import '../controller/visible_provider.dart';
 
+import '../../details/controller/details_asset_notifier_provider.dart';
+import '../../details/controller/variation_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
+import '../controller/visible_provider.dart';
 
 class AssetListTile extends HookConsumerWidget {
   const AssetListTile({
@@ -29,7 +28,7 @@ class AssetListTile extends HookConsumerWidget {
         asset.variation = updateDayVariation();
         ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
         ref.read(variationProvider.notifier).state = asset.variation;
-        Navigator.of(context).pushNamed(DetailsScreen.route);
+        Navigator.of(context).pushNamed('/details');
       },
       leading: CircleAvatar(
         radius: 20,

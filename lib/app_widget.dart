@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'pages/view/pages.dart';
 import 'shared/routes/app_routes.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,7 +9,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: appRoutes,
-      initialRoute: Pages.route,
+      initialRoute: '/',
       debugShowCheckedModeBanner: false,
     );
   }

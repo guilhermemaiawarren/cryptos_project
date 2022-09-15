@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/details_asset_provider.dart';
-import '../../shared/models/asset_model.dart';
 
+import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
+import '../controller/details_asset_notifier_provider.dart';
 
 class TopPageAssetContainer extends HookConsumerWidget {
   const TopPageAssetContainer({Key? key}) : super(key: key);

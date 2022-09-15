@@ -6,8 +6,6 @@ import '../widgets/details_app_bar.dart';
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({Key? key}) : super(key: key);
 
-  static String route = '/details';
-
   @override
   Widget build(BuildContext context) {
     return const Scaffold(

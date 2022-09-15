@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import '../../shared/templates/app_assets.dart';
-import 'page_index_provider.dart';
+import '../controller/page_index_provider.dart';
 
 class CriptoBottomNavigationBar extends StatefulHookConsumerWidget {
-  const CriptoBottomNavigationBar(
-      {Key? key, required this.controller, required this.onTap})
-      : super(key: key);
-  final PageController controller;
+  const CriptoBottomNavigationBar({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
   final void Function(int)? onTap;
   @override
   ConsumerState<CriptoBottomNavigationBar> createState() =>

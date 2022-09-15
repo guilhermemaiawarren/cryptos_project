@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/variation_provider.dart';
-import '../controller/details_asset_provider.dart';
+import '../controller/variation_notifier_provider.dart';
+import '../controller/details_asset_notifier_provider.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/range_variation_provider.dart';
-import 'info_card_details.dart';
+import 'info_card_asset.dart';
 
 class InfoColumn extends HookConsumerWidget {
   InfoColumn({

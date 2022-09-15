@@ -1,11 +1,11 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared/templates/app_assets.dart';
-import 'assets_notifier.dart';
-import '../usecase/get_assets_usecase.dart';
 
 import '../../shared/models/asset_model.dart';
+import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/decimal_parse.dart';
 import '../repo/assets_repository_impl.dart';
+import '../usecase/get_assets_usecase.dart';
+import 'assets_notifier.dart';
 
 final assetsListProvider = Provider((ref) {
   return [

@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'top_page_asset_container.dart';
 
 import '../../shared/templates/warren_button.dart';
-import 'change_x_axis_buttons.dart';
-import 'graph_details.dart';
-import 'info_column.dart';
+import 'asset_graph.dart';
+import 'change_x_axis_list.dart';
+import 'info_asset_column.dart';
+import 'top_page_asset_container.dart';
 
 class BodyDetailsScreen extends StatelessWidget {
   const BodyDetailsScreen({
