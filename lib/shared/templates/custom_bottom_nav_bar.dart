@@ -13,14 +13,6 @@ class CustomBottomNavBar extends StatefulWidget {
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   late PageController controller;
   void _onItemTapped(int index) {
-    // switch (index) {
-    //   case 0:
-    //     Navigator.pushReplacementNamed(context, '/portfolio');
-    //     break;
-    //   case 1:
-    //     Navigator.pushReplacementNamed(context, '/moves');
-    //     break;
-    // }
     switch (index) {
       case 0:
         Navigator.pushReplacement(

@@ -1,5 +1,7 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import 'package:projeto_criptos/details/controller/x_axis_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 
@@ -9,19 +11,16 @@ import '../../shared/utils/decimal_to_double.dart';
 import 'info_card_asset.dart';
 
 class InfoColumn extends HookConsumerWidget {
-  InfoColumn({
+  const InfoColumn({
     Key? key,
   }) : super(key: key);
 
-  late AssetModel model;
-  late int time;
-
-  
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    model = ref.watch(detailsAssetProvider.notifier).state;
-    time = ref.watch(xAxisProvider.state).state;
+    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
+    int time = ref.watch(xAxisProvider.state).state;
+    Decimal rangePrice = ref.watch(rangePriceProvider.notifier).state;
+
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -30,9 +29,9 @@ class InfoColumn extends HookConsumerWidget {
         children: [
           const Divider(thickness: 1),
           InfoCardDetails(
-            label: 'Preço Atual',
+            label: time == 1 ? 'Preço Atual' : 'Preço ${time}D',
             text: currencyFormatter.format(
-              dtd(model.currentPrice),
+              dtd(rangePrice),
             ),
           ),
           const Divider(thickness: 1),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../controller/x_axis_provider.dart';
@@ -24,6 +25,7 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
         setState(() {
           ref.read(xAxisProvider.state).state = widget.buttonDays;
           ref.read(detailsAssetProvider.notifier).changeVariation(widget.buttonDays);
+          ref.read(rangePriceProvider.notifier).changePrice(widget.buttonDays, model);
           model.variation = ref.read(detailsAssetProvider.notifier).state.variation;
         });
       },
