@@ -18,12 +18,12 @@ class GraphDetails extends StatefulHookConsumerWidget {
 
 class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late AssetModel model;
-  late int xDays;
+  late int graphAxisDays;
   List<FlSpot> generateGraphic() {
     List<FlSpot> spots = [];
-    if (xDays != 1) {
-      for (int x = 0; x < xDays; x++) {
-        int yDay = x == 0 ? xDays - 1 : xDays - x - 1;
+    if (graphAxisDays != 1) {
+      for (int x = 0; x < graphAxisDays; x++) {
+        int yDay = x == 0 ? graphAxisDays - 1 : graphAxisDays - x - 1;
         double y = dtd(model.prices[yDay]);
         spots.add(
           FlSpot(
@@ -57,7 +57,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
 
   @override
   Widget build(BuildContext context) {
-    xDays = ref.watch(graphAxisProvider.state).state;
+    graphAxisDays = ref.watch(graphAxisProvider.state).state;
     model = ref.read(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -87,7 +87,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 fitInsideHorizontally: true,
                 tooltipBgColor: AppAssets.magenta,
                 tooltipPadding: const EdgeInsets.symmetric(
-                  horizontal: 5,
+                  horizontal: 6,
                   vertical: 5,
                 ),
                 tooltipRoundedRadius: 15,
@@ -97,7 +97,8 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                       currencyFormatter.format(touchedSpot.y),
                       const TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
                     );
                   }).toList();
@@ -124,8 +125,8 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromRGBO(224, 43, 87, 0.3),
-                      Color.fromRGBO(224, 43, 87, 0.05),
+                      Color.fromRGBO(224, 43, 87, 0.5),
+                      Color.fromRGBO(224, 43, 87, 0.02),
                     ],
                   ),
                 ),
