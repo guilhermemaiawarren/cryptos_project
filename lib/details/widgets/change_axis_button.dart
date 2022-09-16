@@ -6,8 +6,10 @@ import '../../shared/models/asset_model.dart';
 import '../controller/graph_axis_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
-  const ChangeAxisButton({Key? key, required this.buttonDays})
-      : super(key: key);
+  const ChangeAxisButton({
+    Key? key,
+    required this.buttonDays,
+  }) : super(key: key);
 
   final int buttonDays;
   @override

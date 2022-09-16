@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/templates/app_assets.dart';
@@ -76,13 +77,9 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
                     fontFamily: AppAssets.montSerrat,
                   ),
                 )
-              : Container(
-                  width: 240,
+              : const VisibilityOffContainer(
+                  witdh: 240,
                   height: 37,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
                 ),
           const SizedBox(height: 5),
           Text(
