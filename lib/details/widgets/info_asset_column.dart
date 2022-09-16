@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/range_price_provider.dart';
-import 'package:projeto_criptos/details/controller/x_axis_provider.dart';
+import 'package:projeto_criptos/details/controller/graph_axis_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 
 import '../../shared/models/asset_model.dart';
@@ -18,7 +18,7 @@ class InfoColumn extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
-    int time = ref.watch(xAxisProvider.state).state;
+    int time = ref.watch(graphAxisProvider.state).state;
     Decimal rangePrice = ref.watch(rangePriceProvider.notifier).state;
 
     return Padding(

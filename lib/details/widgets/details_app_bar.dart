@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/x_axis_provider.dart';
+import '../controller/graph_axis_provider.dart';
 
 class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   const DetailsAppBar({
@@ -15,7 +15,7 @@ class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
       leading: IconButton(
         onPressed: () {
           Navigator.of(context).pop();
-          ref.read(xAxisProvider.state).state = 1;
+          ref.read(graphAxisProvider.state).state = 1;
         },
         icon: const Icon(Icons.arrow_back),
         color: Colors.black,

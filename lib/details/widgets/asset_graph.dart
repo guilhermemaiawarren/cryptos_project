@@ -7,7 +7,7 @@ import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/details_asset_notifier_provider.dart';
-import '../controller/x_axis_provider.dart';
+import '../controller/graph_axis_provider.dart';
 
 class GraphDetails extends StatefulHookConsumerWidget {
   const GraphDetails({Key? key}) : super(key: key);
@@ -19,9 +19,8 @@ class GraphDetails extends StatefulHookConsumerWidget {
 class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late AssetModel model;
   late int xDays;
-  List<FlSpot> generateGraphic(int days) {
+  List<FlSpot> generateGraphic() {
     List<FlSpot> spots = [];
-    xDays = days;
     if (xDays != 1) {
       for (int x = 0; x < xDays; x++) {
         int yDay = x == 0 ? xDays - 1 : xDays - x - 1;
@@ -58,7 +57,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
 
   @override
   Widget build(BuildContext context) {
-    xDays = ref.watch(xAxisProvider.state).state;
+    xDays = ref.watch(graphAxisProvider.state).state;
     model = ref.read(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.symmetric(
@@ -133,7 +132,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 barWidth: 2,
                 dotData: FlDotData(show: false),
                 color: AppAssets.magenta,
-                spots: generateGraphic(xDays),
+                spots: generateGraphic(),
               ),
             ],
           ),

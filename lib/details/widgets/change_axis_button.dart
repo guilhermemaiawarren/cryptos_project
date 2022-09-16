@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
-import '../controller/x_axis_provider.dart';
+import '../controller/graph_axis_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
   const ChangeAxisButton({Key? key, required this.buttonDays})
@@ -23,7 +23,7 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
     return InkWell(
       onTap: () {
         setState(() {
-          ref.read(xAxisProvider.state).state = widget.buttonDays;
+          ref.read(graphAxisProvider.state).state = widget.buttonDays;
           ref.read(detailsAssetProvider.notifier).changeVariation(widget.buttonDays);
           ref.read(rangePriceProvider.notifier).changePrice(widget.buttonDays, model);
           model.variation = ref.read(detailsAssetProvider.notifier).state.variation;
@@ -32,7 +32,7 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: ref.watch(xAxisProvider.state).state == widget.buttonDays
+          color: ref.watch(graphAxisProvider.state).state == widget.buttonDays
               ? const Color.fromRGBO(238, 240, 247, 1)
               : Colors.transparent,
         ),
