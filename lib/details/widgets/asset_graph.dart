@@ -130,7 +130,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                     ],
                   ),
                 ),
-                barWidth: 2,
+                barWidth: 3,
                 dotData: FlDotData(show: false),
                 color: AppAssets.magenta,
                 spots: generateGraphic(),

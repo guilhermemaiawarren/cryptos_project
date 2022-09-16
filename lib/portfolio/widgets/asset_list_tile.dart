@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/range_price_provider.dart';
+import 'package:projeto_criptos/portfolio/controller/arguments.dart';
 
-import '../../details/controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
@@ -26,9 +25,13 @@ class AssetListTile extends HookConsumerWidget {
     return ListTile(
       onTap: () {
         asset.variation = updateDayVariation();
-        ref.read(detailsAssetProvider.notifier).state = asset;
-        ref.read(rangePriceProvider.notifier).changePriceByRange(1, asset);
-        Navigator.pushNamed(context, '/details');
+        Navigator.pushNamed(
+          context,
+          '/details',
+          arguments: Arguments(
+            asset: asset,
+          ),
+        );
       },
       leading: CircleAvatar(
         radius: 20,
