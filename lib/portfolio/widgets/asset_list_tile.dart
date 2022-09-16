@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../details/controller/details_asset_notifier_provider.dart';
-import '../../details/controller/variation_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
@@ -26,8 +25,7 @@ class AssetListTile extends HookConsumerWidget {
     return ListTile(
       onTap: () {
         asset.variation = updateDayVariation();
-        ref.read(detailsAssetProvider.notifier).changeDetailsAsset(asset);
-        ref.read(variationProvider.notifier).state = asset.variation;
+        ref.read(detailsAssetProvider.notifier).state = asset;
         Navigator.pushNamed(context, '/details');
       },
       leading: CircleAvatar(

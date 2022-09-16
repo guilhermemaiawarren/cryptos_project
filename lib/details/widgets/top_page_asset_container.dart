@@ -11,7 +11,7 @@ class TopPageAssetContainer extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AssetModel model = ref.read(detailsAssetProvider.notifier).state;
+    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,

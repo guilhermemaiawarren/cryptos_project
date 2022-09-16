@@ -95,11 +95,12 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 getTooltipItems: (touchedSpots) {
                   return touchedSpots.map((touchedSpot) {
                     return LineTooltipItem(
-                        currencyFormatter.format(touchedSpot.y),
-                        const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ));
+                      currencyFormatter.format(touchedSpot.y),
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                      ),
+                    );
                   }).toList();
                 },
               ),

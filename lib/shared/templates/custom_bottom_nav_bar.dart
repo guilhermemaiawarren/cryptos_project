@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/app_routes.dart';
 
 import '../../shared/templates/app_assets.dart';
 
@@ -10,13 +11,35 @@ class CustomBottomNavBar extends StatefulWidget {
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
+  late PageController controller;
   void _onItemTapped(int index) {
+    // switch (index) {
+    //   case 0:
+    //     Navigator.pushReplacementNamed(context, '/portfolio');
+    //     break;
+    //   case 1:
+    //     Navigator.pushReplacementNamed(context, '/moves');
+    //     break;
+    // }
     switch (index) {
       case 0:
-        Navigator.pushReplacementNamed(context, '/portfolio');
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                appRoutes['/portfolio']!(context),
+          ),
+        );
         break;
       case 1:
-        Navigator.pushReplacementNamed(context, '/moves');
+        Navigator.pushReplacement(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                appRoutes['/moves']!(context),
+          ),
+        );
+        break;
     }
   }
 

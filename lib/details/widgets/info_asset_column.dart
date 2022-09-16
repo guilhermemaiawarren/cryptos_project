@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/x_axis_provider.dart';
-import '../controller/variation_notifier_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 
 import '../../shared/models/asset_model.dart';
@@ -40,7 +39,7 @@ class InfoColumn extends HookConsumerWidget {
           InfoCardDetails(
             label: 'Variação ${time == 24 || time == 1 ? '24H' : '${time}D'}',
             text:
-                '${ref.watch(variationProvider.notifier).state > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
+                '${model.variation > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
             color: model.variation > 0 ? Colors.green : Colors.red,
             fontWeight: FontWeight.w500,
           ),

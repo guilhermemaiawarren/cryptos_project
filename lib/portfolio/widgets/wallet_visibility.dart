@@ -36,11 +36,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   Widget build(BuildContext context) {
     var visible = ref.watch(visibleProvider.state);
     return Padding(
-      padding: const EdgeInsets.only(
-        left: 30,
-        right: 30,
-        bottom: 30,
-      ),
+      padding: const EdgeInsets.all(30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

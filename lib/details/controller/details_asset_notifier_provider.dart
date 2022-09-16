@@ -2,6 +2,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/decimal_parse.dart';
+import '../../shared/utils/decimal_to_double.dart';
 
 final detailsAssetProvider =
     StateNotifierProvider<DetailsAssetNotifier, AssetModel>(
@@ -25,7 +26,10 @@ class DetailsAssetNotifier extends StateNotifier<AssetModel> {
           ),
         );
 
-  void changeDetailsAsset(AssetModel model) {
-    state = model;
+  void changeVariation(int time) {
+    time = time == 1 ? 2 : time;
+    state.variation =
+        (dtd(state.prices.first) / dtd(state.prices.elementAt(time - 1)) - 1) *
+            100;
   }
 }
