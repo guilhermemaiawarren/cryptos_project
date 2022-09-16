@@ -16,23 +16,28 @@ class ChangeAxisButton extends StatefulHookConsumerWidget {
 
 class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
   late AssetModel model;
+  late int graphAxis;
 
   @override
   Widget build(BuildContext context) {
     model = ref.watch(detailsAssetProvider.notifier).state;
+    graphAxis = ref.watch(graphAxisProvider.state).state;
     return InkWell(
       onTap: () {
         setState(() {
           ref.read(graphAxisProvider.state).state = widget.buttonDays;
-          ref.read(detailsAssetProvider.notifier).changeVariation(widget.buttonDays);
-          ref.read(rangePriceProvider.notifier).changePrice(widget.buttonDays, model);
-          model.variation = ref.read(detailsAssetProvider.notifier).state.variation;
+          ref
+              .read(detailsAssetProvider.notifier)
+              .changeVariation(widget.buttonDays);
+          ref
+              .read(rangePriceProvider.notifier)
+              .changePriceByRange(widget.buttonDays, model);
         });
       },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: ref.watch(graphAxisProvider.state).state == widget.buttonDays
+          color: graphAxis == widget.buttonDays
               ? const Color.fromRGBO(238, 240, 247, 1)
               : Colors.transparent,
         ),
@@ -44,9 +49,11 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
           horizontal: 5,
         ),
         child: Text(
-          '${widget.buttonDays}D',
+          widget.buttonDays == 1 ? '24H' : '${widget.buttonDays}D',
           style: TextStyle(
-            color: Colors.grey.shade800,
+            color: graphAxis == widget.buttonDays
+                ? Colors.black
+                : Colors.grey.shade500,
             letterSpacing: 0.5,
             fontWeight: FontWeight.bold,
             fontSize: 14,

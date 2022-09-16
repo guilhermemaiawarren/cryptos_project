@@ -27,7 +27,7 @@ class AssetListTile extends HookConsumerWidget {
       onTap: () {
         asset.variation = updateDayVariation();
         ref.read(detailsAssetProvider.notifier).state = asset;
-        ref.read(rangePriceProvider.notifier).changePrice(1, asset);
+        ref.read(rangePriceProvider.notifier).changePriceByRange(1, asset);
         Navigator.pushNamed(context, '/details');
       },
       leading: CircleAvatar(

@@ -8,7 +8,7 @@ var rangePriceProvider = StateNotifierProvider<RangeNotifier, Decimal>((ref) => 
 class RangeNotifier extends StateNotifier<Decimal> {
   RangeNotifier() : super(dp('0.0'));
 
-  void changePrice(int time, AssetModel model) {
+  void changePriceByRange(int time, AssetModel model) {
     state = model.prices[time - 1];
   }
 }
