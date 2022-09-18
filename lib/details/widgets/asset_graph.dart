@@ -54,6 +54,11 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
     }
     return spots;
   }
+  @override
+  void initState() {
+    super.initState();
+    ref.read(graphAxisProvider.state).state = 1;
+  }
 
   @override
   Widget build(BuildContext context) {
