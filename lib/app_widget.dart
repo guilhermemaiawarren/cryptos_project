@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/app_routes.dart';
+import 'package:projeto_criptos/shared/routes/app_routes.dart';
 
 
 class AppWidget extends StatelessWidget {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import 'package:projeto_criptos/details/controller/graph_axis_provider.dart';
-import '../controller/details_asset_notifier_provider.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
@@ -11,13 +10,13 @@ import '../../shared/utils/decimal_to_double.dart';
 import 'info_card_asset.dart';
 
 class InfoColumn extends HookConsumerWidget {
-  const InfoColumn({
+  InfoColumn({
     Key? key,
   }) : super(key: key);
-
+  late AssetModel model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
+    // AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
     int time = ref.watch(graphAxisProvider.state).state;
     Decimal rangePrice = ref.watch(rangePriceProvider.notifier).state;
 

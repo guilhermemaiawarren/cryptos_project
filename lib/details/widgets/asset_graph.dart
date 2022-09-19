@@ -63,7 +63,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   @override
   Widget build(BuildContext context) {
     graphAxisDays = ref.watch(graphAxisProvider.state).state;
-    model = ref.read(detailsAssetProvider.notifier).state;
+    // model = ref.read(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,

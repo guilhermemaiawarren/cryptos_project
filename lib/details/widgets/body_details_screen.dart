@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../shared/templates/warren_button.dart';
@@ -18,10 +17,10 @@ class BodyDetailsScreen extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const TopPageAssetContainer(),
+        TopPageAssetContainer(),
         const GraphDetails(),
         const ChangeXAxisButtons(),
-        const InfoColumn(),
+        InfoColumn(),
         WarrenButton(onPressed: () {}),
       ],
     );

@@ -1,8 +1,8 @@
-import '../../shared/models/asset_model.dart';
+import '../../shared/models/api_asset_model.dart';
 import '../../shared/repository/assets_repository.dart';
 
 abstract class IGetAssetsUsecase {
-  List<AssetModel> getAssets();
+  Future<List<ApiAssetModel>> getAssets();
 }
 
 class GetAssetsUsecaseImpl implements IGetAssetsUsecase {
@@ -10,7 +10,7 @@ class GetAssetsUsecaseImpl implements IGetAssetsUsecase {
 
   GetAssetsUsecaseImpl(this._repository);
   @override
-  List<AssetModel> getAssets() {
+  Future<List<ApiAssetModel>> getAssets() {
     return _repository.getAssets();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/portfolio/controller/arguments.dart';
+import 'package:projeto_criptos/shared/models/api_asset_model.dart';
 import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../controller/details_asset_notifier_provider.dart';
@@ -13,10 +14,10 @@ class DetailsScreen extends HookConsumerWidget {
   static const route = '/details';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final args = ModalRoute.of(context)!.settings.arguments as Arguments;
-    AssetModel asset = args.asset;
-    ref.read(detailsAssetProvider.notifier).state = asset;
-    ref.read(rangePriceProvider.notifier).changePriceByRange(1, asset);
+    // final args = ModalRoute.of(context)!.settings.arguments as Arguments;
+    // ApiAssetModel asset = args.asset;
+    // ref.read(detailsAssetProvider.notifier).state = asset;
+    // ref.read(rangePriceProvider.notifier).changePriceByRange(1, asset);
     return const Scaffold(
       appBar: DetailsAppBar(),
       body: BodyDetailsScreen(),

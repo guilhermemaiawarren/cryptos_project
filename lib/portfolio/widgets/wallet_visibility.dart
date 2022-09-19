@@ -1,13 +1,11 @@
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/portfolio/controller/balance_provider.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
+import 'package:projeto_criptos/shared/models/api_asset_model.dart';
 
-import '../../shared/models/asset_model.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../../shared/utils/decimal_parse.dart';
-import '../../shared/utils/decimal_to_double.dart';
 import '../controller/assets_provider.dart';
 import '../controller/visible_provider.dart';
 
@@ -22,20 +20,17 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
   void initState() {
     super.initState();
-    ref.read(assetsProvider.notifier).getAllAssets();
+    ref.read(assetsNotifierProvider.notifier).getAllAssets();
   }
 
-  String walletBalanceFormatter() {
-    Decimal balance = dp('0.0');
-    for (AssetModel model in ref.watch(assetsProvider.notifier).state) {
-      balance += model.coinBalance * model.currentPrice;
-    }
-    return currencyFormatter.format(dtd(balance));
-  }
+  List<ApiAssetModel> assets = [];
 
   @override
   Widget build(BuildContext context) {
+    assets = ref.read(assetsNotifierProvider);
     var visible = ref.watch(visibleProvider.state);
+    double balance = ref.watch(balanceProvider);
+
     return Padding(
       padding: const EdgeInsets.all(30),
       child: Column(
@@ -70,7 +65,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           ),
           visible.state
               ? Text(
-                  walletBalanceFormatter(),
+                  currencyFormatter.format(balance),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,

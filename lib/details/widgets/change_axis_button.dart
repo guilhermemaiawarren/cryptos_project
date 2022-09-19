@@ -22,15 +22,15 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
 
   @override
   Widget build(BuildContext context) {
-    model = ref.watch(detailsAssetProvider.notifier).state;
+    // model = ref.watch(detailsAssetProvider.notifier).state;
     graphAxis = ref.watch(graphAxisProvider.state).state;
     return InkWell(
       onTap: () {
         setState(() {
           ref.read(graphAxisProvider.state).state = widget.buttonDays;
-          ref
-              .read(detailsAssetProvider.notifier)
-              .changeVariation(widget.buttonDays);
+          // ref
+              // .read(detailsAssetProvider.notifier)
+              // .changeVariation(widget.buttonDays);
           ref
               .read(rangePriceProvider.notifier)
               .changePriceByRange(widget.buttonDays, model);
