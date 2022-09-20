@@ -6,15 +6,9 @@ import 'package:projeto_criptos/shared/models/asset_model.dart';
 import '../controller/assets_provider.dart';
 import 'asset_list_tile.dart';
 
-class WalletAssetsListView extends StatefulHookConsumerWidget {
-  const WalletAssetsListView({Key? key}) : super(key: key);
+class WalletAssetsListView extends HookConsumerWidget {
+  WalletAssetsListView({Key? key}) : super(key: key);
 
-  @override
-  ConsumerState<WalletAssetsListView> createState() =>
-      _WalletAssetsListViewState();
-}
-
-class _WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
   late List<AssetModel> assets;
 
   double getBalance() {
@@ -26,7 +20,7 @@ class _WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     assets = ref.watch(assetsNotifierProvider);
     Future.delayed(Duration.zero, () {
       ref.read(balanceProvider.state).state = getBalance();
