@@ -17,3 +17,14 @@ Uso do package device_preview para testes de responsividade.
 
 - Uso de PageView para controlar telas
 - Navegação por rotas será usado no próximo card, atualmente não há necessidade
+
+-- Card 5
+
+- Implementação de rotas nomeadas
+- Melhora no funcionamento do PageView
+- Gráfico funcional
+- Provider para navegação entre telas
+- Implementação de StateNotifierProvider para passar o model para a tela de detalhes
+- Dados mockados para lista de valores das moedas
+- Componentização de widgets da tela de detalhes
+- Variação e Preço dinâmicos na tela de detalhes  

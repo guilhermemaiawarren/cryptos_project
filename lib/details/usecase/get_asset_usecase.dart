@@ -1,4 +1,4 @@
-import 'package:projeto_criptos/shared/models/asset_model.dart';
+import '../../shared/models/asset_model.dart';
 
 abstract class IGetAssetUsecase {
   AssetModel getAsset();

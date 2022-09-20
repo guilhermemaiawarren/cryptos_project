@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/visible_provider.dart';
+import 'package:projeto_criptos/portfolio/controller/arguments.dart';
+import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
+import '../controller/visible_provider.dart';
 
 class AssetListTile extends HookConsumerWidget {
   const AssetListTile({
@@ -13,11 +15,25 @@ class AssetListTile extends HookConsumerWidget {
   }) : super(key: key);
 
   final AssetModel asset;
+  double updateDayVariation() {
+    asset.variation = (dtd(asset.prices[0]) / dtd(asset.prices[1]) - 1) * 100;
+    return asset.variation;
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
+      onTap: () {
+        asset.variation = updateDayVariation();
+        Navigator.pushNamed(
+          context,
+          '/details',
+          arguments: Arguments(
+            asset: asset,
+          ),
+        );
+      },
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Colors.transparent,
@@ -37,13 +53,9 @@ class AssetListTile extends HookConsumerWidget {
                     fontSize: 18,
                   ),
                 )
-              : Container(
-                  width: 110,
-                  height: 18,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
+              : const VisibilityOffContainer(
+                  witdh: 110,
+                  height: 15,
                 ),
           const Padding(padding: EdgeInsets.only(left: 10)),
           const Icon(Icons.keyboard_arrow_right),
@@ -61,15 +73,13 @@ class AssetListTile extends HookConsumerWidget {
           const Spacer(),
           visible.state
               ? Text("${asset.coinBalance.toString()} ${asset.symbol}")
-              : Container(
-                  width: 60,
+              : const VisibilityOffContainer(
+                  witdh: 60,
                   height: 15,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
                 ),
-          const SizedBox(width: 35),
+          const Padding(
+            padding: EdgeInsets.only(left: 35),
+          ),
         ],
       ),
     );

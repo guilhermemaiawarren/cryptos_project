@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/models/asset_model.dart';
 
-class DetailsScreen extends StatefulHookConsumerWidget {
-  const DetailsScreen({Key? key}) : super(key: key);
+import '../controller/details_asset_notifier_provider.dart';
+import '../controller/range_price_provider.dart';
+import '../widgets/body_details_screen.dart';
+import '../widgets/details_app_bar.dart';
 
+class DetailsScreen extends HookConsumerWidget {
+  const DetailsScreen({Key? key, required this.asset}) : super(key: key);
+  static const route = '/details';
+
+  final AssetModel asset;
   @override
-  ConsumerState<DetailsScreen> createState() => _DetailsScreenState();
-}
-
-class _DetailsScreenState extends ConsumerState<DetailsScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
-      body: Container(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.read(detailsAssetProvider.notifier).state = asset;
+    ref.read(rangePriceProvider.notifier).changePriceByRange(1, asset);
+    return const Scaffold(
+      appBar: DetailsAppBar(),
+      body: BodyDetailsScreen(),
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/cripto_navigation/view/cripto_navigation.dart';
+import 'package:projeto_criptos/route_settings.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -7,7 +7,8 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: CriptoNavigation(),
+      onGenerateRoute: RouteController.generateRoute,
+      initialRoute: '/portfolio',
       debugShowCheckedModeBanner: false,
     );
   }

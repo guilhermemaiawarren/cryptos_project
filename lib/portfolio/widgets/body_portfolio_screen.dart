@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/widgets/wallet_assets_list_view.dart';
-import 'package:projeto_criptos/portfolio/widgets/wallet_visibility.dart';
+import 'wallet_assets_list_view.dart';
+import 'wallet_visibility.dart';
 
 
 class BodyPortfolioScreen extends StatelessWidget {
   const BodyPortfolioScreen({Key? key}) : super(key: key);
+
+  static const route = '/bodyPortfolio';
 
   @override
   Widget build(BuildContext context) {
