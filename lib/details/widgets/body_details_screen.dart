@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/templates/warren_button.dart';
+import 'asset_graph.dart';
 import 'change_x_axis_list.dart';
 import 'info_asset_column.dart';
 import 'top_page_asset_container.dart';
@@ -17,7 +18,7 @@ class BodyDetailsScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         TopPageAssetContainer(),
-        // const GraphDetails(),
+        const GraphDetails(),
         const ChangeXAxisButtons(),
         InfoColumn(),
         WarrenButton(onPressed: () {}),

@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
+import 'package:projeto_criptos/details/controller/list_provider.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/templates/app_assets.dart';
@@ -18,15 +18,15 @@ class GraphDetails extends StatefulHookConsumerWidget {
 
 class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late AssetModel model;
+  late List<double> coinData;
 
   List<FlSpot> generateGraphic() {
     List<FlSpot> spots = [];
-    List<double> coinData = ref.watch(getHistoricDataProvider.notifier).state;
     for (int index = 0; index < coinData.length; index++) {
       spots.add(
         FlSpot(
           index.toDouble(),
-          coinData[0],
+          coinData[index],
         ),
       );
     }
@@ -41,7 +41,9 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
 
   @override
   Widget build(BuildContext context) {
+    coinData = ref.watch(listProvider.state).state;
     model = ref.read(detailsAssetProvider.notifier).state;
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
@@ -98,8 +100,6 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
               ),
             ),
             titlesData: FlTitlesData(show: false),
-            minY: model.currentPrice * 0.25,
-            maxY: model.currentPrice * 1.75,
             lineBarsData: [
               LineChartBarData(
                 belowBarData: BarAreaData(

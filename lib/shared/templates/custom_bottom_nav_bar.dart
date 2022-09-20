@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/shared/routes/app_routes.dart';
+import 'package:projeto_criptos/moves/view/moves_screen.dart';
+import 'package:projeto_criptos/portfolio/view/portfolio_screen.dart';
 
 import '../../shared/templates/app_assets.dart';
 
@@ -15,21 +16,15 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   void _onItemTapped(int index) {
     switch (index) {
       case 0:
-        Navigator.pushReplacement(
+        Navigator.pushNamed(
           context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                appRoutes['/portfolio']!(context),
-          ),
+          PortfolioScreen.route,
         );
         break;
       case 1:
-        Navigator.pushReplacement(
+        Navigator.pushNamed(
           context,
-          PageRouteBuilder(
-            pageBuilder: (context, animation, secondaryAnimation) =>
-                appRoutes['/moves']!(context),
-          ),
+          MovesScreen.route,
         );
         break;
     }

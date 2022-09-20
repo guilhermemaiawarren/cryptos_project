@@ -24,7 +24,7 @@ class AssetModelDto extends AssetModel {
       id: map['id'] ?? '',
       symbol: map['symbol'] ?? '',
       name: map['name'] ?? '',
-      image: map['image'.replaceAll(RegExp('[0-9]'), '')] ?? '',
+      image: map['image'] ?? '',
       currentPrice: map['current_price']?.toDouble() ?? 0.0,
       priceChangePercentage:
           map['price_change_percentage_24h']?.toDouble() ?? 0.0,

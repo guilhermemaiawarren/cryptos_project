@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
+import 'package:projeto_criptos/details/controller/list_provider.dart';
 import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
@@ -28,9 +30,14 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
       onTap: () {
         setState(() {
           ref.read(graphAxisProvider.state).state = widget.buttonDays;
-          // ref
-          //     .read(detailsAssetProvider.notifier)
-          //     .changeVariation(widget.buttonDays);
+          ref
+              .read(detailsAssetProvider.notifier)
+              .changeVariation(widget.buttonDays);
+          ref
+              .read(getHistoricDataProvider.notifier)
+              .getHistoricData(model.id, widget.buttonDays);
+          ref.read(listProvider.state).state =
+              ref.read(getHistoricDataProvider.notifier).state;
           ref
               .read(rangePriceProvider.notifier)
               .changePriceByRange(widget.buttonDays, model);

@@ -32,9 +32,6 @@ class _WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
       ref.read(balanceProvider.state).state = getBalance();
     });
     return Visibility(
-      replacement: const Center(
-        child: CircularProgressIndicator(),
-      ),
       visible: assets.isNotEmpty,
       child: Expanded(
         child: ListView.separated(
