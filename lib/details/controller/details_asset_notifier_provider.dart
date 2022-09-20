@@ -20,9 +20,9 @@ class DetailsAssetNotifier extends StateNotifier<AssetModel> {
           ),
         );
 
-  void changeVariation(int time) {
+  void changeVariation(int time, List<double> list) {
     time = time == 1 ? 2 : time;
     state.priceChangePercentage =
-        (state.currentPrice / state.currentPrice - 1) * 100;
+        (list.last / list.first - 1) * 100;
   }
 }

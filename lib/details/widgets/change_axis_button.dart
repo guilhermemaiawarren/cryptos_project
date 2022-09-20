@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
-import 'package:projeto_criptos/details/controller/list_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../controller/graph_axis_provider.dart';
+import '../controller/list_provider.dart';
 
 class ChangeAxisButton extends StatefulHookConsumerWidget {
   const ChangeAxisButton({
@@ -28,9 +28,6 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
     return InkWell(
       onTap: () async {
         ref.read(graphAxisProvider.state).state = widget.buttonDays;
-        ref.read(detailsAssetProvider.notifier).changeVariation(
-              widget.buttonDays,
-            );
 
         await ref.read(getHistoricDataProvider.notifier).getHistoricData(
               model.id,
@@ -38,6 +35,9 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
             );
         ref.read(listProvider.state).state =
             ref.read(getHistoricDataProvider.notifier).state;
+        ref.read(detailsAssetProvider.notifier).changeVariation(
+            widget.buttonDays,
+            ref.read(getHistoricDataProvider.notifier).state);
       },
       child: Container(
         decoration: BoxDecoration(

@@ -42,7 +42,6 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   @override
   Widget build(BuildContext context) {
     model = ref.read(detailsAssetProvider.notifier).state;
-    
     coinData = ref.watch(listProvider.state).state;
 
     return Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
 import 'package:projeto_criptos/details/controller/graph_axis_provider.dart';
-import 'package:projeto_criptos/details/controller/list_provider.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
@@ -16,8 +16,9 @@ class InfoColumn extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
     int time = ref.watch(graphAxisProvider.state).state;
-    double rangePrice = ref.watch(listProvider.state).state.isNotEmpty
-        ? ref.watch(listProvider.state).state.first
+    List<double> prices = ref.watch(getHistoricDataProvider.notifier).state;
+    double rangePrice = prices.isNotEmpty
+        ? prices.first
         : 0.0;
     return Padding(
       padding: const EdgeInsets.only(

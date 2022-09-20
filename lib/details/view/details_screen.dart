@@ -25,8 +25,10 @@ class DetailsScreen extends HookConsumerWidget {
           .getHistoricData(asset.id, 1);
       ref.read(listProvider.state).state =
           ref.read(getHistoricDataProvider.notifier).state;
+      ref
+          .read(detailsAssetProvider.notifier)
+          .changeVariation(1, ref.read(getHistoricDataProvider.notifier).state);
     });
-
     ref.read(rangePriceProvider.notifier).state = asset.currentPrice;
     ref.read(detailsAssetProvider.notifier).state = asset;
     return const Scaffold(
