@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/app_routes.dart';
-
+import 'package:projeto_criptos/route_settings.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: appRoutes,
+    return const MaterialApp(
+      onGenerateRoute: RouteController.generateRoute,
       initialRoute: '/portfolio',
       debugShowCheckedModeBanner: false,
     );
