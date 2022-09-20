@@ -43,7 +43,6 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   Widget build(BuildContext context) {
     model = ref.read(detailsAssetProvider.notifier).state;
     coinData = ref.watch(listProvider.state).state;
-
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
