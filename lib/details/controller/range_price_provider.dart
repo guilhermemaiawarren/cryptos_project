@@ -9,6 +9,6 @@ class RangeNotifier extends StateNotifier<Decimal> {
   RangeNotifier() : super(dp('0.0'));
 
   void changePriceByRange(int time, AssetModel model) {
-    state = model.prices[time - 1];
+    state = dp(model.currentPrice.toString());
   }
 }

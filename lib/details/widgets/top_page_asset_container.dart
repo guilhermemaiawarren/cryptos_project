@@ -3,14 +3,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../../shared/utils/decimal_to_double.dart';
+import '../controller/details_asset_notifier_provider.dart';
 
 class TopPageAssetContainer extends HookConsumerWidget {
   TopPageAssetContainer({Key? key}) : super(key: key);
   late AssetModel model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
+    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -33,18 +33,18 @@ class TopPageAssetContainer extends HookConsumerWidget {
               ),
               CircleAvatar(
                 backgroundColor: Colors.transparent,
-                backgroundImage: Image.asset(model.icon).image,
+                backgroundImage: Image.network(model.image).image,
               ),
             ],
           ),
-          Text(model.symbol),
+          Text(model.symbol.toUpperCase()),
           Padding(
             padding: const EdgeInsets.only(
               top: 15,
             ),
             child: Text(
               currencyFormatter.format(
-                dtd(model.currentPrice),
+                model.currentPrice,
               ),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,

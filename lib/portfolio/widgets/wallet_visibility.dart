@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/portfolio/controller/balance_provider.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
-import 'package:projeto_criptos/shared/models/api_asset_model.dart';
+import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
@@ -23,7 +23,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
     ref.read(assetsNotifierProvider.notifier).getAllAssets();
   }
 
-  List<ApiAssetModel> assets = [];
+  List<AssetModel> assets = [];
 
   @override
   Widget build(BuildContext context) {

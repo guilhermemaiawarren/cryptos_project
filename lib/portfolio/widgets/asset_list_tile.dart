@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/portfolio/controller/arguments.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
-import 'package:projeto_criptos/shared/models/api_asset_model.dart';
+import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../controller/visible_provider.dart';
@@ -13,7 +13,7 @@ class AssetListTile extends HookConsumerWidget {
     required this.asset,
   }) : super(key: key);
 
-  final ApiAssetModel asset;
+  final AssetModel asset;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,12 +28,12 @@ class AssetListTile extends HookConsumerWidget {
           ),
         );
       },
-      leading: ClipRRect(
-        borderRadius: BorderRadius.circular(100),
-        child: Image.network(
+      leading: CircleAvatar(
+        radius: 20,
+        backgroundColor: Colors.transparent,
+        backgroundImage: Image.network(
           asset.image,
-          scale: 6,
-        ),
+        ).image,
       ),
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -68,8 +68,7 @@ class AssetListTile extends HookConsumerWidget {
           ),
           const Spacer(),
           visible.state
-              ? Text(
-                  "0.5 ${asset.symbol.toUpperCase()}")
+              ? Text("0.5 ${asset.symbol.toUpperCase()}")
               : const VisibilityOffContainer(
                   witdh: 60,
                   height: 15,

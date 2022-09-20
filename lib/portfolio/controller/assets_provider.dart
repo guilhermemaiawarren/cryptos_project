@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/portfolio/repo/data/datasource/assets_datasource.dart';
-import 'package:projeto_criptos/shared/models/api_asset_model.dart';
+import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../repo/assets_repository_impl.dart';
 import '../usecase/get_assets_usecase.dart';
@@ -27,7 +27,7 @@ final assetsUsecaseProvider = Provider(
   ),
 );
 
-var assetsNotifierProvider = StateNotifierProvider<AssetsNotifier, List<ApiAssetModel>>(
+var assetsNotifierProvider = StateNotifierProvider<AssetsNotifier, List<AssetModel>>(
   (ref) => AssetsNotifier(
     ref.watch(assetsUsecaseProvider),
   ),
