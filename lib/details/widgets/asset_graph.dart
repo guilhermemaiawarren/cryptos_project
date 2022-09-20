@@ -107,7 +107,7 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      Color.fromRGBO(224, 43, 87, 0.5),
+                      Color.fromRGBO(224, 43, 87, 0.2),
                       Color.fromRGBO(224, 43, 87, 0.02),
                     ],
                   ),
