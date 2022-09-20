@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
 import 'package:projeto_criptos/details/controller/list_provider.dart';
-import 'package:projeto_criptos/details/controller/range_price_provider.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../../shared/models/asset_model.dart';
 import '../controller/graph_axis_provider.dart';
@@ -27,21 +26,18 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
     model = ref.watch(detailsAssetProvider.notifier).state;
     graphAxis = ref.watch(graphAxisProvider.state).state;
     return InkWell(
-      onTap: () {
-        setState(() {
-          ref.read(graphAxisProvider.state).state = widget.buttonDays;
-          ref
-              .read(detailsAssetProvider.notifier)
-              .changeVariation(widget.buttonDays);
-          ref
-              .read(getHistoricDataProvider.notifier)
-              .getHistoricData(model.id, widget.buttonDays);
-          ref.read(listProvider.state).state =
-              ref.read(getHistoricDataProvider.notifier).state;
-          ref
-              .read(rangePriceProvider.notifier)
-              .changePriceByRange(widget.buttonDays, model);
-        });
+      onTap: () async {
+        ref.read(graphAxisProvider.state).state = widget.buttonDays;
+        ref.read(detailsAssetProvider.notifier).changeVariation(
+              widget.buttonDays,
+            );
+
+        await ref.read(getHistoricDataProvider.notifier).getHistoricData(
+              model.id,
+              widget.buttonDays,
+            );
+        ref.read(listProvider.state).state =
+            ref.read(getHistoricDataProvider.notifier).state;
       },
       child: Container(
         decoration: BoxDecoration(
@@ -51,7 +47,7 @@ class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
               : Colors.transparent,
         ),
         padding: const EdgeInsets.symmetric(
-          horizontal: 8,
+          horizontal: 5,
           vertical: 10,
         ),
         margin: const EdgeInsets.symmetric(

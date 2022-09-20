@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/repo/data/datasource/assets_datasource.dart';
+import 'package:projeto_criptos/portfolio/data/datasource/assets_datasource.dart';
 import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../repo/assets_repository_impl.dart';

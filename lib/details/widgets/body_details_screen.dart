@@ -20,7 +20,7 @@ class BodyDetailsScreen extends StatelessWidget {
         TopPageAssetContainer(),
         const GraphDetails(),
         const ChangeXAxisButtons(),
-        InfoColumn(),
+        const InfoColumn(),
         WarrenButton(onPressed: () {}),
       ],
     );

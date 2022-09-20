@@ -7,7 +7,7 @@ import 'package:projeto_criptos/shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../controller/visible_provider.dart';
 
-class AssetListTile extends HookConsumerWidget {
+class AssetListTile extends StatefulHookConsumerWidget {
   const AssetListTile({
     Key? key,
     required this.asset,
@@ -16,7 +16,12 @@ class AssetListTile extends HookConsumerWidget {
   final AssetModel asset;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<AssetListTile> createState() => _AssetListTileState();
+}
+
+class _AssetListTileState extends ConsumerState<AssetListTile> {
+  @override
+  Widget build(BuildContext context) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
       onTap: () {
@@ -24,25 +29,27 @@ class AssetListTile extends HookConsumerWidget {
           context,
           '/details',
           arguments: Arguments(
-            asset: asset,
+            asset: widget.asset,
           ),
+        ).whenComplete(
+          () => setState(() {}),
         );
       },
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Colors.transparent,
         backgroundImage: Image.network(
-          asset.image,
+          widget.asset.image,
         ).image,
       ),
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: Text(asset.symbol.toUpperCase())),
+          Expanded(child: Text(widget.asset.symbol.toUpperCase())),
           visible.state
               ? Text(
                   currencyFormatter.format(
-                    asset.currentPrice,
+                    widget.asset.currentPrice,
                   ),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
@@ -60,7 +67,7 @@ class AssetListTile extends HookConsumerWidget {
       subtitle: Row(
         children: [
           Text(
-            asset.name,
+            widget.asset.name,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
@@ -68,7 +75,7 @@ class AssetListTile extends HookConsumerWidget {
           ),
           const Spacer(),
           visible.state
-              ? Text("0.5 ${asset.symbol.toUpperCase()}")
+              ? Text("0.5 ${widget.asset.symbol.toUpperCase()}")
               : const VisibilityOffContainer(
                   witdh: 60,
                   height: 15,

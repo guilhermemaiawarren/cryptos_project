@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:projeto_criptos/portfolio/repo/data/dto/asset_model_dto.dart';
+import 'package:projeto_criptos/portfolio/data/dto/asset_model_dto.dart';
 import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 abstract class IGetAssetsDatasource {
