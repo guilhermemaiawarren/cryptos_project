@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/portfolio/controller/balance_provider.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
-import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../controller/assets_provider.dart';
 import '../controller/visible_provider.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
@@ -18,16 +16,7 @@ class WalletVisibility extends StatefulHookConsumerWidget {
 
 class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
-  void initState() {
-    super.initState();
-    ref.read(assetsNotifierProvider.notifier).getAllAssets();
-  }
-
-  List<AssetModel> assets = [];
-
-  @override
   Widget build(BuildContext context) {
-    assets = ref.read(assetsNotifierProvider);
     var visible = ref.watch(visibleProvider.state);
     double balance = ref.watch(balanceProvider);
 

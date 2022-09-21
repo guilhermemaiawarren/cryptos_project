@@ -2,16 +2,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/models/asset_model.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../controller/details_asset_notifier_provider.dart';
 
 class TopPageAssetContainer extends HookConsumerWidget {
   TopPageAssetContainer({Key? key}) : super(key: key);
-  late AssetModel model;
+  late CryptoViewData model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
+    CryptoViewData model = ref.watch(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,

@@ -3,7 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/graph_axis_provider.dart';
 import 'package:projeto_criptos/details/controller/list_provider.dart';
 
-import '../../shared/models/asset_model.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import 'info_card_asset.dart';
@@ -14,7 +14,7 @@ class InfoColumn extends HookConsumerWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
+    CryptoViewData model = ref.watch(detailsAssetProvider.notifier).state;
     int time = ref.watch(graphAxisProvider.state).state;
     List<double> prices = ref.watch(listProvider.state).state;
     double rangePrice = prices.isEmpty ? 0 : prices.first;
@@ -35,8 +35,8 @@ class InfoColumn extends HookConsumerWidget {
           InfoCardDetails(
             label: 'Variação ${time == 24 || time == 1 ? '24H' : '${time}D'}',
             text:
-                '${model.priceChangePercentage > 0 ? '+' : ''}${model.priceChangePercentage.toStringAsFixed(2)}%',
-            color: model.priceChangePercentage > 0 ? Colors.green : Colors.red,
+                '${model.variation > 0 ? '+' : ''}${model.variation.toStringAsFixed(2)}%',
+            color: model.variation > 0 ? Colors.green : Colors.red,
             fontWeight: FontWeight.w500,
           ),
           const Divider(thickness: 1),

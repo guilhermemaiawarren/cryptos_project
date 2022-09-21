@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
 import 'package:projeto_criptos/details/controller/range_price_provider.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import '../controller/details_asset_notifier_provider.dart';
-import '../../shared/models/asset_model.dart';
 import '../controller/graph_axis_provider.dart';
 import '../controller/list_provider.dart';
 
@@ -19,7 +19,7 @@ class ChangeAxisButton extends StatefulHookConsumerWidget {
 }
 
 class _ChangeAxisButtonState extends ConsumerState<ChangeAxisButton> {
-  late AssetModel model;
+  late CryptoViewData model;
   late int graphAxis;
 
   @override

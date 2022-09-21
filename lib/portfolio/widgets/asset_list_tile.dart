@@ -1,7 +1,8 @@
+
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
-import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../controller/visible_provider.dart';
@@ -9,10 +10,10 @@ import '../controller/visible_provider.dart';
 class AssetListTile extends StatefulHookConsumerWidget {
   const AssetListTile({
     Key? key,
-    required this.asset,
+    required this.crypto,
   }) : super(key: key);
 
-  final AssetModel asset;
+  final CryptoViewData crypto;
 
   @override
   ConsumerState<AssetListTile> createState() => _AssetListTileState();
@@ -27,7 +28,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
         Navigator.pushNamed(
           context,
           '/details',
-          arguments: widget.asset,
+          arguments: widget.crypto,
         ).whenComplete(
           () => setState(() {}),
         );
@@ -36,17 +37,17 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
         radius: 20,
         backgroundColor: Colors.transparent,
         backgroundImage: Image.network(
-          widget.asset.image,
+          widget.crypto.image,
         ).image,
       ),
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: Text(widget.asset.symbol.toUpperCase())),
+          Expanded(child: Text(widget.crypto.symbol.toUpperCase())),
           visible.state
               ? Text(
                   currencyFormatter.format(
-                    widget.asset.currentPrice,
+                    widget.crypto.currentPrice,
                   ),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
@@ -64,7 +65,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
       subtitle: Row(
         children: [
           Text(
-            widget.asset.name,
+            widget.crypto.name,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
@@ -72,7 +73,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
           ),
           const Spacer(),
           visible.state
-              ? Text("0.5 ${widget.asset.symbol.toUpperCase()}")
+              ? Text("0.5 ${widget.crypto.symbol.toUpperCase()}")
               : const VisibilityOffContainer(
                   witdh: 60,
                   height: 15,

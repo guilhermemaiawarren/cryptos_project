@@ -2,8 +2,8 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/controller/list_provider.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
-import '../../shared/models/asset_model.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../controller/details_asset_notifier_provider.dart';
@@ -17,7 +17,7 @@ class GraphDetails extends StatefulHookConsumerWidget {
 }
 
 class _GraphDetailsState extends ConsumerState<GraphDetails> {
-  late AssetModel model;
+  late CryptoViewData model;
   late List<double> coinData;
 
   List<FlSpot> generateGraphic() {
