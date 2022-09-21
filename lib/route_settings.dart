@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/controller/arguments.dart';
+import 'package:projeto_criptos/shared/models/asset_model.dart';
 
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
@@ -22,12 +22,12 @@ class RouteController {
         },
       );
     } else if (settings.name == DetailsScreen.route) {
-      final args = settings.arguments as Arguments;
+      final args = settings.arguments as AssetModel;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
           return DetailsScreen(
-            asset: args.asset,
+            asset: args,
           );
         },
       );

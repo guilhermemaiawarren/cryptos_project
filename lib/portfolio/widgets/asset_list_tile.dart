@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/arguments.dart';
 import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
 import 'package:projeto_criptos/shared/models/asset_model.dart';
 
@@ -28,9 +27,7 @@ class _AssetListTileState extends ConsumerState<AssetListTile> {
         Navigator.pushNamed(
           context,
           '/details',
-          arguments: Arguments(
-            asset: widget.asset,
-          ),
+          arguments: widget.asset,
         ).whenComplete(
           () => setState(() {}),
         );

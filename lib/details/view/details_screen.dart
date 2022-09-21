@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/shared/models/asset_model.dart';
 
-import '../../portfolio/controller/arguments.dart';
 import '../controller/details_asset_notifier_provider.dart';
 import '../controller/get_historic_data_provider.dart';
 import '../controller/list_provider.dart';
@@ -17,8 +16,8 @@ class DetailsScreen extends HookConsumerWidget {
   final AssetModel asset;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final args = ModalRoute.of(context)!.settings.arguments as Arguments;
-    AssetModel asset = args.asset;
+    final args = ModalRoute.of(context)!.settings.arguments as AssetModel;
+    AssetModel asset = args;
     Future.delayed(Duration.zero, () async {
       await ref
           .read(getHistoricDataProvider.notifier)
