@@ -41,12 +41,12 @@ dependencies:
   dio: ^4.0.6
   auto_size_text: ^3.0.0
   json_annotation: ^4.7.0
-  json_serializable: ^6.4.0
-  build_runner: ^2.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.2.1
+  json_serializable: ^6.4.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

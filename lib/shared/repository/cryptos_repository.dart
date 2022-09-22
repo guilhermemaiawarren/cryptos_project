@@ -1,7 +1,7 @@
+import 'package:projeto_criptos/shared/api/models/cryptos_response.dart';
 import 'package:projeto_criptos/shared/api/models/get_crypto_market_data_response.dart';
 
 import '../api/cryptos_endpoint.dart';
-import '../api/models/cryptos_response.dart';
 import '../api/models/get_all_cryptos_response.dart';
 
 class CryptosRepository {
@@ -11,7 +11,6 @@ class CryptosRepository {
 
   Future<GetAllCryptosResponse> getAllCryptos() async {
     final response = await _endpoint.getAllCryptos();
-
     return GetAllCryptosResponse(
       List.from(
         response.data.map(
@@ -25,7 +24,6 @@ class CryptosRepository {
 
   Future<GetCryptoMarketDataResponse> getCryptoMarketData(String crypto) async {
     final response = await _endpoint.getCryptoMarketData(crypto);
-
     return GetCryptoMarketDataResponse.fromJson(response.data);
   }
 }

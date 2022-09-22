@@ -25,7 +25,6 @@ class DetailsScreen extends HookConsumerWidget {
       appBar: const DetailsAppBar(),
       body: BodyDetailsScreen(
         coin: asset,
-        day: ref.read(daysProvider.state).state,
       ),
     );
   }

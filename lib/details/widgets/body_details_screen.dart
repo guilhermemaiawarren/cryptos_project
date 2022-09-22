@@ -9,97 +9,116 @@ import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import 'package:projeto_criptos/shared/utils/currency_formater.dart';
 
 import '../../shared/templates/warren_button.dart';
-import 'asset_graph.dart';
+import 'graph_details.dart';
 import 'change_days_buttons.dart';
-import 'top_page_asset_container.dart';
+import 'top_page_container.dart';
 
 class BodyDetailsScreen extends HookConsumerWidget {
   const BodyDetailsScreen({
     Key? key,
     required this.coin,
-    required this.day,
   }) : super(key: key);
   final CryptoViewData coin;
-  final int day;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-      future: ref.watch(historicDataProvider(coin.id).future),
-      builder: (context, AsyncSnapshot<PricesViewData?> snapshot) {
-        if (snapshot.hasData) {
-          double variation = (snapshot.data!.prices.reversed.first.last /
-                      snapshot.data!.prices.reversed
-                          .elementAt(ref.watch(daysProvider.state).state)
-                          .last -
-                  1) *
-              100;
-          return SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TopPageAssetContainer(
-                  model: coin,
-                ),
-                GraphDetails(
-                  historyCoinData: List<FlSpot>.from(
-                    snapshot.data!.prices.reversed.map(
-                      (e) {
-                        return FlSpot(
-                          e[0].toDouble(),
-                          e[1].toDouble(),
-                        );
-                      },
+    final cryptoData = ref.watch(historicDataProvider(coin.id));
+    int day = ref.watch(daysProvider.state).state;
+
+    return cryptoData.when(
+      data: (data) {
+        return FutureBuilder(
+          future: ref.watch(historicDataProvider(coin.id).future),
+          builder: (context, AsyncSnapshot<PricesViewData?> snapshot) {
+            if (snapshot.hasData) {
+              double variation = (snapshot.data!.prices.reversed.first.last /
+                          snapshot.data!.prices.reversed.elementAt(day).last -
+                      1) *
+                  100;
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TopPageContainer(
+                      model: coin,
                     ),
-                  ),
-                ),
-                const ChangeDaysButtons(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 30,
-                    top: 20,
-                    bottom: 20,
-                  ),
-                  child: Column(
-                    children: [
-                      const Divider(thickness: 1),
-                      InfoRowDetails(
-                        label: 'Preço Atual',
-                        text: currencyFormatter.format(
-                          snapshot.data!.prices.reversed
-                              .elementAt(ref.watch(daysProvider.state).state)
-                              .last,
+                    GraphDetails(
+                      historyCoinData: List<FlSpot>.from(
+                        snapshot.data!.prices.reversed.map(
+                          (crypto) {
+                            return FlSpot(
+                              //X = Timestamp
+                              crypto[0].toDouble(),
+                              crypto[1].toDouble(),
+                            );
+                          },
                         ),
                       ),
-                      const Divider(thickness: 1),
-                      InfoRowDetails(
-                        label: 'Variação',
-                        text:
-                            '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
-                        color: variation > 0 ? Colors.green : Colors.red,
-                        fontWeight: FontWeight.w500,
+                    ),
+                    const ChangeDaysButtons(),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 30,
+                        top: 20,
+                        bottom: 20,
                       ),
-                      const Divider(thickness: 1),
-                      InfoRowDetails(
-                        label: 'Quantidade',
-                        text: '0.5 ${coin.symbol.toUpperCase()}',
+                      child: Column(
+                        children: [
+                          const Divider(thickness: 1),
+                          InfoRowDetails(
+                            label: 'Preço ${day}D',
+                            text: currencyFormatter.format(
+                              snapshot.data!.prices.reversed
+                                  .elementAt(day)
+                                  .last,
+                            ),
+                          ),
+                          const Divider(thickness: 1),
+                          InfoRowDetails(
+                            label: 'Variação ${day}D',
+                            text:
+                                '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
+                            color: variation > 0 ? Colors.green : Colors.red,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          const Divider(thickness: 1),
+                          InfoRowDetails(
+                            label: 'Quantidade',
+                            text: '0.5 ${coin.symbol.toUpperCase()}',
+                          ),
+                          const Divider(thickness: 1),
+                          InfoRowDetails(
+                            label: 'Valor',
+                            text: currencyFormatter
+                                .format(coin.currentPrice * 0.5),
+                          ),
+                        ],
                       ),
-                      const Divider(thickness: 1),
-                      InfoRowDetails(
-                        label: 'Valor',
-                        text: currencyFormatter.format(coin.currentPrice * 0.5),
-                      ),
-                    ],
-                  ),
+                    ),
+                    WarrenButton(onPressed: () {}),
+                  ],
                 ),
-                WarrenButton(onPressed: () {}),
-              ],
-            ),
-          );
-        }
+              );
+            }
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        );
+      },
+      error: (e, r) {
+        return Center(
+          child: Column(
+            children: const [
+              Text('Ops! Deu erro'),
+            ],
+          ),
+        );
+      },
+      loading: () {
         return const Center(
-          child: CircularProgressIndicator(),
+          child: CircularProgressIndicator.adaptive(),
         );
       },
     );

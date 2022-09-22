@@ -5,8 +5,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 
-class TopPageAssetContainer extends HookConsumerWidget {
-  const TopPageAssetContainer({Key? key, required this.model})
+class TopPageContainer extends HookConsumerWidget {
+  const TopPageContainer({Key? key, required this.model})
       : super(key: key);
   final CryptoViewData model;
   @override
