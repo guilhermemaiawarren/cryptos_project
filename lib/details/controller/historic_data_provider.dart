@@ -12,13 +12,6 @@ final usecaseProvider = Provider(
   },
 );
 
-class Arguments {
-  String crypto;
-  int time;
-
-  Arguments(this.crypto, this.time);
-}
-
 final historicDataProvider = FutureProvider.family<PricesViewData, String>(
   (ref, id) {
     return ref.read(usecaseProvider).execute(id);
