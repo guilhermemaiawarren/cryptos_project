@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/usecase/prices_usecase.dart';
-import 'package:projeto_criptos/shared/repository/cryptos_repository_provider.dart';
+import '../usecase/prices_usecase.dart';
+import '../../shared/repository/cryptos_repository_provider.dart';
 
 import '../model/prices_view_data.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/balance_provider.dart';
-import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
+import '../controller/balance_provider.dart';
+import '../controller/cryptos_provider.dart';
+import '../model/crypto_view_data.dart';
 
 import 'asset_list_tile.dart';
 

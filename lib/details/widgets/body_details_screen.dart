@@ -1,12 +1,12 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/days_provider.dart';
-import 'package:projeto_criptos/details/controller/historic_data_provider.dart';
-import 'package:projeto_criptos/details/model/prices_view_data.dart';
-import 'package:projeto_criptos/details/widgets/info_row_details.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
-import 'package:projeto_criptos/shared/utils/currency_formater.dart';
+import '../controller/days_provider.dart';
+import '../controller/historic_data_provider.dart';
+import '../model/prices_view_data.dart';
+import 'info_row_details.dart';
+import '../../portfolio/model/crypto_view_data.dart';
+import '../../shared/utils/currency_formater.dart';
 
 import '../../shared/templates/warren_button.dart';
 import 'graph_details.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/moves/view/moves_screen.dart';
-import 'package:projeto_criptos/portfolio/view/portfolio_screen.dart';
+import '../../moves/view/moves_screen.dart';
+import '../../portfolio/view/portfolio_screen.dart';
 
 import '../../shared/templates/app_assets.dart';
 

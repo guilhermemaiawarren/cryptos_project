@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/balance_provider.dart';
-import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
+import '../controller/balance_provider.dart';
+import 'visibility_off_container.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';

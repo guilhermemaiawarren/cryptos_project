@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
+import 'portfolio/model/crypto_view_data.dart';
 
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
