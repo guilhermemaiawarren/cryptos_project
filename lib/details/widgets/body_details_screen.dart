@@ -48,7 +48,6 @@ class BodyDetailsScreen extends HookConsumerWidget {
                         snapshot.data!.prices.reversed.map(
                           (crypto) {
                             return FlSpot(
-                              //X = Timestamp
                               crypto[0].toDouble(),
                               crypto[1].toDouble(),
                             );

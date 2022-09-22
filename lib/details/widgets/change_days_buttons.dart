@@ -19,6 +19,8 @@ class ChangeDaysButtons extends StatelessWidget {
           ChangeDayButton(days: 30),
           ChangeDayButton(days: 45),
           ChangeDayButton(days: 90),
+          ChangeDayButton(days: 180),
+          ChangeDayButton(days: 365),
         ],
       ),
     );
