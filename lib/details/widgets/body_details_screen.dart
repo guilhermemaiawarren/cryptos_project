@@ -28,6 +28,12 @@ class BodyDetailsScreen extends HookConsumerWidget {
       future: ref.watch(historicDataProvider(coin.id).future),
       builder: (context, AsyncSnapshot<PricesViewData?> snapshot) {
         if (snapshot.hasData) {
+          double variation = (snapshot.data!.prices.reversed.first.last /
+                      snapshot.data!.prices.reversed
+                          .elementAt(ref.watch(daysProvider.state).state)
+                          .last -
+                  1) *
+              100;
           return SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -70,8 +76,8 @@ class BodyDetailsScreen extends HookConsumerWidget {
                       InfoRowDetails(
                         label: 'Variação',
                         text:
-                            '${coin.variation > 0 ? '+' : ''} ${coin.variation.toStringAsFixed(2)}%',
-                        color: coin.variation > 0 ? Colors.green : Colors.red,
+                            '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
+                        color: variation > 0 ? Colors.green : Colors.red,
                         fontWeight: FontWeight.w500,
                       ),
                       const Divider(thickness: 1),
