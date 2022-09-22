@@ -28,3 +28,11 @@ Uso do package device_preview para testes de responsividade.
 - Dados mockados para lista de valores das moedas
 - Componentização de widgets da tela de detalhes
 - Variação e Preço dinâmicos na tela de detalhes  
+
+-- Card 6
+
+- Implementação das Requisições da API usando o package Dio
+- Estrutura da documentação do Dio da Warren
+- Uso dos packages json_annotation, json_serializable e build_runner
+- Uso de AsyncValue para construção de páginas, de modo que retorne algo mesmo quando ocorre um erro
+- Interpretação e manipulação de dados da API
