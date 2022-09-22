@@ -1,57 +1,21 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
-import 'package:projeto_criptos/details/controller/list_provider.dart';
-import 'package:projeto_criptos/details/model/prices_view_data.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
+import 'package:projeto_criptos/details/controller/days_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../controller/details_asset_notifier_provider.dart';
-import '../controller/graph_axis_provider.dart';
 
-class GraphDetails extends StatefulHookConsumerWidget {
-  const GraphDetails({Key? key}) : super(key: key);
-
-  @override
-  ConsumerState<GraphDetails> createState() => _GraphDetailsState();
-}
-
-class _GraphDetailsState extends ConsumerState<GraphDetails> {
-  late CryptoViewData model;
-  late PricesViewData coinData;
-
-  List<FlSpot> generateGraphic() {
-    List<FlSpot> spots = [];
-    for (int index = 0; index < coinData.prices.length; index++) {
-      print(coinData.prices[index].last.toDouble().toString());
-      spots.add(
-        FlSpot(
-          index.toDouble(),
-          coinData.prices[index].last.toDouble(),
-        ),
-      );
-    }
-    return spots;
-  }
+class GraphDetails extends HookConsumerWidget {
+  const GraphDetails({Key? key, required this.historyCoinData}) : super(key: key);
+  final List<FlSpot> historyCoinData;
 
   @override
-  void initState() {
-    super.initState();
-    ref.read(graphAxisProvider.state).state = 1;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    model = ref.read(detailsAssetProvider.notifier).state;
-    coinData = ref.watch(listProvider.state).state;
-    final cryptos = ref.watch(
-      pricesProvider(model.id),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
+        vertical: 20
       ),
       child: AspectRatio(
         aspectRatio: 1.7,
@@ -121,14 +85,9 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 barWidth: 3,
                 dotData: FlDotData(show: false),
                 color: AppAssets.magenta,
-                spots: cryptos.when(
-                  data: (data) => generateGraphic(),
-                  error: (e, s) {
-                    print(e.toString());
-                    print(s.toString());
-                    return [];
-                  },
-                  loading: () => [],
+                spots: historyCoinData.sublist(
+                  0,
+                  ref.watch(daysProvider.state).state + 1,
                 ),
               ),
             ],

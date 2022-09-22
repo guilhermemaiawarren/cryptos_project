@@ -4,14 +4,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../controller/details_asset_notifier_provider.dart';
 
 class TopPageAssetContainer extends HookConsumerWidget {
-  TopPageAssetContainer({Key? key}) : super(key: key);
-  late CryptoViewData model;
+  const TopPageAssetContainer({Key? key, required this.model})
+      : super(key: key);
+  final CryptoViewData model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    CryptoViewData model = ref.watch(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,

@@ -19,7 +19,7 @@ class Arguments {
   Arguments(this.crypto, this.time);
 }
 
-final pricesProvider = FutureProvider.family<PricesViewData, String>(
+final historicDataProvider = FutureProvider.family<PricesViewData, String>(
   (ref, id) {
     return ref.read(usecaseProvider).execute(id);
   },

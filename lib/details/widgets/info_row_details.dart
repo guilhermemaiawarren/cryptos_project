@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class InfoCardDetails extends StatelessWidget {
-  const InfoCardDetails({
+class InfoRowDetails extends StatelessWidget {
+  const InfoRowDetails({
     Key? key,
     required this.label,
     required this.text,
