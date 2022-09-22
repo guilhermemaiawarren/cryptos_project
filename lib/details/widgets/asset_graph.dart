@@ -1,7 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/controller/get_historic_data_provider.dart';
 import 'package:projeto_criptos/details/controller/list_provider.dart';
+import 'package:projeto_criptos/details/model/prices_view_data.dart';
 import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
 import '../../shared/templates/app_assets.dart';
@@ -18,15 +20,16 @@ class GraphDetails extends StatefulHookConsumerWidget {
 
 class _GraphDetailsState extends ConsumerState<GraphDetails> {
   late CryptoViewData model;
-  late List<double> coinData;
+  late PricesViewData coinData;
 
   List<FlSpot> generateGraphic() {
     List<FlSpot> spots = [];
-    for (int index = 0; index < coinData.length; index++) {
+    for (int index = 0; index < coinData.prices.length; index++) {
+      print(coinData.prices[index].last.toDouble().toString());
       spots.add(
         FlSpot(
           index.toDouble(),
-          coinData[index],
+          coinData.prices[index].last.toDouble(),
         ),
       );
     }
@@ -43,6 +46,9 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
   Widget build(BuildContext context) {
     model = ref.read(detailsAssetProvider.notifier).state;
     coinData = ref.watch(listProvider.state).state;
+    final cryptos = ref.watch(
+      pricesProvider(model.id),
+    );
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
@@ -115,7 +121,15 @@ class _GraphDetailsState extends ConsumerState<GraphDetails> {
                 barWidth: 3,
                 dotData: FlDotData(show: false),
                 color: AppAssets.magenta,
-                spots: generateGraphic(),
+                spots: cryptos.when(
+                  data: (data) => generateGraphic(),
+                  error: (e, s) {
+                    print(e.toString());
+                    print(s.toString());
+                    return [];
+                  },
+                  loading: () => [],
+                ),
               ),
             ],
           ),

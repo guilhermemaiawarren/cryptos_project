@@ -1,4 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/model/prices_view_data.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 
@@ -21,9 +22,9 @@ class DetailsAssetNotifier extends StateNotifier<CryptoViewData> {
           ),
         );
 
-  void changeVariation(int time, List<double> list) {
+  void changeVariation(int time, PricesViewData list) {
     time = time == 1 ? 2 : time;
     state.variation =
-        (list.last / list.first - 1) * 100;
+        (list.prices.last.last / list.prices.last.first - 1) * 100;
   }
 }

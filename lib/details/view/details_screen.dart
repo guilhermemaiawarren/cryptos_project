@@ -18,15 +18,16 @@ class DetailsScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final args = ModalRoute.of(context)!.settings.arguments as CryptoViewData;
     CryptoViewData asset = args;
-    Future.delayed(Duration.zero, () async {
-      await ref
-          .read(getHistoricDataProvider.notifier)
-          .getHistoricData(asset.id, 1);
-      ref.read(listProvider.state).state =
-          ref.read(getHistoricDataProvider.notifier).state;
-      ref
-          .read(detailsAssetProvider.notifier)
-          .changeVariation(1, ref.read(getHistoricDataProvider.notifier).state);
+    final prices = ref.read(pricesProvider(asset.id));
+    Future.delayed(const Duration(seconds: 4), () {
+      ref.read(pricesProvider(asset.id));
+      Future.delayed(Duration.zero, () {
+        ref.read(listProvider.state).state = prices.asData!.value;
+      });
+      ref.read(detailsAssetProvider.notifier).changeVariation(
+            1,
+            prices.asData!.value,
+          );
     });
     ref.read(rangePriceProvider.notifier).state = asset.currentPrice;
     ref.read(detailsAssetProvider.notifier).state = asset;

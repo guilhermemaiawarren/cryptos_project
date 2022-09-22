@@ -20,29 +20,31 @@ class WalletAssetsListView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cryptos = ref.watch(cryptosProvider);
-    Future.delayed(Duration.zero, () {
-      ref.read(balanceProvider.state).state = getBalance(cryptos.asData!.value);
-    });
+    Future.delayed(
+      Duration.zero,
+      () {
+        ref.read(balanceProvider.state).state =
+            getBalance(cryptos.asData!.value);
+      },
+    );
     return cryptos.when(
       data: (data) {
-        return Visibility(
-          visible: data.isNotEmpty,
-          child: Expanded(
-            child: ListView.separated(
-              physics: const ClampingScrollPhysics(),
-              itemCount: data.length,
-              separatorBuilder: (context, index) => const Divider(thickness: 1),
-              itemBuilder: (context, index) {
-                CryptoViewData crypto = data[index];
-                return AssetListTile(crypto: crypto);
-              },
-            ),
+        return Expanded(
+          child: ListView.separated(
+            physics: const ClampingScrollPhysics(),
+            itemCount: data.length,
+            separatorBuilder: (context, index) => const Divider(thickness: 1),
+            itemBuilder: (context, index) {
+              CryptoViewData crypto = data[index];
+              return AssetListTile(crypto: crypto);
+            },
           ),
         );
       },
       error: (error, stackTrace) {
-        print(stackTrace.toString());
-        return const SizedBox.shrink();
+        return const Center(
+          child: Text('Deu erro'),
+        );
       },
       loading: () {
         return const Center(

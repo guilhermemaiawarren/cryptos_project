@@ -14,13 +14,11 @@ class ChangeXAxisButtons extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: const [
-          ChangeAxisButton(buttonDays: 1),
-          ChangeAxisButton(buttonDays: 7),
-          ChangeAxisButton(buttonDays: 14),
+          ChangeAxisButton(buttonDays: 5),
+          ChangeAxisButton(buttonDays: 15),
           ChangeAxisButton(buttonDays: 30),
+          ChangeAxisButton(buttonDays: 45),
           ChangeAxisButton(buttonDays: 90),
-          ChangeAxisButton(buttonDays: 180),
-          ChangeAxisButton(buttonDays: 365),
         ],
       ),
     );
