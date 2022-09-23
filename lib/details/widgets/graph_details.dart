@@ -93,7 +93,7 @@ class GraphDetails extends HookConsumerWidget {
             ],
           ),
           swapAnimationDuration: const Duration(milliseconds: 350),
-          swapAnimationCurve: Curves.easeIn,
+          swapAnimationCurve: Curves.linearToEaseOut,
         ),
       ),
     );

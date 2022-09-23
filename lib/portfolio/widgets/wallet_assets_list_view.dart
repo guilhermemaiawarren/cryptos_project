@@ -42,7 +42,6 @@ class WalletAssetsListView extends HookConsumerWidget {
         );
       },
       error: (error, stackTrace) {
-        print(error.toString());
         return const Center(
           child: Text('Deu erro'),
         );

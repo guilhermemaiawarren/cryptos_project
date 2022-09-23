@@ -33,7 +33,6 @@ class BodyDetailsScreen extends HookConsumerWidget {
         return SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TopPageContainer(
                 model: coin,

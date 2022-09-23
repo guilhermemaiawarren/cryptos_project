@@ -10,9 +10,9 @@ class BodyPortfolioScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        const WalletVisibility(),
-        const Divider(thickness: 1),
+      children: const [
+        WalletVisibility(),
+        Divider(thickness: 1),
         WalletAssetsListView(),
       ],
     );
