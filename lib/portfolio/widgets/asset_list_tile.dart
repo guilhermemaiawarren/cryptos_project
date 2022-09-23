@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../model/crypto_view_data.dart';
-import 'visibility_off_container.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../controller/visible_provider.dart';
+import '../model/crypto_view_data.dart';
+import 'visibility_off_container.dart';
 
 class AssetListTile extends HookConsumerWidget {
   const AssetListTile({

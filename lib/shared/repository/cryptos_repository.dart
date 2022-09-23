@@ -1,8 +1,7 @@
-import '../api/models/cryptos_response.dart';
-import '../api/models/get_crypto_market_data_response.dart';
-
 import '../api/cryptos_endpoint.dart';
+import '../api/models/cryptos_response.dart';
 import '../api/models/get_all_cryptos_response.dart';
+import '../api/models/get_crypto_market_data_response.dart';
 
 class CryptosRepository {
   final CryptosEndpoint _endpoint;

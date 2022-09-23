@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'portfolio/model/crypto_view_data.dart';
 
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
+import 'portfolio/model/crypto_view_data.dart';
 import 'portfolio/view/portfolio_screen.dart';
 
 class RouteController {

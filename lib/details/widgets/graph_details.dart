@@ -1,10 +1,10 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/days_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
+import '../controller/days_provider.dart';
 
 class GraphDetails extends HookConsumerWidget {
   const GraphDetails({Key? key, required this.historyCoinData}) : super(key: key);

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/balance_provider.dart';
-import 'visibility_off_container.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
+import '../controller/balance_provider.dart';
 import '../controller/visible_provider.dart';
+import 'visibility_off_container.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
   const WalletVisibility({Key? key}) : super(key: key);

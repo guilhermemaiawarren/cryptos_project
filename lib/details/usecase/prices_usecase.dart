@@ -1,7 +1,7 @@
 
+import '../../shared/repository/cryptos_repository.dart';
 import '../mapper/prices_mapper.dart';
 import '../model/prices_view_data.dart';
-import '../../shared/repository/cryptos_repository.dart';
 
 class PricesUsecase {
   final CryptosRepository _repository;
