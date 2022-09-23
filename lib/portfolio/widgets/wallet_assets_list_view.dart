@@ -20,15 +20,15 @@ class WalletAssetsListView extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cryptos = ref.watch(cryptosProvider);
-    Future.delayed(
-      Duration.zero,
-      () {
-        ref.read(balanceProvider.state).state =
-            getBalance(cryptos.asData!.value);
-      },
-    );
+
     return cryptos.when(
       data: (data) {
+        Future.delayed(
+          Duration.zero,
+          () {
+            ref.read(balanceProvider.state).state = getBalance(data);
+          },
+        );
         return Expanded(
           child: ListView.separated(
             physics: const ClampingScrollPhysics(),
@@ -42,6 +42,7 @@ class WalletAssetsListView extends HookConsumerWidget {
         );
       },
       error: (error, stackTrace) {
+        print(error.toString());
         return const Center(
           child: Text('Deu erro'),
         );
