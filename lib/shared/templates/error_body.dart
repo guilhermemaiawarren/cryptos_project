@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/templates/warren_button.dart';
+import 'warren_button.dart';
 
 class ErrorBody extends HookConsumerWidget {
   const ErrorBody({

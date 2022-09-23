@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../../shared/templates/app_assets.dart';
 import '../controller/balance_provider.dart';
-import '../controller/cryptos_provider.dart';
 import '../model/crypto_view_data.dart';
 import 'asset_list_tile.dart';
 

@@ -1,8 +1,8 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../usecase/prices_usecase.dart';
-import '../../shared/repository/cryptos_repository_provider.dart';
 
+import '../../shared/repository/cryptos_repository_provider.dart';
 import '../model/prices_view_data.dart';
+import '../usecase/prices_usecase.dart';
 
 final usecaseProvider = Provider(
   (ref) {
