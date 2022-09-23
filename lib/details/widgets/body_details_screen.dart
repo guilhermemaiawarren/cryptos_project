@@ -41,7 +41,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
               ),
               GraphDetails(
                 historyCoinData: List<FlSpot>.from(
-                  data.prices.reversed.map(
+                  data.prices.map(
                     (crypto) {
                       return FlSpot(
                         crypto[0].toDouble(),
