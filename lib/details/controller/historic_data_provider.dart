@@ -14,6 +14,6 @@ final usecaseProvider = Provider(
 
 final historicDataProvider = FutureProvider.family<PricesViewData, String>(
   (ref, id) {
-    return ref.read(usecaseProvider).execute(id);
+    return ref.read(usecaseProvider).getPrices(id);
   },
 );

@@ -1,9 +1,6 @@
 
-import 'package:json_annotation/json_annotation.dart';
 
-part 'cryptos_response.g.dart';
 
-@JsonSerializable()
 class CryptosResponse {
   String id;
   String symbol;
@@ -20,10 +17,7 @@ class CryptosResponse {
     this.variation,
   );
 
-  factory CryptosResponse.fromJson(Map<String, dynamic> json) =>
-      _$CryptosResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CryptosResponseToJson(this);
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};

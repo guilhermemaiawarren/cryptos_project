@@ -8,7 +8,7 @@ class PricesUsecase {
 
   PricesUsecase(this._repository);
 
-  Future<PricesViewData> execute(String crypto) async {
+  Future<PricesViewData> getPrices(String crypto) async {
     final response = await _repository.getCryptoMarketData(crypto);
     return response.toViewData();
   }
