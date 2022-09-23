@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/controller/arguments.dart';
 
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
+import 'portfolio/model/crypto_view_data.dart';
 import 'portfolio/view/portfolio_screen.dart';
 
 class RouteController {
@@ -22,12 +22,12 @@ class RouteController {
         },
       );
     } else if (settings.name == DetailsScreen.route) {
-      final args = settings.arguments as Arguments;
+      final args = settings.arguments as CryptoViewData;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
           return DetailsScreen(
-            asset: args.asset,
+            asset: args,
           );
         },
       );

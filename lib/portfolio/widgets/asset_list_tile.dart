@@ -1,52 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/portfolio/controller/arguments.dart';
-import 'package:projeto_criptos/portfolio/widgets/visibility_off_container.dart';
 
-import '../../shared/models/asset_model.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../../shared/utils/decimal_to_double.dart';
 import '../controller/visible_provider.dart';
+import '../model/crypto_view_data.dart';
+import 'visibility_off_container.dart';
 
 class AssetListTile extends HookConsumerWidget {
   const AssetListTile({
     Key? key,
-    required this.asset,
+    required this.crypto,
   }) : super(key: key);
 
-  final AssetModel asset;
-  double updateDayVariation() {
-    asset.variation = (dtd(asset.prices[0]) / dtd(asset.prices[1]) - 1) * 100;
-    return asset.variation;
-  }
+  final CryptoViewData crypto;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var visible = ref.watch(visibleProvider.state);
     return ListTile(
       onTap: () {
-        asset.variation = updateDayVariation();
         Navigator.pushNamed(
           context,
           '/details',
-          arguments: Arguments(
-            asset: asset,
-          ),
+          arguments: crypto,
         );
       },
       leading: CircleAvatar(
         radius: 20,
         backgroundColor: Colors.transparent,
-        backgroundImage: Image.asset(asset.icon).image,
+        backgroundImage: Image.network(
+          crypto.image,
+        ).image,
       ),
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Expanded(child: Text(asset.symbol)),
+          Expanded(child: Text(crypto.symbol.toUpperCase())),
           visible.state
               ? Text(
                   currencyFormatter.format(
-                    dtd(asset.coinBalance) * dtd(asset.currentPrice),
+                    crypto.currentPrice,
                   ),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
@@ -64,7 +57,7 @@ class AssetListTile extends HookConsumerWidget {
       subtitle: Row(
         children: [
           Text(
-            asset.name,
+            crypto.name,
             style: TextStyle(
               fontWeight: FontWeight.w500,
               color: Colors.grey.shade600,
@@ -72,7 +65,7 @@ class AssetListTile extends HookConsumerWidget {
           ),
           const Spacer(),
           visible.state
-              ? Text("${asset.coinBalance.toString()} ${asset.symbol}")
+              ? Text("0.5 ${crypto.symbol.toUpperCase()}")
               : const VisibilityOffContainer(
                   witdh: 60,
                   height: 15,

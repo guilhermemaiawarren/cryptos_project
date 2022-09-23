@@ -1,6 +1,5 @@
 import 'package:intl/intl.dart';
 
-NumberFormat currencyFormatter = NumberFormat.currency(
+NumberFormat currencyFormatter = NumberFormat.simpleCurrency(
   locale: "pt_BR",
-  symbol: "R\$"
 );

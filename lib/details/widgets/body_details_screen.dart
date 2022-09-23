@@ -1,29 +1,116 @@
-
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../shared/templates/app_assets.dart';
+import '../../shared/templates/error_body.dart';
+import '../../shared/templates/loading_body.dart';
+import '../controller/days_provider.dart';
+import '../controller/historic_data_provider.dart';
+import 'info_row_details.dart';
+import '../../portfolio/model/crypto_view_data.dart';
+import '../../shared/utils/currency_formater.dart';
 
 import '../../shared/templates/warren_button.dart';
-import 'asset_graph.dart';
-import 'change_x_axis_list.dart';
-import 'info_asset_column.dart';
-import 'top_page_asset_container.dart';
+import 'graph_details.dart';
+import 'change_days_buttons.dart';
+import 'top_page_container.dart';
 
-class BodyDetailsScreen extends StatelessWidget {
+class BodyDetailsScreen extends HookConsumerWidget {
   const BodyDetailsScreen({
     Key? key,
+    required this.coin,
   }) : super(key: key);
+  final CryptoViewData coin;
 
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        const TopPageAssetContainer(),
-        const GraphDetails(),
-        const ChangeXAxisButtons(),
-        const InfoColumn(),
-        WarrenButton(onPressed: () {}),
-      ],
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cryptoData = ref.watch(historicDataProvider(coin.id));
+
+    int day = ref.watch(daysProvider.state).state;
+
+    return cryptoData.when(
+      data: (data) {
+        double variation =
+            (data.prices.last.last / data.prices.reversed.elementAt(day).last -
+                    1) *
+                100;
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TopPageContainer(
+                model: coin,
+              ),
+              GraphDetails(
+                historyCoinData: List<FlSpot>.from(
+                  data.prices.reversed.map(
+                    (crypto) {
+                      return FlSpot(
+                        crypto[0].toDouble(),
+                        crypto[1].toDouble(),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const ChangeDaysButtons(),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 30,
+                  top: 20,
+                  bottom: 20,
+                ),
+                child: Column(
+                  children: [
+                    const Divider(thickness: 1),
+                    InfoRowDetails(
+                      label: 'Preço ${day}D',
+                      text: currencyFormatter.format(
+                        data.prices.reversed.elementAt(day).last,
+                      ),
+                    ),
+                    const Divider(thickness: 1),
+                    InfoRowDetails(
+                      label: 'Variação ${day}D',
+                      text:
+                          '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
+                      color: variation > 0 ? Colors.green : Colors.red,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    const Divider(thickness: 1),
+                    InfoRowDetails(
+                      label: 'Quantidade',
+                      text: '0.5 ${coin.symbol.toUpperCase()}',
+                    ),
+                    const Divider(thickness: 1),
+                    InfoRowDetails(
+                      label: 'Valor',
+                      text: currencyFormatter.format(coin.currentPrice * 0.5),
+                    ),
+                  ],
+                ),
+              ),
+              WarrenButton(
+                onPressed: () {},
+                text: 'Converter Moeda',
+                color: AppAssets.magenta,
+              ),
+            ],
+          ),
+        );
+      },
+      error: (e, r) {
+        return ErrorBody(
+          onError: () {
+            ref.refresh(
+              historicDataProvider(coin.id),
+            );
+          },
+        );
+      },
+      loading: () {
+        return const LoadingBody();
+      },
     );
   }
 }

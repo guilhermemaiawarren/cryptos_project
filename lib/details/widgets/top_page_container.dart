@@ -1,17 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/models/asset_model.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../../shared/utils/decimal_to_double.dart';
-import '../controller/details_asset_notifier_provider.dart';
 
-class TopPageAssetContainer extends HookConsumerWidget {
-  const TopPageAssetContainer({Key? key}) : super(key: key);
-
+class TopPageContainer extends HookConsumerWidget {
+  const TopPageContainer({Key? key, required this.model}) : super(key: key);
+  final CryptoViewData model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    AssetModel model = ref.watch(detailsAssetProvider.notifier).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -23,29 +21,32 @@ class TopPageAssetContainer extends HookConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                model.name,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'Montserrat',
-                  color: Color.fromRGBO(47, 47, 51, 1),
+              Expanded(
+                child: AutoSizeText(
+                  model.name,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontFamily: 'Montserrat',
+                    color: Color.fromRGBO(47, 47, 51, 1),
+                  ),
                 ),
               ),
               CircleAvatar(
                 backgroundColor: Colors.transparent,
-                backgroundImage: Image.asset(model.icon).image,
+                backgroundImage: Image.network(model.image).image,
               ),
             ],
           ),
-          Text(model.symbol),
+          Text(model.symbol.toUpperCase()),
           Padding(
             padding: const EdgeInsets.only(
               top: 15,
             ),
             child: Text(
               currencyFormatter.format(
-                dtd(model.currentPrice),
+                model.currentPrice,
               ),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
