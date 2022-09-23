@@ -24,6 +24,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cryptoData = ref.watch(historicDataProvider(coin.id));
+
     int day = ref.watch(daysProvider.state).state;
 
     return cryptoData.when(
@@ -41,7 +42,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
               ),
               GraphDetails(
                 historyCoinData: List<FlSpot>.from(
-                  data.prices.map(
+                  data.prices.reversed.map(
                     (crypto) {
                       return FlSpot(
                         crypto[0].toDouble(),
