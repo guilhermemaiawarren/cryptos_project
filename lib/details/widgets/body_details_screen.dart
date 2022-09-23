@@ -104,7 +104,6 @@ class BodyDetailsScreen extends HookConsumerWidget {
         );
       },
       loading: () {
-        Future.delayed(const Duration(seconds: 3));
         return Center(
           child: LoadingAnimationWidget.staggeredDotsWave(
               color: AppAssets.magenta, size: 200),

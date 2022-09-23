@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+
+import '../../shared/templates/app_assets.dart';
 import '../controller/balance_provider.dart';
 import '../controller/cryptos_provider.dart';
 import '../model/crypto_view_data.dart';
-
 import 'asset_list_tile.dart';
 
 class WalletAssetsListView extends HookConsumerWidget {
-  const WalletAssetsListView({Key? key}) : super(key: key);
-
+  const WalletAssetsListView({
+    Key? key,
+    required this.cryptosData,
+  }) : super(key: key);
+  final List<CryptoViewData> cryptosData;
   double getBalance(List<CryptoViewData> assets) {
     double balance = 0.0;
     for (CryptoViewData asset in assets) {
@@ -19,38 +24,22 @@ class WalletAssetsListView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cryptos = ref.watch(cryptosProvider);
-
-    return cryptos.when(
-      data: (data) {
-        Future.delayed(
-          Duration.zero,
-          () {
-            ref.read(balanceProvider.state).state = getBalance(data);
-          },
-        );
-        return Expanded(
-          child: ListView.separated(
-            physics: const ClampingScrollPhysics(),
-            itemCount: data.length,
-            separatorBuilder: (context, index) => const Divider(thickness: 1),
-            itemBuilder: (context, index) {
-              CryptoViewData crypto = data[index];
-              return AssetListTile(crypto: crypto);
-            },
-          ),
-        );
+    Future.delayed(
+      Duration.zero,
+      () {
+        ref.read(balanceProvider.state).state = getBalance(cryptosData);
       },
-      error: (error, stackTrace) {
-        return const Center(
-          child: Text('Deu erro'),
-        );
-      },
-      loading: () {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
+    );
+    return Expanded(
+      child: ListView.separated(
+        physics: const ClampingScrollPhysics(),
+        itemCount: cryptosData.length,
+        separatorBuilder: (context, index) => const Divider(thickness: 1),
+        itemBuilder: (context, index) {
+          CryptoViewData crypto = cryptosData[index];
+          return AssetListTile(crypto: crypto);
+        },
+      ),
     );
   }
 }
