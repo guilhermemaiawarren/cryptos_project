@@ -6,8 +6,7 @@ import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 
 class TopPageContainer extends HookConsumerWidget {
-  const TopPageContainer({Key? key, required this.model})
-      : super(key: key);
+  const TopPageContainer({Key? key, required this.model}) : super(key: key);
   final CryptoViewData model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,14 +21,16 @@ class TopPageContainer extends HookConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AutoSizeText(
-                model.name,
-                maxLines: 1,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30,
-                  fontFamily: 'Montserrat',
-                  color: Color.fromRGBO(47, 47, 51, 1),
+              Expanded(
+                child: AutoSizeText(
+                  model.name,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                    fontFamily: 'Montserrat',
+                    color: Color.fromRGBO(47, 47, 51, 1),
+                  ),
                 ),
               ),
               CircleAvatar(

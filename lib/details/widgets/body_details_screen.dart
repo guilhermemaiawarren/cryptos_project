@@ -1,6 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:projeto_criptos/shared/templates/app_assets.dart';
 import '../controller/days_provider.dart';
 import '../controller/historic_data_provider.dart';
 import 'info_row_details.dart';
@@ -101,8 +103,10 @@ class BodyDetailsScreen extends HookConsumerWidget {
         );
       },
       loading: () {
-        return const Center(
-          child: CircularProgressIndicator.adaptive(),
+        Future.delayed(const Duration(seconds: 3));
+        return Center(
+          child: LoadingAnimationWidget.staggeredDotsWave(
+              color: AppAssets.magenta, size: 200),
         );
       },
     );
