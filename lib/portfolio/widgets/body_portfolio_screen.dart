@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
-import '../../shared/templates/app_assets.dart';
+import 'package:projeto_criptos/shared/templates/loading_body.dart';
+import '../../shared/templates/error_body.dart';
 import '../controller/cryptos_provider.dart';
 import 'wallet_assets_list_view.dart';
 import 'wallet_visibility.dart';
@@ -28,17 +28,14 @@ class BodyPortfolioScreen extends HookConsumerWidget {
         );
       },
       error: (e, s) {
-        return const Center(
-          child: Text('Deu erro'),
+        return ErrorBody(
+          onError: () {
+            ref.refresh(cryptosProvider);
+          },
         );
       },
       loading: () {
-        return Center(
-          child: LoadingAnimationWidget.staggeredDotsWave(
-            color: AppAssets.magenta,
-            size: 150,
-          ),
-        );
+        return const LoadingBody();
       },
     );
   }

@@ -1,8 +1,9 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import '../../shared/templates/app_assets.dart';
+import '../../shared/templates/error_body.dart';
+import '../../shared/templates/loading_body.dart';
 import '../controller/days_provider.dart';
 import '../controller/historic_data_provider.dart';
 import 'info_row_details.dart';
@@ -89,25 +90,26 @@ class BodyDetailsScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-              WarrenButton(onPressed: () {}),
+              WarrenButton(
+                onPressed: () {},
+                text: 'Converter Moeda',
+                color: AppAssets.magenta,
+              ),
             ],
           ),
         );
       },
       error: (e, r) {
-        return Center(
-          child: Column(
-            children: const [
-              Text('Ops! Deu erro'),
-            ],
-          ),
+        return ErrorBody(
+          onError: () {
+            ref.refresh(
+              historicDataProvider(coin.id),
+            );
+          },
         );
       },
       loading: () {
-        return Center(
-          child: LoadingAnimationWidget.staggeredDotsWave(
-              color: AppAssets.magenta, size: 200),
-        );
+        return const LoadingBody();
       },
     );
   }
