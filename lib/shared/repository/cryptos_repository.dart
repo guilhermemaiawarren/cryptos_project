@@ -14,7 +14,7 @@ class CryptosRepository {
       List.from(
         response.data.map(
           (crypto) {
-            return CryptosResponse.fromMap(crypto);
+            return CryptosResponse.fromJson(crypto);
           },
         ),
       ),
