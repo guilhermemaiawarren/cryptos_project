@@ -1,13 +1,16 @@
+import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_conversion_arguments.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../controller/days_provider.dart';
 import '../controller/historic_data_provider.dart';
 import 'info_row_details.dart';
-import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 
 import '../../shared/templates/warren_button.dart';
@@ -19,8 +22,10 @@ class BodyDetailsScreen extends HookConsumerWidget {
   const BodyDetailsScreen({
     Key? key,
     required this.coin,
+    required this.coinAmmount,
   }) : super(key: key);
-  final CryptoViewData coin;
+  final CryptoEntity coin;
+  final Decimal coinAmmount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -80,18 +85,30 @@ class BodyDetailsScreen extends HookConsumerWidget {
                     const Divider(thickness: 1),
                     InfoRowDetails(
                       label: 'Quantidade',
-                      text: '0.5 ${coin.symbol.toUpperCase()}',
+                      text:
+                          '${coinAmmount.toStringAsFixed(4)} ${coin.symbol.toUpperCase()}',
                     ),
                     const Divider(thickness: 1),
                     InfoRowDetails(
                       label: 'Valor',
-                      text: currencyFormatter.format(coin.currentPrice * 0.5),
+                      text: currencyFormatter.format(
+                        dtd(coinAmmount * coin.currentPrice),
+                      ),
                     ),
                   ],
                 ),
               ),
               WarrenButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/conversion',
+                    arguments: ToConversionArguments(
+                      cryptoAmmount: coinAmmount,
+                      crypto: coin,
+                    ),
+                  );
+                },
                 text: 'Converter Moeda',
                 color: AppAssets.magenta,
               ),

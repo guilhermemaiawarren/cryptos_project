@@ -1,7 +1,10 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_details_arguments.dart';
 
 import '../../shared/utils/currency_formater.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../controller/visible_provider.dart';
 import '../model/crypto_view_data.dart';
 import 'visibility_off_container.dart';
@@ -10,9 +13,11 @@ class AssetListTile extends HookConsumerWidget {
   const AssetListTile({
     Key? key,
     required this.crypto,
+    required this.cryptoBalance,
   }) : super(key: key);
 
   final CryptoViewData crypto;
+  final Decimal cryptoBalance;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +27,10 @@ class AssetListTile extends HookConsumerWidget {
         Navigator.pushNamed(
           context,
           '/details',
-          arguments: crypto,
+          arguments: ToDetailsArguments(
+            crypto: crypto,
+            coinAmmount: cryptoBalance,
+          ),
         );
       },
       leading: CircleAvatar(
@@ -39,7 +47,7 @@ class AssetListTile extends HookConsumerWidget {
           visible.state
               ? Text(
                   currencyFormatter.format(
-                    crypto.currentPrice,
+                    dtd(crypto.currentPrice),
                   ),
                   style: const TextStyle(
                     fontWeight: FontWeight.w400,
@@ -65,7 +73,8 @@ class AssetListTile extends HookConsumerWidget {
           ),
           const Spacer(),
           visible.state
-              ? Text("0.5 ${crypto.symbol.toUpperCase()}")
+              ? Text(
+                  "${cryptoBalance.toStringAsFixed(4)} ${crypto.symbol.toUpperCase()}")
               : const VisibilityOffContainer(
                   witdh: 60,
                   height: 15,

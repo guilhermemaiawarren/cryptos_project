@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
-class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
-  const DetailsAppBar({
+class ModelAppBar extends HookConsumerWidget implements PreferredSizeWidget {
+  const ModelAppBar({
     Key? key,
+    required this.text,
   }) : super(key: key);
+  final String text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -19,9 +21,9 @@ class DetailsAppBar extends HookConsumerWidget implements PreferredSizeWidget {
         color: Colors.black,
       ),
       backgroundColor: Colors.white,
-      title: const Text(
-        'Detalhes',
-        style: TextStyle(
+      title: Text(
+        text,
+        style: const TextStyle(
           color: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 20,

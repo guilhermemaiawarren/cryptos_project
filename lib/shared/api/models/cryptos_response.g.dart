@@ -12,7 +12,7 @@ CryptosResponse _$CryptosResponseFromJson(Map<String, dynamic> json) =>
       json['symbol'] as String,
       json['name'] as String,
       json['image'] as String,
-      (json['current_price'] as num).toDouble(),
+      Decimal.parse(json['current_price'].toString()),
       (json['price_change_percentage_24h'] as num).toDouble(),
     );
 

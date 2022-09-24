@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
-class CryptoViewData extends CryptoEntity {
-  CryptoViewData({
+class CryptoConversionViewData extends CryptoEntity {
+  CryptoConversionViewData({
     required String id,
     required String symbol,
     required String name,
@@ -10,11 +10,11 @@ class CryptoViewData extends CryptoEntity {
     required Decimal currentPrice,
     required double variation,
   }) : super(
-          currentPrice: currentPrice,
           id: id,
-          image: image,
-          name: name,
           symbol: symbol,
+          name: name,
+          image: image,
+          currentPrice: currentPrice,
           variation: variation,
         );
 }

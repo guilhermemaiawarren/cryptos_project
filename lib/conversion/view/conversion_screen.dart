@@ -1,0 +1,254 @@
+import 'package:decimal/decimal.dart';
+import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/controller/to_be_converted_crypto_provider.dart';
+import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import 'package:projeto_criptos/shared/templates/app_assets.dart';
+import 'package:projeto_criptos/shared/templates/error_body.dart';
+import 'package:projeto_criptos/shared/templates/loading_body.dart';
+import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
+
+import '../../shared/utils/decimal_parse.dart';
+
+class ConversionScreen extends HookConsumerWidget {
+  ConversionScreen({
+    Key? key,
+    required this.coinAmmount,
+    required this.asset,
+  }) : super(key: key);
+  static const route = '/conversion';
+  final Decimal coinAmmount;
+  final CryptoEntity asset;
+  final TextEditingController convertController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cryptos = ref.watch(cryptosProvider);
+    var cryptoConverted = ref.watch(convertedCrypto.state).state;
+    final formKey = GlobalKey<FormState>();
+    Decimal convertInReals = dp('0.0');
+    return cryptos.when(data: (data) {
+      cryptoConverted = data[1].id == asset.id ? data[0] : data[1];
+      return Scaffold(
+        appBar: const ModelAppBar(text: 'Converter'),
+        body: Form(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 56,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                color: Colors.grey.shade200,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Saldo Disponível',
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                        fontFamily: AppAssets.montSerrat,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Text(
+                      '${coinAmmount.toStringAsFixed(4)} ${asset.symbol.toUpperCase()}',
+                      style: TextStyle(
+                        fontFamily: AppAssets.montSerrat,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 30,
+                ),
+                child: Text(
+                  'Quanto você gostaria de converter?',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontFamily: AppAssets.montSerrat,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 9,
+                          backgroundColor: Colors.transparent,
+                          backgroundImage: Image.network(asset.image).image,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 5,
+                          ),
+                          child: Text(asset.symbol.toUpperCase()),
+                        ),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 20,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Icon(
+                    Icons.sync_alt,
+                    color: AppAssets.magenta,
+                    size: 25,
+                  ),
+                  MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    onPressed: () {},
+                    child: Row(
+                      children: [
+                        CircleAvatar(
+                          radius: 9,
+                          backgroundColor: Colors.transparent,
+                          backgroundImage:
+                              Image.network(cryptoConverted.image).image,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: 5,
+                          ),
+                          child: Text(cryptoConverted.symbol.toUpperCase()),
+                        ),
+                        const Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 20,
+                          color: Colors.grey,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  controller: convertController,
+                  decoration: InputDecoration(
+                    hintText: '${asset.symbol.toUpperCase()} 0,00',
+                    hintStyle: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 25,
+                    ),
+                  ),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    if (dp(convertController.text) < coinAmmount) {
+                      convertInReals =
+                          dp(convertController.text) * asset.currentPrice;
+                    } else {
+                      convertInReals = dp('0.0');
+                    }
+                  },
+                  validator: (value) {
+                    if (value == null || value == '') {
+                      return 'Valor não pode ser nulo';
+                    } else if (dp(convertController.text) > coinAmmount) {
+                      return 'Valor não pode ser maior do que o disponível na carteira';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 10,
+                ),
+                child: Text(
+                  'R\$ $convertInReals',
+                  style: const TextStyle(
+                    color: Colors.grey,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Container(
+                      width: double.maxFinite,
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 20,
+                        horizontal: 30,
+                      ),
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(color: Colors.grey.shade300),
+                        ),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Total estimado',
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: AppAssets.montSerrat,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '0,0000 ${cryptoConverted.symbol.toUpperCase()}',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppAssets.magenta,
+          onPressed: () {},
+          child: const Icon(
+            Icons.keyboard_arrow_right,
+          ),
+        ),
+      );
+    }, error: (e, s) {
+      return ErrorBody(
+        onError: () {
+          ref.refresh(cryptosProvider);
+        },
+      );
+    }, loading: () {
+      return const LoadingBody();
+    });
+  }
+}

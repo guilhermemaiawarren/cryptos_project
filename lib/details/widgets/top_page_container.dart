@@ -1,13 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import 'package:projeto_criptos/shared/utils/decimal_to_double.dart';
 
-import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/currency_formater.dart';
 
 class TopPageContainer extends HookConsumerWidget {
-  const TopPageContainer({Key? key, required this.model}) : super(key: key);
-  final CryptoViewData model;
+  const TopPageContainer({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+  final CryptoEntity model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
@@ -46,7 +50,7 @@ class TopPageContainer extends HookConsumerWidget {
             ),
             child: Text(
               currencyFormatter.format(
-                model.currentPrice,
+                dtd(model.currentPrice),
               ),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
