@@ -43,10 +43,20 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   Decimal convertHelper = dp('0.0');
   Decimal convertedCryptoHelper = dp('0.00000');
 
+  String coinRegExp(String value) {
+    return value.replaceAll(RegExp(r'[^\w\s]+'), '.');
+  }
+
+  bool validCoinValue(String source) {
+    return source.startsWith(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+  }
+
   convertedValue(String value) {
     setState(() {
-      convertHelper = dp(value) * widget.asset.currentPrice;
-      convertedCryptoHelper = dp((convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble()).toString());
+      convertHelper = dp(coinRegExp(value)) * widget.asset.currentPrice;
+      convertedCryptoHelper = dp(
+          (convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble())
+              .toString());
     });
   }
 
@@ -119,7 +129,33 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                         side: BorderSide(color: Colors.grey.shade300),
                         borderRadius: BorderRadius.circular(30),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            elevation: 2,
+                            backgroundColor: Colors.white,
+                            duration: const Duration(seconds: 1),
+                            content: SizedBox(
+                              height: 300,
+                              child: ListView(
+                                children: data.map(
+                                  (crypto) {
+                                    return ListTile(
+                                      onTap: () {},
+                                      title: Text(crypto.symbol.toUpperCase()),
+                                      subtitle: Text(crypto.name),
+                                      trailing: const Icon(
+                                        Icons.arrow_forward_ios,
+                                        size: 15,
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                       child: Row(
                         children: [
                           CircleAvatar(
@@ -198,11 +234,11 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                       convertedValue(value);
                     },
                     validator: (value) {
-                      if (value == null || value == '') {
+                      if (value == '' || value == null) {
                         return 'Valor não pode ser igual a 0';
-                      } else if (double.parse(convertController.text
-                              .replaceAll(RegExp(r'[^\w\s]+'), '.')) >
-                          widget.coinAmmount.toDouble()) {
+                      } else if (validCoinValue(value)) {
+                        return 'O valor inicial não pode ser um caractere especial';
+                      } else if (dp(coinRegExp(value)) > widget.coinAmmount) {
                         return 'Valor não pode ser maior do que o disponível na carteira';
                       }
                       return null;
