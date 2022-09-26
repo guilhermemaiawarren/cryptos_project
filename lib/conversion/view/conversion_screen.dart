@@ -79,7 +79,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
       data: (data) {
         if (cryptoConverted.id == 'id') {
           cryptoConverted =
-              data[0].id == widget.asset.id || data[0].id == cryptoConverted.id
+              data[0].id == widget.asset.id 
                   ? data[1]
                   : data[0];
         }
