@@ -36,3 +36,13 @@ Uso do package device_preview para testes de responsividade.
 - Uso dos packages json_annotation, json_serializable e build_runner
 - Uso de AsyncValue para construção de páginas, de modo que retorne algo mesmo quando ocorre um erro
 - Interpretação e manipulação de dados da API
+
+
+-- Card 7
+
+- Rota com argumentos entre mais de uma tela
+- Saldo das moedas gerados aleatoriamente e sincronizados por índice
+- Gerenciamento de estado da tela de conversão
+- Validação de TextField funcional
+- Uso de expressões regulares para tratar dados
+- Conversão de moeda para outra atualizada instantaneamente, assim como helper text
