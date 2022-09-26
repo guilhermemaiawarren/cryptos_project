@@ -3,7 +3,7 @@ import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
 import '../../shared/utils/decimal_parse.dart';
 
-final convertedCrypto = StateProvider<CryptoEntity>((ref) {
+final convertedCryptoProvider = StateProvider<CryptoEntity>((ref) {
   return CryptoEntity(
     id: 'id',
     symbol: 'symbol',
