@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/conversion/view/conversion_screen.dart';
+import 'package:projeto_criptos/conversion/view/conversion_page.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_conversion_arguments.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_details_arguments.dart';
 
@@ -34,12 +34,12 @@ class RouteController {
           );
         },
       );
-    } else if (settings.name == ConversionScreen.route) {
+    } else if (settings.name == ConversionPage.route) {
       final args = settings.arguments as ToConversionArguments;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return ConversionScreen(
+          return ConversionPage(
             coinAmmount: args.cryptoAmmount,
             asset: args.crypto,
           );
