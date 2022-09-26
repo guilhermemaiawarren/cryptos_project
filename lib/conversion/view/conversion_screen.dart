@@ -8,6 +8,8 @@ import 'package:projeto_criptos/shared/templates/app_assets.dart';
 import 'package:projeto_criptos/shared/templates/error_body.dart';
 import 'package:projeto_criptos/shared/templates/loading_body.dart';
 import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
+import 'package:projeto_criptos/shared/utils/currency_formater.dart';
+import 'package:projeto_criptos/shared/utils/decimal_to_double.dart';
 
 import '../../shared/utils/decimal_parse.dart';
 
@@ -28,13 +30,36 @@ class ConversionScreen extends StatefulHookConsumerWidget {
 class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   final TextEditingController convertController = TextEditingController();
   bool validate = false;
+  late CryptoEntity cryptoConverted;
+
+  final formKey = GlobalKey<FormState>();
+
+  buttonValidation() {
+    setState(() {
+      validate = formKey.currentState!.validate() ? true : false;
+    });
+  }
+
+  Decimal convertHelper = dp('0.0');
+  Decimal convertedCryptoHelper = dp('0.00000');
+
+  convertedValue(String value) {
+    setState(() {
+      convertHelper = dp(value) * widget.asset.currentPrice;
+      convertedCryptoHelper = dp((convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble()).toString());
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    convertController.addListener(buttonValidation);
+  }
 
   @override
   Widget build(BuildContext context) {
     final cryptos = ref.watch(cryptosProvider);
-    var cryptoConverted = ref.watch(convertedCrypto.state).state;
-    final formKey = GlobalKey<FormState>();
-    Decimal convertInReals = dp('0.0');
+    cryptoConverted = ref.watch(convertedCrypto.state).state;
     return cryptos.when(
       data: (data) {
         cryptoConverted = data[1].id == widget.asset.id ? data[0] : data[1];
@@ -167,15 +192,10 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                         fontSize: 25,
                       ),
                     ),
-                    keyboardType:
-                        const TextInputType.numberWithOptions(decimal: true),
+                    keyboardType: TextInputType.number,
                     onFieldSubmitted: (value) {
-                      if (formKey.currentState!.validate()) {
-                        validate = true;
-                      } else {
-                        validate = false;
-                      }
-                      setState(() {});
+                      buttonValidation();
+                      convertedValue(value);
                     },
                     validator: (value) {
                       if (value == null || value == '') {
@@ -195,7 +215,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                     vertical: 10,
                   ),
                   child: Text(
-                    'R\$ $convertInReals',
+                    currencyFormatter.format(dtd(convertHelper)),
                     style: const TextStyle(
                       color: Colors.grey,
                       fontSize: 18,
@@ -231,7 +251,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                             ),
                             const SizedBox(height: 8),
                             Text(
-                              '0,0000 ${cryptoConverted.symbol.toUpperCase()}',
+                              '${convertedCryptoHelper.toStringAsFixed(7)} ${cryptoConverted.symbol.toUpperCase()}',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,
