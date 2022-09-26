@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/controller/converted_crypto_provider.dart';
 import 'package:projeto_criptos/details/controller/coin_ammount_provider.dart';
 import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import 'package:projeto_criptos/shared/templates/app_assets.dart';
 import 'package:projeto_criptos/shared/templates/error_body.dart';
@@ -76,7 +77,9 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
     cryptoConverted = ref.watch(convertedCryptoProvider.state).state;
     return cryptos.when(
       data: (data) {
-        cryptoConverted = data[0] == widget.asset ? data[1] : data[0];
+        if (cryptoConverted.id == 'id' || cryptoConverted.id == widget.asset.id) {
+          cryptoConverted = data[1] == widget.asset ? data[0] : data[1];
+        }
         return Scaffold(
           appBar: const ModelAppBar(text: 'Converter'),
           body: Column(
@@ -166,8 +169,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                               setState(() {
                                                 widget.asset = crypto;
                                                 widget.coinAmmount = dp(ref
-                                                    .read(
-                                                        coinAmmountProvider)[index]
+                                                    .read(coinAmmountProvider)[
+                                                        index]
                                                     .toString());
                                               });
                                               convertController.clear();
@@ -222,10 +225,16 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                     ),
                     onPressed: () {
                       CryptoEntity temp = widget.asset;
+                      int index = data.indexOf(cryptoConverted as CryptoViewData);
                       setState(() {
                         widget.asset = cryptoConverted;
                         cryptoConverted = temp;
+                        widget.coinAmmount =
+                            dp(ref.read(coinAmmountProvider)[index].toString());
                       });
+                      convertController.clear();
+                      buttonValidation();
+                      convertedValue('0.0');
                     },
                   ),
                   MaterialButton(
