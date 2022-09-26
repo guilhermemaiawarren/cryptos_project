@@ -64,6 +64,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   void initState() {
     super.initState();
     convertController.addListener(buttonValidation);
+    cryptoConverted = ref.read(convertedCryptoProvider.state).state;
   }
 
   @override
@@ -74,11 +75,13 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   @override
   Widget build(BuildContext context) {
     final cryptos = ref.watch(cryptosProvider);
-    cryptoConverted = ref.watch(convertedCryptoProvider.state).state;
     return cryptos.when(
       data: (data) {
-        if (cryptoConverted.id == 'id' || cryptoConverted.id == widget.asset.id) {
-          cryptoConverted = data[1] == widget.asset ? data[0] : data[1];
+        if (cryptoConverted.id == 'id') {
+          cryptoConverted =
+              data[0].id == widget.asset.id || data[0].id == cryptoConverted.id
+                  ? data[1]
+                  : data[0];
         }
         return Scaffold(
           appBar: const ModelAppBar(text: 'Converter'),
@@ -167,6 +170,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                           ListTile(
                                             onTap: () {
                                               setState(() {
+                                                cryptoConverted = widget.asset;
                                                 widget.asset = crypto;
                                                 widget.coinAmmount = dp(ref
                                                     .read(coinAmmountProvider)[
@@ -225,12 +229,13 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                     ),
                     onPressed: () {
                       CryptoEntity temp = widget.asset;
-                      int index = data.indexOf(cryptoConverted as CryptoViewData);
                       setState(() {
                         widget.asset = cryptoConverted;
                         cryptoConverted = temp;
-                        widget.coinAmmount =
-                            dp(ref.read(coinAmmountProvider)[index].toString());
+                        widget.coinAmmount = dp(ref
+                            .read(coinAmmountProvider)[
+                                data.indexOf(widget.asset as CryptoViewData)]
+                            .toString());
                       });
                       convertController.clear();
                       buttonValidation();
@@ -273,12 +278,14 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                           const Divider(thickness: 1),
                                           ListTile(
                                             onTap: () {
+                                              CryptoEntity temp =
+                                                  cryptoConverted;
                                               setState(() {
-                                                ref
-                                                    .read(
-                                                        convertedCryptoProvider
-                                                            .state)
-                                                    .state = crypto;
+                                                cryptoConverted = crypto;
+                                                if (cryptoConverted.id ==
+                                                    widget.asset.id) {
+                                                  widget.asset = temp;
+                                                }
                                               });
                                               convertController.clear();
                                               buttonValidation();
