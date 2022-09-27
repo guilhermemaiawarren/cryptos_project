@@ -201,7 +201,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                 convertedValue(value);
               },
               validator: (value) {
-                if (value == '' || value == null) {
+                if (value == '' || value == null || double.tryParse(value) == 0) {
                   return 'Valor deve ser maior que zero';
                 } else if (validCoinValue(value)) {
                   return 'O valor inicial não pode ser um caractere especial';
@@ -221,7 +221,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
       },
       error: (e, s) {
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(cryptosProvider);
           },
         );

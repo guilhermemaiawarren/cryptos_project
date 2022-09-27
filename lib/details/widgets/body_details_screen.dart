@@ -118,7 +118,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
       },
       error: (e, r) {
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(
               historicDataProvider(coin.id),
             );

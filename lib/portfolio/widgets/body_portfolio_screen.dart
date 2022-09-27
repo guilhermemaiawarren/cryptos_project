@@ -32,7 +32,7 @@ class BodyPortfolioScreen extends HookConsumerWidget {
         debugPrint(e.toString());
         debugPrint(s.toString());
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(cryptosProvider);
           },
         );
