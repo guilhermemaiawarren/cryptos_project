@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/conversion/view/conversion_page.dart';
-import 'package:projeto_criptos/shared/utils/arguments/to_conversion_arguments.dart';
-import 'package:projeto_criptos/shared/utils/arguments/to_details_arguments.dart';
+import 'conversion/view/conversion_page.dart';
+import 'shared/utils/arguments/to_conversion_arguments.dart';
+import 'shared/utils/arguments/to_details_arguments.dart';
 
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';

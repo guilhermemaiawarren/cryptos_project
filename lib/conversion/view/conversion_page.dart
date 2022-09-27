@@ -1,21 +1,20 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
-import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
+import '../widgets/floating_cripto_button.dart';
+import '../../shared/templates/model_app_bar.dart';
 
 import '../../shared/common_model/crypto.dart';
 import '../widgets/conversion_screen.dart';
 
 class ConversionPage extends StatelessWidget {
-  ConversionPage({
+  const ConversionPage({
     Key? key,
     required this.coinAmmount,
     required this.asset,
   }) : super(key: key);
   static const route = '/conversion';
-  Decimal coinAmmount;
-  CryptoEntity asset;
-  bool validate = false;
+  final Decimal coinAmmount;
+  final CryptoEntity asset;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

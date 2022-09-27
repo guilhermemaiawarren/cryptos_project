@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import '../../portfolio/model/crypto_view_data.dart';
+import '../../shared/common_model/crypto.dart';
 
 
 class CoinButton extends StatefulWidget {

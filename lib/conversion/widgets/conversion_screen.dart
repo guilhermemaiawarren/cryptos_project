@@ -1,18 +1,18 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/controller/converted_crypto_provider.dart';
-import 'package:projeto_criptos/conversion/controller/validate_provider.dart';
-import 'package:projeto_criptos/conversion/widgets/available_balance_container.dart';
-import 'package:projeto_criptos/conversion/widgets/coin_button.dart';
-import 'package:projeto_criptos/conversion/widgets/coin_text_field.dart';
-import 'package:projeto_criptos/conversion/widgets/swap_icon_button.dart';
-import 'package:projeto_criptos/details/controller/coin_ammount_provider.dart';
-import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
-import 'package:projeto_criptos/shared/templates/error_body.dart';
-import 'package:projeto_criptos/shared/templates/loading_body.dart';
+import '../controller/converted_crypto_provider.dart';
+import '../controller/validate_provider.dart';
+import 'available_balance_container.dart';
+import 'coin_button.dart';
+import 'coin_text_field.dart';
+import 'swap_icon_button.dart';
+import '../../details/controller/coin_ammount_provider.dart';
+import '../../portfolio/controller/cryptos_provider.dart';
+import '../../portfolio/model/crypto_view_data.dart';
+import '../../shared/common_model/crypto.dart';
+import '../../shared/templates/error_body.dart';
+import '../../shared/templates/loading_body.dart';
 
 import '../../shared/utils/decimal_parse.dart';
 import '../methods/show_modal_bottom_sheet_cryptos.dart';
@@ -43,7 +43,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   Decimal convertedCryptoHelper = dp('0.00000');
   buttonValidation() {
     setState(() {
-      ref.read(validateProvider.state).state = formKey.currentState!.validate() ? true : false;
+      ref.read(validateProvider.state).state =
+          formKey.currentState!.validate() ? true : false;
     });
   }
 
@@ -110,7 +111,9 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                               ListTile(
                                 onTap: () {
                                   setState(() {
-                                    cryptoConverted = widget.asset;
+                                    if (cryptoConverted == crypto) {
+                                      cryptoConverted = widget.asset;
+                                    }
                                     widget.asset = crypto;
                                     widget.coinAmmount = dp(ref
                                         .read(coinAmmountProvider)[index]
@@ -170,9 +173,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                       widget.asset = temp;
                                     }
                                   });
-                                  convertController.clear();
                                   buttonValidation();
-                                  convertedValue('0');
+                                  convertedValue(convertController.text);
                                   Navigator.of(context).pop();
                                 },
                                 title: Text(crypto.symbol.toUpperCase()),

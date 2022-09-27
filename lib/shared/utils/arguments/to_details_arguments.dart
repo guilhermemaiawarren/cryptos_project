@@ -1,5 +1,5 @@
 import 'package:decimal/decimal.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import '../../common_model/crypto.dart';
 
 
 class ToDetailsArguments {

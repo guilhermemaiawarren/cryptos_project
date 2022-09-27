@@ -1,6 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
+import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 final convertedCryptoProvider = StateProvider<CryptoEntity>((ref) {

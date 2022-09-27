@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/coin_ammount_provider.dart';
-import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
+import '../../details/controller/coin_ammount_provider.dart';
+import '../../shared/utils/decimal_parse.dart';
 
 import '../controller/balance_provider.dart';
 import '../model/crypto_view_data.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/controller/validate_provider.dart';
+import '../controller/validate_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import '../../shared/common_model/crypto.dart';
 
 class CoinTextField extends StatefulWidget {
   const CoinTextField({
