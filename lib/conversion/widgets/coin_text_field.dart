@@ -5,14 +5,12 @@ import '../../shared/common_model/crypto.dart';
 class CoinTextField extends StatefulWidget {
   const CoinTextField({
     Key? key,
-    this.onFieldSubmitted,
     this.onChanged,
     required this.controller,
     required this.asset,
     this.validator,
     required this.formKey,
   }) : super(key: key);
-  final void Function(String)? onFieldSubmitted;
   final void Function(String)? onChanged;
   final TextEditingController controller;
   final CryptoEntity asset;
@@ -47,7 +45,6 @@ class _CoinTextFieldState extends State<CoinTextField> {
                 ),
               ),
               keyboardType: TextInputType.number,
-              onFieldSubmitted: widget.onFieldSubmitted,
               onChanged: widget.onChanged,
               validator: widget.validator,
             ),

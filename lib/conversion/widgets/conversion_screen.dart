@@ -196,10 +196,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               formKey: formKey,
               controller: convertController,
               asset: widget.asset,
-              onFieldSubmitted: (value) {
-                buttonValidation();
-              },
               onChanged: (value) {
+                buttonValidation();
                 convertedValue(value);
               },
               validator: (value) {
