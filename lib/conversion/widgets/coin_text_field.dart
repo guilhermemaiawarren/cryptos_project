@@ -48,7 +48,7 @@ class _CoinTextFieldState extends State<CoinTextField> {
               onChanged: widget.onChanged,
               validator: widget.validator,
               inputFormatters: [
-                FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\,?\d{0,6}')),
+                FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,6}')),
               ],
             ),
           ],
