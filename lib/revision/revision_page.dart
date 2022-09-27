@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:projeto_criptos/details/widgets/info_row_details.dart';
+import 'package:projeto_criptos/revision/view/confirmed_conversion_page.dart';
 import 'package:projeto_criptos/shared/templates/app_assets.dart';
 import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
 import 'package:projeto_criptos/shared/templates/warren_button.dart';
@@ -53,7 +54,16 @@ class RevisionPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 25),
               child: WarrenButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const ConfirmedConversionPage();
+                      },
+                    ),
+                  );
+                },
                 text: 'Concluir Conversão',
                 color: AppAssets.magenta,
               ),
