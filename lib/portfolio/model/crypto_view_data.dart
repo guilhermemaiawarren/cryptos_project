@@ -1,4 +1,5 @@
 import 'package:decimal/decimal.dart';
+
 import '../../shared/common_model/crypto.dart';
 
 class CryptoViewData extends CryptoEntity {

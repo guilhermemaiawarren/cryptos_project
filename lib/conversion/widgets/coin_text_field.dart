@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../shared/common_model/crypto.dart';
 
@@ -47,6 +48,9 @@ class _CoinTextFieldState extends State<CoinTextField> {
               keyboardType: TextInputType.number,
               onChanged: widget.onChanged,
               validator: widget.validator,
+              inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\,?\d{0,20}$')),
+              ],
             ),
           ],
         ),

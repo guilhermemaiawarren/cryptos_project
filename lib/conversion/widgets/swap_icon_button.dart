@@ -22,20 +22,6 @@ class _SwapIconButtonState extends State<SwapIconButton> {
         size: 25,
       ),
       onPressed: widget.onPressed,
-      // onPressed: () {
-      //   CryptoEntity temp = widget.asset;
-      //   setState(() {
-      //     widget.asset = cryptoConverted;
-      //     cryptoConverted = temp;
-      //     widget.coinAmmount = dp(ref
-      //         .read(coinAmmountProvider)[
-      //             data.indexOf(widget.asset as CryptoViewData)]
-      //         .toString());
-      //   });
-      //   convertController.clear();
-      //   buttonValidation();
-      //   convertedValue('0.0');
-      // },
     );
   }
 }

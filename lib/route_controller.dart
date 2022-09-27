@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'conversion/view/conversion_page.dart';
-import 'shared/utils/arguments/to_conversion_arguments.dart';
-import 'shared/utils/arguments/to_details_arguments.dart';
 
+import 'conversion/view/conversion_page.dart';
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
 import 'portfolio/view/portfolio_screen.dart';
+import 'shared/utils/arguments/to_conversion_arguments.dart';
+import 'shared/utils/arguments/to_details_arguments.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {

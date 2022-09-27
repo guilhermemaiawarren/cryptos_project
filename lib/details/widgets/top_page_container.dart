@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/controller/get_price_provider.dart';
-import 'package:projeto_criptos/shared/utils/decimal_to_double.dart';
+import '../controller/get_price_provider.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../../shared/common_model/crypto.dart';
 
 import '../../shared/utils/currency_formater.dart';
