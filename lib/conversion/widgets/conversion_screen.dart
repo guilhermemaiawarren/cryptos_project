@@ -1,6 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/controller/controller_arguments.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
 import 'available_balance_container.dart';
@@ -65,6 +67,13 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
     });
   }
 
+  getExchange() {
+    String convert = '1 ${widget.asset.symbol.toUpperCase()}';
+    String recieve =
+        '${(dtd(widget.asset.currentPrice)/dtd(cryptoConverted.currentPrice)).toStringAsFixed(4)} ${cryptoConverted.symbol.toUpperCase()}';
+    return '$convert = $recieve';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -80,6 +89,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   @override
   Widget build(BuildContext context) {
     final cryptos = ref.watch(cryptosProvider);
+    final controller = ref.watch(controllerArgumentsProvider.state).state;
     return cryptos.when(
       data: (data) {
         if (cryptoConverted.id == 'id') {
@@ -199,6 +209,12 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               onChanged: (value) {
                 buttonValidation();
                 convertedValue(value);
+                controller.convert =
+                    '$value ${widget.asset.symbol.toUpperCase()}';
+                controller.recieve =
+                    '${dtd(convertedCryptoHelper).toStringAsFixed(5)} ${cryptoConverted.symbol.toUpperCase()}';
+
+                controller.cambio = getExchange();
               },
               validator: (value) {
                 if (value == '' || value == null) {

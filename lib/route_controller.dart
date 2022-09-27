@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/revision/view/revision_page.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
@@ -42,6 +44,18 @@ class RouteController {
           return ConversionPage(
             coinAmmount: args.cryptoAmmount,
             asset: args.crypto,
+          );
+        },
+      );
+    } else if (settings.name == RevisionPage.route) {
+      final args = settings.arguments as ToRevisionArguments;
+      return PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation1, animation2) {
+          return RevisionPage(
+            convert: args.convert,
+            recieve: args.recieve,
+            cambio: args.cambio,
           );
         },
       );

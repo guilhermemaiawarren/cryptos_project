@@ -13,23 +13,18 @@ class WarrenButton extends StatelessWidget {
   final Color color;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 25,
+    return MaterialButton(
+      color: color,
+      height: 50,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
       ),
-      child: MaterialButton(
-        color: color,
-        height: 50,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        onPressed: onPressed,
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 17,
-          ),
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 17,
         ),
       ),
     );
