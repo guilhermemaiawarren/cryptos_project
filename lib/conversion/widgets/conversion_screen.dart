@@ -7,7 +7,7 @@ import 'available_balance_container.dart';
 import 'coin_button.dart';
 import 'coin_text_field.dart';
 import 'swap_icon_button.dart';
-import '../../details/controller/coin_ammount_provider.dart';
+import '../../portfolio/controller/coin_ammount_provider.dart';
 import '../../portfolio/controller/cryptos_provider.dart';
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/common_model/crypto.dart';
@@ -202,11 +202,11 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               },
               validator: (value) {
                 if (value == '' || value == null) {
-                  return 'Valor não pode ser igual a 0';
+                  return 'Valor deve ser maior que zero';
                 } else if (validCoinValue(value)) {
                   return 'O valor inicial não pode ser um caractere especial';
                 } else if (dp(coinRegExp(value)) > widget.coinAmmount) {
-                  return 'Valor não pode ser maior do que o disponível na carteira';
+                  return 'Saldo Insuficiente';
                 }
                 return null;
               },

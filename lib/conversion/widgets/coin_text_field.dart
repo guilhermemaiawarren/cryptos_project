@@ -23,7 +23,6 @@ class CoinTextField extends StatefulWidget {
 }
 
 class _CoinTextFieldState extends State<CoinTextField> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -49,7 +48,7 @@ class _CoinTextFieldState extends State<CoinTextField> {
               onChanged: widget.onChanged,
               validator: widget.validator,
               inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\,?\d{0,20}$')),
+                FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\,?\d{0,6}')),
               ],
             ),
           ],
