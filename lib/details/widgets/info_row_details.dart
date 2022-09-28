@@ -35,7 +35,7 @@ class InfoRowDetails extends StatelessWidget {
             style: TextStyle(
               color: color ?? const Color.fromRGBO(47, 47, 51, 1),
               fontWeight: fontWeight ?? FontWeight.w400,
-              fontSize: 20,
+              fontSize: 18,
               letterSpacing: 0.5,
             ),
           ),

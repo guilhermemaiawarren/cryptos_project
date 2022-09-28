@@ -98,19 +98,24 @@ class BodyDetailsScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-              WarrenButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/conversion',
-                    arguments: ToConversionArguments(
-                      cryptoAmmount: coinAmmount,
-                      crypto: coin,
-                    ),
-                  );
-                },
-                text: 'Converter Moeda',
-                color: AppAssets.magenta,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                child: WarrenButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      '/conversion',
+                      arguments: ToConversionArguments(
+                        cryptoAmmount: coinAmmount,
+                        crypto: coin,
+                      ),
+                    );
+                  },
+                  text: 'Converter Moeda',
+                  color: AppAssets.magenta,
+                ),
               ),
             ],
           ),
