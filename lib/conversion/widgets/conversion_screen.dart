@@ -2,6 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/controller/controller_arguments.dart';
+import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
@@ -20,7 +21,6 @@ import '../../shared/utils/decimal_parse.dart';
 import '../methods/show_modal_bottom_sheet_cryptos.dart';
 import '../widgets/helper_currency_text.dart';
 import '../widgets/informative_text.dart';
-import '../widgets/total_convert_value_container.dart';
 
 class ConversionScreen extends StatefulHookConsumerWidget {
   ConversionScreen({
@@ -42,7 +42,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
 
   final formKey = GlobalKey<FormState>();
   Decimal convertHelper = dp('0.0');
-  Decimal convertedCryptoHelper = dp('0.00000');
+  Decimal convertedCryptoHelper = dp('0.0');
   buttonValidation() {
     setState(() {
       ref.read(validateProvider.state).state =

@@ -40,6 +40,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
                     1) *
                 100;
         return SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(vertical: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
