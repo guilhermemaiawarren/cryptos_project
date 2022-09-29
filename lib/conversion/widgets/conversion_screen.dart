@@ -5,8 +5,8 @@ import 'package:projeto_criptos/conversion/controller/controller_arguments.dart'
 import 'package:projeto_criptos/conversion/controller/conversion_cryptos_provider.dart';
 import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import '../../shared/user/user_coin_ammount_provider.dart';
-import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
 import '../logicholder/methods/conversion_methods.dart';
@@ -15,7 +15,6 @@ import 'coin_button.dart';
 import 'coin_text_field.dart';
 import 'swap_icon_button.dart';
 import '../../portfolio/controller/cryptos_provider.dart';
-import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 
@@ -107,11 +106,13 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                   setState(() {
                                     if (cryptoConverted == crypto) {
                                       cryptoConverted = asset;
+                                      controller.recieveCoin = cryptoConverted;
                                     }
                                     asset = crypto;
                                     coinAmmount = dp(ref
                                         .read(userCoinAmmountProvider)[index]
                                         .toString());
+                                    controller.convertCoin = asset;
                                   });
                                   convertController.clear();
                                   buttonValidation();
@@ -141,7 +142,9 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                     CryptoEntity temp = asset;
                     setState(() {
                       asset = cryptoConverted;
+                      controller.convertCoin = asset;
                       cryptoConverted = temp;
+                      controller.recieveCoin = cryptoConverted;
                       coinAmmount = dp(ref
                           .read(userCoinAmmountProvider)[
                               data.indexOf(asset as ConversionCryptoViewData)]
@@ -168,8 +171,10 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                   CryptoEntity temp = cryptoConverted;
                                   setState(() {
                                     cryptoConverted = crypto;
+                                    controller.recieveCoin = cryptoConverted;
                                     if (cryptoConverted.id == asset.id) {
                                       asset = temp;
+                                      controller.convertCoin = asset;
                                     }
                                   });
                                   buttonValidation();
@@ -198,11 +203,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               onChanged: (value) {
                 buttonValidation();
                 convertedValue(value);
-                controller.convert = '$value ${asset.symbol.toUpperCase()}';
-                controller.recieve =
-                    '${dtd(convertedCryptoHelper).toStringAsFixed(5)} ${cryptoConverted.symbol.toUpperCase()}';
-                controller.cambio =
-                    ConversionMethods.getExchange(asset, cryptoConverted);
+                controller.convert = dp(value);
+                controller.recieve = convertedCryptoHelper;
               },
               validator: (value) {
                 if (value == '' || value == null) {

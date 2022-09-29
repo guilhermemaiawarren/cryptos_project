@@ -1,11 +1,16 @@
+import 'package:decimal/decimal.dart';
+
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
 class ToRevisionArguments {
-  String convert;
-  String recieve;
-  String cambio;
+  Decimal convert;
+  Decimal recieve;
+  CryptoEntity convertCoin;
+  CryptoEntity recieveCoin;
   ToRevisionArguments({
     required this.convert,
     required this.recieve,
-    required this.cambio,
+    required this.convertCoin,
+    required this.recieveCoin,
   });
 }

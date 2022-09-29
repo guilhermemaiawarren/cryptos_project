@@ -55,7 +55,8 @@ class RouteController {
           return RevisionPage(
             convert: args.convert,
             recieve: args.recieve,
-            cambio: args.cambio,
+            convertCoin: args.convertCoin,
+            recieveCoin: args.recieveCoin,
           );
         },
       );

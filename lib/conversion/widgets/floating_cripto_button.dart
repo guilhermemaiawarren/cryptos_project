@@ -25,7 +25,8 @@ class FloatingCriptoButton extends HookConsumerWidget {
                 arguments: ToRevisionArguments(
                   convert: controller.convert,
                   recieve: controller.recieve,
-                  cambio: controller.cambio,
+                  convertCoin: controller.convertCoin,
+                  recieveCoin: controller.recieveCoin,
                 ),
               );
               ref.read(validateProvider.state).state = false;
