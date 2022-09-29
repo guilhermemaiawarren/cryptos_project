@@ -64,10 +64,9 @@ class BodyDetailsScreen extends HookConsumerWidget {
                 ),
                 const ChangeDaysButtons(),
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 30,
-                    top: 20,
-                    bottom: 20,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 20,
                   ),
                   child: Column(
                     children: [
