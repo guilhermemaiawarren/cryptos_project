@@ -18,7 +18,7 @@ class InfoRowDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 11,
       ),
       child: Row(
         children: [

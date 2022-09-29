@@ -2,6 +2,8 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/controller/controller_arguments.dart';
+import 'package:projeto_criptos/conversion/controller/conversion_cryptos_provider.dart';
+import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
@@ -13,7 +15,6 @@ import 'coin_text_field.dart';
 import 'swap_icon_button.dart';
 import '../../portfolio/controller/coin_ammount_provider.dart';
 import '../../portfolio/controller/cryptos_provider.dart';
-import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
@@ -71,7 +72,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cryptos = ref.watch(cryptosProvider);
+    final cryptos = ref.watch(conversionCryptosProvider);
     final controller = ref.watch(controllerArgumentsProvider.state).state;
     return cryptos.when(
       data: (data) {
@@ -143,7 +144,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                       cryptoConverted = temp;
                       coinAmmount = dp(ref
                           .read(coinAmmountProvider)[
-                              data.indexOf(asset as CryptoViewData)]
+                              data.indexOf(asset as ConversionCryptoViewData)]
                           .toString());
                     });
                     convertController.clear();
@@ -197,12 +198,11 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               onChanged: (value) {
                 buttonValidation();
                 convertedValue(value);
-                controller.convert =
-                    '$value ${asset.symbol.toUpperCase()}';
+                controller.convert = '$value ${asset.symbol.toUpperCase()}';
                 controller.recieve =
                     '${dtd(convertedCryptoHelper).toStringAsFixed(5)} ${cryptoConverted.symbol.toUpperCase()}';
-                controller.cambio = ConversionMethods.getExchange(
-                    asset, cryptoConverted);
+                controller.cambio =
+                    ConversionMethods.getExchange(asset, cryptoConverted);
               },
               validator: (value) {
                 if (value == '' || value == null) {

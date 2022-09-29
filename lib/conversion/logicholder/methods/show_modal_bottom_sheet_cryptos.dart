@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 
-import '../../../portfolio/model/crypto_view_data.dart';
 import '../../../shared/templates/app_assets.dart';
 
 Future<void> showModalBottomSheetCryptos(
-    BuildContext context, List<CryptoViewData> data, Widget listView) {
+    BuildContext context, List<ConversionCryptoViewData> data, Widget listView) {
   return showModalBottomSheet<void>(
     context: context,
     shape: const RoundedRectangleBorder(
