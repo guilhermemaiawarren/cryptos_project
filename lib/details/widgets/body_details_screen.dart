@@ -41,84 +41,88 @@ class BodyDetailsScreen extends HookConsumerWidget {
                 100;
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TopPageContainer(
-                model: coin,
-              ),
-              GraphDetails(
-                historyCoinData: List<FlSpot>.from(
-                  data.prices.reversed.map(
-                    (crypto) {
-                      return FlSpot(
-                        crypto[0].toDouble(),
-                        crypto[1].toDouble(),
-                      );
-                    },
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.85,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TopPageContainer(
+                  model: coin,
+                ),
+                GraphDetails(
+                  historyCoinData: List<FlSpot>.from(
+                    data.prices.reversed.map(
+                      (crypto) {
+                        return FlSpot(
+                          crypto[0].toDouble(),
+                          crypto[1].toDouble(),
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-              const ChangeDaysButtons(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  top: 20,
-                  bottom: 20,
-                ),
-                child: Column(
-                  children: [
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Preço ${day}D',
-                      text: currencyFormatter.format(
-                        data.prices.reversed.elementAt(day).last,
+                const ChangeDaysButtons(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 30,
+                    top: 20,
+                    bottom: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      const Divider(thickness: 1),
+                      InfoRowDetails(
+                        label: 'Preço ${day}D',
+                        text: currencyFormatter.format(
+                          data.prices.reversed.elementAt(day).last,
+                        ),
                       ),
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Variação ${day}D',
-                      text:
-                          '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
-                      color: variation > 0 ? Colors.green : Colors.red,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Quantidade',
-                      text:
-                          '${coinAmmount.toStringAsFixed(4)} ${coin.symbol.toUpperCase()}',
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Valor',
-                      text: currencyFormatter.format(
-                        dtd(coinAmmount * coin.currentPrice),
+                      const Divider(thickness: 1),
+                      InfoRowDetails(
+                        label: 'Variação ${day}D',
+                        text:
+                            '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
+                        color: variation > 0 ? Colors.green : Colors.red,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                ),
-                child: WarrenButton(
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      '/conversion',
-                      arguments: ToConversionArguments(
-                        cryptoAmmount: coinAmmount,
-                        crypto: coin,
+                      const Divider(thickness: 1),
+                      InfoRowDetails(
+                        label: 'Quantidade',
+                        text:
+                            '${coinAmmount.toStringAsFixed(4)} ${coin.symbol.toUpperCase()}',
                       ),
-                    );
-                  },
-                  text: 'Converter Moeda',
-                  color: AppAssets.magenta,
+                      const Divider(thickness: 1),
+                      InfoRowDetails(
+                        label: 'Valor',
+                        text: currencyFormatter.format(
+                          dtd(coinAmmount * coin.currentPrice),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                  ),
+                  child: WarrenButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/conversion',
+                        arguments: ToConversionArguments(
+                          cryptoAmmount: coinAmmount,
+                          crypto: coin,
+                        ),
+                      );
+                    },
+                    text: 'Converter Moeda',
+                    color: AppAssets.magenta,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },

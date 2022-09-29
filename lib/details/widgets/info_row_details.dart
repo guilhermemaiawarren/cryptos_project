@@ -39,9 +39,6 @@ class InfoRowDetails extends StatelessWidget {
               letterSpacing: 0.5,
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(right: 35),
-          ),
         ],
       ),
     );
