@@ -4,24 +4,37 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
-class ConfirmedConversionPage extends StatefulWidget {
-  const ConfirmedConversionPage({Key? key}) : super(key: key);
-
+class SucessConversionPage extends StatefulWidget {
+  const SucessConversionPage({Key? key}) : super(key: key);
+  static const route = '/success';
   @override
-  State<ConfirmedConversionPage> createState() =>
-      _ConfirmedConversionPageState();
+  State<SucessConversionPage> createState() => _SucessConversionPageState();
 }
 
-class _ConfirmedConversionPageState extends State<ConfirmedConversionPage>
+class _SucessConversionPageState extends State<SucessConversionPage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  double radius = 30;
+  void animateContainer() {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      setState(() {
+        radius = 75;
+      });
+    });
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      setState(() {
+        radius = 30;
+      });
+    });
+  }
 
   @override
   void initState() {
     super.initState();
+    animateContainer();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 500),
     );
     _controller.forward();
   }
@@ -63,12 +76,16 @@ class _ConfirmedConversionPageState extends State<ConfirmedConversionPage>
                     child: child,
                   );
                 },
-                child: CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.transparent,
-                  backgroundImage: const ImageIcon(
-                    AssetImage('assets/icons/success_button.png'),
-                  ).image,
+                child: AnimatedContainer(
+                  duration: const Duration(seconds: 2),
+                  curve: Curves.easeIn,
+                  child: CircleAvatar(
+                    radius: radius,
+                    backgroundColor: Colors.transparent,
+                    backgroundImage: const ImageIcon(
+                      AssetImage('assets/icons/success_button.png'),
+                    ).image,
+                  ),
                 ),
               ),
               AutoSizeText(

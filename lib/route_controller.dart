@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/revision/revision_page.dart';
+import 'package:projeto_criptos/review/success_conversion_page.dart';
+import 'package:projeto_criptos/review/review_page.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
@@ -58,7 +59,14 @@ class RouteController {
           );
         },
       );
-    }
+    } else if (settings.name == SucessConversionPage.route) {
+      return PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return const SucessConversionPage();
+        },
+      );
+    } 
     return null;
   }
 }

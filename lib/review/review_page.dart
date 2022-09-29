@@ -5,7 +5,6 @@ import 'package:projeto_criptos/shared/templates/app_assets.dart';
 import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
 import 'package:projeto_criptos/shared/templates/warren_button.dart';
 
-import 'confirmed_conversion_page.dart';
 
 class RevisionPage extends StatelessWidget {
   const RevisionPage({
@@ -73,23 +72,9 @@ class RevisionPage extends StatelessWidget {
                   Expanded(
                     child: WarrenButton(
                       onPressed: () {
-                        Navigator.pushReplacement(
+                        Navigator.pushReplacementNamed(
                           context,
-                          PageRouteBuilder(
-                            transitionDuration: const Duration(milliseconds: 250),
-                            transitionsBuilder:
-                                (context, animation, secondaryAnimation, child) {
-                              animation = ProxyAnimation(animation);
-                              return ScaleTransition(
-                                scale: animation,
-                                alignment: Alignment.center,
-                                child: child,
-                              );
-                            },
-                            pageBuilder: (context, animation, animation2) {
-                              return const ConfirmedConversionPage();
-                            },
-                          ),
+                          '/success'
                         );
                       },
                       text: 'Concluir',
