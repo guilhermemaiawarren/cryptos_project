@@ -6,6 +6,7 @@ import 'package:projeto_criptos/conversion/widgets/total_convert_value_container
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
+import '../logicholder/methods/conversion_methods.dart';
 import 'available_balance_container.dart';
 import 'coin_button.dart';
 import 'coin_text_field.dart';
@@ -18,18 +19,18 @@ import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 
 import '../../shared/utils/decimal_parse.dart';
-import '../methods/show_modal_bottom_sheet_cryptos.dart';
+import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 import '../widgets/helper_currency_text.dart';
 import '../widgets/informative_text.dart';
 
 class ConversionScreen extends StatefulHookConsumerWidget {
-  ConversionScreen({
+  const ConversionScreen({
     Key? key,
     required this.coinAmmount,
     required this.asset,
   }) : super(key: key);
-  Decimal coinAmmount;
-  CryptoEntity asset;
+  final Decimal coinAmmount;
+  final CryptoEntity asset;
 
   @override
   ConsumerState<ConversionScreen> createState() => _$ConversionScreenState();
@@ -37,9 +38,9 @@ class ConversionScreen extends StatefulHookConsumerWidget {
 
 class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   final TextEditingController convertController = TextEditingController();
-  bool validate = false;
   late CryptoEntity cryptoConverted;
-
+  late CryptoEntity asset;
+  late Decimal coinAmmount;
   final formKey = GlobalKey<FormState>();
   Decimal convertHelper = dp('0.0');
   Decimal convertedCryptoHelper = dp('0.0');
@@ -50,33 +51,21 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
     });
   }
 
-  String coinRegExp(String value) {
-    return value.replaceAll(RegExp(r'[^\w\s]+'), '.');
-  }
-
-  bool validCoinValue(String source) {
-    return source.startsWith(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
-  }
-
   convertedValue(String value) {
     setState(() {
-      convertHelper = dp(coinRegExp(value)) * widget.asset.currentPrice;
+      convertHelper =
+          dp(ConversionMethods.coinRegExp(value)) * asset.currentPrice;
       convertedCryptoHelper = dp(
           (convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble())
               .toString());
     });
   }
 
-  getExchange() {
-    String convert = '1 ${widget.asset.symbol.toUpperCase()}';
-    String recieve =
-        '${(dtd(widget.asset.currentPrice) / dtd(cryptoConverted.currentPrice)).toStringAsFixed(7)} ${cryptoConverted.symbol.toUpperCase()}';
-    return '$convert = $recieve';
-  }
-
   @override
   void initState() {
     super.initState();
+    asset = widget.asset;
+    coinAmmount = widget.coinAmmount;
     cryptoConverted = ref.read(convertedCryptoProvider.state).state;
   }
 
@@ -87,14 +76,14 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
     return cryptos.when(
       data: (data) {
         if (cryptoConverted.id == 'id') {
-          cryptoConverted = data[0].id == widget.asset.id ? data[1] : data[0];
+          cryptoConverted = data[0].id == asset.id ? data[1] : data[0];
         }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             AvailableBalanceContainer(
-              asset: widget.asset,
-              coinAmmount: widget.coinAmmount,
+              asset: asset,
+              coinAmmount: coinAmmount,
             ),
             const InformativeText(),
             Row(
@@ -116,10 +105,10 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                 onTap: () {
                                   setState(() {
                                     if (cryptoConverted == crypto) {
-                                      cryptoConverted = widget.asset;
+                                      cryptoConverted = asset;
                                     }
-                                    widget.asset = crypto;
-                                    widget.coinAmmount = dp(ref
+                                    asset = crypto;
+                                    coinAmmount = dp(ref
                                         .read(coinAmmountProvider)[index]
                                         .toString());
                                   });
@@ -144,17 +133,17 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                       ),
                     );
                   },
-                  asset: widget.asset,
+                  asset: asset,
                 ),
                 SwapIconButton(
                   onPressed: () {
-                    CryptoEntity temp = widget.asset;
+                    CryptoEntity temp = asset;
                     setState(() {
-                      widget.asset = cryptoConverted;
+                      asset = cryptoConverted;
                       cryptoConverted = temp;
-                      widget.coinAmmount = dp(ref
+                      coinAmmount = dp(ref
                           .read(coinAmmountProvider)[
-                              data.indexOf(widget.asset as CryptoViewData)]
+                              data.indexOf(asset as CryptoViewData)]
                           .toString());
                     });
                     convertController.clear();
@@ -178,8 +167,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                   CryptoEntity temp = cryptoConverted;
                                   setState(() {
                                     cryptoConverted = crypto;
-                                    if (cryptoConverted.id == widget.asset.id) {
-                                      widget.asset = temp;
+                                    if (cryptoConverted.id == asset.id) {
+                                      asset = temp;
                                     }
                                   });
                                   buttonValidation();
@@ -204,22 +193,24 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
             CoinTextField(
               formKey: formKey,
               controller: convertController,
-              asset: widget.asset,
+              asset: asset,
               onChanged: (value) {
                 buttonValidation();
                 convertedValue(value);
                 controller.convert =
-                    '$value ${widget.asset.symbol.toUpperCase()}';
+                    '$value ${asset.symbol.toUpperCase()}';
                 controller.recieve =
                     '${dtd(convertedCryptoHelper).toStringAsFixed(5)} ${cryptoConverted.symbol.toUpperCase()}';
-                controller.cambio = getExchange();
+                controller.cambio = ConversionMethods.getExchange(
+                    asset, cryptoConverted);
               },
               validator: (value) {
                 if (value == '' || value == null) {
                   return 'Valor deve ser maior que zero';
-                } else if (validCoinValue(value)) {
+                } else if (ConversionMethods.validCoinValue(value)) {
                   return 'O valor inicial não pode ser um caractere especial';
-                } else if (dp(coinRegExp(value)) > widget.coinAmmount) {
+                } else if (dp(ConversionMethods.coinRegExp(value)) >
+                    coinAmmount) {
                   return 'Saldo Insuficiente';
                 }
                 return null;

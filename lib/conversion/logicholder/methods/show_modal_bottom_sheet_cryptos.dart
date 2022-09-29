@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../portfolio/model/crypto_view_data.dart';
-import '../../shared/templates/app_assets.dart';
+import '../../../portfolio/model/crypto_view_data.dart';
+import '../../../shared/templates/app_assets.dart';
 
 Future<void> showModalBottomSheetCryptos(
     BuildContext context, List<CryptoViewData> data, Widget listView) {
