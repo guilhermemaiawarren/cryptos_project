@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/templates/app_assets.dart';
 
 class InformativeText extends StatelessWidget {
 
@@ -15,11 +14,7 @@ class InformativeText extends StatelessWidget {
       ),
       child: Text(
         'Quanto você gostaria de converter?',
-        style: TextStyle(
-          fontSize: 25,
-          fontFamily: AppAssets.montSerrat,
-          fontWeight: FontWeight.bold,
-        ),
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     );
   }

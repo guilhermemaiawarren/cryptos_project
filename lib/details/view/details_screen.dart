@@ -35,7 +35,6 @@ class DetailsScreen extends HookConsumerWidget {
         coin: args.crypto,
         coinAmmount: args.coinAmmount,
       ),
-     
     );
   }
 }
