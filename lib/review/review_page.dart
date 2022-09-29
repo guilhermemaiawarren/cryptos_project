@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:projeto_criptos/details/widgets/info_row_details.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+import 'package:projeto_criptos/review/widgets/info_review_column.dart';
+import 'package:projeto_criptos/review/widgets/review_buttons.dart';
 import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
-import 'package:projeto_criptos/shared/templates/warren_button.dart';
-
 
 class RevisionPage extends StatelessWidget {
   const RevisionPage({
@@ -31,59 +29,11 @@ class RevisionPage extends StatelessWidget {
           children: [
             Text(
               'Revise os dados da sua conversão',
-              style: TextStyle(
-                fontSize: 30,
-                fontFamily: AppAssets.montSerrat,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1,
-              ),
+              style: Theme.of(context).textTheme.headlineLarge,
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Divider(thickness: 1),
-                  InfoRowDetails(label: 'Converter', text: convert),
-                  const Divider(thickness: 1),
-                  InfoRowDetails(label: 'Receber', text: recieve),
-                  const Divider(thickness: 1),
-                  InfoRowDetails(label: 'Câmbio', text: cambio),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 25),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: WarrenButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      text: 'Cancelar',
-                      borderSide: BorderSide(
-                        color: AppAssets.magenta,
-                      ),
-                      textColor: AppAssets.magenta,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
-                  Expanded(
-                    child: WarrenButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          '/success'
-                        );
-                      },
-                      text: 'Concluir',
-                      color: AppAssets.magenta,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            InfoReviewColumn(
+                convert: convert, recieve: recieve, cambio: cambio),
+            const ReviewButtons(),
           ],
         ),
       ),

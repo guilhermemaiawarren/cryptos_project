@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/shared/theme/theme_data_criptos.dart';
 
 import 'route_controller.dart';
 
@@ -7,10 +8,11 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       onGenerateRoute: RouteController.generateRoute,
       initialRoute: '/portfolio',
       debugShowCheckedModeBanner: false,
+      theme: themeDataCriptos(),
     );
   }
 }

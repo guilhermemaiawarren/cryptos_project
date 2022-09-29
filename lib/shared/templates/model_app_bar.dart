@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-
 class ModelAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   const ModelAppBar({
     Key? key,
@@ -18,16 +17,12 @@ class ModelAppBar extends HookConsumerWidget implements PreferredSizeWidget {
           Navigator.of(context).pop();
         },
         icon: const Icon(Icons.arrow_back),
-        color: Colors.black,
+        color: Theme.of(context).appBarTheme.iconTheme!.color,
       ),
       backgroundColor: Colors.white,
       title: Text(
         text,
-        style: const TextStyle(
-          color: Colors.black,
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-        ),
+        style: Theme.of(context).appBarTheme.titleTextStyle,
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class InfoRowDetails extends StatelessWidget {
-  const InfoRowDetails({
+class DefaultInfoRow extends StatelessWidget {
+  const DefaultInfoRow({
     Key? key,
     required this.label,
     required this.text,
