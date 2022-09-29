@@ -57,7 +57,7 @@ class _SucessConversionPageState extends State<SucessConversionPage>
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/portfolio');
+            Navigator.pushReplacementNamed(context, '/moves');
           },
         ),
       ),

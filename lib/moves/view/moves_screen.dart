@@ -8,11 +8,9 @@ class MovesScreen extends StatelessWidget {
   static const route = '/moves';
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: BodyMoves(),
-        bottomNavigationBar: CustomBottomNavBar(index: 1),
-      ),
+    return const Scaffold(
+      body: BodyMoves(),
+      bottomNavigationBar: CustomBottomNavBar(index: 1),
     );
   }
 }

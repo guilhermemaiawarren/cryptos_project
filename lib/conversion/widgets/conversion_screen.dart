@@ -5,6 +5,7 @@ import 'package:projeto_criptos/conversion/controller/controller_arguments.dart'
 import 'package:projeto_criptos/conversion/controller/conversion_cryptos_provider.dart';
 import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
+import '../../shared/user/user_coin_ammount_provider.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
@@ -13,7 +14,6 @@ import 'available_balance_container.dart';
 import 'coin_button.dart';
 import 'coin_text_field.dart';
 import 'swap_icon_button.dart';
-import '../../portfolio/controller/coin_ammount_provider.dart';
 import '../../portfolio/controller/cryptos_provider.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/error_body.dart';
@@ -110,7 +110,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                                     }
                                     asset = crypto;
                                     coinAmmount = dp(ref
-                                        .read(coinAmmountProvider)[index]
+                                        .read(userCoinAmmountProvider)[index]
                                         .toString());
                                   });
                                   convertController.clear();
@@ -143,7 +143,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                       asset = cryptoConverted;
                       cryptoConverted = temp;
                       coinAmmount = dp(ref
-                          .read(coinAmmountProvider)[
+                          .read(userCoinAmmountProvider)[
                               data.indexOf(asset as ConversionCryptoViewData)]
                           .toString());
                     });
