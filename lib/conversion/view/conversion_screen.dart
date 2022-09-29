@@ -10,10 +10,10 @@ import '../../shared/user/user_coin_ammount_provider.dart';
 import '../controller/converted_crypto_provider.dart';
 import '../controller/validate_provider.dart';
 import '../logicholder/methods/conversion_methods.dart';
-import 'available_balance_container.dart';
-import 'coin_button.dart';
-import 'coin_text_field.dart';
-import 'swap_icon_button.dart';
+import '../widgets/available_balance_container.dart';
+import '../widgets/coin_button.dart';
+import '../widgets/coin_text_field.dart';
+import '../widgets/swap_icon_button.dart';
 import '../../portfolio/controller/cryptos_provider.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
@@ -73,6 +73,8 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
   Widget build(BuildContext context) {
     final cryptos = ref.watch(conversionCryptosProvider);
     final controller = ref.watch(controllerArgumentsProvider.state).state;
+    controller.convertCoin = asset;
+    controller.recieveCoin = cryptoConverted;
     return cryptos.when(
       data: (data) {
         if (cryptoConverted.id == 'id') {

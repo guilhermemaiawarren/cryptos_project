@@ -6,7 +6,7 @@ import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
 import 'details/view/details_screen.dart';
-import 'moves/view/moves_screen.dart';
+import 'moves/view/moves_page.dart';
 import 'portfolio/view/portfolio_screen.dart';
 
 class RouteController {
@@ -18,11 +18,11 @@ class RouteController {
           return const PortfolioScreen();
         },
       );
-    } else if (settings.name == MovesScreen.route) {
+    } else if (settings.name == MovesPage.route) {
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return const MovesScreen();
+          return const MovesPage();
         },
       );
     } else if (settings.name == DetailsScreen.route) {

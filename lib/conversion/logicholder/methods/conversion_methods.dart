@@ -1,5 +1,3 @@
-
-
 class ConversionMethods {
   static String coinRegExp(String value) {
     return value.replaceAll(RegExp(r'[^\w\s]+'), '.');

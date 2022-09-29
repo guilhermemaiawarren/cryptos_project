@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../moves/view/moves_screen.dart';
+import '../../moves/view/moves_page.dart';
 import '../../portfolio/view/portfolio_screen.dart';
 import '../../shared/templates/app_assets.dart';
 
@@ -24,7 +24,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       case 1:
         Navigator.pushNamed(
           context,
-          MovesScreen.route,
+          MovesPage.route,
         );
         break;
     }

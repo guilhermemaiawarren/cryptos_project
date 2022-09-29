@@ -5,7 +5,7 @@ import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import '../../shared/templates/model_app_bar.dart';
 
-import '../widgets/conversion_screen.dart';
+import 'conversion_screen.dart';
 
 class ConversionPage extends ConsumerWidget {
   const ConversionPage({
