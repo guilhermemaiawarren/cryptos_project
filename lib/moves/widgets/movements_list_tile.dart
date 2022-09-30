@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:projeto_criptos/moves/model/movement_model.dart';
 import 'package:projeto_criptos/shared/utils/currency_formater.dart';
 
+import '../../shared/common_model/move_model.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
 class MovementListTile extends StatelessWidget {
@@ -11,7 +11,7 @@ class MovementListTile extends StatelessWidget {
     Key? key,
     required this.model,
   }) : super(key: key);
-  final MovementModel model;
+  final MoveModel model;
 
   final dateFormat = DateFormat('dd/MM/yyyy');
   @override
