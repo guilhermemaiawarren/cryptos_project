@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/common_model/crypto.dart';
 
@@ -25,7 +26,7 @@ class AvailableBalanceContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'Saldo Disponível',
+            CoreStrings.of(context)!.availableBalance,
             style: TextStyle(
               color: Colors.grey.shade600,
               fontFamily: AppAssets.montSerrat,

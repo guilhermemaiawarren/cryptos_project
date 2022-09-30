@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/warren_button.dart';
@@ -20,7 +21,7 @@ class ReviewButtons extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              text: 'Cancelar',
+              text: CoreStrings.of(context)!.cancel,
               borderSide: BorderSide(
                 color: AppAssets.magenta,
               ),
@@ -32,7 +33,7 @@ class ReviewButtons extends StatelessWidget {
           Expanded(
             child: WarrenButton(
               onPressed: onPressed,
-              text: 'Concluir',
+              text: CoreStrings.of(context)!.conclude,
               color: AppAssets.magenta,
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/app_assets.dart';
@@ -35,7 +36,7 @@ class TotalConvertValueContainer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Total estimado',
+                  CoreStrings.of(context)!.estimatedTotal,
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 16,

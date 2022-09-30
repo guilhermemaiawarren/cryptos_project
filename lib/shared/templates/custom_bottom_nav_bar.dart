@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../moves/view/moves_page.dart';
 import '../../portfolio/view/portfolio_screen.dart';
@@ -41,13 +42,13 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
           icon: ImageIcon(
             AssetImage(AppAssets.wrnIcon),
           ),
-          label: 'Portfólio',
+          label: CoreStrings.of(context)!.portfolio,
         ),
         BottomNavigationBarItem(
           icon: ImageIcon(
             AssetImage(AppAssets.centsIcon),
           ),
-          label: 'Movimentações',
+          label: CoreStrings.of(context)!.moves,
         ),
       ],
     );

@@ -1,0 +1,8 @@
+arb-dir: lib/l10n
+lib/l10ntemplate-arb-file: app_pt.arb
+
+output-localization-file: core_strings.dart
+output-class: CoreStrings
+
+output-dir: lib/l10n
+synthetic-package: false

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/shared/user/movements_provider.dart';
 import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
@@ -25,7 +26,7 @@ class MovesScreen extends ConsumerWidget {
               bottom: 25,
             ),
             child: Text(
-              'Movimentações',
+              CoreStrings.of(context)!.moves,
               style: TextStyle(
                 fontFamily: AppAssets.montSerrat,
                 fontWeight: FontWeight.bold,

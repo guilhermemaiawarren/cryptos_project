@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
 import '../../shared/templates/app_assets.dart';
@@ -33,7 +34,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'Cripto',
+                CoreStrings.of(context)!.crypto,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: AppAssets.montSerrat,
@@ -65,7 +66,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
                 ),
           const SizedBox(height: 5),
           Text(
-            'Valor total de moedas',
+            CoreStrings.of(context)!.totalBalanceHelper,
             style: TextStyle(
               color: Colors.grey.shade600,
               fontSize: 16,

@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/shared/user/movements_provider.dart';
 import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
 import 'package:projeto_criptos/review/widgets/info_review_column.dart';
@@ -52,7 +53,7 @@ class _$RevisionPageState extends ConsumerState<RevisionPage> {
       recieveCoinId: widget.recieveCoin.symbol,
     );
     return Scaffold(
-      appBar: const ModelAppBar(text: 'Revisar'),
+      appBar: ModelAppBar(text: CoreStrings.of(context)!.review),
       body: Padding(
         padding: const EdgeInsets.symmetric(
           vertical: 25,
@@ -62,7 +63,7 @@ class _$RevisionPageState extends ConsumerState<RevisionPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Text(
-              'Revise os dados da sua conversão',
+              CoreStrings.of(context)!.reviewText,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             InfoReviewColumn(

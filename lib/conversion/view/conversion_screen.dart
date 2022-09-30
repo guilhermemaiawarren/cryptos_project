@@ -5,6 +5,7 @@ import 'package:projeto_criptos/conversion/controller/controller_arguments.dart'
 import 'package:projeto_criptos/conversion/controller/conversion_cryptos_provider.dart';
 import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import '../../shared/user/user_coin_ammount_provider.dart';
 import '../controller/converted_crypto_provider.dart';
@@ -210,12 +211,12 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               },
               validator: (value) {
                 if (value == '' || value == null) {
-                  return 'Valor deve ser maior que zero';
+                  return CoreStrings.of(context)!.validatorReturnOne;
                 } else if (ConversionMethods.validCoinValue(value)) {
-                  return 'O valor inicial não pode ser um caractere especial';
+                  return CoreStrings.of(context)!.validatorReturnTwo;
                 } else if (dp(ConversionMethods.coinRegExp(value)) >
                     coinAmmount) {
-                  return 'Saldo Insuficiente';
+                  return CoreStrings.of(context)!.validatorReturnThree;
                 }
                 return null;
               },
