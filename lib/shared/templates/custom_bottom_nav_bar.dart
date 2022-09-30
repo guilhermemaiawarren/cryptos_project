@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../moves/view/moves_page.dart';
+import '../../movements/view/moves_page.dart';
 import '../../portfolio/view/portfolio_screen.dart';
 import '../../shared/templates/app_assets.dart';
 
