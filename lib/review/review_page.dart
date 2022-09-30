@@ -80,10 +80,9 @@ class _$RevisionPageState extends ConsumerState<RevisionPage> {
                 int recieveId = cryptos.asData!.value
                     .indexWhere((crypto) => crypto.id == widget.recieveCoin.id);
                 setState(() {
-                  ref
-                      .read(userCoinAmmountProvider.notifier)
-                      .state[convertedId] -= dtd(widget.convert);
-                  ref.read(userCoinAmmountProvider.notifier).state[recieveId] +=
+                  ref.read(userCoinAmmountProvider)[convertedId] -=
+                      dtd(widget.convert);
+                  ref.read(userCoinAmmountProvider)[recieveId] +=
                       dtd(widget.recieve);
                   ref.read(movementsProvider.state).state.add(moves);
                 });
