@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'cryptos_response.g.dart';
@@ -8,7 +9,7 @@ class CryptosResponse {
   String symbol;
   String name;
   String image;
-  double currentPrice;
+  Decimal currentPrice;
   double variation;
   CryptosResponse(
     this.id,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../../shared/templates/loading_body.dart';
+
 import '../../shared/templates/error_body.dart';
+import '../../shared/templates/loading_body.dart';
 import '../controller/cryptos_provider.dart';
 import 'wallet_assets_list_view.dart';
 import 'wallet_visibility.dart';
@@ -28,8 +29,10 @@ class BodyPortfolioScreen extends HookConsumerWidget {
         );
       },
       error: (e, s) {
+        debugPrint(e.toString());
+        debugPrint(s.toString());
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(cryptosProvider);
           },
         );

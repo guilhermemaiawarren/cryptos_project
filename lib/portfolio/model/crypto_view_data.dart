@@ -1,17 +1,21 @@
+import 'package:decimal/decimal.dart';
 
-class CryptoViewData {
-   String id;
-   String symbol;
-   String name;
-   String image;
-   double currentPrice;
-   double variation;
+import '../../shared/common_model/crypto.dart';
+
+class CryptoViewData extends CryptoEntity {
   CryptoViewData({
-    required this.id,
-    required this.symbol,
-    required this.name,
-    required this.image,
-    required this.currentPrice,
-    required this.variation,
-  });
+    required String id,
+    required String symbol,
+    required String name,
+    required String image,
+    required Decimal currentPrice,
+    required double variation,
+  }) : super(
+          currentPrice: currentPrice,
+          id: id,
+          image: image,
+          name: name,
+          symbol: symbol,
+          variation: variation,
+        );
 }

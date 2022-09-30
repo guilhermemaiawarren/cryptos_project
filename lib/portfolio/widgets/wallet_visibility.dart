@@ -1,5 +1,7 @@
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../shared/utils/decimal_to_double.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
@@ -18,7 +20,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
   Widget build(BuildContext context) {
     var visible = ref.watch(visibleProvider.state);
-    double balance = ref.watch(balanceProvider);
+    Decimal balance = ref.watch(balanceProvider);
 
     return Padding(
       padding: const EdgeInsets.all(30),
@@ -54,7 +56,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           ),
           visible.state
               ? Text(
-                  currencyFormatter.format(balance),
+                  currencyFormatter.format(dtd(balance)),
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 30,
