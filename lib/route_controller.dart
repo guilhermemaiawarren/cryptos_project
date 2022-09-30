@@ -21,14 +21,10 @@ class RouteController {
         },
       );
     } else if (settings.name == MovesPage.route) {
-      final args = settings.arguments as MoveModel?;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          if (args == null) {
-            return const MovesPage();
-          }
-          return MovesPage(model: args);
+          return const MovesPage();
         },
       );
     } else if (settings.name == DetailsScreen.route) {

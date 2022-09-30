@@ -1,6 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/moves/controller/movements_provider.dart';
+import 'package:projeto_criptos/moves/model/movement_model.dart';
 import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
 import 'package:projeto_criptos/review/model/moves_model.dart';
 import 'package:projeto_criptos/review/widgets/info_review_column.dart';
@@ -86,6 +88,10 @@ class _$RevisionPageState extends ConsumerState<RevisionPage> {
                     ref
                         .read(userCoinAmmountProvider.notifier)
                         .state[recieveId] += dtd(widget.recieve);
+                    ref
+                        .read(movementsProvider.state)
+                        .state
+                        .add(MovementModel.fromMap(moves.toMap()));
                   });
                   Navigator.pushReplacementNamed(
                     context,
