@@ -10,7 +10,7 @@ final userCoinAmmountProvider =
 class AmmountNotifier extends StateNotifier<List<double>> {
   AmmountNotifier() : super([]) {
     for (double index = 0; index < 100; index++) {
-      state.add(Random().nextDouble() * 15);
+      state.add(Random().nextDouble() * 100);
     }
   }
 }

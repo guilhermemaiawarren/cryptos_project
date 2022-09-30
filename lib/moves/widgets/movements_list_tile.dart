@@ -1,4 +1,5 @@
 
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class MovementListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  final dateFormat = DateFormat.yMMMMd(Platform.localeName);
+  final dateFormat = DateFormat.yMd(Platform.localeName);
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
