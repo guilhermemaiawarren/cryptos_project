@@ -6,8 +6,9 @@ import '../../shared/templates/warren_button.dart';
 class ReviewButtons extends StatelessWidget {
   const ReviewButtons({
     Key? key,
+    required this.onPressed,
   }) : super(key: key);
-
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -30,9 +31,7 @@ class ReviewButtons extends StatelessWidget {
           const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
           Expanded(
             child: WarrenButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/success');
-              },
+              onPressed: onPressed,
               text: 'Concluir',
               color: AppAssets.magenta,
             ),

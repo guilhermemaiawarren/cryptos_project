@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/review/model/moves_model.dart';
 import 'package:projeto_criptos/review/success_conversion_page.dart';
 import 'package:projeto_criptos/review/review_page.dart';
+import 'package:projeto_criptos/shared/common_model/move.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
@@ -19,10 +21,14 @@ class RouteController {
         },
       );
     } else if (settings.name == MovesPage.route) {
+      final args = settings.arguments as MoveModel?;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return const MovesPage();
+          if (args == null) {
+            return const MovesPage();
+          }
+          return MovesPage(model: args);
         },
       );
     } else if (settings.name == DetailsScreen.route) {
@@ -61,13 +67,14 @@ class RouteController {
         },
       );
     } else if (settings.name == SucessConversionPage.route) {
+      final args = settings.arguments as MovesModel;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation, secondaryAnimation) {
-          return const SucessConversionPage();
+          return SucessConversionPage(move: args);
         },
       );
-    } 
+    }
     return null;
   }
 }

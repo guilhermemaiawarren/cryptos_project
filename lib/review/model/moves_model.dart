@@ -4,8 +4,8 @@ import 'package:decimal/decimal.dart';
 
 import 'package:projeto_criptos/shared/common_model/move.dart';
 
-class MovementModel extends MoveModel {
-  MovementModel({
+class MovesModel extends MoveModel {
+  MovesModel({
     required Decimal convert,
     required Decimal recieve,
     required DateTime data,
@@ -21,6 +21,7 @@ class MovementModel extends MoveModel {
           recieveCoinId: recieveCoinId,
         );
 
+  @override
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
@@ -34,8 +35,8 @@ class MovementModel extends MoveModel {
     return result;
   }
 
-  factory MovementModel.fromMap(Map<String, dynamic> map) {
-    return MovementModel(
+  factory MovesModel.fromMap(Map<String, dynamic> map) {
+    return MovesModel(
       convert: map['convert'],
       recieve: map['recieve'],
       data: DateTime.fromMillisecondsSinceEpoch(map['data']),
@@ -45,8 +46,9 @@ class MovementModel extends MoveModel {
     );
   }
 
+  @override
   String toJson() => json.encode(toMap());
 
-  factory MovementModel.fromJson(String source) =>
-      MovementModel.fromMap(json.decode(source));
+  factory MovesModel.fromJson(String source) =>
+      MovesModel.fromMap(json.decode(source));
 }

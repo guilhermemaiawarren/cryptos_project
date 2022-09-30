@@ -5,11 +5,10 @@ import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
 import '../widgets/movements_list_tile.dart';
 
-class BodyMoves extends ConsumerWidget {
-  const BodyMoves({
+class MovesScreen extends ConsumerWidget {
+  const MovesScreen({
     Key? key,
   }) : super(key: key);
-  static const route = '/bodyMoves';
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final moves = ref.watch(movementsProvider);

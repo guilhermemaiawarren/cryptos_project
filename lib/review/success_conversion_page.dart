@@ -2,11 +2,18 @@ import 'dart:math';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/shared/common_model/move.dart';
 import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
+import 'model/moves_model.dart';
+
 class SucessConversionPage extends StatefulWidget {
-  const SucessConversionPage({Key? key}) : super(key: key);
+  const SucessConversionPage({
+    Key? key,
+    required this.move,
+  }) : super(key: key);
   static const route = '/success';
+  final MoveModel move;
   @override
   State<SucessConversionPage> createState() => _SucessConversionPageState();
 }
@@ -57,7 +64,11 @@ class _SucessConversionPageState extends State<SucessConversionPage>
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/moves');
+            Navigator.pushReplacementNamed(
+              context,
+              '/moves',
+              arguments: widget.move,
+            );
           },
         ),
       ),

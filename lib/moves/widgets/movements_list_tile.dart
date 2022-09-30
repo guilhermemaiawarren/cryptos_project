@@ -20,8 +20,8 @@ class MovementListTile extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('${model.convert.toStringAsFixed(5)} ${model.convertCoinId}'),
-          Text('${model.recieve.toStringAsFixed(5)} ${model.recieveCoinId}'),
+          Text('${model.convert.toStringAsFixed(4)} ${model.convertCoinId.toUpperCase()}'),
+          Text('${model.recieve.toStringAsFixed(4)} ${model.recieveCoinId.toUpperCase()}'),
         ],
       ),
       subtitle: Row(
