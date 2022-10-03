@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
+import '../utils/decimal_parse.dart';
 
 import '../common_model/move_model.dart';
 

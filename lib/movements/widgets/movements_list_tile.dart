@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:projeto_criptos/shared/utils/currency_formater.dart';
+import '../../shared/utils/currency_formater.dart';
 
 import '../../shared/common_model/move_model.dart';
 import '../../shared/utils/decimal_to_double.dart';

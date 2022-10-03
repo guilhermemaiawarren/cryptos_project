@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import '../widgets/floating_cripto_button.dart';
+import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/model_app_bar.dart';
 
 import 'conversion_screen.dart';

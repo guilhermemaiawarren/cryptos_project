@@ -1,7 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/shared/common_model/move_model.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+
+import '../shared/common_model/move_model.dart';
+import '../shared/templates/app_assets.dart';
 
 class SucessConversionPage extends StatefulWidget {
   const SucessConversionPage({
