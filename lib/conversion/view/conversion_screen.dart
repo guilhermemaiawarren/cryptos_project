@@ -2,10 +2,9 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/controller/controller_arguments.dart';
-import 'package:projeto_criptos/conversion/controller/conversion_cryptos_provider.dart';
-import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import '../../shared/user/user_coin_ammount_provider.dart';
 import '../controller/converted_crypto_provider.dart';
@@ -72,7 +71,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cryptos = ref.watch(conversionCryptosProvider);
+    final cryptos = ref.watch(cryptosProvider);
     final controller = ref.watch(controllerArgumentsProvider.state).state;
     controller.convertCoin = asset;
     controller.recieveCoin = cryptoConverted;
@@ -150,7 +149,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                       controller.recieveCoin = cryptoConverted;
                       coinAmmount = dp(ref
                           .read(userCoinAmmountProvider)[
-                              data.indexOf(asset as ConversionCryptoViewData)]
+                              data.indexOf(asset as CryptoViewData)]
                           .toString());
                     });
                     convertController.clear();
@@ -210,8 +209,10 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                 controller.recieve = convertedCryptoHelper;
               },
               validator: (value) {
-                if (value == '' || value == null) {
-                  return CoreStrings.of(context)!.validatorReturnOne;
+                if (value == '' ||
+                    value == null ||
+                    double.tryParse(value) == 0) {
+                  return 'Valor deve ser maior que zero';
                 } else if (ConversionMethods.validCoinValue(value)) {
                   return CoreStrings.of(context)!.validatorReturnTwo;
                 } else if (dp(ConversionMethods.coinRegExp(value)) >
@@ -231,7 +232,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
       },
       error: (e, s) {
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(cryptosProvider);
           },
         );

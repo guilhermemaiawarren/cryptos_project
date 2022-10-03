@@ -7,8 +7,8 @@ import '../controller/cryptos_provider.dart';
 import 'wallet_assets_list_view.dart';
 import 'wallet_visibility.dart';
 
-class BodyPortfolioScreen extends HookConsumerWidget {
-  const BodyPortfolioScreen({Key? key}) : super(key: key);
+class PortfolioScreen extends HookConsumerWidget {
+  const PortfolioScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,7 +26,7 @@ class BodyPortfolioScreen extends HookConsumerWidget {
         debugPrint(e.toString());
         debugPrint(s.toString());
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(cryptosProvider);
           },
         );

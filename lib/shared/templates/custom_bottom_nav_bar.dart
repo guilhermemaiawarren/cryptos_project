@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
+import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
 
 import '../../moves/view/moves_page.dart';
-import '../../portfolio/view/portfolio_screen.dart';
 import '../../shared/templates/app_assets.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -19,7 +19,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       case 0:
         Navigator.pushNamed(
           context,
-          PortfolioScreen.route,
+          PortfolioPage.route,
         );
         break;
       case 1:

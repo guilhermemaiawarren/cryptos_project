@@ -2,8 +2,9 @@ import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
+import 'package:projeto_criptos/conversion/view/conversion_page.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/error_body.dart';
@@ -17,8 +18,8 @@ import 'graph_details.dart';
 import 'info_column.dart';
 import 'top_page_container.dart';
 
-class BodyDetailsScreen extends HookConsumerWidget {
-  const BodyDetailsScreen({
+class DetailsScreen extends HookConsumerWidget {
+  const DetailsScreen({
     Key? key,
     required this.coin,
     required this.coinAmmount,
@@ -77,7 +78,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
-                        '/conversion',
+                        ConversionPage.route,
                         arguments: ToConversionArguments(
                           cryptoAmmount: coinAmmount,
                           crypto: coin,
@@ -95,7 +96,7 @@ class BodyDetailsScreen extends HookConsumerWidget {
       },
       error: (e, r) {
         return ErrorBody(
-          onError: () {
+          onRetry: () {
             ref.refresh(
               historicDataProvider(coin.id),
             );

@@ -1,5 +1,5 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
@@ -8,7 +8,7 @@ final controllerArgumentsProvider = StateProvider(
     return ToRevisionArguments(
       convert: dp('0.0'),
       recieve: dp('0.0'),
-      convertCoin: ConversionCryptoViewData(
+      convertCoin: CryptoEntity(
         id: 'id',
         symbol: 'symbol',
         name: 'name',
@@ -16,7 +16,7 @@ final controllerArgumentsProvider = StateProvider(
         currentPrice: dp('0.0'),
         variation: 2,
       ),
-      recieveCoin: ConversionCryptoViewData(
+      recieveCoin: CryptoEntity(
         id: 'id',
         symbol: 'symbol',
         name: 'name',

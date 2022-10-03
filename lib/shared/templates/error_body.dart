@@ -7,10 +7,10 @@ import 'warren_button.dart';
 class ErrorBody extends HookConsumerWidget {
   const ErrorBody({
     Key? key,
-    required this.onError,
+    required this.onRetry,
   }) : super(key: key);
 
-  final void Function()? onError;
+  final void Function()? onRetry;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,7 +35,7 @@ class ErrorBody extends HookConsumerWidget {
               top: 15,
             ),
             child: WarrenButton(
-              onPressed: onError,
+              onPressed: onRetry,
               color: Colors.black87,
               text: CoreStrings.of(context)!.retry,
             ),

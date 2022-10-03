@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/shared/theme/theme_data_criptos.dart';
@@ -14,13 +12,14 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       localizationsDelegates: const [
         CoreStrings.delegate,
-        GlobalMaterialLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: const [
         Locale('en', ''),
         Locale('pt', 'BR'),
+        Locale('es', ''),
       ],
       onGenerateRoute: RouteController.generateRoute,
       initialRoute: '/portfolio',

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/details/view/details_page.dart';
+import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
 import 'package:projeto_criptos/review/success_conversion_page.dart';
 import 'package:projeto_criptos/review/review_page.dart';
 import 'package:projeto_criptos/shared/common_model/move_model.dart';
@@ -6,17 +8,15 @@ import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dar
 import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
-import 'details/view/details_screen.dart';
 import 'moves/view/moves_page.dart';
-import 'portfolio/view/portfolio_screen.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {
-    if (settings.name == PortfolioScreen.route) {
+    if (settings.name == PortfolioPage.route) {
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return const PortfolioScreen();
+          return const PortfolioPage();
         },
       );
     } else if (settings.name == MovesPage.route) {
@@ -26,12 +26,12 @@ class RouteController {
           return const MovesPage();
         },
       );
-    } else if (settings.name == DetailsScreen.route) {
+    } else if (settings.name == DetailsPage.route) {
       final args = settings.arguments as ToDetailsArguments;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return DetailsScreen(
+          return DetailsPage(
             asset: args.crypto,
             coinAmmount: args.coinAmmount,
           );

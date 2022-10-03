@@ -1,17 +1,17 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/details/widgets/details_screen.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import '../controller/get_price_provider.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/arguments/to_details_arguments.dart';
 
 import '../controller/days_provider.dart';
-import '../widgets/body_details_screen.dart';
 import '../../shared/templates/model_app_bar.dart';
 
-class DetailsScreen extends HookConsumerWidget {
-  const DetailsScreen({
+class DetailsPage extends HookConsumerWidget {
+  const DetailsPage({
     Key? key,
     required this.asset,
     required this.coinAmmount,
@@ -32,7 +32,7 @@ class DetailsScreen extends HookConsumerWidget {
       appBar:  ModelAppBar(
         text: CoreStrings.of(context)!.details,
       ),
-      body: BodyDetailsScreen(
+      body: DetailsScreen(
         coin: args.crypto,
         coinAmmount: args.coinAmmount,
       ),

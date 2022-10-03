@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/conversion/model/conversion_crypto_view_data.dart';
 import '../../shared/common_model/crypto.dart';
 
 
@@ -10,7 +9,7 @@ class CoinButton extends StatefulWidget {
     required this.onPressed,
     required this.asset,
   }) : super(key: key);
-  final List<ConversionCryptoViewData> data;
+  final List<CryptoEntity> data;
   final void Function()? onPressed;
   final CryptoEntity asset;
   @override
