@@ -8,11 +8,9 @@ class PortfolioScreen extends StatelessWidget {
   static const route = '/portfolio';
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: Scaffold(
-        body: BodyPortfolioScreen(),
-        bottomNavigationBar: CustomBottomNavBar(index: 0),
-      ),
+    return const Scaffold(
+      body: BodyPortfolioScreen(),
+      bottomNavigationBar: CustomBottomNavBar(index: 0),
     );
   }
 }

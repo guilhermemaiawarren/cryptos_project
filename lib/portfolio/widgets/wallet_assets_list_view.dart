@@ -39,17 +39,21 @@ class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
       },
     );
     return Expanded(
-      child: ListView.separated(
+      child: ListView.builder(
         physics: const ClampingScrollPhysics(),
         itemCount: widget.cryptosData.length,
-        separatorBuilder: (context, index) => const Divider(thickness: 1),
         itemBuilder: (context, index) {
           CryptoViewData crypto = widget.cryptosData[index];
-          return AssetListTile(
-            crypto: crypto,
-            cryptoBalance: dp(
-              ref.watch(coinAmmountProvider)[index].toString(),
-            ),
+          return Column(
+            children: [
+              const Divider(thickness: 1),
+              AssetListTile(
+                crypto: crypto,
+                cryptoBalance: dp(
+                  ref.watch(coinAmmountProvider)[index].toString(),
+                ),
+              ),
+            ],
           );
         },
       ),

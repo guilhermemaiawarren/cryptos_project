@@ -21,7 +21,8 @@ class DetailsScreen extends HookConsumerWidget {
   final Decimal coinAmmount;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final args = ModalRoute.of(context)!.settings.arguments as ToDetailsArguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ToDetailsArguments;
     Future.delayed(Duration.zero, () {
       ref.read(daysProvider.state).state = 5;
       ref.read(getPriceProvider.state).state = '';

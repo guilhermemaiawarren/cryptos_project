@@ -57,11 +57,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           visible.state
               ? Text(
                   currencyFormatter.format(dtd(balance)),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    fontFamily: AppAssets.montSerrat,
-                  ),
+                  style: Theme.of(context).textTheme.headlineSmall
                 )
               : const VisibilityOffContainer(
                   witdh: 240,

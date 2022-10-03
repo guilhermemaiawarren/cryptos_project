@@ -2,6 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/view/conversion_page.dart';
 
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/app_assets.dart';
@@ -9,13 +10,11 @@ import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 import '../../shared/templates/warren_button.dart';
 import '../../shared/utils/arguments/to_conversion_arguments.dart';
-import '../../shared/utils/currency_formater.dart';
-import '../../shared/utils/decimal_to_double.dart';
 import '../controller/days_provider.dart';
 import '../controller/historic_data_provider.dart';
 import 'change_days_buttons.dart';
 import 'graph_details.dart';
-import 'info_row_details.dart';
+import 'info_column.dart';
 import 'top_page_container.dart';
 
 class BodyDetailsScreen extends HookConsumerWidget {
@@ -30,7 +29,6 @@ class BodyDetailsScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cryptoData = ref.watch(historicDataProvider(coin.id));
-
     int day = ref.watch(daysProvider.state).state;
 
     return cryptoData.when(
@@ -40,79 +38,58 @@ class BodyDetailsScreen extends HookConsumerWidget {
                     1) *
                 100;
         return SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TopPageContainer(
-                model: coin,
-              ),
-              GraphDetails(
-                historyCoinData: List<FlSpot>.from(
-                  data.prices.reversed.map(
-                    (crypto) {
-                      return FlSpot(
-                        crypto[0].toDouble(),
-                        crypto[1].toDouble(),
-                      );
-                    },
+          physics: const ClampingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TopPageContainer(
+                  model: coin,
+                ),
+                GraphDetails(
+                  historyCoinData: List<FlSpot>.from(
+                    data.prices.reversed.map(
+                      (crypto) {
+                        return FlSpot(
+                          crypto[0].toDouble(),
+                          crypto[1].toDouble(),
+                        );
+                      },
+                    ),
                   ),
                 ),
-              ),
-              const ChangeDaysButtons(),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 30,
-                  top: 20,
-                  bottom: 20,
+                const ChangeDaysButtons(),
+                InfoColumn(
+                  day: day,
+                  variation: variation,
+                  coinAmmount: coinAmmount,
+                  coin: coin,
+                  data: data,
                 ),
-                child: Column(
-                  children: [
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Preço ${day}D',
-                      text: currencyFormatter.format(
-                        data.prices.reversed.elementAt(day).last,
-                      ),
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Variação ${day}D',
-                      text:
-                          '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
-                      color: variation > 0 ? Colors.green : Colors.red,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Quantidade',
-                      text:
-                          '${coinAmmount.toStringAsFixed(4)} ${coin.symbol.toUpperCase()}',
-                    ),
-                    const Divider(thickness: 1),
-                    InfoRowDetails(
-                      label: 'Valor',
-                      text: currencyFormatter.format(
-                        dtd(coinAmmount * coin.currentPrice),
-                      ),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                  ),
+                  child: WarrenButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        ConversionPage.route,
+                        arguments: ToConversionArguments(
+                          cryptoAmmount: coinAmmount,
+                          crypto: coin,
+                        ),
+                      );
+                    },
+                    text: 'Converter Moeda',
+                    color: AppAssets.magenta,
+                  ),
                 ),
-              ),
-              WarrenButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/conversion',
-                    arguments: ToConversionArguments(
-                      cryptoAmmount: coinAmmount,
-                      crypto: coin,
-                    ),
-                  );
-                },
-                text: 'Converter Moeda',
-                color: AppAssets.magenta,
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

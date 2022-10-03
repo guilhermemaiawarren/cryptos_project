@@ -23,7 +23,7 @@ class _$GraphDetailsState extends ConsumerState<GraphDetails> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: AspectRatio(
-        aspectRatio: 1.7,
+        aspectRatio: 16/5,
         child: LineChart(
           LineChartData(
             lineTouchData: LineTouchData(

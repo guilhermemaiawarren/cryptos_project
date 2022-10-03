@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-
+import 'package:projeto_criptos/review/success_conversion_page.dart';
+import 'package:projeto_criptos/review/review_page.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
+import 'shared/utils/arguments/to_conversion_arguments.dart';
+import 'shared/utils/arguments/to_details_arguments.dart';
 import 'details/view/details_screen.dart';
 import 'moves/view/moves_screen.dart';
 import 'portfolio/view/portfolio_screen.dart';
-import 'shared/utils/arguments/to_conversion_arguments.dart';
-import 'shared/utils/arguments/to_details_arguments.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {
@@ -45,7 +47,26 @@ class RouteController {
           );
         },
       );
-    }
+    } else if (settings.name == RevisionPage.route) {
+      final args = settings.arguments as ToRevisionArguments;
+      return PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation1, animation2) {
+          return RevisionPage(
+            convert: args.convert,
+            recieve: args.recieve,
+            cambio: args.cambio,
+          );
+        },
+      );
+    } else if (settings.name == SucessConversionPage.route) {
+      return PageRouteBuilder(
+        settings: settings,
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return const SucessConversionPage();
+        },
+      );
+    } 
     return null;
   }
 }

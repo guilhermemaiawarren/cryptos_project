@@ -15,7 +15,7 @@ class ChangeDayButton extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     var graphDays = ref.watch(daysProvider.state).state;
 
-    return InkWell(
+    return GestureDetector(
       onTap: () async {
         ref.read(daysProvider.state).state = days;
       },
@@ -30,11 +30,8 @@ class ChangeDayButton extends HookConsumerWidget {
           horizontal: 10,
           vertical: 10,
         ),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 5,
-        ),
         child: Text(
-          days == 1 ? '24H' : '${days}D',
+          '${days}D',
           style: TextStyle(
             color: graphDays == days ? Colors.black : Colors.grey.shade500,
             letterSpacing: 0.5,
