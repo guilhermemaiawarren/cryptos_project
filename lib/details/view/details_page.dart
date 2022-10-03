@@ -31,7 +31,7 @@ class DetailsPage extends HookConsumerWidget {
       appBar: const ModelAppBar(
         text: 'Detalhes',
       ),
-      body: BodyDetailsScreen(
+      body: DetailsScreen(
         coin: args.crypto,
         coinAmmount: args.coinAmmount,
       ),

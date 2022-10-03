@@ -17,8 +17,8 @@ import '../widgets/graph_details.dart';
 import '../widgets/info_column.dart';
 import '../widgets/top_page_container.dart';
 
-class BodyDetailsScreen extends HookConsumerWidget {
-  const BodyDetailsScreen({
+class DetailsScreen extends HookConsumerWidget {
+  const DetailsScreen({
     Key? key,
     required this.coin,
     required this.coinAmmount,
