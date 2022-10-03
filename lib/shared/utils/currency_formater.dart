@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:intl/intl.dart';
 
 NumberFormat currencyFormatter = NumberFormat.simpleCurrency(
-  locale: "pt_BR",
+  locale: Platform.localeName,
 );
