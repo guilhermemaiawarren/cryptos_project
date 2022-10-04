@@ -40,7 +40,7 @@ class DetailsScreen extends HookConsumerWidget {
                 100;
         return Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TopPageContainer(
               model: coin,
