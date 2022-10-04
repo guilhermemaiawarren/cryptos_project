@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/common_model/crypto.dart';
+import '../../shared/templates/default_info_row.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../model/prices_view_data.dart';
-import '../../shared/templates/default_info_row.dart';
 
 class InfoColumn extends StatelessWidget {
   const InfoColumn({

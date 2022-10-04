@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../moves/view/moves_screen.dart';
 import '../../shared/templates/custom_bottom_nav_bar.dart';
+import 'moves_screen.dart';
 
 class MovesPage extends StatelessWidget {
   const MovesPage({

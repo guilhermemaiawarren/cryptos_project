@@ -212,7 +212,7 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
                 if (value == '' ||
                     value == null ||
                     double.tryParse(value) == 0) {
-                  return 'Valor deve ser maior que zero';
+                  return CoreStrings.of(context)!.validatorReturnOne;
                 } else if (ConversionMethods.validCoinValue(value)) {
                   return CoreStrings.of(context)!.validatorReturnTwo;
                 } else if (dp(ConversionMethods.coinRegExp(value)) >

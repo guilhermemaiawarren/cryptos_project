@@ -13,10 +13,10 @@ import '../../shared/templates/warren_button.dart';
 import '../../shared/utils/arguments/to_conversion_arguments.dart';
 import '../controller/days_provider.dart';
 import '../controller/historic_data_provider.dart';
-import 'change_days_buttons.dart';
-import 'graph_details.dart';
-import 'info_column.dart';
-import 'top_page_container.dart';
+import '../widgets/change_days_buttons.dart';
+import '../widgets/graph_details.dart';
+import '../widgets/info_column.dart';
+import '../widgets/top_page_container.dart';
 
 class DetailsScreen extends HookConsumerWidget {
   const DetailsScreen({
