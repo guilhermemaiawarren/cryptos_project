@@ -32,11 +32,12 @@ class DefaultInfoRow extends StatelessWidget {
           const Spacer(),
           Text(
             text,
+            maxLines: 1,
             style: TextStyle(
               color: color ?? const Color.fromRGBO(47, 47, 51, 1),
               fontWeight: fontWeight ?? FontWeight.w400,
-              fontSize: 18,
               letterSpacing: 0.5,
+              fontSize: 17,
             ),
           ),
         ],

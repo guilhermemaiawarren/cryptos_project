@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/widgets/details_screen.dart';
+import 'package:projeto_criptos/details/view/details_screen.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import '../controller/get_price_provider.dart';
 import '../../shared/common_model/crypto.dart';

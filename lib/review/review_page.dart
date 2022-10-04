@@ -36,7 +36,7 @@ class _$RevisionPageState extends ConsumerState<ReviewPage> {
   String getExchange() {
     double exchange = dtd(widget.convertCoin.currentPrice) /
         dtd(widget.recieveCoin.currentPrice);
-    return '1 ${widget.convertCoin.symbol.toUpperCase()} = ${exchange.toStringAsFixed(7)} ${widget.recieveCoin.symbol.toUpperCase()}';
+    return '1 ${widget.convertCoin.symbol.toUpperCase()} = ${exchange.toStringAsFixed(4)} ${widget.recieveCoin.symbol.toUpperCase()}';
   }
 
   late MoveModel moves;
@@ -71,7 +71,7 @@ class _$RevisionPageState extends ConsumerState<ReviewPage> {
                 convert:
                     '${widget.convert.toString()} ${widget.convertCoin.symbol.toUpperCase()}',
                 recieve:
-                    '${widget.recieve.toStringAsFixed(6)} ${widget.recieveCoin.symbol.toUpperCase()}',
+                    '${widget.recieve.toStringAsFixed(5)} ${widget.recieveCoin.symbol.toUpperCase()}',
                 cambio: getExchange(),
               ),
             ),
