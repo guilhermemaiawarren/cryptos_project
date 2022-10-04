@@ -223,9 +223,11 @@ class _$ConversionScreenState extends ConsumerState<ConversionScreen> {
               },
             ),
             HelperCurrencyText(convertHelper: convertHelper),
-            TotalConvertValueContainer(
-              convertedCryptoHelper: convertedCryptoHelper,
-              cryptoConverted: cryptoConverted,
+            Expanded(
+              child: TotalConvertValueContainer(
+                convertedCryptoHelper: convertedCryptoHelper,
+                cryptoConverted: cryptoConverted,
+              ),
             ),
           ],
         );

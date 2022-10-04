@@ -18,6 +18,7 @@ class _SwapIconButtonState extends State<SwapIconButton> {
     return IconButton(
       icon: Icon(
         Icons.sync_alt,
+        key: const Key('SwapIcon'),
         color: AppAssets.magenta,
         size: 25,
       ),

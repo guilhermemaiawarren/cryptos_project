@@ -35,6 +35,7 @@ class _CoinTextFieldState extends State<CoinTextField> {
         child: Column(
           children: [
             TextFormField(
+              key: const Key('CriptoFormField'),
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: widget.controller,
               decoration: InputDecoration(

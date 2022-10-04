@@ -18,7 +18,7 @@ class PortfolioScreen extends HookConsumerWidget {
         return Column(
           children: [
             const WalletVisibility(),
-            WalletAssetsListView(cryptosData: data),
+            Expanded(child: WalletAssetsListView(cryptosData: data)),
           ],
         );
       },

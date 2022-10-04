@@ -20,6 +20,7 @@ class ChangeDayButton extends HookConsumerWidget {
         ref.read(daysProvider.state).state = days;
       },
       child: Container(
+        key: const Key('ContainerChangeDaysButton'),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: graphDays == days
@@ -32,6 +33,7 @@ class ChangeDayButton extends HookConsumerWidget {
         ),
         child: Text(
           '${days}D',
+        key: const Key('TextChangeDaysButton'),
           style: TextStyle(
             color: graphDays == days ? Colors.black : Colors.grey.shade500,
             letterSpacing: 0.5,

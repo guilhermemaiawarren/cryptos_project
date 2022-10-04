@@ -22,6 +22,8 @@ dependencies:
   loading_animation_widget: ^1.2.0+3
   flutter_localizations:
     sdk: flutter
+  faker: ^2.0.0
+  image_test_utils: ^1.0.0
 
 dev_dependencies:
   flutter_test:

@@ -48,12 +48,12 @@ class RouteController {
           );
         },
       );
-    } else if (settings.name == RevisionPage.route) {
+    } else if (settings.name == ReviewPage.route) {
       final args = settings.arguments as ToRevisionArguments;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return RevisionPage(
+          return ReviewPage(
             convert: args.convert,
             recieve: args.recieve,
             convertCoin: args.convertCoin,
