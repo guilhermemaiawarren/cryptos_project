@@ -62,3 +62,11 @@ Uso do package device_preview para testes de responsividade.
 
 - Internacionalização do App em 3 línguas (pt-BR, en-US, es)
 - Formatação de moeda e chamada da API adaptadas ao local do dispositivo
+
+-- Card 11
+
+- Testes de Widgets para as páginas
+- Uso da lib faker para mockar dados aleatoriamente
+- Uso da lib network_image_mock para conseguir carregar imagens geradas pelo faker sem retornar erro HTTP 400
+- Ao fazer os testes, percebi alguns erros de layout em algumas telas e consertei
+- Apk do app gerado para celular com o intuito de fazer testes em ainda mais plataformas 
