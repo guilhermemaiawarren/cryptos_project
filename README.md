@@ -57,3 +57,8 @@ Uso do package device_preview para testes de responsividade.
 
 - Ao confirmar uma conversão na tela de revisão, um novo valor é adicionado na lista de movimentações, porém, fica salvo apenas enquanto o App roda, sem banco de dados
 - Ao realizar uma movimentação, os valores são descontados e acrescentados às criptomoedas na tela portfólio
+
+-- Card 10
+
+- Internacionalização do App em 3 línguas (pt-BR, en-US, es)
+- Formatação de moeda e chamada da API adaptadas ao local do dispositivo
