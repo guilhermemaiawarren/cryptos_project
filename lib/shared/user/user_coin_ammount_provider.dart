@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final coinAmmountProvider =
+final userCoinAmmountProvider =
     StateNotifierProvider<AmmountNotifier, List<double>>(
   (ref) => AmmountNotifier(),
 );
@@ -10,7 +10,7 @@ final coinAmmountProvider =
 class AmmountNotifier extends StateNotifier<List<double>> {
   AmmountNotifier() : super([]) {
     for (double index = 0; index < 100; index++) {
-      state.add(Random().nextDouble() * 15);
+      state.add(Random().nextDouble() * 30);
     }
   }
 }

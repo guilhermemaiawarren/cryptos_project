@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
-import '../controller/controller_arguments.dart';
-import '../controller/validate_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
+import '../../shared/utils/arguments/to_revision_arguments.dart';
+import '../controller/controller_arguments.dart';
+import '../controller/validate_provider.dart';
 
 class FloatingCriptoButton extends HookConsumerWidget {
   const FloatingCriptoButton({
@@ -25,7 +25,8 @@ class FloatingCriptoButton extends HookConsumerWidget {
                 arguments: ToRevisionArguments(
                   convert: controller.convert,
                   recieve: controller.recieve,
-                  cambio: controller.cambio,
+                  convertCoin: controller.convertCoin,
+                  recieveCoin: controller.recieveCoin,
                 ),
               );
               ref.read(validateProvider.state).state = false;

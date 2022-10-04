@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/review/success_conversion_page.dart';
-import 'package:projeto_criptos/review/review_page.dart';
-import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
+import 'details/view/details_page.dart';
+import 'movements/view/moves_page.dart';
+import 'review/success_conversion_page.dart';
+import 'review/review_page.dart';
+import 'shared/common_model/move_model.dart';
+import 'shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
-import 'details/view/details_screen.dart';
-import 'moves/view/moves_screen.dart';
-import 'portfolio/view/portfolio_screen.dart';
+import 'portfolio/view/portfolio_page.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {
-    if (settings.name == PortfolioScreen.route) {
+    if (settings.name == PortfolioPage.route) {
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return const PortfolioScreen();
+          return const PortfolioPage();
         },
       );
-    } else if (settings.name == MovesScreen.route) {
+    } else if (settings.name == MovesPage.route) {
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return const MovesScreen();
+          return const MovesPage();
         },
       );
-    } else if (settings.name == DetailsScreen.route) {
+    } else if (settings.name == DetailsPage.route) {
       final args = settings.arguments as ToDetailsArguments;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation1, animation2) {
-          return DetailsScreen(
+          return DetailsPage(
             asset: args.crypto,
             coinAmmount: args.coinAmmount,
           );
@@ -55,18 +56,20 @@ class RouteController {
           return RevisionPage(
             convert: args.convert,
             recieve: args.recieve,
-            cambio: args.cambio,
+            convertCoin: args.convertCoin,
+            recieveCoin: args.recieveCoin,
           );
         },
       );
     } else if (settings.name == SucessConversionPage.route) {
+      final args = settings.arguments as MoveModel;
       return PageRouteBuilder(
         settings: settings,
         pageBuilder: (context, animation, secondaryAnimation) {
-          return const SucessConversionPage();
+          return SucessConversionPage(move: args);
         },
       );
-    } 
+    }
     return null;
   }
 }

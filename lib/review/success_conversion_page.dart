@@ -1,19 +1,21 @@
-import 'dart:math';
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+
+import '../shared/common_model/move_model.dart';
+import '../shared/templates/app_assets.dart';
 
 class SucessConversionPage extends StatefulWidget {
-  const SucessConversionPage({Key? key}) : super(key: key);
+  const SucessConversionPage({
+    Key? key,
+    required this.move,
+  }) : super(key: key);
   static const route = '/success';
+  final MoveModel move;
   @override
   State<SucessConversionPage> createState() => _SucessConversionPageState();
 }
 
-class _SucessConversionPageState extends State<SucessConversionPage>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
+class _SucessConversionPageState extends State<SucessConversionPage> {
   double radius = 30;
   void animateContainer() {
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -32,16 +34,10 @@ class _SucessConversionPageState extends State<SucessConversionPage>
   void initState() {
     super.initState();
     animateContainer();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    _controller.forward();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
   }
 
@@ -57,7 +53,11 @@ class _SucessConversionPageState extends State<SucessConversionPage>
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushReplacementNamed(context, '/portfolio');
+            Navigator.pushReplacementNamed(
+              context,
+              '/moves',
+              arguments: widget.move,
+            );
           },
         ),
       ),
@@ -68,24 +68,15 @@ class _SucessConversionPageState extends State<SucessConversionPage>
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AnimatedBuilder(
-                animation: _controller.view,
-                builder: (context, child) {
-                  return Transform.rotate(
-                    angle: _controller.value * 2 * pi,
-                    child: child,
-                  );
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(seconds: 2),
-                  curve: Curves.easeIn,
-                  child: CircleAvatar(
-                    radius: radius,
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: const ImageIcon(
-                      AssetImage('assets/icons/success_button.png'),
-                    ).image,
-                  ),
+              AnimatedContainer(
+                duration: const Duration(seconds: 2),
+                curve: Curves.easeIn,
+                child: CircleAvatar(
+                  radius: radius,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: const ImageIcon(
+                    AssetImage('assets/icons/success_button.png'),
+                  ).image,
                 ),
               ),
               AutoSizeText(

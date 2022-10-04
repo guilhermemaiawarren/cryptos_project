@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../controller/coin_ammount_provider.dart';
+import '../../shared/user/user_coin_ammount_provider.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 import '../controller/balance_provider.dart';
@@ -25,7 +25,7 @@ class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
     Decimal balance = dp('0.0');
     for (int index = 0; index < assets.length; index++) {
       balance += assets[index].currentPrice *
-          dp(ref.watch(coinAmmountProvider)[index].toString());
+          dp(ref.watch(userCoinAmmountProvider)[index].toString());
     }
     return balance;
   }
@@ -50,7 +50,7 @@ class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
               AssetListTile(
                 crypto: crypto,
                 cryptoBalance: dp(
-                  ref.watch(coinAmmountProvider)[index].toString(),
+                  ref.watch(userCoinAmmountProvider)[index].toString(),
                 ),
               ),
             ],
