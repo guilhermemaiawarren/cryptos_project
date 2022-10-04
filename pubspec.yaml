@@ -22,8 +22,6 @@ dependencies:
   loading_animation_widget: ^1.2.0+3
   flutter_localizations:
     sdk: flutter
-  faker: ^2.0.0
-  image_test_utils: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +30,8 @@ dev_dependencies:
   build_runner: ^2.2.1
   json_serializable: ^6.4.0
   device_preview: ^1.1.0
-
+  faker: ^2.0.0
+  network_image_mock: ^2.1.1
   
   
   
