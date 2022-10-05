@@ -18,7 +18,7 @@ class DefaultInfoRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 11,
+        vertical: 5,
       ),
       child: Row(
         children: [
