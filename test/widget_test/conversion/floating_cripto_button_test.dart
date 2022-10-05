@@ -5,12 +5,15 @@ import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load FloatingCriptoButton THEN identify if background colors equals grey',
+  testWidgets(
+      'WHEN load FloatingCriptoButton THEN compare if background color and key match',
       (WidgetTester tester) async {
     await loadPage(tester, const FloatingCriptoButton());
 
-    final button = tester.widget<FloatingActionButton>(find.byType(FloatingActionButton));
+    final button =
+        tester.widget<FloatingActionButton>(find.byType(FloatingActionButton));
 
     expect(button.backgroundColor, Colors.grey);
+    expect(button.child!.key, const Key('FloatingIconKey'));
   });
 }

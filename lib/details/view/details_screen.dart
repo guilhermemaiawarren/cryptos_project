@@ -38,53 +38,55 @@ class DetailsScreen extends HookConsumerWidget {
             (data.prices.last.last / data.prices.reversed.elementAt(day).last -
                     1) *
                 100;
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            TopPageContainer(
-              model: coin,
-            ),
-            GraphDetails(
-              historyCoinData: List<FlSpot>.from(
-                data.prices.reversed.map(
-                  (crypto) {
-                    return FlSpot(
-                      crypto[0].toDouble(),
-                      crypto[1].toDouble(),
-                    );
-                  },
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TopPageContainer(
+                model: coin,
+              ),
+              GraphDetails(
+                historyCoinData: List<FlSpot>.from(
+                  data.prices.reversed.map(
+                    (crypto) {
+                      return FlSpot(
+                        crypto[0].toDouble(),
+                        crypto[1].toDouble(),
+                      );
+                    },
+                  ),
                 ),
               ),
-            ),
-            const ChangeDaysButtons(),
-            InfoColumn(
-              day: day,
-              variation: variation,
-              coinAmmount: coinAmmount,
-              coin: coin,
-              data: data,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 30,
+              const ChangeDaysButtons(),
+              InfoColumn(
+                day: day,
+                variation: variation,
+                coinAmmount: coinAmmount,
+                coin: coin,
+                data: data,
               ),
-              child: WarrenButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context,
-                    ConversionPage.route,
-                    arguments: ToConversionArguments(
-                      cryptoAmmount: coinAmmount,
-                      crypto: coin,
-                    ),
-                  );
-                },
-                text: CoreStrings.of(context)!.convertCoin,
-                color: AppAssets.magenta,
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                ),
+                child: WarrenButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      ConversionPage.route,
+                      arguments: ToConversionArguments(
+                        cryptoAmmount: coinAmmount,
+                        crypto: coin,
+                      ),
+                    );
+                  },
+                  text: CoreStrings.of(context)!.convertCoin,
+                  color: AppAssets.magenta,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         );
       },
       error: (e, r) {

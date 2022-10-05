@@ -23,8 +23,6 @@ class PortfolioScreen extends HookConsumerWidget {
         );
       },
       error: (e, s) {
-        debugPrint(e.toString());
-        debugPrint(s.toString());
         return ErrorBody(
           onRetry: () {
             ref.refresh(cryptosProvider);
