@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../setup/setup_l10n_tester.dart';
+import '../../setup/setup_widget_tester.dart';
 
 void main() {
   testWidgets('WHEN load L10nWidgetTester THEN test portuguese texts',
       (WidgetTester tester) async {
-    await loadl10n(tester, const L10nWidgetTester(locale: Locale('es', '')));
+    await loadPage(tester, const L10nWidgetTester(locale: Locale('es', '')));
 
     expect(find.text('Portafolio'), findsOneWidget);
     expect(find.text('Movimientos'), findsOneWidget);

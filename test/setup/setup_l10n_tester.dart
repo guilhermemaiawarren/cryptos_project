@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/shared/theme/theme_data_criptos.dart';
@@ -75,9 +74,4 @@ class L10nWidget extends StatelessWidget {
       ],
     );
   }
-}
-
-Future<void> loadl10n(WidgetTester tester, Widget child) async {
-  var page = child;
-  await tester.pumpWidget(page);
 }
