@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/arguments/to_revision_arguments.dart';
-import '../controller/controller_arguments.dart';
-import '../controller/validate_provider.dart';
+import '../provider/validate_provider.dart';
 
-class FloatingCriptoButton extends HookConsumerWidget {
+class FloatingCriptoButton extends ConsumerWidget {
   const FloatingCriptoButton({
     Key? key,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool validate = ref.watch(validateProvider.state).state;
-    final controller = ref.watch(controllerArgumentsProvider.state).state;
+    final controller = ref.watch(convertControllerProvider);
+    controller.addListener(() {});
     return FloatingActionButton(
-      backgroundColor: validate ? AppAssets.magenta : Colors.grey,
-      onPressed: validate
-          ? () {
-              Navigator.pushNamed(
-                context,
-                '/revision',
-                arguments: ToRevisionArguments(
-                  convert: controller.convert,
-                  recieve: controller.recieve,
-                  convertCoin: controller.convertCoin,
-                  recieveCoin: controller.recieveCoin,
-                ),
-              );
-              ref.read(validateProvider.state).state = false;
-            }
-          : null,
+      backgroundColor: controller.validate ? AppAssets.magenta : Colors.grey,
+      onPressed: () {
+        if (controller.validate) {
+          Navigator.pushNamed(
+            context,
+            '/revision',
+            arguments: ToRevisionArguments(
+              convert: controller.assetHelper,
+              recieve: controller.convertedCryptoHelper,
+              convertCoin: controller.asset,
+              recieveCoin: controller.cryptoConverted,
+            ),
+          );
+          ref.read(validateProvider.state).state = false;
+        }
+      },
       child: const Icon(
         Icons.keyboard_arrow_right,
         key: Key('FloatingIconKey'),

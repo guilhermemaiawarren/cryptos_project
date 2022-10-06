@@ -4,11 +4,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/user/user_coin_ammount_provider.dart';
 import '../../shared/utils/decimal_parse.dart';
 
-import '../controller/balance_provider.dart';
+import '../provider/balance_provider.dart';
 import '../model/crypto_view_data.dart';
 import 'asset_list_tile.dart';
 
-class WalletAssetsListView extends StatefulHookConsumerWidget {
+class WalletAssetsListView extends ConsumerStatefulWidget {
   const WalletAssetsListView({
     Key? key,
     required this.cryptosData,

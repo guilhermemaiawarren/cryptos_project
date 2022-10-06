@@ -5,11 +5,11 @@ import '../../shared/utils/arguments/to_details_arguments.dart';
 
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
-import '../controller/visible_provider.dart';
+import '../provider/visible_provider.dart';
 import '../model/crypto_view_data.dart';
 import 'visibility_off_container.dart';
 
-class AssetListTile extends HookConsumerWidget {
+class AssetListTile extends ConsumerWidget {
   const AssetListTile({
     Key? key,
     required this.crypto,

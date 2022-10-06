@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/widgets/body_conversion_screen.dart';
 import 'package:projeto_criptos/shared/common_model/crypto.dart';
-import '../../portfolio/controller/cryptos_provider.dart';
+import '../../portfolio/provider/cryptos_provider.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 
