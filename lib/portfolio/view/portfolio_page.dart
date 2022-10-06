@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/portfolio/widgets/portfolio_screen.dart';
+import 'package:projeto_criptos/portfolio/view/portfolio_screen.dart';
 
 import '../../shared/templates/custom_bottom_nav_bar.dart';
 

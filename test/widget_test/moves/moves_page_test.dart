@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_criptos/moves/view/moves_page.dart';
-import 'package:projeto_criptos/moves/view/moves_screen.dart';
+import 'package:projeto_criptos/movements/view/moves_page.dart';
+import 'package:projeto_criptos/movements/view/moves_screen.dart';
 
 import '../../setup/setup_widget_tester.dart';
 

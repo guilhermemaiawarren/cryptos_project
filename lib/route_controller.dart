@@ -6,9 +6,9 @@ import 'package:projeto_criptos/review/review_page.dart';
 import 'package:projeto_criptos/shared/common_model/move_model.dart';
 import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
+import 'movements/view/moves_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
-import 'moves/view/moves_page.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {

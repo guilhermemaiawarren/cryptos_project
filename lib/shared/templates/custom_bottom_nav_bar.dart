@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
 
-import '../../moves/view/moves_page.dart';
+import '../../movements/view/moves_page.dart';
 import '../../shared/templates/app_assets.dart';
 
 class CustomBottomNavBar extends StatefulWidget {

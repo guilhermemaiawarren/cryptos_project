@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:projeto_criptos/moves/widgets/movements_list_tile.dart';
+import 'package:projeto_criptos/movements/widgets/movements_list_tile.dart';
 import 'package:projeto_criptos/shared/common_model/move_model.dart';
 import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 

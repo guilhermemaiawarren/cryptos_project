@@ -6,11 +6,11 @@ import 'package:projeto_criptos/shared/user/movements_provider.dart';
 import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
 import 'package:projeto_criptos/review/widgets/info_review_column.dart';
 
-import 'package:projeto_criptos/review/widgets/review_buttons.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
-import 'package:projeto_criptos/shared/templates/model_app_bar.dart';
-import 'package:projeto_criptos/shared/user/user_coin_ammount_provider.dart';
-import 'package:projeto_criptos/shared/utils/decimal_to_double.dart';
+import 'widgets/review_buttons.dart';
+import '../shared/common_model/crypto.dart';
+import '../shared/templates/model_app_bar.dart';
+import '../shared/user/user_coin_ammount_provider.dart';
+import '../shared/utils/decimal_to_double.dart';
 
 import '../shared/common_model/move_model.dart';
 
