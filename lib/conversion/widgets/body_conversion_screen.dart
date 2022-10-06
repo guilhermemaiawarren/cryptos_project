@@ -44,22 +44,6 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
   final formKey = GlobalKey<FormState>();
   Decimal convertHelper = dp('0.0');
   Decimal convertedCryptoHelper = dp('0.0');
-  buttonValidation() {
-    setState(() {
-      ref.read(validateProvider.state).state =
-          formKey.currentState!.validate() ? true : false;
-    });
-  }
-
-  convertedValue(String value) {
-    setState(() {
-      convertHelper =
-          dp(ConversionMethods.coinRegExp(value)) * asset.currentPrice;
-      convertedCryptoHelper = dp(
-          (convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble())
-              .toString());
-    });
-  }
 
   @override
   void initState() {
@@ -71,12 +55,31 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    convertedValue(String value) {
+      setState(() {
+        convertHelper =
+            dp(ConversionMethods.coinRegExp(value)) * asset.currentPrice;
+        convertedCryptoHelper = dp(
+            (convertHelper.toDouble() / cryptoConverted.currentPrice.toDouble())
+                .toString());
+      });
+    }
+
+    buttonValidation() {
+      setState(() {
+        ref.read(validateProvider.state).state =
+            formKey.currentState!.validate() ? true : false;
+      });
+    }
+
     final controller = ref.watch(controllerArgumentsProvider.state).state;
     controller.convertCoin = asset;
     controller.recieveCoin = cryptoConverted;
-     if (cryptoConverted.id == 'id') {
-          cryptoConverted = widget.data[0].id == asset.id ? widget.data[1] : widget.data[0];
-        }
+
+    if (cryptoConverted.id == 'id') {
+      cryptoConverted =
+          widget.data[0].id == asset.id ? widget.data[1] : widget.data[0];
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -84,7 +87,9 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
           asset: asset,
           coinAmmount: coinAmmount,
         ),
-        const InformativeText(key: Key('InformativeText'),),
+        const InformativeText(
+          key: Key('InformativeText'),
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -97,7 +102,6 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
                   widget.data,
                   ListView(
                     children: widget.data.map((crypto) {
-                      int index = widget.data.indexOf(crypto);
                       return Column(
                         children: [
                           const Divider(thickness: 1),
@@ -110,14 +114,26 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
                                 }
                                 asset = crypto;
                                 coinAmmount = dp(ref
-                                    .read(userCoinAmmountProvider)[index]
+                                    .read(userCoinAmmountProvider)[widget.data
+                                        .indexOf(asset as CryptoViewData)]
                                     .toString());
                                 controller.convertCoin = asset;
                               });
                               convertController.clear();
                               buttonValidation();
-                              convertedValue('0');
-                              Navigator.of(context).pop();
+                              ConversionMethods.convertedValue('0', () {
+                                setState(() {
+                                  convertHelper =
+                                      dp(ConversionMethods.coinRegExp('0')) *
+                                          asset.currentPrice;
+                                  convertedCryptoHelper = dp(
+                                      (convertHelper.toDouble() /
+                                              cryptoConverted.currentPrice
+                                                  .toDouble())
+                                          .toString());
+                                });
+                              });
+                              Navigator.pop(context);
                             },
                             title: Text(
                               crypto.symbol.toUpperCase(),
@@ -177,12 +193,31 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
                                   asset = temp;
                                   controller.convertCoin = asset;
                                 }
+                                buttonValidation();
                               });
-                              buttonValidation();
-                              convertedValue(convertController.text);
-                              Navigator.of(context).pop();
+                              // convertedValue(convertController.text);
+                              ConversionMethods.convertedValue(
+                                  convertController.text, () {
+                                setState(() {
+                                  convertHelper = dp(
+                                          ConversionMethods.coinRegExp(
+                                              convertController.text)) *
+                                      asset.currentPrice;
+                                  convertedCryptoHelper = dp(
+                                      (convertHelper.toDouble() /
+                                              cryptoConverted.currentPrice
+                                                  .toDouble())
+                                          .toString());
+                                });
+                              });
+                              Navigator.pop(context);
                             },
-                            title: Text(crypto.symbol.toUpperCase()),
+                            title: Text(
+                              crypto.symbol.toUpperCase(),
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             subtitle: Text(crypto.name),
                             trailing: const Icon(Icons.keyboard_arrow_right),
                           ),
@@ -209,7 +244,7 @@ class _BodyConversionScreenState extends ConsumerState<BodyConversionScreen> {
           validator: (value) {
             if (value == '' || value == null || double.tryParse(value) == 0) {
               return CoreStrings.of(context)!.validatorReturnOne;
-            } else if (ConversionMethods.validCoinValue(value)) {
+            } else if (!ConversionMethods.validCoinValue(value)) {
               return CoreStrings.of(context)!.validatorReturnTwo;
             } else if (dp(ConversionMethods.coinRegExp(value)) > coinAmmount) {
               return CoreStrings.of(context)!.validatorReturnThree;

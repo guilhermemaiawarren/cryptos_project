@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:projeto_criptos/conversion/logicholder/methods/conversion_methods.dart';
 
+
 void main() {
   test(
       'WHEN ConversionMethods.coinRegExp recieve value THEN compare if return is correct',
@@ -19,5 +20,12 @@ void main() {
 
     expect(coinValue, true);
     expect(coinValue2, false);
+  });
+  test(
+      'WHEN ConversionMethods.convertedValue execute THEN confirm if return is the expected',
+      () async {
+    String value = ConversionMethods.convertedValue('25', () {});
+
+    expect(value, '25');
   });
 }

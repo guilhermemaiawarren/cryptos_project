@@ -4,7 +4,10 @@ import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import '../../../shared/templates/app_assets.dart';
 
 Future<void> showModalBottomSheetCryptos(
-    BuildContext context, List<CryptoEntity> data, Widget listView) {
+  BuildContext context,
+  List<CryptoEntity> data,
+  Widget child,
+) {
   return showModalBottomSheet<void>(
     context: context,
     shape: const RoundedRectangleBorder(
@@ -33,7 +36,7 @@ Future<void> showModalBottomSheetCryptos(
               ),
             ),
             Expanded(
-              child: listView,
+              child: child,
             ),
           ],
         ),
