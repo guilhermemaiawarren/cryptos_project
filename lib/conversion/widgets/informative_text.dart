@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 
 class InformativeText extends StatelessWidget {
@@ -13,7 +14,7 @@ class InformativeText extends StatelessWidget {
         horizontal: 30,
       ),
       child: Text(
-        'Quanto você gostaria de converter?',
+        CoreStrings.of(context)!.textConvert,
         style: Theme.of(context).textTheme.headlineMedium,
       ),
     );

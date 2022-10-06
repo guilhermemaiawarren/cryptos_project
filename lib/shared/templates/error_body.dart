@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import 'warren_button.dart';
 
@@ -22,9 +22,9 @@ class ErrorBody extends HookConsumerWidget {
             'assets/icons/error.png',
             scale: 2,
           ),
-          const Text(
-            'Ops! Ocorreu um erro',
-            style: TextStyle(
+          Text(
+            CoreStrings.of(context)!.errorMessage,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               letterSpacing: 1,
               fontSize: 20,
@@ -37,7 +37,7 @@ class ErrorBody extends HookConsumerWidget {
             child: WarrenButton(
               onPressed: onRetry,
               color: Colors.black87,
-              text: 'Tentar Novamente',
+              text: CoreStrings.of(context)!.retry,
             ),
           ),
         ],

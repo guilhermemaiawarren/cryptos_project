@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'details/view/details_page.dart';
-import 'movements/view/moves_page.dart';
-import 'review/success_conversion_page.dart';
-import 'review/review_page.dart';
-import 'shared/common_model/move_model.dart';
-import 'shared/utils/arguments/to_revision_arguments.dart';
+import 'package:projeto_criptos/details/view/details_page.dart';
+import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
+import 'package:projeto_criptos/review/success_conversion_page.dart';
+import 'package:projeto_criptos/review/review_page.dart';
+import 'package:projeto_criptos/shared/common_model/move_model.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
 import 'conversion/view/conversion_page.dart';
+import 'movements/view/moves_page.dart';
 import 'shared/utils/arguments/to_conversion_arguments.dart';
 import 'shared/utils/arguments/to_details_arguments.dart';
-import 'portfolio/view/portfolio_page.dart';
 
 class RouteController {
   static Route<dynamic>? generateRoute(settings) {

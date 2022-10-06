@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../shared/common_model/crypto.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
 import '../../../shared/templates/app_assets.dart';
 

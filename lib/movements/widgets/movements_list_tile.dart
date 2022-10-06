@@ -1,3 +1,7 @@
+
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -7,15 +11,15 @@ import '../../shared/common_model/move_model.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
 class MovementListTile extends StatelessWidget {
-  MovementListTile({
+  const MovementListTile({
     Key? key,
     required this.model,
   }) : super(key: key);
   final MoveModel model;
 
-  final dateFormat = DateFormat('dd/MM/yyyy');
   @override
   Widget build(BuildContext context) {
+  final dateFormat = DateFormat.yMd(Platform.localeName);
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -1,5 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/default_info_row.dart';
@@ -34,14 +35,14 @@ class InfoColumn extends StatelessWidget {
         children: [
           const Divider(thickness: 1),
           DefaultInfoRow(
-            label: 'Preço ${day}D',
+            label: '${CoreStrings.of(context)!.price} ${day}D',
             text: currencyFormatter.format(
               data.prices.reversed.elementAt(day).last,
             ),
           ),
           const Divider(thickness: 1),
           DefaultInfoRow(
-            label: 'Variação ${day}D',
+            label: '${CoreStrings.of(context)!.variation} ${day}D',
             text:
                 '${variation > 0 ? '+' : ''} ${variation.toStringAsFixed(2)}%',
             color: variation > 0 ? Colors.green : Colors.red,
@@ -49,13 +50,13 @@ class InfoColumn extends StatelessWidget {
           ),
           const Divider(thickness: 1),
           DefaultInfoRow(
-            label: 'Quantidade',
+            label: CoreStrings.of(context)!.quantity,
             text:
                 '${coinAmmount.toStringAsFixed(4)} ${coin.symbol.toUpperCase()}',
           ),
           const Divider(thickness: 1),
           DefaultInfoRow(
-            label: 'Valor',
+            label: CoreStrings.of(context)!.value,
             text: currencyFormatter.format(
               dtd(coinAmmount * coin.currentPrice),
             ),

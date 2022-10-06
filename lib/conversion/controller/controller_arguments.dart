@@ -1,8 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-
-import '../../shared/common_model/crypto.dart';
-import '../../shared/utils/arguments/to_revision_arguments.dart';
-import '../../shared/utils/decimal_parse.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
+import 'package:projeto_criptos/shared/utils/arguments/to_revision_arguments.dart';
+import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
 final controllerArgumentsProvider = StateProvider(
   (ref) {

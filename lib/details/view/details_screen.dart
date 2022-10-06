@@ -2,8 +2,9 @@ import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/view/conversion_page.dart';
 
-import '../../conversion/view/conversion_page.dart';
+import '../../l10n/core_strings.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/error_body.dart';
@@ -84,7 +85,7 @@ class DetailsScreen extends HookConsumerWidget {
                         ),
                       );
                     },
-                    text: 'Converter Moeda',
+                    text: CoreStrings.of(context)!.convertCoin,
                     color: AppAssets.magenta,
                   ),
                 ),

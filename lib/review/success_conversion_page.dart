@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-
-import '../shared/common_model/move_model.dart';
-import '../shared/templates/app_assets.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
+import 'package:projeto_criptos/shared/common_model/move_model.dart';
+import 'package:projeto_criptos/shared/templates/app_assets.dart';
 
 class SucessConversionPage extends StatefulWidget {
   const SucessConversionPage({
@@ -80,7 +80,7 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
                 ),
               ),
               AutoSizeText(
-                'Conversão efetuada',
+                CoreStrings.of(context)!.concludedConvertsion,
                 maxLines: 1,
                 style: TextStyle(
                   fontSize: 32.5,
@@ -89,7 +89,7 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
                 ),
               ),
               Text(
-                'Conversão de moeda efetuada com sucesso!',
+                CoreStrings.of(context)!.concludedConvertsionText,
                 style: TextStyle(
                   color: Colors.grey.shade600,
                   fontSize: 15,

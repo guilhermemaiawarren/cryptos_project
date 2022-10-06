@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_criptos/l10n/core_strings.dart';
 
 import '../../shared/templates/default_info_row.dart';
 
@@ -21,11 +22,11 @@ class InfoReviewColumn extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const Divider(thickness: 1),
-          DefaultInfoRow(label: 'Converter', text: convert),
+          DefaultInfoRow(label: CoreStrings.of(context)!.convert, text: convert),
           const Divider(thickness: 1),
-          DefaultInfoRow(label: 'Receber', text: recieve),
+          DefaultInfoRow(label: CoreStrings.of(context)!.recieve, text: recieve),
           const Divider(thickness: 1),
-          DefaultInfoRow(label: 'Câmbio', text: cambio),
+          DefaultInfoRow(label: CoreStrings.of(context)!.exchange, text: cambio),
         ],
       ),
     );
