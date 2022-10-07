@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:projeto_criptos/conversion/controller/conversion_controller.dart';
 import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
+import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
 import '../setup/common_asset.dart';
@@ -30,6 +31,19 @@ void main() {
       expect(controller.cryptoConverted.id, TestAsset.model.id);
       expect(controller.cryptos, data);
       expect(controller.validate, false);
+    });
+    test('WHEN conversionController.init THEN compare matchers with asset.id = bitcoin', () {
+      CryptoEntity model = CryptoEntity(id: 'bitcoin', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
+      ConversionController newController = ConversionController();
+      newController.controllerInit(model,dp('250'), data, coinAmmountList);
+      expect(newController.asset.id, 'bitcoin');
+      expect(newController.assetHelper, dp('0'));
+      expect(newController.coinAmmount, dp('250'));
+      expect(newController.convertHelper, dp('0'));
+      expect(newController.convertedCryptoHelper, dp('0'));
+      expect(newController.cryptoConverted.id, '');
+      expect(newController.cryptos, data);
+      expect(newController.validate, false);
     });
 
     test('WHEN controller.coinRegExp THEN confirm return is correct', () {
