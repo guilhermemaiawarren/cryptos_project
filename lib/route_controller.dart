@@ -46,6 +46,7 @@ class RouteController {
             coinAmmount: args.cryptoAmmount,
             asset: args.crypto,
             data: args.data,
+            coinAmmountList: args.coinAmmountList,
           );
         },
       );

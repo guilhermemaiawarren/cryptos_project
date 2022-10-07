@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
 import '../../shared/common_model/crypto.dart';
-import '../../shared/user/user_coin_ammount_provider.dart';
-import '../../shared/utils/decimal_parse.dart';
 import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 
 class CoinButton extends ConsumerStatefulWidget {
@@ -53,25 +50,21 @@ class _CoinButtonState extends ConsumerState<CoinButton> {
                     key: const Key('ListTileBottomSheet'),
                     onTap: () {
                       if (widget.id == '1') {
-                        setState(
-                          () {
-                            controller.changeConvertedCoin(
-                                crypto, widget.value, widget.formKey);
-                            controller.coinAmmount = dp(ref
-                                .read(userCoinAmmountProvider)[
-                                    controller.cryptos.indexOf(crypto as CryptoViewData)]
-                                .toString());
-                          },
+                        controller.changeConvertedCoin(
+                          crypto,
+                          widget.value,
+                          widget.formKey,
                         );
+                        setState(() {});
                       } else {
-                        setState(
-                          () {
-                            controller.changeRecieveCoin(
-                                crypto, widget.formKey, widget.value);
-                          },
+                        controller.changeRecieveCoin(
+                          crypto,
+                          widget.formKey,
+                          widget.value,
                         );
-                        Navigator.pop(context);
+                        setState(() {});
                       }
+                      Navigator.pop(context);
                     },
                     title: Text(
                       crypto.symbol.toUpperCase(),

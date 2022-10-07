@@ -6,7 +6,7 @@ import 'package:projeto_criptos/details/widgets/body_details_screen.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
-import '../controller/historic_data_provider.dart';
+import '../provider/historic_data_provider.dart';
 
 class DetailsScreen extends HookConsumerWidget {
   const DetailsScreen({

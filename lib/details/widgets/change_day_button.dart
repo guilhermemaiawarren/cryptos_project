@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/days_provider.dart';
+import '../provider/days_provider.dart';
 
 class ChangeDayButton extends HookConsumerWidget {
   const ChangeDayButton({
@@ -16,6 +16,7 @@ class ChangeDayButton extends HookConsumerWidget {
     var graphDays = ref.watch(daysProvider.state).state;
 
     return GestureDetector(
+      key: const Key('GestureDetectorChangeDayButton'),
       onTap: () async {
         ref.read(daysProvider.state).state = days;
       },

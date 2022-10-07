@@ -41,9 +41,9 @@ void main() {
       final warrenButton =
           tester.widget<WarrenButton>(find.byType(WarrenButton));
 
-      expect(find.byType(SingleChildScrollView), findsOneWidget);
       expect(find.byType(Column), findsWidgets);
       expect(topPageContainer.model, TestAsset.model);
+      expect(find.byType(Spacer), findsWidgets);
       expect(find.byType(LineChart), findsOneWidget);
       expect(find.byType(ChangeDaysButtons), findsOneWidget);
       expect(infoColumn.coin, TestAsset.model);

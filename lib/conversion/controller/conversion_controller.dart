@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/common_model/crypto.dart';
+import '../../shared/utils/arguments/to_revision_arguments.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 class ConversionController extends ChangeNotifier {
@@ -26,6 +27,7 @@ class ConversionController extends ChangeNotifier {
   Decimal convertedCryptoHelper = dp('0.0');
   List<CryptoViewData> cryptos = [];
   Decimal assetHelper = dp('0.0');
+  List<double> coinAmmountList = [];
 
   String coinRegExp(String value) {
     return value.replaceAll(RegExp(r'[^\w\s]+'), '.');
@@ -35,9 +37,10 @@ class ConversionController extends ChangeNotifier {
     return !source.startsWith(RegExp(r'[-!@#$%^&*(),.?":{}|<>]'));
   }
 
-  controllerInit(
-      CryptoEntity asset, Decimal coinAmmount, List<CryptoViewData> data) {
+  controllerInit(CryptoEntity asset, Decimal coinAmmount,
+      List<CryptoViewData> data, List<double> coinAmmountList) {
     cryptos = data;
+    this.coinAmmountList = coinAmmountList;
     validate = false;
     this.coinAmmount = coinAmmount;
     this.asset = asset;
@@ -66,12 +69,16 @@ class ConversionController extends ChangeNotifier {
   }
 
   changeConvertedCoin(
-      CryptoEntity crypto, String value, GlobalKey<FormState> formKey) {
+      CryptoEntity crypto, String? value, GlobalKey<FormState> formKey) {
     if (crypto.id == cryptoConverted.id) {
       cryptoConverted = asset;
     }
     asset = crypto;
-    convertedValue(value);
+
+    coinAmmount = dp(
+        (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
+            .toString());
+    convertedValue('0');
     buttonValidation(formKey);
     notifyListeners();
   }
@@ -81,6 +88,8 @@ class ConversionController extends ChangeNotifier {
     asset = cryptoConverted;
     cryptoConverted = temp;
     convertedValue('0');
+    coinAmmount = dp(
+        (coinAmmountList)[cryptos.indexOf(asset as CryptoViewData)].toString());
     validate = false;
     notifyListeners();
   }
@@ -94,5 +103,18 @@ class ConversionController extends ChangeNotifier {
     }
     buttonValidation(formKey);
     convertedValue(value);
+  }
+
+  controllerNavigate(BuildContext context) {
+    Navigator.pushNamed(
+      context,
+      '/revision',
+      arguments: ToRevisionArguments(
+        convert: assetHelper,
+        recieve: convertedCryptoHelper,
+        convertCoin: asset,
+        recieveCoin: cryptoConverted,
+      ),
+    );
   }
 }

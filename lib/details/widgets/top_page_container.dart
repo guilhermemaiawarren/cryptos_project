@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
-import '../controller/get_price_provider.dart';
+import '../provider/get_price_provider.dart';
 
 class TopPageContainer extends HookConsumerWidget {
   const TopPageContainer({

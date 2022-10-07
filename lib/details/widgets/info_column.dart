@@ -29,7 +29,6 @@ class InfoColumn extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
-        vertical: 20,
       ),
       child: Column(
         children: [

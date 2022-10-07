@@ -3,12 +3,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
-import '../../shared/utils/arguments/to_revision_arguments.dart';
 
 class FloatingCriptoButton extends ConsumerWidget {
   const FloatingCriptoButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,16 +17,7 @@ class FloatingCriptoButton extends ConsumerWidget {
       backgroundColor: controller.validate ? AppAssets.magenta : Colors.grey,
       onPressed: () {
         if (controller.validate) {
-          Navigator.pushNamed(
-            context,
-            '/revision',
-            arguments: ToRevisionArguments(
-              convert: controller.assetHelper,
-              recieve: controller.convertedCryptoHelper,
-              convertCoin: controller.asset,
-              recieveCoin: controller.cryptoConverted,
-            ),
-          );
+          controller.controllerNavigate(context);
         }
       },
       child: const Icon(

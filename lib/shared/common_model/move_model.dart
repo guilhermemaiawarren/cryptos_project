@@ -21,10 +21,10 @@ class MoveModel {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'convert': convert});
-    result.addAll({'recieve': recieve});
+    result.addAll({'convert': convert.toString()});
+    result.addAll({'recieve': recieve.toString()});
     result.addAll({'data': data.millisecondsSinceEpoch});
-    result.addAll({'cashHelper': cashHelper});
+    result.addAll({'cashHelper': cashHelper.toString()});
     result.addAll({'convertCoinId': convertCoinId});
     result.addAll({'recieveCoinId': recieveCoinId});
 
@@ -33,10 +33,10 @@ class MoveModel {
 
   factory MoveModel.fromMap(Map<String, dynamic> map) {
     return MoveModel(
-      convert: map['convert'],
-      recieve: map['recieve'],
+      convert: Decimal.parse(map['convert']),
+      recieve: Decimal.parse(map['recieve']),
       data: DateTime.fromMillisecondsSinceEpoch(map['data']),
-      cashHelper: map['cashHelper'],
+      cashHelper: Decimal.parse(map['cashHelper']),
       convertCoinId: map['convertCoinId'] ?? '',
       recieveCoinId: map['recieveCoinId'] ?? '',
     );

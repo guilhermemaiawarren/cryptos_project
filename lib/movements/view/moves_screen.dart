@@ -8,8 +8,8 @@ import '../widgets/movements_list_tile.dart';
 
 class MovesScreen extends ConsumerWidget {
   const MovesScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final moves = ref.watch(movementsProvider);

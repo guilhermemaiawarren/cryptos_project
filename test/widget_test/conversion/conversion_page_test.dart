@@ -15,6 +15,7 @@ void main() {
     TestAsset.cryptoViewData,
     TestAsset.cryptoViewData,
   ];
+  List<double> coinAmmountList = [123321, 213213231, 3131321321];
   testWidgets('WHEN load ConversionPage THEN find body and app bar',
       (WidgetTester tester) async {
     mockNetworkImagesFor(() async {
@@ -24,6 +25,7 @@ void main() {
             coinAmmount: dp('215'),
             asset: TestAsset.model,
             data: data,
+            coinAmmountList: coinAmmountList,
           ));
 
       await tester.pumpAndSettle();

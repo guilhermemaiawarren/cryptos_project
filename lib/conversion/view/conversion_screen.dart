@@ -4,10 +4,7 @@ import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
 import 'package:projeto_criptos/conversion/widgets/swap_icon_button.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
-import '../../shared/user/user_coin_ammount_provider.dart';
-import '../../shared/utils/decimal_parse.dart';
 import '../controller/conversion_controller.dart';
 import '../widgets/available_balance_container.dart';
 import '../widgets/coin_button.dart';
@@ -61,10 +58,6 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
               onPressed: () {
                 setState(() {
                   controller.swapCoins();
-                  controller.coinAmmount = dp(ref
-                      .read(userCoinAmmountProvider)[controller.cryptos
-                          .indexOf(controller.asset as CryptoViewData)]
-                      .toString());
                 });
               },
             ),
