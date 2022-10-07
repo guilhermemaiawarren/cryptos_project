@@ -12,7 +12,7 @@ void main() {
   List<CryptoEntity> data = [TestAsset.model, TestAsset.model];
 
   testWidgets(
-    'WHEN load CoinButton THEN match button asset id',
+    'WHEN load CoinButton THEN match button coinButton.asset id',
     (WidgetTester tester) async {
       mockNetworkImagesFor(
         () async {
