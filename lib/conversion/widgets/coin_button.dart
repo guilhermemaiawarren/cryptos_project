@@ -1,31 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
 import '../../shared/common_model/crypto.dart';
+import '../../shared/user/user_coin_ammount_provider.dart';
+import '../../shared/utils/decimal_parse.dart';
+import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 
-
-class CoinButton extends StatefulWidget {
+class CoinButton extends ConsumerStatefulWidget {
   const CoinButton({
     Key? key,
     required this.data,
-    required this.onPressed,
     required this.asset,
+    required this.value,
+    required this.formKey,
+    required this.id,
   }) : super(key: key);
   final List<CryptoEntity> data;
-  final void Function()? onPressed;
   final CryptoEntity asset;
+  final String value;
+  final GlobalKey<FormState> formKey;
+  final String id;
   @override
-  State<CoinButton> createState() => _CoinButtonState();
+  ConsumerState<CoinButton> createState() => _CoinButtonState();
 }
 
-class _CoinButtonState extends State<CoinButton> {
+class _CoinButtonState extends ConsumerState<CoinButton> {
   @override
   Widget build(BuildContext context) {
+    final controller = ref.watch(convertControllerProvider);
     return MaterialButton(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(30),
       ),
-      onPressed: widget.onPressed,
+      onPressed: () {
+        showModalBottomSheetCryptos(
+          context,
+          controller.cryptos,
+          ListView(
+            key: const Key('ListViewCoinButton'),
+            children: widget.data.map((crypto) {
+              return Column(
+                key: const Key('ColumnCoinButton'),
+                children: [
+                  const Divider(
+                    thickness: 1,
+                    key: Key('DividerCoinButton'),
+                  ),
+                  ListTile(
+                    key: const Key('ListTileBottomSheet'),
+                    onTap: () {
+                      if (widget.id == '1') {
+                        setState(
+                          () {
+                            controller.changeConvertedCoin(
+                                crypto, widget.value, widget.formKey);
+                            controller.coinAmmount = dp(ref
+                                .read(userCoinAmmountProvider)[
+                                    controller.cryptos.indexOf(crypto as CryptoViewData)]
+                                .toString());
+                          },
+                        );
+                      } else {
+                        setState(
+                          () {
+                            controller.changeRecieveCoin(
+                                crypto, widget.formKey, widget.value);
+                          },
+                        );
+                        Navigator.pop(context);
+                      }
+                    },
+                    title: Text(
+                      crypto.symbol.toUpperCase(),
+                      key: const Key('SymbolCryptoCoinButton'),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      crypto.name,
+                      key: const Key('NameCryptoCoinButton'),
+                    ),
+                    trailing: const Icon(
+                      Icons.keyboard_arrow_right,
+                      key: Key('IconCoinButton'),
+                    ),
+                  ),
+                ],
+              );
+            }).toList(),
+          ),
+        );
+      },
       child: Row(
         children: [
           CircleAvatar(
@@ -49,5 +118,3 @@ class _CoinButtonState extends State<CoinButton> {
     );
   }
 }
-
-

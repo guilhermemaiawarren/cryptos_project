@@ -6,26 +6,39 @@ import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 class ConversionController extends ChangeNotifier {
-  late CryptoEntity cryptoConverted;
-  late CryptoEntity asset;
-  late Decimal coinAmmount;
+  CryptoEntity cryptoConverted = CryptoEntity(
+      id: '',
+      symbol: '',
+      name: '',
+      image: 'image',
+      currentPrice: dp('250'),
+      variation: 5);
+  CryptoEntity asset = CryptoEntity(
+      id: '',
+      symbol: '',
+      name: '',
+      image: 'image',
+      currentPrice: dp('250'),
+      variation: 5);
+  Decimal coinAmmount = dp('250');
   bool validate = false;
-  late Decimal convertHelper;
-  late Decimal convertedCryptoHelper;
-  late List<CryptoViewData> cryptos;
-  late Decimal assetHelper;
+  Decimal convertHelper = dp('250');
+  Decimal convertedCryptoHelper = dp('0.0');
+  List<CryptoViewData> cryptos = [];
+  Decimal assetHelper = dp('0.0');
 
   String coinRegExp(String value) {
     return value.replaceAll(RegExp(r'[^\w\s]+'), '.');
   }
 
   bool validCoinValue(String source) {
-    return !source.startsWith(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+    return !source.startsWith(RegExp(r'[-!@#$%^&*(),.?":{}|<>]'));
   }
 
   controllerInit(
       CryptoEntity asset, Decimal coinAmmount, List<CryptoViewData> data) {
     cryptos = data;
+    validate = false;
     this.coinAmmount = coinAmmount;
     this.asset = asset;
     this.asset.id == "bitcoin"
@@ -44,7 +57,11 @@ class ConversionController extends ChangeNotifier {
   }
 
   buttonValidation(GlobalKey<FormState> formKey) {
-    validate = formKey.currentState!.validate() ? true : false;
+    if (formKey.currentState != null) {
+      validate = formKey.currentState!.validate() ? true : false;
+    } else {
+      validate = false;
+    }
     notifyListeners();
   }
 

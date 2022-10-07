@@ -4,7 +4,6 @@ import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/arguments/to_revision_arguments.dart';
-import '../provider/validate_provider.dart';
 
 class FloatingCriptoButton extends ConsumerWidget {
   const FloatingCriptoButton({
@@ -29,7 +28,6 @@ class FloatingCriptoButton extends ConsumerWidget {
               recieveCoin: controller.cryptoConverted,
             ),
           );
-          ref.read(validateProvider.state).state = false;
         }
       },
       child: const Icon(

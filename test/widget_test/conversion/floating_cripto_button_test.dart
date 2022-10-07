@@ -10,9 +10,12 @@ void main() {
       (WidgetTester tester) async {
     await loadPage(tester, const FloatingCriptoButton());
 
-    final button =
-        tester.widget<FloatingActionButton>(find.byType(FloatingActionButton));
+    final button =tester.widget<FloatingActionButton>(find.byType(FloatingActionButton));
+    final icon =tester.widget<Icon>(find.byType(Icon));
 
+
+    expect(icon.icon, Icons.keyboard_arrow_right);
+    expect(icon.key, const Key('FloatingIconKey'));
     expect(button.backgroundColor, Colors.grey);
     expect(button.child!.key, const Key('FloatingIconKey'));
   });

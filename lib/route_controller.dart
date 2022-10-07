@@ -45,6 +45,7 @@ class RouteController {
           return ConversionPage(
             coinAmmount: args.cryptoAmmount,
             asset: args.crypto,
+            data: args.data,
           );
         },
       );

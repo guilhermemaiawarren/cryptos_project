@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:projeto_criptos/details/model/prices_view_data.dart';
 import 'package:projeto_criptos/details/widgets/top_page_container.dart';
+import 'package:projeto_criptos/portfolio/provider/cryptos_provider.dart';
 
 import '../../conversion/view/conversion_page.dart';
 import '../../l10n/core_strings.dart';
@@ -29,6 +30,7 @@ class BodyDetailsScreen extends ConsumerWidget {
   final Decimal coinAmmount;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final cryptos = ref.watch(cryptosProvider);
     int day = ref.watch(daysProvider.state).state;
     double variation =
         (data.prices.last.last / data.prices.reversed.elementAt(day).last - 1) *
@@ -73,6 +75,7 @@ class BodyDetailsScreen extends ConsumerWidget {
                   arguments: ToConversionArguments(
                     cryptoAmmount: coinAmmount,
                     crypto: coin,
+                    data: cryptos.asData!.value,
                   ),
                 );
               },

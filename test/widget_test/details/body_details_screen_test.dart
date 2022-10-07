@@ -15,7 +15,8 @@ import '../../setup/common_asset.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load BodyDetailsScreen THEN test all widgets', (WidgetTester tester) async {
+  testWidgets('WHEN load BodyDetailsScreen THEN test all widgets',
+      (WidgetTester tester) async {
     mockNetworkImagesFor(() async {
       BodyDetailsScreen screen = BodyDetailsScreen(
         coin: TestAsset.model,
@@ -33,6 +34,7 @@ void main() {
       );
       await loadPage(tester, screen);
 
+      await tester.pumpAndSettle();
       final topPageContainer =
           tester.widget<TopPageContainer>(find.byType(TopPageContainer));
       final infoColumn = tester.widget<InfoColumn>(find.byType(InfoColumn));
