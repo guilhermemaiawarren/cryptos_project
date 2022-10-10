@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
+import '../../l10n/core_strings.dart';
 
 import 'warren_button.dart';
 

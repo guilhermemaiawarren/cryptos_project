@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/details/widgets/body_details_screen.dart';
-import 'package:projeto_criptos/portfolio/provider/cryptos_provider.dart';
+import '../widgets/body_details_screen.dart';
+import '../../portfolio/provider/cryptos_provider.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/error_body.dart';

@@ -2,10 +2,10 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
-import 'package:projeto_criptos/conversion/view/conversion_screen.dart';
-import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
+import '../provider/controller_provider.dart';
+import 'conversion_screen.dart';
+import '../widgets/floating_cripto_button.dart';
+import '../../l10n/core_strings.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/model_app_bar.dart';

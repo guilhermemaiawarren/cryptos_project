@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/conversion/controller/conversion_controller.dart';
+import '../controller/conversion_controller.dart';
 
 import '../../shared/templates/app_assets.dart';
 

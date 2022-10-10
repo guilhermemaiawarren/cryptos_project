@@ -2,8 +2,8 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/shared/common_model/move_model.dart';
+import '../../l10n/core_strings.dart';
+import '../../shared/common_model/move_model.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/warren_button.dart';

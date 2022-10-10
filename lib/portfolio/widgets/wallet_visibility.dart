@@ -1,11 +1,11 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import '../../shared/utils/decimal_to_double.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
+import '../../shared/utils/decimal_to_double.dart';
 import '../provider/balance_provider.dart';
 import '../provider/visible_provider.dart';
 import 'visibility_off_container.dart';

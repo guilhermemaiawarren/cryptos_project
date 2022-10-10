@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
-import 'package:projeto_criptos/conversion/widgets/swap_icon_button.dart';
-import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
+import '../provider/controller_provider.dart';
+import '../widgets/swap_icon_button.dart';
+import '../widgets/total_convert_value_container.dart';
 
 import '../controller/conversion_controller.dart';
 import '../widgets/available_balance_container.dart';

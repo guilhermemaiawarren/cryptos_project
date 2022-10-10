@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/shared/user/movements_provider.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+import '../../l10n/core_strings.dart';
+import '../../shared/user/movements_provider.dart';
+import '../../shared/templates/app_assets.dart';
 
 import '../widgets/movements_list_tile.dart';
 

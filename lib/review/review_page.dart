@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/review/widgets/info_review_column.dart';
+import '../l10n/core_strings.dart';
+import 'widgets/info_review_column.dart';
 
 import '../portfolio/model/crypto_view_data.dart';
 import 'widgets/review_buttons.dart';

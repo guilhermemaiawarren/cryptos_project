@@ -3,10 +3,10 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'package:projeto_criptos/details/model/prices_view_data.dart';
-import 'package:projeto_criptos/details/widgets/top_page_container.dart';
-import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
-import 'package:projeto_criptos/shared/user/user_coin_ammount_provider.dart';
+import '../model/prices_view_data.dart';
+import 'top_page_container.dart';
+import '../../portfolio/model/crypto_view_data.dart';
+import '../../shared/user/user_coin_ammount_provider.dart';
 
 import '../../conversion/view/conversion_page.dart';
 import '../../l10n/core_strings.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
+import '../provider/controller_provider.dart';
 
 import '../../l10n/core_strings.dart';
 import '../../shared/common_model/crypto.dart';
