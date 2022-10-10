@@ -1,17 +1,3 @@
-// import 'dart:convert';
-
-// import 'package:decimal/decimal.dart';
-// import 'package:dio/dio.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:mocktail/mocktail.dart';
-// import 'package:projeto_criptos/details/usecase/prices_usecase.dart';
-// import 'package:projeto_criptos/portfolio/usecase/cryptos_usecase.dart';
-// import 'package:projeto_criptos/shared/api/cryptos_endpoint.dart';
-// import 'package:projeto_criptos/shared/repository/cryptos_repository.dart';
-
-// import '../mock_data/get_cryptos_data.dart';
-// import '../mock_data/get_prices_data.dart';
-
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -44,7 +30,7 @@ void main() {
     //Arrange
     when(() => dioMock.get(any())).thenAnswer(
       (_) async => Response(
-        data: jsonDecode(ApiFactory.getAllCryptosData),
+        data: ApiFactory.getAllCryptos(),
         requestOptions: RequestOptions(path: ''),
       ),
     );
