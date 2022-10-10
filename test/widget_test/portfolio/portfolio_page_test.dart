@@ -1,7 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:projeto_criptos/movements/view/moves_screen.dart';
 import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
 import 'package:projeto_criptos/portfolio/view/portfolio_screen.dart';
 import 'package:projeto_criptos/shared/templates/custom_bottom_nav_bar.dart';
+import 'package:projeto_criptos/shared/templates/error_body.dart';
 
 import '../../setup/setup_widget_tester.dart';
 
@@ -27,9 +29,15 @@ void main() {
 
       await tester.pumpAndSettle();
 
+      expect(find.byType(MovesScreen), findsWidgets);
+
       await tester.tap(find.text('Portafolio'));
 
       await tester.pumpAndSettle();
+
+      expect(find.byType(ErrorBody), findsWidgets);
+
+    
     },
   );
 }

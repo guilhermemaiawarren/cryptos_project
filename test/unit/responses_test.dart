@@ -31,7 +31,6 @@ void main() {
           [25, 25]
         ],
       );
-
       expect(response.toJson(), {
         'prices': [
           [25, 25],

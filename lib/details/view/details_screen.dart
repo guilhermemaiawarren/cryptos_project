@@ -33,13 +33,9 @@ class DetailsScreen extends HookConsumerWidget {
         );
       },
       error: (e, r) {
-        return ErrorBody(
-          onRetry: () {
-            ref.refresh(
-              historicDataProvider(coin.id),
-            );
-          },
-        );
+        return ErrorBody(onRetry: () {
+          ref.refresh(historicDataProvider(coin.id));
+        });
       },
       loading: () {
         return const LoadingBody();

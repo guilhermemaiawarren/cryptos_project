@@ -14,7 +14,7 @@ void main() {
     await loadPage(tester, GraphDetails(historyCoinData: dados));
 
     await tester.drag(find.byType(LineChart), const Offset(25, 25));
-    await tester.dragFrom(const Offset(1, 1), const Offset(25, 25));
+    await tester.dragFrom(const Offset(25, 25), const Offset(150, 25));
 
     expect(find.byType(AspectRatio), findsOneWidget);
   });

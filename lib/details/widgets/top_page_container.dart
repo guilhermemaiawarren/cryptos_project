@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
-import '../provider/get_price_provider.dart';
 
 class TopPageContainer extends HookConsumerWidget {
   const TopPageContainer({
@@ -15,7 +14,6 @@ class TopPageContainer extends HookConsumerWidget {
   final CryptoEntity model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var price = ref.watch(getPriceProvider.state).state;
     return Padding(
       padding: const EdgeInsets.only(
         left: 30,
@@ -51,9 +49,7 @@ class TopPageContainer extends HookConsumerWidget {
               top: 15,
             ),
             child: Text(
-              price == ''
-                  ? currencyFormatter.format(dtd(model.currentPrice))
-                  : price,
+              currencyFormatter.format(dtd(model.currentPrice)),
               style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,

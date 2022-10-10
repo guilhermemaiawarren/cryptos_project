@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../shared/templates/app_assets.dart';
-import '../../shared/utils/currency_formater.dart';
 import '../provider/days_provider.dart';
-import '../provider/get_price_provider.dart';
 
 class GraphDetails extends StatefulHookConsumerWidget {
   const GraphDetails({Key? key, required this.historyCoinData})
@@ -19,7 +17,6 @@ class GraphDetails extends StatefulHookConsumerWidget {
 class _$GraphDetailsState extends ConsumerState<GraphDetails> {
   @override
   Widget build(BuildContext context) {
-    var price = ref.watch(getPriceProvider.state);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: AspectRatio(
@@ -28,55 +25,6 @@ class _$GraphDetailsState extends ConsumerState<GraphDetails> {
           LineChartData(
             lineTouchData: LineTouchData(
               enabled: false,
-              touchCallback: (p0, p1) {
-                setState(() {
-                  if (!p0.isInterestedForInteractions) {
-                    price.state = currencyFormatter
-                        .format(widget.historyCoinData.first.y);
-                  } else {
-                    if (p1?.lineBarSpots?[0].spotIndex != null) {
-                      price.state = currencyFormatter.format(widget
-                          .historyCoinData[p1!.lineBarSpots![0].spotIndex].y);
-                    }
-                  }
-                });
-              },
-              getTouchedSpotIndicator:
-                  (LineChartBarData barData, List<int> spotIndexes) {
-                return spotIndexes.map((index) {
-                  return TouchedSpotIndicatorData(
-                    FlLine(
-                      color: const Color.fromRGBO(224, 43, 87, 1),
-                      strokeWidth: 1,
-                      dashArray: [3, 3],
-                    ),
-                    FlDotData(
-                      show: false,
-                    ),
-                  );
-                }).toList();
-              },
-              touchTooltipData: LineTouchTooltipData(
-                fitInsideHorizontally: true,
-                tooltipBgColor: AppAssets.magenta,
-                tooltipPadding: const EdgeInsets.symmetric(
-                  horizontal: 6,
-                  vertical: 5,
-                ),
-                tooltipRoundedRadius: 15,
-                getTooltipItems: (touchedSpots) {
-                  return touchedSpots.map((touchedSpot) {
-                    return LineTooltipItem(
-                      currencyFormatter.format(touchedSpot.y),
-                      const TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    );
-                  }).toList();
-                },
-              ),
             ),
             gridData: FlGridData(show: false),
             borderData: FlBorderData(
