@@ -52,11 +52,12 @@ class _CoinTextFieldState extends ConsumerState<CoinTextField> {
               ),
               keyboardType: TextInputType.number,
               onChanged: (value) {
-                controller.buttonValidation(widget.formKey);
-                controller.convertedValue(value);
-                setState(() {
+                if (double.tryParse(value) != null) {
+                  controller.buttonValidation(widget.formKey);
+                  controller.convertedValue(value);
                   controller.assetHelper = dp(value);
-                });
+                  setState(() {});
+                }
               },
               validator: (value) {
                 if (value == '' ||

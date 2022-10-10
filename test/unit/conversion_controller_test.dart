@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:projeto_criptos/conversion/controller/conversion_controller.dart';
 import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
 import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
 import '../setup/common_asset.dart';
@@ -20,7 +19,7 @@ void main() {
   group('Tests with ConversionController', () {
     setUp(() {
       controller.controllerInit(
-          TestAsset.model, dp('250'), data, coinAmmountList);
+          TestAsset.cryptoViewData, dp('250'), data, coinAmmountList);
     });
     test('WHEN conversionController.init THEN compare matchers', () {
       expect(controller.asset.id, TestAsset.model.id);
@@ -28,12 +27,12 @@ void main() {
       expect(controller.coinAmmount, dp('250'));
       expect(controller.convertHelper, dp('0'));
       expect(controller.convertedCryptoHelper, dp('0'));
-      expect(controller.cryptoConverted.id, TestAsset.model.id);
+      expect(controller.cryptoConverted.id, 'bitcoin');
       expect(controller.cryptos, data);
       expect(controller.validate, false);
     });
     test('WHEN conversionController.init THEN compare matchers with asset.id = bitcoin', () {
-      CryptoEntity model = CryptoEntity(id: 'bitcoin', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
+      CryptoViewData model = CryptoViewData(id: 'bitcoin', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
       ConversionController newController = ConversionController();
       newController.controllerInit(model,dp('250'), data, coinAmmountList);
       expect(newController.asset.id, 'bitcoin');
@@ -41,7 +40,20 @@ void main() {
       expect(newController.coinAmmount, dp('250'));
       expect(newController.convertHelper, dp('0'));
       expect(newController.convertedCryptoHelper, dp('0'));
-      expect(newController.cryptoConverted.id, '');
+      expect(newController.cryptoConverted.id, 'bitcoin');
+      expect(newController.cryptos, data);
+      expect(newController.validate, false);
+    });
+    test('WHEN conversionController.init THEN compare matchers with asset.id = bitcoin', () {
+      CryptoViewData model = CryptoViewData(id: 'ethereum', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
+      ConversionController newController = ConversionController();
+      newController.controllerInit(model,dp('250'), data, coinAmmountList);
+      expect(newController.asset.id, 'ethereum');
+      expect(newController.assetHelper, dp('0'));
+      expect(newController.coinAmmount, dp('250'));
+      expect(newController.convertHelper, dp('0'));
+      expect(newController.convertedCryptoHelper, dp('0'));
+      expect(newController.cryptoConverted.id, 'bitcoin');
       expect(newController.cryptos, data);
       expect(newController.validate, false);
     });
@@ -87,9 +99,9 @@ void main() {
     test('WHEN controller.changeConvertedCoin THEN confirm return is expected',
         () {
       controller.changeConvertedCoin(
-          TestAsset.model, '250', GlobalKey<FormState>());
+          TestAsset.cryptoViewData, '250', GlobalKey<FormState>());
       expect(controller.cryptoConverted.id, TestAsset.model.id);
-      expect(controller.asset.id, TestAsset.model.id);
+      expect(controller.asset.id, 'bitcoin');
       expect(controller.convertHelper, dp('0'));
       expect(controller.convertedCryptoHelper, dp('0'));
       expect(controller.validate, false);
@@ -97,7 +109,7 @@ void main() {
 
     test('WHEN controller.swapCoins THEN confirm return expected', () {
       controller.swapCoins();
-      expect(controller.asset.id, TestAsset.model.id);
+      expect(controller.asset.id, 'bitcoin');
       expect(controller.cryptoConverted.id, TestAsset.model.id);
       expect(controller.convertHelper, dp('0'));
       expect(controller.convertedCryptoHelper, dp('0'));
@@ -106,10 +118,10 @@ void main() {
 
     test('WHEN controller.changeRecieveCoin THEN return must be expected', () {
       controller.changeRecieveCoin(
-          TestAsset.model, GlobalKey<FormState>(), '250');
+          TestAsset.cryptoViewData, GlobalKey<FormState>(), '250');
 
       expect(controller.cryptoConverted.id, TestAsset.model.id);
-      expect(controller.asset.id, TestAsset.model.id);
+      expect(controller.asset.id, 'bitcoin');
       expect(controller.validate, false);
       expect(controller.convertHelper, dp('62500'));
       expect(controller.convertedCryptoHelper, dp('250'));

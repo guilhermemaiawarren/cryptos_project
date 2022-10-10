@@ -16,7 +16,7 @@ class ChangeDaysButtons extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children:  const [
           ChangeDayButton(days: 5, key: Key('5'),),
-          ChangeDayButton(days: 15),
+          ChangeDayButton(days: 15, key: Key('15'),),
           ChangeDayButton(days: 30),
           ChangeDayButton(days: 45),
           ChangeDayButton(days: 90),

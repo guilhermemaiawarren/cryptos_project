@@ -5,12 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:projeto_criptos/details/model/prices_view_data.dart';
 import 'package:projeto_criptos/details/widgets/top_page_container.dart';
-import 'package:projeto_criptos/portfolio/provider/cryptos_provider.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 import 'package:projeto_criptos/shared/user/user_coin_ammount_provider.dart';
 
 import '../../conversion/view/conversion_page.dart';
 import '../../l10n/core_strings.dart';
-import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/templates/warren_button.dart';
 import '../../shared/utils/arguments/to_conversion_arguments.dart';
@@ -25,13 +24,14 @@ class BodyDetailsScreen extends ConsumerWidget {
     required this.data,
     required this.coin,
     required this.coinAmmount,
+    required this.cryptos
   }) : super(key: key);
   final PricesViewData data;
-  final CryptoEntity coin;
+  final CryptoViewData coin;
   final Decimal coinAmmount;
+  final List<CryptoViewData> cryptos;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cryptos = ref.watch(cryptosProvider);
     int day = ref.watch(daysProvider.state).state;
     double variation =
         (data.prices.last.last / data.prices.reversed.elementAt(day).last - 1) *
@@ -80,7 +80,7 @@ class BodyDetailsScreen extends ConsumerWidget {
                 arguments: ToConversionArguments(
                   cryptoAmmount: coinAmmount,
                   crypto: coin,
-                  data: cryptos.asData!.value,
+                  data: cryptos,
                   coinAmmountList: ref.read(userCoinAmmountProvider),
                 ),
               );

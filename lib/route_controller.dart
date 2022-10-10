@@ -60,6 +60,7 @@ class RouteController {
             recieve: args.recieve,
             convertCoin: args.convertCoin,
             recieveCoin: args.recieveCoin,
+            data: args.data,
           );
         },
       );

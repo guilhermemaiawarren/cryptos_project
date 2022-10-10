@@ -2,19 +2,18 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
-import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/arguments/to_revision_arguments.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 class ConversionController extends ChangeNotifier {
-  CryptoEntity cryptoConverted = CryptoEntity(
+  CryptoViewData cryptoConverted = CryptoViewData(
       id: '',
       symbol: '',
       name: '',
       image: 'image',
       currentPrice: dp('250'),
       variation: 5);
-  CryptoEntity asset = CryptoEntity(
+  CryptoViewData asset = CryptoViewData(
       id: '',
       symbol: '',
       name: '',
@@ -37,7 +36,7 @@ class ConversionController extends ChangeNotifier {
     return !source.startsWith(RegExp(r'[-!@#$%^&*(),.?":{}|<>]'));
   }
 
-  controllerInit(CryptoEntity asset, Decimal coinAmmount,
+  controllerInit(CryptoViewData asset, Decimal coinAmmount,
       List<CryptoViewData> data, List<double> coinAmmountList) {
     cryptos = data;
     this.coinAmmountList = coinAmmountList;
@@ -69,12 +68,11 @@ class ConversionController extends ChangeNotifier {
   }
 
   changeConvertedCoin(
-      CryptoEntity crypto, String? value, GlobalKey<FormState> formKey) {
+      CryptoViewData crypto, String? value, GlobalKey<FormState> formKey) {
     if (crypto.id == cryptoConverted.id) {
       cryptoConverted = asset;
     }
     asset = crypto;
-
     coinAmmount = dp(
         (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
             .toString());
@@ -84,19 +82,20 @@ class ConversionController extends ChangeNotifier {
   }
 
   swapCoins() {
-    CryptoEntity temp = asset;
+    CryptoViewData temp = asset;
     asset = cryptoConverted;
     cryptoConverted = temp;
     convertedValue('0');
     coinAmmount = dp(
-        (coinAmmountList)[cryptos.indexOf(asset as CryptoViewData)].toString());
+        (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
+            .toString());
     validate = false;
     notifyListeners();
   }
 
   changeRecieveCoin(
-      CryptoEntity crypto, GlobalKey<FormState> formKey, String value) {
-    CryptoEntity temp = cryptoConverted;
+      CryptoViewData crypto, GlobalKey<FormState> formKey, String value) {
+    CryptoViewData temp = cryptoConverted;
     cryptoConverted = crypto;
     if (cryptoConverted.id == asset.id) {
       asset = temp;
@@ -114,6 +113,7 @@ class ConversionController extends ChangeNotifier {
         recieve: convertedCryptoHelper,
         convertCoin: asset,
         recieveCoin: cryptoConverted,
+        data: cryptos,
       ),
     );
   }

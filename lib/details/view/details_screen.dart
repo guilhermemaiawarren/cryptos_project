@@ -2,23 +2,25 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/widgets/body_details_screen.dart';
+import 'package:projeto_criptos/portfolio/provider/cryptos_provider.dart';
 
-import '../../shared/common_model/crypto.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 import '../provider/historic_data_provider.dart';
 
 class DetailsScreen extends HookConsumerWidget {
   const DetailsScreen({
-    Key? key,
+    super.key,
     required this.coin,
     required this.coinAmmount,
-  }) : super(key: key);
-  final CryptoEntity coin;
+  });
+  final CryptoViewData coin;
   final Decimal coinAmmount;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final cryptos = ref.watch(cryptosProvider);
     final cryptoData = ref.watch(historicDataProvider(coin.id));
 
     return cryptoData.when(
@@ -27,6 +29,7 @@ class DetailsScreen extends HookConsumerWidget {
           data: data,
           coin: coin,
           coinAmmount: coinAmmount,
+          cryptos: cryptos.asData!.value,
         );
       },
       error: (e, r) {

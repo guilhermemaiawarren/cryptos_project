@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
-import '../../shared/common_model/crypto.dart';
+import 'package:projeto_criptos/conversion/controller/conversion_controller.dart';
+import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
+
 import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 
-class CoinButton extends ConsumerStatefulWidget {
+class CoinButton extends StatefulWidget {
   const CoinButton({
     Key? key,
-    required this.data,
-    required this.asset,
     required this.value,
     required this.formKey,
     required this.id,
+    required this.controller,
+    required this.asset,
   }) : super(key: key);
-  final List<CryptoEntity> data;
-  final CryptoEntity asset;
   final String value;
   final GlobalKey<FormState> formKey;
   final String id;
+  final ConversionController controller;
+  final CryptoViewData asset;
   @override
-  ConsumerState<CoinButton> createState() => _CoinButtonState();
+  State<CoinButton> createState() => _CoinButtonState();
 }
 
-class _CoinButtonState extends ConsumerState<CoinButton> {
+class _CoinButtonState extends State<CoinButton> {
   @override
   Widget build(BuildContext context) {
-    final controller = ref.watch(convertControllerProvider);
     return MaterialButton(
       shape: RoundedRectangleBorder(
         side: BorderSide(color: Colors.grey.shade300),
@@ -35,10 +34,11 @@ class _CoinButtonState extends ConsumerState<CoinButton> {
       onPressed: () {
         showModalBottomSheetCryptos(
           context,
-          controller.cryptos,
+          widget.controller.cryptos,
           ListView(
+            scrollDirection: Axis.vertical,
             key: const Key('ListViewCoinButton'),
-            children: widget.data.map((crypto) {
+            children: widget.controller.cryptos.map((crypto) {
               return Column(
                 key: const Key('ColumnCoinButton'),
                 children: [
@@ -47,23 +47,23 @@ class _CoinButtonState extends ConsumerState<CoinButton> {
                     key: Key('DividerCoinButton'),
                   ),
                   ListTile(
-                    key: const Key('ListTileBottomSheet'),
+                    key: Key(crypto.id),
                     onTap: () {
-                      if (widget.id == '1') {
-                        controller.changeConvertedCoin(
-                          crypto,
-                          widget.value,
-                          widget.formKey,
-                        );
-                        setState(() {});
-                      } else {
-                        controller.changeRecieveCoin(
-                          crypto,
-                          widget.formKey,
-                          widget.value,
-                        );
-                        setState(() {});
-                      }
+                      setState(() {
+                        if (widget.id == '1') {
+                          widget.controller.changeConvertedCoin(
+                            crypto,
+                            widget.value,
+                            widget.formKey,
+                          );
+                        } else {
+                          widget.controller.changeRecieveCoin(
+                            crypto,
+                            widget.formKey,
+                            widget.value,
+                          );
+                        }
+                      });
                       Navigator.pop(context);
                     },
                     title: Text(

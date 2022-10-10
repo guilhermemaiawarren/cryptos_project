@@ -6,7 +6,6 @@ import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 import 'package:projeto_criptos/conversion/view/conversion_screen.dart';
 import 'package:projeto_criptos/conversion/widgets/floating_cripto_button.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/shared/common_model/crypto.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/model_app_bar.dart';
@@ -21,7 +20,7 @@ class ConversionPage extends ConsumerStatefulWidget {
   }) : super(key: key);
   static const route = '/conversion';
   final Decimal coinAmmount;
-  final CryptoEntity asset;
+  final CryptoViewData asset;
   final List<CryptoViewData> data;
   final List<double> coinAmmountList;
 
@@ -37,7 +36,9 @@ class _$ConversionPageState extends ConsumerState<ConversionPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: ModelAppBar(text: CoreStrings.of(context)!.convert),
-      body: const ConversionScreen(),
+      body: ConversionScreen(
+        controller: ref.read(convertControllerProvider),
+      ),
       floatingActionButton: const FloatingCriptoButton(),
     );
   }

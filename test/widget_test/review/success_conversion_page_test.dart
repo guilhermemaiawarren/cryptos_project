@@ -18,6 +18,14 @@ void main() {
     expect(animatedContainer.curve, Curves.easeIn);
     expect(animatedContainer.duration, const Duration(seconds: 2));
   });
+  testWidgets('WHEN load SucessConversionPage THEN go to moves',
+      (tester) async {
+    await loadPage(tester, SucessConversionPage(move: _model));
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 2000));
+
+    await tester.tap(find.byType(IconButton));
+  });
 }
 
 MoveModel _model = MoveModel(

@@ -17,5 +17,10 @@ void main() {
         .widget<Container>(find.byKey(const Key('ContainerChangeDaysButton')));
     expect(container.child!.key, const Key('TextChangeDaysButton'));
     expect(find.byKey(const Key('GestureDetectorChangeDayButton')), findsOneWidget);
+
+    await tester.tap(find.byType(GestureDetector));
+
+    await tester.pumpAndSettle();
+
   });
 }

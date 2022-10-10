@@ -10,4 +10,6 @@ class GetCryptoMarketDataResponse {
 
   factory GetCryptoMarketDataResponse.fromJson(Map<String, dynamic> json) => _$GetCryptoMarketDataResponseFromJson(json);
 
+   Map<String, dynamic> toJson() => _$GetCryptoMarketDataResponseToJson(this);
+
 }

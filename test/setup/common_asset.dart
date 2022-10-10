@@ -5,8 +5,24 @@ import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
 class TestAsset {
   static CryptoEntity model = CryptoEntity(
-    id: '',
-    symbol: '',
+     id: 'bitcoin',
+    symbol: 'BTC',
+    name: '',
+    image: Faker().image.image(),
+    currentPrice: dp('250'),
+    variation: 6,
+  );
+  static CryptoEntity model2 = CryptoEntity(
+    id: 'ethereum',
+    symbol: 'ETH',
+    name: '',
+    image: Faker().image.image(),
+    currentPrice: dp('250'),
+    variation: 6,
+  );
+  static CryptoEntity model3 = CryptoEntity(
+   id: 'litecoin',
+    symbol: 'LTC',
     name: '',
     image: Faker().image.image(),
     currentPrice: dp('250'),
@@ -14,8 +30,24 @@ class TestAsset {
   );
 
   static CryptoViewData cryptoViewData = CryptoViewData(
-    id: '',
-    symbol: '',
+    id: 'bitcoin',
+    symbol: 'BTC',
+    name: '',
+    image: Faker().image.image(),
+    currentPrice: dp('250'),
+    variation: 6,
+  );
+  static CryptoViewData cryptoViewData2 = CryptoViewData(
+    id: 'ethereum',
+    symbol: 'ETH',
+    name: '',
+    image: Faker().image.image(),
+    currentPrice: dp('250'),
+    variation: 6,
+  );
+  static CryptoViewData cryptoViewData3 = CryptoViewData(
+    id: 'litecoin',
+    symbol: 'LTC',
     name: '',
     image: Faker().image.image(),
     currentPrice: dp('250'),

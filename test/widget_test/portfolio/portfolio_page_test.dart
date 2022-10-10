@@ -7,7 +7,7 @@ import '../../setup/setup_widget_tester.dart';
 
 void main() {
   testWidgets(
-    'WHEN load portfolio page ENSURE return PortfolioPage and CustomBottomNavBar',
+    'WHEN load portfolio page THEN return PortfolioPage and CustomBottomNavBar',
     (WidgetTester tester) async {
       await loadPage(tester, const PortfolioPage());
       await tester.pumpAndSettle();
@@ -15,6 +15,21 @@ void main() {
       final customBottomNavBar = find.byType(CustomBottomNavBar);
       expect(customBottomNavBar, findsOneWidget);
       expect(portfolioPage, findsOneWidget);
+    },
+  );
+  testWidgets(
+    'WHEN load portfolio page THEN navigate to moves THEN navigate to Portfolio',
+    (WidgetTester tester) async {
+      await loadPage(tester, const PortfolioPage());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Movimientos'));
+
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Portafolio'));
+
+      await tester.pumpAndSettle();
     },
   );
 }

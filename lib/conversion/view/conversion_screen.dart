@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 
+import 'package:projeto_criptos/conversion/provider/controller_provider.dart';
 import 'package:projeto_criptos/conversion/widgets/swap_icon_button.dart';
 import 'package:projeto_criptos/conversion/widgets/total_convert_value_container.dart';
 
@@ -13,10 +13,10 @@ import '../widgets/helper_currency_text.dart';
 import '../widgets/informative_text.dart';
 
 class ConversionScreen extends ConsumerStatefulWidget {
-  const ConversionScreen({
-    super.key,
+  ConversionScreen({
+    required this.controller,
   });
-
+  late ConversionController controller;
   @override
   ConsumerState<ConversionScreen> createState() => _BodyConversionScreenState();
 }
@@ -27,8 +27,8 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ConversionController controller = ref.watch(convertControllerProvider);
-    controller.addListener(() {
+    widget.controller = ref.watch(convertControllerProvider);
+    widget.controller.addListener(() {
       setState(() {});
     });
 
@@ -36,8 +36,8 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AvailableBalanceContainer(
-          asset: controller.asset,
-          coinAmmount: controller.coinAmmount,
+          asset: widget.controller.asset,
+          coinAmmount: widget.controller.coinAmmount,
         ),
         const InformativeText(
           key: Key('InformativeText'),
@@ -50,37 +50,33 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
               value: convertController.text,
               id: '1',
               key: const Key('ConvertAsset'),
-              data: controller.cryptos,
-              asset: controller.asset,
+              controller: widget.controller,
+              asset: widget.controller.asset,
             ),
             SwapIconButton(
               key: const Key('SwapButton'),
-              onPressed: () {
-                setState(() {
-                  controller.swapCoins();
-                });
-              },
+              controller: widget.controller,
             ),
             CoinButton(
               key: const Key('RecieveAsset'),
+              asset: widget.controller.cryptoConverted,
               formKey: formKey,
-              id: '2',
+              id: 'idjsaodsa',
               value: convertController.text,
-              data: controller.cryptos,
-              asset: controller.cryptoConverted,
+              controller: widget.controller,
             ),
           ],
         ),
         CoinTextField(
           formKey: formKey,
           controller: convertController,
-          asset: controller.asset,
+          asset: widget.controller.asset,
         ),
-        HelperCurrencyText(convertHelper: controller.convertHelper),
+        HelperCurrencyText(convertHelper: widget.controller.convertHelper),
         Expanded(
           child: TotalConvertValueContainer(
-            convertedCryptoHelper: controller.convertedCryptoHelper,
-            cryptoConverted: controller.cryptoConverted,
+            convertedCryptoHelper: widget.controller.convertedCryptoHelper,
+            cryptoConverted: widget.controller.cryptoConverted,
           ),
         ),
       ],

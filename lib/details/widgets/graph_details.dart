@@ -29,18 +29,54 @@ class _$GraphDetailsState extends ConsumerState<GraphDetails> {
             lineTouchData: LineTouchData(
               enabled: false,
               touchCallback: (p0, p1) {
-                if (!p0.isInterestedForInteractions) {
-                  price.state =
-                      currencyFormatter.format(widget.historyCoinData.first.y);
-                  setState(() {});
-                } else {
-                  if (p1?.lineBarSpots?[0].spotIndex != null) {
-                    price.state = currencyFormatter.format(widget
-                        .historyCoinData[p1!.lineBarSpots![0].spotIndex].y);
-                    setState(() {});
+                setState(() {
+                  if (!p0.isInterestedForInteractions) {
+                    price.state = currencyFormatter
+                        .format(widget.historyCoinData.first.y);
+                  } else {
+                    if (p1?.lineBarSpots?[0].spotIndex != null) {
+                      price.state = currencyFormatter.format(widget
+                          .historyCoinData[p1!.lineBarSpots![0].spotIndex].y);
+                    }
                   }
-                }
+                });
               },
+              getTouchedSpotIndicator:
+                  (LineChartBarData barData, List<int> spotIndexes) {
+                return spotIndexes.map((index) {
+                  return TouchedSpotIndicatorData(
+                    FlLine(
+                      color: const Color.fromRGBO(224, 43, 87, 1),
+                      strokeWidth: 1,
+                      dashArray: [3, 3],
+                    ),
+                    FlDotData(
+                      show: false,
+                    ),
+                  );
+                }).toList();
+              },
+              touchTooltipData: LineTouchTooltipData(
+                fitInsideHorizontally: true,
+                tooltipBgColor: AppAssets.magenta,
+                tooltipPadding: const EdgeInsets.symmetric(
+                  horizontal: 6,
+                  vertical: 5,
+                ),
+                tooltipRoundedRadius: 15,
+                getTooltipItems: (touchedSpots) {
+                  return touchedSpots.map((touchedSpot) {
+                    return LineTooltipItem(
+                      currencyFormatter.format(touchedSpot.y),
+                      const TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    );
+                  }).toList();
+                },
+              ),
             ),
             gridData: FlGridData(show: false),
             borderData: FlBorderData(

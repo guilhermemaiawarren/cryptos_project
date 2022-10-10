@@ -10,29 +10,34 @@ void main() {
   group('Arguments Tests', () {
     test('To conversion arguments', () {
       final arguments = ToConversionArguments(
-          cryptoAmmount: dp('250'), crypto: TestAsset.model, data: [], coinAmmountList: []);
+          cryptoAmmount: dp('250'),
+          crypto: TestAsset.cryptoViewData,
+          data: [],
+          coinAmmountList: []);
 
-      expect(arguments.crypto, TestAsset.model);
+      expect(arguments.crypto, TestAsset.cryptoViewData);
       expect(arguments.cryptoAmmount, dp('250'));
       expect(arguments.data, []);
       expect(arguments.coinAmmountList, []);
-
     });
     test('To Revision arguments', () {
       final arguments = ToRevisionArguments(
-          convert: dp('250'),
-          recieve: dp('250'),
-          convertCoin: TestAsset.model,
-          recieveCoin: TestAsset.model);
+        convert: dp('250'),
+        recieve: dp('250'),
+        convertCoin: TestAsset.model,
+        recieveCoin: TestAsset.model,
+        data: []
+      );
       expect(arguments.convertCoin, TestAsset.model);
       expect(arguments.recieveCoin, TestAsset.model);
       expect(arguments.convert, dp('250'));
       expect(arguments.recieve, dp('250'));
     });
     test('To Details arguments', () {
-      final arguments = ToDetailsArguments(crypto: TestAsset.model, coinAmmount: dp('250'));
+      final arguments =
+          ToDetailsArguments(crypto: TestAsset.cryptoViewData, coinAmmount: dp('250'));
 
-      expect(arguments.crypto, TestAsset.model);
+      expect(arguments.crypto.id, TestAsset.cryptoViewData.id);
       expect(arguments.coinAmmount, dp('250'));
     });
   });

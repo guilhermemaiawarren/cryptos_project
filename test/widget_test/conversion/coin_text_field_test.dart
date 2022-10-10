@@ -28,5 +28,13 @@ void main() {
     expect(textField.asset, TestAsset.model);
     expect(textField.controller, coinTextFieldController);
 
+    await tester.enterText(find.byType(TextFormField), '.');
+    tester.testTextInput.reset();
+    
+    await tester.enterText(find.byType(TextFormField), '0');
+    tester.testTextInput.reset();
+
+    await tester.enterText(find.byType(TextFormField), '259219201');
+    tester.testTextInput.reset();
   });
 }
