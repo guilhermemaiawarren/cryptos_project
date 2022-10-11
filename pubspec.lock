@@ -7,22 +7,14 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "47.0.0"
-=======
-    version: "49.0.0"
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "4.7.0"
-=======
-    version: "5.1.0"
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   args:
     dependency: transitive
     description:
@@ -85,7 +77,7 @@ packages:
       name: build_runner
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.3.0"
   build_runner_core:
     dependency: transitive
     description:
@@ -149,7 +141,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.2"
-<<<<<<< HEAD
   coverage:
     dependency: transitive
     description:
@@ -157,8 +148,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.1"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   crypto:
     dependency: transitive
     description:
@@ -187,20 +176,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.0"
-  device_frame:
-    dependency: transitive
-    description:
-      name: device_frame
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
-  device_preview:
-    dependency: "direct dev"
-    description:
-      name: device_preview
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.0"
   dio:
     dependency: "direct main"
     description:
@@ -222,7 +197,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.1"
-<<<<<<< HEAD
   faker:
     dependency: "direct dev"
     description:
@@ -230,15 +204,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
-  ffi:
-    dependency: transitive
-    description:
-      name: ffi
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.1"
   file:
     dependency: transitive
     description:
@@ -296,18 +261,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_web_plugins:
-    dependency: transitive
-    description: flutter
-    source: sdk
-    version: "0.0.0"
-  freezed_annotation:
-    dependency: transitive
-    description:
-      name: freezed_annotation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   frontend_server_client:
     dependency: transitive
     description:
@@ -384,7 +337,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.4.1"
+    version: "6.5.1"
   lints:
     dependency: transitive
     description:
@@ -405,7 +358,7 @@ packages:
       name: logging
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.1.0"
   matcher:
     dependency: transitive
     description:
@@ -434,7 +387,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
-<<<<<<< HEAD
   mockito:
     dependency: transitive
     description:
@@ -449,16 +401,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.3.0"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-<<<<<<< HEAD
   network_image_mock:
     dependency: "direct dev"
     description:
@@ -473,8 +415,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   package_config:
     dependency: transitive
     description:
@@ -489,41 +429,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.2"
-  path_provider_linux:
-    dependency: transitive
-    description:
-      name: path_provider_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.7"
-  path_provider_platform_interface:
-    dependency: transitive
-    description:
-      name: path_provider_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.5"
-  path_provider_windows:
-    dependency: transitive
-    description:
-      name: path_provider_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.3"
-  platform:
-    dependency: transitive
-    description:
-      name: platform
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.1.0"
-  plugin_platform_interface:
-    dependency: transitive
-    description:
-      name: plugin_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.3"
   pool:
     dependency: transitive
     description:
@@ -531,20 +436,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.1"
-  process:
-    dependency: transitive
-    description:
-      name: process
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.2.4"
-  provider:
-    dependency: transitive
-    description:
-      name: provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "6.0.3"
   pub_semver:
     dependency: transitive
     description:
@@ -573,62 +464,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  shared_preferences:
-    dependency: transitive
-    description:
-      name: shared_preferences
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.15"
-  shared_preferences_android:
-    dependency: transitive
-    description:
-      name: shared_preferences_android
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.13"
-  shared_preferences_ios:
-    dependency: transitive
-    description:
-      name: shared_preferences_ios
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
-  shared_preferences_linux:
-    dependency: transitive
-    description:
-      name: shared_preferences_linux
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
-  shared_preferences_macos:
-    dependency: transitive
-    description:
-      name: shared_preferences_macos
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
-  shared_preferences_platform_interface:
-    dependency: transitive
-    description:
-      name: shared_preferences_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
-  shared_preferences_web:
-    dependency: transitive
-    description:
-      name: shared_preferences_web
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.4"
-  shared_preferences_windows:
-    dependency: transitive
-    description:
-      name: shared_preferences_windows
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
   shelf:
     dependency: transitive
     description:
@@ -636,7 +471,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.0"
-<<<<<<< HEAD
   shelf_packages_handler:
     dependency: transitive
     description:
@@ -651,8 +485,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.1"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   shelf_web_socket:
     dependency: transitive
     description:
@@ -679,7 +511,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.3"
-<<<<<<< HEAD
   source_map_stack_trace:
     dependency: transitive
     description:
@@ -694,8 +525,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.10"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   source_span:
     dependency: transitive
     description:
@@ -730,7 +559,7 @@ packages:
       name: stream_transform
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.0.1"
   string_scanner:
     dependency: transitive
     description:
@@ -745,7 +574,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
-<<<<<<< HEAD
   test:
     dependency: transitive
     description:
@@ -753,8 +581,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.21.4"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   test_api:
     dependency: transitive
     description:
@@ -762,7 +588,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12"
-<<<<<<< HEAD
   test_core:
     dependency: transitive
     description:
@@ -770,8 +595,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.16"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   timing:
     dependency: transitive
     description:
@@ -793,7 +616,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
-<<<<<<< HEAD
   vm_service:
     dependency: transitive
     description:
@@ -801,8 +623,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.4.0"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
   watcher:
     dependency: transitive
     description:
@@ -817,7 +637,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.0"
-<<<<<<< HEAD
   webkit_inspection_protocol:
     dependency: transitive
     description:
@@ -825,22 +644,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
-=======
->>>>>>> 1d89e9463825e877427b26b6b1079d1d48112320
-  win32:
-    dependency: transitive
-    description:
-      name: win32
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
-  xdg_directories:
-    dependency: transitive
-    description:
-      name: xdg_directories
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0+2"
   yaml:
     dependency: transitive
     description:
