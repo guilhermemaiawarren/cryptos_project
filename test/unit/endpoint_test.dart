@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -44,7 +43,7 @@ void main() {
     //Arrange
     when(() => dioMock.get(any())).thenAnswer(
       (_) async => Response(
-        data: jsonDecode(ApiFactory.pricesData),
+        data: ApiFactory.getPricesData('id'),
         requestOptions: RequestOptions(path: ''),
       ),
     );

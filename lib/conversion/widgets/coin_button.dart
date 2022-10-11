@@ -49,21 +49,21 @@ class _CoinButtonState extends State<CoinButton> {
                   ListTile(
                     key: Key(crypto.id),
                     onTap: () {
-                      setState(() {
-                        if (widget.id == '1') {
-                          widget.controller.changeConvertedCoin(
-                            crypto,
-                            widget.value,
-                            widget.formKey,
-                          );
-                        } else {
-                          widget.controller.changeRecieveCoin(
-                            crypto,
-                            widget.formKey,
-                            widget.value,
-                          );
-                        }
-                      });
+                      setState(
+                        () {
+                          widget.id == '1'
+                              ? widget.controller.changeConvertedCoin(
+                                  crypto,
+                                  widget.value,
+                                  widget.formKey,
+                                )
+                              : widget.controller.changeRecieveCoin(
+                                  crypto,
+                                  widget.formKey,
+                                  widget.value,
+                                );
+                        },
+                      );
                       Navigator.pop(context);
                     },
                     title: Text(

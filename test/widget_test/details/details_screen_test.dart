@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:projeto_criptos/details/view/details_screen.dart';
 import 'package:projeto_criptos/shared/templates/error_body.dart';
+import 'package:projeto_criptos/shared/templates/warren_button.dart';
 import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 
 import '../../setup/common_asset.dart';
@@ -22,6 +23,10 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(ErrorBody), findsOneWidget);
+
+      await tester.tap(find.byType(WarrenButton));
+
+      await tester.pumpAndSettle();
     });
   });
 }

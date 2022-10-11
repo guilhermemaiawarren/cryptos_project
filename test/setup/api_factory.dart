@@ -26,19 +26,4 @@ class ApiFactory {
       ],
     };
   }
-
-  static const pricesData = '''
-{
-"prices": [
-[
-1367107200000,
-135.3
-],
-[
-1367193600000,
-141.96
-]
-]
-}
-''';
 }
