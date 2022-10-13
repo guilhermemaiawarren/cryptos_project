@@ -55,13 +55,10 @@ class _ReviewButtonsState extends ConsumerState<ReviewButtons> {
             child: WarrenButton(
               key: const Key('PushButton'),
               onPressed: () {
-                int convertedId = widget.convertId;
-
-                int recieveId = widget.recieveId;
                 setState(() {
-                  ref.read(userCoinAmmountProvider)[convertedId] -=
+                  ref.read(userCoinAmmountProvider)[widget.convertId] -=
                       dtd(widget.convert);
-                  ref.read(userCoinAmmountProvider)[recieveId] +=
+                  ref.read(userCoinAmmountProvider)[widget.recieveId] +=
                       dtd(widget.recieve);
                   ref.read(movementsProvider.state).state.add(widget.move);
                 });
