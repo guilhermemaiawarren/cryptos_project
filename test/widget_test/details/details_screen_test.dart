@@ -10,7 +10,7 @@ import '../../setup/common_asset.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load DetailsPage THEN match expected return',
+  testWidgets('WHEN load DetailsPage THEN find ErrorBody THEN try again',
       (WidgetTester tester) async {
     mockNetworkImagesFor(() async {
       await loadPage(

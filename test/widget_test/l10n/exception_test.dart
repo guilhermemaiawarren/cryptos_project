@@ -4,7 +4,7 @@ import 'package:projeto_criptos/l10n/core_strings.dart';
 
 
 void main() {
-  test('WHEN load L10nWidgetTester THEN test english texts', () async {
+  test('WHEN execute lookupCoreStrings THEN identify displayed exception', () async {
 
     expect(() => lookupCoreStrings(const Locale('rs')), throwsFlutterError);
   });

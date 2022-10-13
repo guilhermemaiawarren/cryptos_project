@@ -68,7 +68,7 @@ class ConversionController extends ChangeNotifier {
   }
 
   changeConvertedCoin(
-      CryptoViewData crypto, String? value, GlobalKey<FormState> formKey) {
+      CryptoViewData crypto, String value, GlobalKey<FormState> formKey) {
     if (crypto.id == cryptoConverted.id) {
       cryptoConverted = asset;
     }
@@ -76,7 +76,7 @@ class ConversionController extends ChangeNotifier {
     coinAmmount = dp(
         (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
             .toString());
-    convertedValue('0');
+    convertedValue(value);
     buttonValidation(formKey);
     notifyListeners();
   }

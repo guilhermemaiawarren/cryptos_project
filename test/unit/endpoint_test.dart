@@ -25,7 +25,7 @@ void main() {
     pricesUsecase = PricesUsecase(repository);
   });
 
-  test('WHEN getAllCryptos THEN ensure mocktail object made request', () async {
+  test('WHEN getAllCryptos THEN verify method called', () async {
     //Arrange
     when(() => dioMock.get(any())).thenAnswer(
       (_) async => Response(
@@ -39,7 +39,7 @@ void main() {
     verify(() => dioMock.get(any()));
     expect(list.isNotEmpty, true);
   });
-  test('WHEN getCryptoPrices THEN ensure marketData is mockedData', () async {
+  test('WHEN getCryptoPrices THEN verify method was called', () async {
     //Arrange
     when(() => dioMock.get(any())).thenAnswer(
       (_) async => Response(

@@ -5,18 +5,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../shared/templates/app_assets.dart';
 import '../provider/days_provider.dart';
 
-class GraphDetails extends StatefulHookConsumerWidget {
+class GraphDetails extends HookConsumerWidget {
   const GraphDetails({Key? key, required this.historyCoinData})
       : super(key: key);
   final List<FlSpot> historyCoinData;
 
   @override
-  ConsumerState<GraphDetails> createState() => _$GraphDetailsState();
-}
-
-class _$GraphDetailsState extends ConsumerState<GraphDetails> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: AspectRatio(
@@ -52,7 +47,7 @@ class _$GraphDetailsState extends ConsumerState<GraphDetails> {
                 barWidth: 3,
                 dotData: FlDotData(show: false),
                 color: AppAssets.magenta,
-                spots: widget.historyCoinData.sublist(
+                spots: historyCoinData.sublist(
                   0,
                   ref.watch(daysProvider.state).state + 1,
                 ),

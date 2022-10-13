@@ -6,7 +6,7 @@ import '../../setup/common_asset.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load TopPageContainer THEN return if there is a widget',
+  testWidgets('WHEN load TopPageContainer THEN find TopPageContainer',
       (WidgetTester tester) async {
     mockNetworkImagesFor(() async {
       await loadPage(tester, TopPageContainer(model: TestAsset.model));

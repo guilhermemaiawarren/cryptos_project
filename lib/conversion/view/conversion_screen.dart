@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/controller_provider.dart';
 import '../widgets/swap_icon_button.dart';
 import '../widgets/total_convert_value_container.dart';
 
@@ -13,10 +12,11 @@ import '../widgets/helper_currency_text.dart';
 import '../widgets/informative_text.dart';
 
 class ConversionScreen extends ConsumerStatefulWidget {
-  ConversionScreen({
+  const ConversionScreen({
+    super.key,
     required this.controller,
   });
-  late ConversionController controller;
+  final ConversionController controller;
   @override
   ConsumerState<ConversionScreen> createState() => _BodyConversionScreenState();
 }
@@ -27,7 +27,6 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    widget.controller = ref.watch(convertControllerProvider);
     widget.controller.addListener(() {
       setState(() {});
     });

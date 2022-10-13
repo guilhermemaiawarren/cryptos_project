@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
 import 'package:projeto_criptos/portfolio/view/portfolio_screen.dart';
-import 'package:projeto_criptos/portfolio/widgets/body_portfolio_screen.dart';
 
 import '../../setup/setup_widget_tester_override_providers.dart';
 
@@ -15,9 +15,7 @@ void main() {
 
       await tester.pumpAndSettle();
 
-      expect(find.byType(BodyPortfolioScreen), findsOneWidget);
+      expect(find.byType(Column), findsWidgets);
     });
   });
-
-  
 }

@@ -44,7 +44,7 @@ void main() {
       expect(newController.cryptos, data);
       expect(newController.validate, false);
     });
-    test('WHEN conversionController.init THEN compare matchers with asset.id = bitcoin', () {
+    test('WHEN conversionController.init THEN compare matchers with asset.id = ethereum', () {
       CryptoViewData model = CryptoViewData(id: 'ethereum', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
       ConversionController newController = ConversionController();
       newController.controllerInit(model,dp('250'), data, coinAmmountList);
@@ -84,8 +84,6 @@ void main() {
 
     test('WHEN controller.convertedValue THEN confirm return is expected', () {
       controller.convertedValue('250');
-      //convertHelper = 250 * 250 = 62500
-      //convertedCryptoHelper = 62500 / 250 = 250
       expect(controller.convertHelper, dp('62500'));
       expect(controller.convertedCryptoHelper, dp('250'));
     });

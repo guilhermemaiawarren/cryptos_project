@@ -8,19 +8,16 @@ import '../../setup/setup_widget_tester.dart';
 void main() {
   testWidgets('WHEN load GraphDetails THEN look for a AspectRatio widget',
       (WidgetTester tester) async {
-    List<FlSpot> dados = data
+    List<FlSpot> dados = _data
         .map((price) => FlSpot(price[0].toDouble(), price[1].toDouble()))
         .toList();
     await loadPage(tester, GraphDetails(historyCoinData: dados));
-
-    await tester.drag(find.byType(LineChart), const Offset(25, 25));
-    await tester.dragFrom(const Offset(25, 25), const Offset(150, 25));
 
     expect(find.byType(AspectRatio), findsOneWidget);
   });
 }
 
-List<List<num>> data = [
+List<List<num>> _data = [
   [214, 2142],
   [214, 2142],
   [214, 2142],

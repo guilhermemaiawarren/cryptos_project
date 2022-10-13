@@ -8,7 +8,7 @@ import '../setup/common_asset.dart';
 
 void main() {
   group('Arguments Tests', () {
-    test('To conversion arguments', () {
+    test('To conversion arguments TEST', () {
       final arguments = ToConversionArguments(
           cryptoAmmount: dp('250'),
           crypto: TestAsset.cryptoViewData,
@@ -20,7 +20,7 @@ void main() {
       expect(arguments.data, []);
       expect(arguments.coinAmmountList, []);
     });
-    test('To Revision arguments', () {
+    test('To Revision arguments TEST', () {
       final arguments = ToRevisionArguments(
         convert: dp('250'),
         recieve: dp('250'),
@@ -33,7 +33,7 @@ void main() {
       expect(arguments.convert, dp('250'));
       expect(arguments.recieve, dp('250'));
     });
-    test('To Details arguments', () {
+    test('To Details arguments TEST', () {
       final arguments =
           ToDetailsArguments(crypto: TestAsset.cryptoViewData, coinAmmount: dp('250'));
 
