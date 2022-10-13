@@ -12,6 +12,7 @@ import 'visibility_off_container.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
   const WalletVisibility({Key? key}) : super(key: key);
+  static const route = '/wallet';
 
   @override
   ConsumerState<WalletVisibility> createState() => _WalletVisibilityState();
@@ -20,7 +21,7 @@ class WalletVisibility extends StatefulHookConsumerWidget {
 class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
   Widget build(BuildContext context) {
-    var visible = ref.watch(visibleProvider.state);
+    StateController<bool> visible = ref.watch(visibleProvider.state);
     Decimal balance = ref.watch(balanceProvider);
 
     return Padding(
@@ -35,6 +36,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
             children: [
               Text(
                 CoreStrings.of(context)!.crypto,
+                key: const Key('Cripto'),
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: AppAssets.montSerrat,
@@ -44,22 +46,20 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
                 ),
               ),
               IconButton(
+                key: const Key('ChangeVisibility'),
                 onPressed: () {
                   setState(() {
                     visible.state = !visible.state;
                   });
                 },
                 icon: Icon(
-                  visible.state ? Icons.visibility : Icons.visibility_off,
-                ),
+                    visible.state ? Icons.visibility : Icons.visibility_off),
               ),
             ],
           ),
           visible.state
-              ? Text(
-                  currencyFormatter.format(dtd(balance)),
-                  style: Theme.of(context).textTheme.headlineSmall
-                )
+              ? Text(currencyFormatter.format(dtd(balance)),
+                  style: Theme.of(context).textTheme.headlineSmall)
               : const VisibilityOffContainer(
                   witdh: 240,
                   height: 37,
@@ -67,6 +67,7 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
           const SizedBox(height: 5),
           Text(
             CoreStrings.of(context)!.totalBalanceHelper,
+            key: const Key('TotalBalanceHelper'),
             style: TextStyle(
               color: Colors.grey.shade600,
               fontSize: 16,

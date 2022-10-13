@@ -18,13 +18,11 @@ class PortfolioScreen extends HookConsumerWidget {
         return Column(
           children: [
             const WalletVisibility(),
-            WalletAssetsListView(cryptosData: data),
+            Expanded(child: WalletAssetsListView(cryptosData: data)),
           ],
         );
       },
       error: (e, s) {
-        debugPrint(e.toString());
-        debugPrint(s.toString());
         return ErrorBody(
           onRetry: () {
             ref.refresh(cryptosProvider);

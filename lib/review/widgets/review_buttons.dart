@@ -18,6 +18,7 @@ class ReviewButtons extends StatelessWidget {
         children: [
           Expanded(
             child: WarrenButton(
+              key: const Key('BackButton'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -32,6 +33,7 @@ class ReviewButtons extends StatelessWidget {
           const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
           Expanded(
             child: WarrenButton(
+              key: const Key('PushButton'),
               onPressed: onPressed,
               text: CoreStrings.of(context)!.conclude,
               color: AppAssets.magenta,

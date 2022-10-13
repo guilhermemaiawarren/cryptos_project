@@ -69,6 +69,7 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               AnimatedContainer(
+                key: const Key('AnimatedContainer'),
                 duration: const Duration(seconds: 2),
                 curve: Curves.easeIn,
                 child: CircleAvatar(

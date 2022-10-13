@@ -14,8 +14,8 @@ import '../shared/utils/decimal_to_double.dart';
 
 import '../shared/common_model/move_model.dart';
 
-class RevisionPage extends ConsumerStatefulWidget {
-  const RevisionPage({
+class ReviewPage extends ConsumerStatefulWidget {
+  const ReviewPage({
     Key? key,
     required this.convert,
     required this.recieve,
@@ -29,14 +29,14 @@ class RevisionPage extends ConsumerStatefulWidget {
   final CryptoEntity recieveCoin;
 
   @override
-  ConsumerState<RevisionPage> createState() => _$RevisionPageState();
+  ConsumerState<ReviewPage> createState() => _$RevisionPageState();
 }
 
-class _$RevisionPageState extends ConsumerState<RevisionPage> {
+class _$RevisionPageState extends ConsumerState<ReviewPage> {
   String getExchange() {
     double exchange = dtd(widget.convertCoin.currentPrice) /
         dtd(widget.recieveCoin.currentPrice);
-    return '1 ${widget.convertCoin.symbol.toUpperCase()} = ${exchange.toStringAsFixed(7)} ${widget.recieveCoin.symbol.toUpperCase()}';
+    return '1 ${widget.convertCoin.symbol.toUpperCase()} = ${exchange.toStringAsFixed(4)} ${widget.recieveCoin.symbol.toUpperCase()}';
   }
 
   late MoveModel moves;
@@ -66,12 +66,14 @@ class _$RevisionPageState extends ConsumerState<RevisionPage> {
               CoreStrings.of(context)!.reviewText,
               style: Theme.of(context).textTheme.headlineLarge,
             ),
-            InfoReviewColumn(
-              convert:
-                  '${widget.convert.toString()} ${widget.convertCoin.symbol.toUpperCase()}',
-              recieve:
-                  '${widget.recieve.toStringAsFixed(6)} ${widget.recieveCoin.symbol.toUpperCase()}',
-              cambio: getExchange(),
+            Expanded(
+              child: InfoReviewColumn(
+                convert:
+                    '${widget.convert.toString()} ${widget.convertCoin.symbol.toUpperCase()}',
+                recieve:
+                    '${widget.recieve.toStringAsFixed(5)} ${widget.recieveCoin.symbol.toUpperCase()}',
+                cambio: getExchange(),
+              ),
             ),
             ReviewButtons(
               onPressed: () {

@@ -21,7 +21,7 @@ class ConversionPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar:  ModelAppBar(text: CoreStrings.of(context)!.convert),
+      appBar: ModelAppBar(text: CoreStrings.of(context)!.convert),
       body: ConversionScreen(
         coinAmmount: coinAmmount,
         asset: asset,

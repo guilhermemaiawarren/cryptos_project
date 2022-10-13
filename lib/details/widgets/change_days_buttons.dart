@@ -15,7 +15,7 @@ class ChangeDaysButtons extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children:  const [
-          ChangeDayButton(days: 5),
+          ChangeDayButton(days: 5, key: Key('5'),),
           ChangeDayButton(days: 15),
           ChangeDayButton(days: 30),
           ChangeDayButton(days: 45),

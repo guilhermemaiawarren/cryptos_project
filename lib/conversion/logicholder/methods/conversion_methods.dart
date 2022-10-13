@@ -4,6 +4,11 @@ class ConversionMethods {
   }
 
   static bool validCoinValue(String source) {
-    return source.startsWith(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+    return !source.startsWith(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+  }
+
+  static String convertedValue(String value, void Function() fn) {
+    fn;
+    return value;
   }
 }

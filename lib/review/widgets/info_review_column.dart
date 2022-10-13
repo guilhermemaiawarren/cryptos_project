@@ -17,18 +17,16 @@ class InfoReviewColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const Divider(thickness: 1),
-          DefaultInfoRow(label: CoreStrings.of(context)!.convert, text: convert),
-          const Divider(thickness: 1),
-          DefaultInfoRow(label: CoreStrings.of(context)!.recieve, text: recieve),
-          const Divider(thickness: 1),
-          DefaultInfoRow(label: CoreStrings.of(context)!.exchange, text: cambio),
-        ],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        const Divider(thickness: 1),
+        DefaultInfoRow(label: CoreStrings.of(context)!.convert, text: convert),
+        const Divider(thickness: 1),
+        DefaultInfoRow(label: CoreStrings.of(context)!.recieve, text: recieve),
+        const Divider(thickness: 1),
+        DefaultInfoRow(label: CoreStrings.of(context)!.exchange, text: cambio),
+      ],
     );
   }
 }

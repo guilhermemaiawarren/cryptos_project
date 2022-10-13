@@ -10,7 +10,6 @@ class FloatingCriptoButton extends HookConsumerWidget {
   const FloatingCriptoButton({
     Key? key,
   }) : super(key: key);
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     bool validate = ref.watch(validateProvider.state).state;
@@ -34,6 +33,7 @@ class FloatingCriptoButton extends HookConsumerWidget {
           : null,
       child: const Icon(
         Icons.keyboard_arrow_right,
+        key: Key('FloatingIconKey'),
       ),
     );
   }

@@ -64,11 +64,13 @@ class AssetListTile extends HookConsumerWidget {
       ),
       subtitle: Row(
         children: [
-          Text(
-            crypto.name,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              color: Colors.grey.shade600,
+          Expanded(
+            child: Text(
+              crypto.name,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Colors.grey.shade600,
+              ),
             ),
           ),
           const Spacer(),

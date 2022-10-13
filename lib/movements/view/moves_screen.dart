@@ -14,6 +14,7 @@ class MovesScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final moves = ref.watch(movementsProvider);
     return Padding(
+      key: const Key('MovesScreenBody'),
       padding: const EdgeInsets.only(
         top: 55,
         left: 30,
@@ -27,6 +28,7 @@ class MovesScreen extends ConsumerWidget {
             ),
             child: Text(
               CoreStrings.of(context)!.moves,
+              key: const Key('Movimentações'),
               style: TextStyle(
                 fontFamily: AppAssets.montSerrat,
                 fontWeight: FontWeight.bold,
