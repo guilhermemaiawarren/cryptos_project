@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../controller/conversion_controller.dart';
 
 import '../../shared/templates/app_assets.dart';
+import '../controller/conversion_controller.dart';
 
 class SwapIconButton extends StatefulWidget {
   const SwapIconButton({

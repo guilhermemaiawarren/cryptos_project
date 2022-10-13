@@ -100,8 +100,8 @@ void main() {
           TestAsset.cryptoViewData, '250', GlobalKey<FormState>());
       expect(controller.cryptoConverted.id, TestAsset.model.id);
       expect(controller.asset.id, 'bitcoin');
-      expect(controller.convertHelper, dp('0'));
-      expect(controller.convertedCryptoHelper, dp('0'));
+      expect(controller.convertHelper, dp('62500'));
+      expect(controller.convertedCryptoHelper, dp('250'));
       expect(controller.validate, false);
     });
 

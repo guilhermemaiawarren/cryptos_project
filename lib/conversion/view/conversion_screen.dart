@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../widgets/swap_icon_button.dart';
-import '../widgets/total_convert_value_container.dart';
-
 import '../controller/conversion_controller.dart';
 import '../widgets/available_balance_container.dart';
 import '../widgets/coin_button.dart';
 import '../widgets/coin_text_field.dart';
 import '../widgets/helper_currency_text.dart';
 import '../widgets/informative_text.dart';
+import '../widgets/swap_icon_button.dart';
+import '../widgets/total_convert_value_container.dart';
 
 class ConversionScreen extends ConsumerStatefulWidget {
   const ConversionScreen({

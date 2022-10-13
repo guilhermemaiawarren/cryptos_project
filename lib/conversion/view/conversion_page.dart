@@ -2,13 +2,12 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../provider/controller_provider.dart';
-import 'conversion_screen.dart';
-import '../widgets/floating_cripto_button.dart';
 import '../../l10n/core_strings.dart';
-
 import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/model_app_bar.dart';
+import '../provider/controller_provider.dart';
+import '../widgets/floating_cripto_button.dart';
+import 'conversion_screen.dart';
 
 class ConversionPage extends ConsumerStatefulWidget {
   const ConversionPage({
@@ -32,10 +31,16 @@ class _$ConversionPageState extends ConsumerState<ConversionPage> {
   @override
   Widget build(BuildContext context) {
     ref.read(convertControllerProvider.notifier).controllerInit(
-        widget.asset, widget.coinAmmount, widget.data, widget.coinAmmountList);
+          widget.asset,
+          widget.coinAmmount,
+          widget.data,
+          widget.coinAmmountList,
+        );
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: ModelAppBar(text: CoreStrings.of(context)!.convert),
+      appBar: ModelAppBar(
+        text: CoreStrings.of(context)!.convert,
+      ),
       body: ConversionScreen(
         controller: ref.read(convertControllerProvider),
       ),

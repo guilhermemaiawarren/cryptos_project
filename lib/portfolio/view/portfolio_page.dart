@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'portfolio_screen.dart';
 
 import '../../shared/templates/custom_bottom_nav_bar.dart';
+import 'portfolio_screen.dart';
 
 
 class PortfolioPage extends StatelessWidget {

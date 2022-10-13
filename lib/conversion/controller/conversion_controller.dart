@@ -74,8 +74,9 @@ class ConversionController extends ChangeNotifier {
     }
     asset = crypto;
     coinAmmount = dp(
-        (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
-            .toString());
+      (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
+          .toString(),
+    );
     convertedValue(value);
     buttonValidation(formKey);
     notifyListeners();
@@ -87,8 +88,9 @@ class ConversionController extends ChangeNotifier {
     cryptoConverted = temp;
     convertedValue('0');
     coinAmmount = dp(
-        (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
-            .toString());
+      (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
+          .toString(),
+    );
     validate = false;
     notifyListeners();
   }

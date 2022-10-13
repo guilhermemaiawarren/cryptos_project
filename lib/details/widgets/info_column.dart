@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import '../../l10n/core_strings.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/default_info_row.dart';
 import '../../shared/utils/currency_formater.dart';

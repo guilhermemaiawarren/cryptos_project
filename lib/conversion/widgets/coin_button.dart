@@ -38,53 +38,55 @@ class _CoinButtonState extends State<CoinButton> {
           ListView(
             scrollDirection: Axis.vertical,
             key: const Key('ListViewCoinButton'),
-            children: widget.controller.cryptos.map((crypto) {
-              return Column(
-                key: const Key('ColumnCoinButton'),
-                children: [
-                  const Divider(
-                    thickness: 1,
-                    key: Key('DividerCoinButton'),
-                  ),
-                  ListTile(
-                    key: Key(crypto.id),
-                    onTap: () {
-                      setState(
-                        () {
-                          widget.id == '1'
-                              ? widget.controller.changeConvertedCoin(
-                                  crypto,
-                                  widget.value,
-                                  widget.formKey,
-                                )
-                              : widget.controller.changeRecieveCoin(
-                                  crypto,
-                                  widget.formKey,
-                                  widget.value,
-                                );
-                        },
-                      );
-                      Navigator.pop(context);
-                    },
-                    title: Text(
-                      crypto.symbol.toUpperCase(),
-                      key: const Key('SymbolCryptoCoinButton'),
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
+            children: widget.controller.cryptos.map(
+              (crypto) {
+                return Column(
+                  key: const Key('ColumnCoinButton'),
+                  children: [
+                    const Divider(
+                      thickness: 1,
+                      key: Key('DividerCoinButton'),
+                    ),
+                    ListTile(
+                      key: Key(crypto.id),
+                      onTap: () {
+                        setState(
+                          () {
+                            widget.id == '1'
+                                ? widget.controller.changeConvertedCoin(
+                                    crypto,
+                                    widget.value,
+                                    widget.formKey,
+                                  )
+                                : widget.controller.changeRecieveCoin(
+                                    crypto,
+                                    widget.formKey,
+                                    widget.value,
+                                  );
+                          },
+                        );
+                        Navigator.pop(context);
+                      },
+                      title: Text(
+                        crypto.symbol.toUpperCase(),
+                        key: const Key('SymbolCryptoCoinButton'),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      subtitle: Text(
+                        crypto.name,
+                        key: const Key('NameCryptoCoinButton'),
+                      ),
+                      trailing: const Icon(
+                        Icons.keyboard_arrow_right,
+                        key: Key('IconCoinButton'),
                       ),
                     ),
-                    subtitle: Text(
-                      crypto.name,
-                      key: const Key('NameCryptoCoinButton'),
-                    ),
-                    trailing: const Icon(
-                      Icons.keyboard_arrow_right,
-                      key: Key('IconCoinButton'),
-                    ),
-                  ),
-                ],
-              );
-            }).toList(),
+                  ],
+                );
+              },
+            ).toList(),
           ),
         );
       },

@@ -1,7 +1,6 @@
 import 'package:decimal/decimal.dart';
 
 import '../../../portfolio/model/crypto_view_data.dart';
-
 import '../../common_model/crypto.dart';
 
 class ToRevisionArguments {

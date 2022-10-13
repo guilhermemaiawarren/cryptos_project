@@ -35,7 +35,7 @@ void main() {
     );
   });
   testWidgets(
-      'WHEN load BodyConversionScreen THEN tests attributes in all widgets',
+      'WHEN load ConversionScreen THEN tests attributes in all widgets',
       (WidgetTester tester) async {
     mockNetworkImagesFor(
       () async {
@@ -59,13 +59,13 @@ void main() {
         final totalConvertValue = tester.widget<TotalConvertValueContainer>(
             find.byType(TotalConvertValueContainer));
 
-        expect(availableContainer.asset.id, '');
+        expect(availableContainer.asset.id, 'bitcoin');
         expect(availableContainer.coinAmmount, dp('250'));
         expect(informativeText.key, const Key('InformativeText'));
         expect(swapButton.key, const Key('SwapButton'));
-        expect(textField.asset.id, '');
-        expect(helperCurrency.convertHelper, dp('250'));
-        expect(totalConvertValue.cryptoConverted.id, '');
+        expect(textField.asset.id, 'bitcoin');
+        expect(helperCurrency.convertHelper, dp('0'));
+        expect(totalConvertValue.cryptoConverted.id, 'ethereum');
       },
     );
   });

@@ -1,12 +1,12 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'details_screen.dart';
+
 import '../../l10n/core_strings.dart';
 import '../../portfolio/model/crypto_view_data.dart';
-
-import '../provider/days_provider.dart';
 import '../../shared/templates/model_app_bar.dart';
+import '../provider/days_provider.dart';
+import 'details_screen.dart';
 
 class DetailsPage extends HookConsumerWidget {
   const DetailsPage({
@@ -20,9 +20,12 @@ class DetailsPage extends HookConsumerWidget {
   final Decimal coinAmmount;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Future.delayed(Duration.zero, () {
-      ref.read(daysProvider.state).state = 5;
-    });
+    Future.delayed(
+      Duration.zero,
+      () {
+        ref.read(daysProvider.state).state = 5;
+      },
+    );
     return Scaffold(
       appBar: ModelAppBar(
         text: CoreStrings.of(context)!.details,

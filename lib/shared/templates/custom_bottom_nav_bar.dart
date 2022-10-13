@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../l10n/core_strings.dart';
-import '../../portfolio/view/portfolio_page.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../movements/view/moves_page.dart';
+import '../../portfolio/view/portfolio_page.dart';
 import '../../shared/templates/app_assets.dart';
 
 class CustomBottomNavBar extends StatefulWidget {

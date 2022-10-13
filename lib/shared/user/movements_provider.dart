@@ -1,7 +1,7 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../utils/decimal_parse.dart';
 
 import '../common_model/move_model.dart';
+import '../utils/decimal_parse.dart';
 
 final movementsProvider = StateProvider(
   (ref) {

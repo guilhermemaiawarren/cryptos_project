@@ -58,7 +58,9 @@ class AssetListTile extends ConsumerWidget {
                   witdh: 110,
                   height: 15,
                 ),
-          const Padding(padding: EdgeInsets.only(left: 10)),
+          const Padding(
+            padding: EdgeInsets.only(left: 10),
+          ),
           const Icon(Icons.keyboard_arrow_right),
         ],
       ),

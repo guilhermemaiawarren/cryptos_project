@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+
 import '../l10n/core_strings.dart';
 import '../shared/common_model/move_model.dart';
 import '../shared/templates/app_assets.dart';
@@ -34,11 +35,6 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
   void initState() {
     super.initState();
     animateContainer();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override

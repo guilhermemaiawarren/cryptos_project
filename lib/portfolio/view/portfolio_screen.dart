@@ -13,19 +13,27 @@ class PortfolioScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cryptos = ref.watch(cryptosProvider);
-    return cryptos.when(data: (data) {
-      return Column(
-        children: [
-          const WalletVisibility(),
-          Expanded(child: WalletAssetsListView(cryptosData: data)),
-        ],
-      );
-    }, error: (e, s) {
-      return ErrorBody(onRetry: () {
-        ref.refresh(cryptosProvider);
-      });
-    }, loading: () {
-      return const LoadingBody();
-    });
+    return cryptos.when(
+      data: (data) {
+        return Column(
+          children: [
+            const WalletVisibility(),
+            Expanded(
+              child: WalletAssetsListView(cryptosData: data),
+            ),
+          ],
+        );
+      },
+      error: (e, s) {
+        return ErrorBody(
+          onRetry: () {
+            ref.refresh(cryptosProvider);
+          },
+        );
+      },
+      loading: () {
+        return const LoadingBody();
+      },
+    );
   }
 }

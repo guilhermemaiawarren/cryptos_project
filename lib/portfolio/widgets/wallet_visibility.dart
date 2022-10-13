@@ -48,12 +48,15 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
               IconButton(
                 key: const Key('ChangeVisibility'),
                 onPressed: () {
-                  setState(() {
-                    visible.state = !visible.state;
-                  });
+                  setState(
+                    () {
+                      visible.state = !visible.state;
+                    },
+                  );
                 },
                 icon: Icon(
-                    visible.state ? Icons.visibility : Icons.visibility_off),
+                  visible.state ? Icons.visibility : Icons.visibility_off,
+                ),
               ),
             ],
           ),
