@@ -5,8 +5,8 @@ import 'moves_screen.dart';
 
 class MovesPage extends StatelessWidget {
   const MovesPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   static const route = '/moves';
 
   @override

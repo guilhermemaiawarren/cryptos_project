@@ -1,14 +1,14 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
 import '../../shared/user/user_coin_ammount_provider.dart';
 import '../../shared/utils/decimal_parse.dart';
-
-import '../controller/balance_provider.dart';
 import '../model/crypto_view_data.dart';
+import '../provider/balance_provider.dart';
 import 'asset_list_tile.dart';
 
-class WalletAssetsListView extends StatefulHookConsumerWidget {
+class WalletAssetsListView extends ConsumerStatefulWidget {
   const WalletAssetsListView({
     Key? key,
     required this.cryptosData,
@@ -21,11 +21,13 @@ class WalletAssetsListView extends StatefulHookConsumerWidget {
 }
 
 class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
-  Decimal getBalance(List<CryptoViewData> assets) {
+  Decimal getBalance() {
     Decimal balance = dp('0.0');
-    for (int index = 0; index < assets.length; index++) {
-      balance += assets[index].currentPrice *
-          dp(ref.watch(userCoinAmmountProvider)[index].toString());
+    for (CryptoViewData asset in widget.cryptosData) {
+      balance += asset.currentPrice *
+          dp(
+            ref.watch(userCoinAmmountProvider)[widget.cryptosData.indexOf(asset)].toString(),
+          );
     }
     return balance;
   }
@@ -35,7 +37,7 @@ class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
     Future.delayed(
       Duration.zero,
       () {
-        ref.read(balanceProvider.state).state = getBalance(widget.cryptosData);
+        ref.read(balanceProvider.state).state = getBalance();
       },
     );
     return ListView.builder(

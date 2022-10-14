@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../shared/templates/app_assets.dart';
+import '../controller/conversion_controller.dart';
 
 class SwapIconButton extends StatefulWidget {
   const SwapIconButton({
     Key? key,
-    required this.onPressed,
+    required this.controller,
   }) : super(key: key);
-  final void Function()? onPressed;
+  final ConversionController controller;
   @override
   State<SwapIconButton> createState() => _SwapIconButtonState();
 }
@@ -22,7 +23,11 @@ class _SwapIconButtonState extends State<SwapIconButton> {
         color: AppAssets.magenta,
         size: 25,
       ),
-      onPressed: widget.onPressed,
+      onPressed: () {
+        setState(() {
+          widget.controller.swapCoins();
+        });
+      },
     );
   }
 }

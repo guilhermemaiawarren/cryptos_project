@@ -1,15 +1,13 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/shared/user/movements_provider.dart';
-import 'package:projeto_criptos/portfolio/controller/cryptos_provider.dart';
-import 'package:projeto_criptos/review/widgets/info_review_column.dart';
+import '../l10n/core_strings.dart';
+import 'widgets/info_review_column.dart';
 
+import '../portfolio/model/crypto_view_data.dart';
 import 'widgets/review_buttons.dart';
 import '../shared/common_model/crypto.dart';
 import '../shared/templates/model_app_bar.dart';
-import '../shared/user/user_coin_ammount_provider.dart';
 import '../shared/utils/decimal_to_double.dart';
 
 import '../shared/common_model/move_model.dart';
@@ -21,18 +19,20 @@ class ReviewPage extends ConsumerStatefulWidget {
     required this.recieve,
     required this.convertCoin,
     required this.recieveCoin,
+    required this.data,
   }) : super(key: key);
   static const route = '/revision';
   final Decimal convert;
   final Decimal recieve;
   final CryptoEntity convertCoin;
   final CryptoEntity recieveCoin;
+  final List<CryptoViewData> data;
 
   @override
-  ConsumerState<ReviewPage> createState() => _$RevisionPageState();
+  ConsumerState<ReviewPage> createState() => _$ReviewPageState();
 }
 
-class _$RevisionPageState extends ConsumerState<ReviewPage> {
+class _$ReviewPageState extends ConsumerState<ReviewPage> {
   String getExchange() {
     double exchange = dtd(widget.convertCoin.currentPrice) /
         dtd(widget.recieveCoin.currentPrice);
@@ -43,7 +43,6 @@ class _$RevisionPageState extends ConsumerState<ReviewPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cryptos = ref.watch(cryptosProvider);
     moves = MoveModel(
       convert: widget.convert,
       recieve: widget.recieve,
@@ -76,25 +75,13 @@ class _$RevisionPageState extends ConsumerState<ReviewPage> {
               ),
             ),
             ReviewButtons(
-              onPressed: () {
-                int convertedId = cryptos.asData!.value
-                    .indexWhere((crypto) => crypto.id == widget.convertCoin.id);
-
-                int recieveId = cryptos.asData!.value
-                    .indexWhere((crypto) => crypto.id == widget.recieveCoin.id);
-                setState(() {
-                  ref.read(userCoinAmmountProvider)[convertedId] -=
-                      dtd(widget.convert);
-                  ref.read(userCoinAmmountProvider)[recieveId] +=
-                      dtd(widget.recieve);
-                  ref.read(movementsProvider.state).state.add(moves);
-                });
-                Navigator.pushReplacementNamed(
-                  context,
-                  '/success',
-                  arguments: moves,
-                );
-              },
+              convertId: widget.data
+                  .indexWhere((crypto) => crypto.id == widget.convertCoin.id),
+              recieveId: widget.data
+                  .indexWhere((crypto) => crypto.id == widget.recieveCoin.id),
+              convert: widget.convert,
+              recieve: widget.recieve,
+              move: moves,
             ),
           ],
         ),

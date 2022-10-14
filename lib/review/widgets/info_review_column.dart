@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/templates/default_info_row.dart';
 
 class InfoReviewColumn extends StatelessWidget {

@@ -1,8 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/shared/common_model/move_model.dart';
-import 'package:projeto_criptos/shared/templates/app_assets.dart';
+
+import '../l10n/core_strings.dart';
+import '../shared/common_model/move_model.dart';
+import '../shared/templates/app_assets.dart';
 
 class SucessConversionPage extends StatefulWidget {
   const SucessConversionPage({
@@ -34,11 +35,6 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
   void initState() {
     super.initState();
     animateContainer();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override

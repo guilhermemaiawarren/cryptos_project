@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 class VisibilityOffContainer extends StatelessWidget {
   const VisibilityOffContainer({
-    Key? key,
+    super.key,
     required this.witdh,
     required this.height,
-  }) : super(key: key);
+  });
   final double witdh;
   final double height;
   @override

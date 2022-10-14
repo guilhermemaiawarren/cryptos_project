@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import 'package:projeto_criptos/portfolio/view/portfolio_page.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../movements/view/moves_page.dart';
+import '../../portfolio/view/portfolio_page.dart';
 import '../../shared/templates/app_assets.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
-  const CustomBottomNavBar({Key? key, required this.index}) : super(key: key);
+  const CustomBottomNavBar({super.key, required this.index});
   final int index;
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
-  late PageController controller;
   void _onItemTapped(int index) {
     switch (index) {
       case 0:

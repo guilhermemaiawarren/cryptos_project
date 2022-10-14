@@ -23,5 +23,6 @@ class CryptosResponse {
   factory CryptosResponse.fromJson(Map<String, dynamic> json) =>
       _$CryptosResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$CryptosResponseToJson(this);
+      Map<String, dynamic> toJson() => _$CryptosResponseToJson(this);
+
 }

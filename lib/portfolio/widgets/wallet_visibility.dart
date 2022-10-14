@@ -1,13 +1,13 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
-import '../../shared/utils/decimal_to_double.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/templates/app_assets.dart';
 import '../../shared/utils/currency_formater.dart';
-import '../controller/balance_provider.dart';
-import '../controller/visible_provider.dart';
+import '../../shared/utils/decimal_to_double.dart';
+import '../provider/balance_provider.dart';
+import '../provider/visible_provider.dart';
 import 'visibility_off_container.dart';
 
 class WalletVisibility extends StatefulHookConsumerWidget {
@@ -48,12 +48,15 @@ class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
               IconButton(
                 key: const Key('ChangeVisibility'),
                 onPressed: () {
-                  setState(() {
-                    visible.state = !visible.state;
-                  });
+                  setState(
+                    () {
+                      visible.state = !visible.state;
+                    },
+                  );
                 },
                 icon: Icon(
-                    visible.state ? Icons.visibility : Icons.visibility_off),
+                  visible.state ? Icons.visibility : Icons.visibility_off,
+                ),
               ),
             ],
           ),

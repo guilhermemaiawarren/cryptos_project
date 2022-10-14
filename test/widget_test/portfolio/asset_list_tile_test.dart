@@ -23,6 +23,21 @@ void main() {
       );
     },
   );
+  testWidgets(
+    'WHEN load AssetListTile THEN navigate to details',
+    (WidgetTester tester) async {
+      mockNetworkImagesFor(
+        () async {
+          await loadPage(tester, asset);
+
+          await tester.pumpAndSettle();
+
+          await tester.tap(find.byType(ListTile));
+          await tester.pumpAndSettle();
+        },
+      );
+    },
+  );
 }
 
 AssetListTile asset = AssetListTile(

@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
+import 'package:projeto_criptos/route_controller.dart';
 import 'package:projeto_criptos/shared/theme/theme_data_criptos.dart';
 
 class SetupWidgetTester extends StatelessWidget {
@@ -21,25 +22,28 @@ class SetupWidgetTester extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
         ],
-        locale: const Locale('es',''),
+        locale: const Locale('es', ''),
         supportedLocales: const [
           Locale('en', ''),
           Locale('pt', 'BR'),
           Locale('es', ''),
         ],
-        home: Material(
-          child: child,
+        home: MediaQuery(
+          data: const MediaQueryData(),
+          child: Material(
+            child: child,
+          ),
         ),
         theme: themeDataCriptos(),
+        onGenerateRoute: RouteController.generateRoute,
       ),
     );
   }
 }
 
-
 Future<void> loadPage(WidgetTester tester, Widget child) async {
-    var page = SetupWidgetTester(
-      child: child,
-    );
-    await tester.pumpWidget(page);
-  }
+  var page = SetupWidgetTester(
+    child: child,
+  );
+  await tester.pumpWidget(page);
+}

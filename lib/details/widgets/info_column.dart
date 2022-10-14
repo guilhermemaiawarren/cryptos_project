@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import 'package:projeto_criptos/l10n/core_strings.dart';
 
+import '../../l10n/core_strings.dart';
 import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/default_info_row.dart';
 import '../../shared/utils/currency_formater.dart';
@@ -29,7 +29,6 @@ class InfoColumn extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 30,
-        vertical: 20,
       ),
       child: Column(
         children: [
