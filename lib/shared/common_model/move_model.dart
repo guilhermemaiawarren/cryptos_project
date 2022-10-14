@@ -21,12 +21,16 @@ class MoveModel {
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
 
-    result.addAll({'convert': convert.toString()});
-    result.addAll({'recieve': recieve.toString()});
-    result.addAll({'data': data.millisecondsSinceEpoch});
-    result.addAll({'cashHelper': cashHelper.toString()});
-    result.addAll({'convertCoinId': convertCoinId});
-    result.addAll({'recieveCoinId': recieveCoinId});
+    result.addAll(
+      {
+        'convert': convert.toString(),
+        'recieve': recieve.toString(),
+        'data': data.millisecondsSinceEpoch,
+        'cashHelper': cashHelper.toString(),
+        'convertCoinId': convertCoinId,
+        'recieveCoinId': recieveCoinId,
+      },
+    );
 
     return result;
   }
