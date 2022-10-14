@@ -1,29 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/provider/text_editing_controller_provider.dart';
 
 import '../controller/conversion_controller.dart';
 import '../../portfolio/model/crypto_view_data.dart';
 
 import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 
-class CoinButton extends StatefulWidget {
+class CoinButton extends ConsumerStatefulWidget {
   const CoinButton({
     Key? key,
-    required this.value,
     required this.formKey,
     required this.id,
     required this.controller,
     required this.asset,
   }) : super(key: key);
-  final String value;
   final GlobalKey<FormState> formKey;
   final String id;
   final ConversionController controller;
   final CryptoViewData asset;
   @override
-  State<CoinButton> createState() => _CoinButtonState();
+  ConsumerState<CoinButton> createState() => _CoinButtonState();
 }
 
-class _CoinButtonState extends State<CoinButton> {
+class _CoinButtonState extends ConsumerState<CoinButton> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
@@ -34,7 +34,6 @@ class _CoinButtonState extends State<CoinButton> {
       onPressed: () {
         showModalBottomSheetCryptos(
           context,
-          widget.controller.cryptos,
           ListView(
             scrollDirection: Axis.vertical,
             key: const Key('ListViewCoinButton'),
@@ -53,15 +52,16 @@ class _CoinButtonState extends State<CoinButton> {
                         setState(
                           () {
                             widget.id == '1'
-                                ? widget.controller.changeConvertedCoin(
-                                    crypto,
-                                    widget.value,
-                                    widget.formKey,
-                                  )
+                                ? () {
+                                    widget.controller.changeConvertedCoin(
+                                      crypto,
+                                      widget.formKey,
+                                    );
+                                    ref.read(textEditingControllerProvider.state).state.clear();
+                                  }
                                 : widget.controller.changeRecieveCoin(
                                     crypto,
                                     widget.formKey,
-                                    widget.value,
                                   );
                           },
                         );

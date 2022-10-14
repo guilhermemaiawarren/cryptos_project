@@ -4,14 +4,14 @@ import '../../shared/common_model/crypto.dart';
 
 class CryptoViewData extends CryptoEntity {
   CryptoViewData({
-    required String id,
-    required String symbol,
-    required String name,
-    required String image,
-    required Decimal currentPrice,
-    required double variation,
+     String id = '',
+     String symbol = '',
+     String name = '',
+     String image = '',
+     Decimal? currentPrice,
+     double variation = 0,
   }) : super(
-          currentPrice: currentPrice,
+          currentPrice: currentPrice!,
           id: id,
           image: image,
           name: name,

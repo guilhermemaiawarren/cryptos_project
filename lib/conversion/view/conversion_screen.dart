@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/conversion/provider/text_editing_controller_provider.dart';
 
 import '../controller/conversion_controller.dart';
 import '../widgets/available_balance_container.dart';
@@ -21,7 +22,6 @@ class ConversionScreen extends ConsumerStatefulWidget {
 }
 
 class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
-  final TextEditingController convertController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -29,6 +29,7 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
     widget.controller.addListener(() {
       setState(() {});
     });
+    final convertController = ref.watch(textEditingControllerProvider.state).state;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +46,6 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
           children: [
             CoinButton(
               formKey: formKey,
-              value: convertController.text,
               id: '1',
               key: const Key('ConvertAsset'),
               controller: widget.controller,
@@ -60,7 +60,6 @@ class _BodyConversionScreenState extends ConsumerState<ConversionScreen> {
               asset: widget.controller.cryptoConverted,
               formKey: formKey,
               id: '2',
-              value: convertController.text,
               controller: widget.controller,
             ),
           ],

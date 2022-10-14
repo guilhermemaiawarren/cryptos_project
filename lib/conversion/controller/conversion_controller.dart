@@ -6,20 +6,8 @@ import '../../shared/utils/arguments/to_revision_arguments.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 class ConversionController extends ChangeNotifier {
-  CryptoViewData cryptoConverted = CryptoViewData(
-      id: '',
-      symbol: '',
-      name: '',
-      image: 'image',
-      currentPrice: dp('250'),
-      variation: 5);
-  CryptoViewData asset = CryptoViewData(
-      id: '',
-      symbol: '',
-      name: '',
-      image: 'image',
-      currentPrice: dp('250'),
-      variation: 5);
+  CryptoViewData cryptoConverted = CryptoViewData();
+  CryptoViewData asset = CryptoViewData();
   Decimal coinAmmount = dp('250');
   bool validate = false;
   Decimal convertHelper = dp('250');
@@ -67,8 +55,7 @@ class ConversionController extends ChangeNotifier {
     notifyListeners();
   }
 
-  changeConvertedCoin(
-      CryptoViewData crypto, String value, GlobalKey<FormState> formKey) {
+  changeConvertedCoin(CryptoViewData crypto, GlobalKey<FormState> formKey) {
     if (crypto.id == cryptoConverted.id) {
       cryptoConverted = asset;
     }
@@ -77,8 +64,8 @@ class ConversionController extends ChangeNotifier {
       (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
           .toString(),
     );
-    convertedValue(value);
     buttonValidation(formKey);
+    convertedValue('0.0');
     notifyListeners();
   }
 
@@ -86,24 +73,22 @@ class ConversionController extends ChangeNotifier {
     CryptoViewData temp = asset;
     asset = cryptoConverted;
     cryptoConverted = temp;
-    convertedValue('0');
     coinAmmount = dp(
       (coinAmmountList)[cryptos.indexWhere((item) => item.id == asset.id)]
           .toString(),
     );
     validate = false;
+    convertedValue('0.0');
     notifyListeners();
   }
 
-  changeRecieveCoin(
-      CryptoViewData crypto, GlobalKey<FormState> formKey, String value) {
+  changeRecieveCoin(CryptoViewData crypto, GlobalKey<FormState> formKey) {
     CryptoViewData temp = cryptoConverted;
     cryptoConverted = crypto;
     if (cryptoConverted.id == asset.id) {
       asset = temp;
     }
     buttonValidation(formKey);
-    convertedValue(value);
   }
 
   controllerNavigate(BuildContext context) {
