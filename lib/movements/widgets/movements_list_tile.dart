@@ -5,9 +5,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../shared/utils/currency_formater.dart';
-
 import '../../shared/common_model/move_model.dart';
+import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
 class MovementListTile extends StatelessWidget {

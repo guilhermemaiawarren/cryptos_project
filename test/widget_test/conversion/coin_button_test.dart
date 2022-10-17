@@ -109,7 +109,7 @@ void main() {
           await tester.pump();
 
           await tester.drag(find.byKey(const Key('ListViewCoinButton')),
-              const Offset(400.0, 787.0));
+              const Offset(800, 600));
 
           await tester.pumpAndSettle();
 

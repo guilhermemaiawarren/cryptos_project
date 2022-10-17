@@ -12,10 +12,10 @@ void main() {
     await loadPage(
       tester,
       ReviewPage(
-        convertCoin: TestAsset.model,
+        convertCoin: TestAsset.cryptoViewData,
         convert: dp('250'),
         recieve: dp('250'),
-        recieveCoin: TestAsset.model,
+        recieveCoin: TestAsset.cryptoViewData,
         data: const [],
       ),
     );

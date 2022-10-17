@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../provider/controller_provider.dart';
 
 import '../../l10n/core_strings.dart';
-import '../../shared/common_model/crypto.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/utils/decimal_parse.dart';
+import '../provider/controller_provider.dart';
 
 class CoinTextField extends ConsumerStatefulWidget {
   const CoinTextField({
@@ -18,7 +18,7 @@ class CoinTextField extends ConsumerStatefulWidget {
   }) : super(key: key);
   final void Function(String)? onChanged;
   final TextEditingController controller;
-  final CryptoEntity asset;
+  final CryptoViewData asset;
   final String? Function(String?)? validator;
   final GlobalKey<FormState> formKey;
 

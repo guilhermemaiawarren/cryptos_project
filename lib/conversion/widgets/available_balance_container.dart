@@ -1,9 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+
 import '../../l10n/core_strings.dart';
-
-import '../../shared/common_model/crypto.dart';
-
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/app_assets.dart';
 
 class AvailableBalanceContainer extends StatelessWidget {
@@ -12,7 +11,7 @@ class AvailableBalanceContainer extends StatelessWidget {
     required this.asset,
     required this.coinAmmount,
   }) : super(key: key);
-  final CryptoEntity asset;
+  final CryptoViewData asset;
   final Decimal coinAmmount;
   @override
   Widget build(BuildContext context) {

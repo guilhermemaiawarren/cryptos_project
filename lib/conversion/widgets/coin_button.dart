@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../controller/conversion_controller.dart';
 import '../../portfolio/model/crypto_view_data.dart';
-
+import '../controller/conversion_controller.dart';
 import '../logicholder/methods/show_modal_bottom_sheet_cryptos.dart';
 
 class CoinButton extends StatefulWidget {

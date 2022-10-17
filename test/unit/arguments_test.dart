@@ -24,12 +24,12 @@ void main() {
       final arguments = ToRevisionArguments(
         convert: dp('250'),
         recieve: dp('250'),
-        convertCoin: TestAsset.model,
-        recieveCoin: TestAsset.model,
+        convertCoin: TestAsset.cryptoViewData,
+        recieveCoin: TestAsset.cryptoViewData,
         data: []
       );
-      expect(arguments.convertCoin, TestAsset.model);
-      expect(arguments.recieveCoin, TestAsset.model);
+      expect(arguments.convertCoin, TestAsset.cryptoViewData);
+      expect(arguments.recieveCoin, TestAsset.cryptoViewData);
       expect(arguments.convert, dp('250'));
       expect(arguments.recieve, dp('250'));
     });

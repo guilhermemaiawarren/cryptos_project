@@ -6,7 +6,6 @@ import 'widgets/info_review_column.dart';
 
 import '../portfolio/model/crypto_view_data.dart';
 import 'widgets/review_buttons.dart';
-import '../shared/common_model/crypto.dart';
 import '../shared/templates/model_app_bar.dart';
 import '../shared/utils/decimal_to_double.dart';
 
@@ -24,8 +23,8 @@ class ReviewPage extends ConsumerStatefulWidget {
   static const route = '/revision';
   final Decimal convert;
   final Decimal recieve;
-  final CryptoEntity convertCoin;
-  final CryptoEntity recieveCoin;
+  final CryptoViewData convertCoin;
+  final CryptoViewData recieveCoin;
   final List<CryptoViewData> data;
 
   @override

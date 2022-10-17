@@ -22,7 +22,7 @@ InfoColumn column = InfoColumn(
   day: 5,
   variation: 5,
   coinAmmount: dp('512.21'),
-  coin: TestAsset.model,
+  coin: TestAsset.cryptoViewData,
   data: _data,
 );
 PricesViewData _data = PricesViewData([

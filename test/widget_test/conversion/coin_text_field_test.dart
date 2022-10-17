@@ -16,7 +16,7 @@ void main() {
       tester,
       CoinTextField(
         controller: coinTextFieldController,
-        asset: TestAsset.model,
+        asset: TestAsset.cryptoViewData,
         formKey: GlobalKey<FormState>(),
       ),
     );
@@ -25,7 +25,7 @@ void main() {
 
     expect(textField.validator, null);
     expect(textField.onChanged, null);
-    expect(textField.asset, TestAsset.model);
+    expect(textField.asset, TestAsset.cryptoViewData);
     expect(textField.controller, coinTextFieldController);
 
     await tester.enterText(find.byType(TextFormField), '.');
