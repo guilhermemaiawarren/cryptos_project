@@ -2,13 +2,13 @@ import 'package:decimal/decimal.dart';
 
 import '../../../portfolio/model/crypto_view_data.dart';
 
-class ToRevisionArguments {
+class ReviewArguments {
   Decimal convert;
   Decimal recieve;
   CryptoViewData convertCoin;
   CryptoViewData recieveCoin;
   List<CryptoViewData> data;
-  ToRevisionArguments({
+  ReviewArguments({
     required this.convert,
     required this.recieve,
     required this.convertCoin,

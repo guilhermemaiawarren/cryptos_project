@@ -2,10 +2,10 @@ import 'package:decimal/decimal.dart';
 import '../../../portfolio/model/crypto_view_data.dart';
 
 
-class ToDetailsArguments {
+class DetailsArguments {
   final CryptoViewData crypto;
   final Decimal coinAmmount;
-  ToDetailsArguments({
+  DetailsArguments({
     required this.crypto,
     required this.coinAmmount,
   });

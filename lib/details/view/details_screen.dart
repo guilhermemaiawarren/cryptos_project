@@ -12,7 +12,7 @@ import '../../shared/templates/error_body.dart';
 import '../../shared/templates/loading_body.dart';
 import '../../shared/templates/warren_button.dart';
 import '../../shared/user/user_coin_ammount_provider.dart';
-import '../../shared/utils/arguments/to_conversion_arguments.dart';
+import '../../shared/utils/arguments/conversion_arguments.dart';
 import '../provider/days_provider.dart';
 import '../provider/historic_data_provider.dart';
 import '../widgets/change_days_buttons.dart';
@@ -82,7 +82,7 @@ class DetailsScreen extends HookConsumerWidget {
                   Navigator.pushNamed(
                     context,
                     ConversionPage.route,
-                    arguments: ToConversionArguments(
+                    arguments: ConversionArguments(
                       cryptoAmmount: coinAmmount,
                       crypto: coin,
                       data: cryptos.asData!.value,

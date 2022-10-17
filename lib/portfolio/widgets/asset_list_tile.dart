@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../shared/utils/arguments/to_details_arguments.dart';
+import '../../shared/utils/arguments/details_arguments.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 import '../model/crypto_view_data.dart';
@@ -27,7 +27,7 @@ class AssetListTile extends ConsumerWidget {
         Navigator.pushNamed(
           context,
           '/details',
-          arguments: ToDetailsArguments(
+          arguments: DetailsArguments(
             crypto: crypto,
             coinAmmount: cryptoBalance,
           ),

@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../portfolio/model/crypto_view_data.dart';
-import '../../shared/utils/arguments/to_revision_arguments.dart';
+import '../../shared/utils/arguments/review_arguments.dart';
 import '../../shared/utils/decimal_parse.dart';
 
 class ConversionController extends ChangeNotifier {
@@ -110,7 +110,7 @@ class ConversionController extends ChangeNotifier {
     Navigator.pushNamed(
       context,
       '/revision',
-      arguments: ToRevisionArguments(
+      arguments: ReviewArguments(
         convert: assetHelper,
         recieve: convertedCryptoHelper,
         convertCoin: asset,

@@ -12,7 +12,6 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  hooks_riverpod: ^1.0.4
   intl: ^0.17.0
   fl_chart: ^0.55.1
   decimal: ^2.3.0
@@ -22,6 +21,7 @@ dependencies:
   loading_animation_widget: ^1.2.0+3
   flutter_localizations:
     sdk: flutter
+  hooks_riverpod: ^2.0.2
 
 dev_dependencies:
   flutter_test:

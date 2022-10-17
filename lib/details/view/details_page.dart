@@ -1,9 +1,8 @@
-import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:projeto_criptos/shared/utils/arguments/details_arguments.dart';
 
 import '../../l10n/core_strings.dart';
-import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/model_app_bar.dart';
 import '../provider/days_provider.dart';
 import 'details_screen.dart';
@@ -11,13 +10,11 @@ import 'details_screen.dart';
 class DetailsPage extends HookConsumerWidget {
   const DetailsPage({
     super.key,
-    required this.asset,
-    required this.coinAmmount,
+    required this.arguments,
   });
   static const route = '/details';
+  final DetailsArguments arguments;
 
-  final CryptoViewData asset;
-  final Decimal coinAmmount;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Future.delayed(
@@ -31,8 +28,8 @@ class DetailsPage extends HookConsumerWidget {
         text: CoreStrings.of(context)!.details,
       ),
       body: DetailsScreen(
-        coin: asset,
-        coinAmmount: coinAmmount,
+        coin: arguments.crypto,
+        coinAmmount: arguments.coinAmmount,
       ),
     );
   }

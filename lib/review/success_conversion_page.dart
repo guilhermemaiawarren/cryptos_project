@@ -2,16 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../l10n/core_strings.dart';
-import '../shared/common_model/move_model.dart';
 import '../shared/templates/app_assets.dart';
 
 class SucessConversionPage extends StatefulWidget {
   const SucessConversionPage({
-    Key? key,
-    required this.move,
-  }) : super(key: key);
+    super.key,
+  });
   static const route = '/success';
-  final MoveModel move;
   @override
   State<SucessConversionPage> createState() => _SucessConversionPageState();
 }
@@ -52,7 +49,6 @@ class _SucessConversionPageState extends State<SucessConversionPage> {
             Navigator.pushReplacementNamed(
               context,
               '/moves',
-              arguments: widget.move,
             );
           },
         ),
