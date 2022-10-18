@@ -1,4 +1,3 @@
-
 import 'cryptos_response.dart';
 
 class GetAllCryptosResponse {

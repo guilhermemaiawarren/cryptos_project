@@ -16,9 +16,10 @@ void main() {
     TestAsset.cryptoViewData2,
     TestAsset.cryptoViewData3,
   ];
-  List<double> coinAmmountList = [25,25,25];
+  List<double> coinAmmountList = [25, 25, 25];
   setUp(() {
-    controller.controllerInit(TestAsset.cryptoViewData, dp('250'), cryptos, coinAmmountList);
+    controller.controllerInit(
+        TestAsset.cryptoViewData, dp('250'), cryptos, coinAmmountList);
   });
   testWidgets('WHEN load SwapIconButton THEN find his icon key',
       (WidgetTester tester) async {
@@ -40,6 +41,6 @@ void main() {
           controller: controller,
         ));
 
-  await tester.tap(find.byType(IconButton));
+    await tester.tap(find.byType(IconButton));
   });
 }

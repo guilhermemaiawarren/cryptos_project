@@ -61,7 +61,8 @@ import 'core_strings_pt.dart';
 /// be consistent with the languages listed in the CoreStrings.supportedLocales
 /// property.
 abstract class CoreStrings {
-  CoreStrings(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  CoreStrings(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -69,7 +70,8 @@ abstract class CoreStrings {
     return Localizations.of<CoreStrings>(context, CoreStrings);
   }
 
-  static const LocalizationsDelegate<CoreStrings> delegate = _CoreStringsDelegate();
+  static const LocalizationsDelegate<CoreStrings> delegate =
+      _CoreStringsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -81,7 +83,8 @@ abstract class CoreStrings {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
     delegate,
     GlobalMaterialLocalizations.delegate,
     GlobalCupertinoLocalizations.delegate,
@@ -267,26 +270,27 @@ class _CoreStringsDelegate extends LocalizationsDelegate<CoreStrings> {
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es', 'pt'].contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      <String>['en', 'es', 'pt'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_CoreStringsDelegate old) => false;
 }
 
 CoreStrings lookupCoreStrings(Locale locale) {
-
-
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en': return CoreStringsEn();
-    case 'es': return CoreStringsEs();
-    case 'pt': return CoreStringsPt();
+    case 'en':
+      return CoreStringsEn();
+    case 'es':
+      return CoreStringsEs();
+    case 'pt':
+      return CoreStringsPt();
   }
 
   throw FlutterError(
-    'CoreStrings.delegate failed to load unsupported locale "$locale". This is likely '
-    'an issue with the localizations generation tool. Please file an issue '
-    'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.'
-  );
+      'CoreStrings.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
 }

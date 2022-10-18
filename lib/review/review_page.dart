@@ -38,7 +38,8 @@ class _$ReviewPageState extends ConsumerState<ReviewPage> {
       convert: widget.arguments.convert,
       recieve: widget.arguments.recieve,
       data: DateTime.now(),
-      cashHelper: widget.arguments.recieve * widget.arguments.recieveCoin.currentPrice,
+      cashHelper:
+          widget.arguments.recieve * widget.arguments.recieveCoin.currentPrice,
       convertCoinId: widget.arguments.convertCoin.symbol,
       recieveCoinId: widget.arguments.recieveCoin.symbol,
     );
@@ -66,10 +67,10 @@ class _$ReviewPageState extends ConsumerState<ReviewPage> {
               ),
             ),
             ReviewButtons(
-              convertId: widget.arguments.data
-                  .indexWhere((crypto) => crypto.id == widget.arguments.convertCoin.id),
-              recieveId: widget.arguments.data
-                  .indexWhere((crypto) => crypto.id == widget.arguments.recieveCoin.id),
+              convertId: widget.arguments.data.indexWhere(
+                  (crypto) => crypto.id == widget.arguments.convertCoin.id),
+              recieveId: widget.arguments.data.indexWhere(
+                  (crypto) => crypto.id == widget.arguments.recieveCoin.id),
               convert: widget.arguments.convert,
               recieve: widget.arguments.recieve,
               move: moves,

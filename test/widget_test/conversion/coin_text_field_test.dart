@@ -30,7 +30,7 @@ void main() {
 
     await tester.enterText(find.byType(TextFormField), '.');
     tester.testTextInput.reset();
-    
+
     await tester.enterText(find.byType(TextFormField), '0');
     tester.testTextInput.reset();
 

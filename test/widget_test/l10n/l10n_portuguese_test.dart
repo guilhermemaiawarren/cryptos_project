@@ -5,7 +5,8 @@ import '../../setup/setup_l10n_tester.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load L10nWidgetTester THEN test portuguese texts', (WidgetTester tester) async {
+  testWidgets('WHEN load L10nWidgetTester THEN test portuguese texts',
+      (WidgetTester tester) async {
     await loadPage(tester, const L10nWidgetTester(locale: Locale('pt', 'BR')));
 
     expect(find.text('Portfólio'), findsOneWidget);
@@ -22,7 +23,8 @@ void main() {
     expect(find.text('Saldo Disponível'), findsOneWidget);
     expect(find.text("Quanto você gostaria de converter?"), findsOneWidget);
     expect(find.text('Valor não pode ser zero'), findsOneWidget);
-    expect(find.text('O primeiro caractere não pode ser especial'), findsOneWidget);
+    expect(find.text('O primeiro caractere não pode ser especial'),
+        findsOneWidget);
     expect(find.text('Saldo Insuficiente'), findsOneWidget);
     expect(find.text('Total Estimado'), findsOneWidget);
     expect(find.text('Revisar'), findsOneWidget);
@@ -32,7 +34,8 @@ void main() {
     expect(find.text('Cancelar'), findsOneWidget);
     expect(find.text('Concluir'), findsOneWidget);
     expect(find.text('Conversão efetuada'), findsOneWidget);
-    expect(find.text('Conversão de moeda efetuada com sucesso!'), findsOneWidget);
+    expect(
+        find.text('Conversão de moeda efetuada com sucesso!'), findsOneWidget);
     expect(find.text('Ops! Ocorreu um erro'), findsOneWidget);
     expect(find.text('Tentar Novamente'), findsOneWidget);
   });

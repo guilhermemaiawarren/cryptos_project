@@ -13,7 +13,8 @@ void main() {
     await loadPage(
         tester,
         TotalConvertValueContainer(
-            convertedCryptoHelper: dp('20.21'), cryptoConverted: TestAsset.cryptoViewData));
+            convertedCryptoHelper: dp('20.21'),
+            cryptoConverted: TestAsset.cryptoViewData));
 
     final textColumn =
         tester.widget<Column>(find.byKey(const Key('EstimatedTotalColumn')));

@@ -31,10 +31,18 @@ void main() {
       expect(controller.cryptos, data);
       expect(controller.validate, false);
     });
-    test('WHEN conversionController.init THEN compare matchers with asset.id = bitcoin', () {
-      CryptoViewData model = CryptoViewData(id: 'bitcoin', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
+    test(
+        'WHEN conversionController.init THEN compare matchers with asset.id = bitcoin',
+        () {
+      CryptoViewData model = CryptoViewData(
+          id: 'bitcoin',
+          symbol: 'symbol',
+          name: 'name',
+          image: 'image',
+          currentPrice: dp('250'),
+          variation: 5);
       ConversionController newController = ConversionController();
-      newController.controllerInit(model,dp('250'), data, coinAmmountList);
+      newController.controllerInit(model, dp('250'), data, coinAmmountList);
       expect(newController.asset.id, 'bitcoin');
       expect(newController.assetHelper, dp('0'));
       expect(newController.coinAmmount, dp('250'));
@@ -44,10 +52,18 @@ void main() {
       expect(newController.cryptos, data);
       expect(newController.validate, false);
     });
-    test('WHEN conversionController.init THEN compare matchers with asset.id = ethereum', () {
-      CryptoViewData model = CryptoViewData(id: 'ethereum', symbol: 'symbol', name: 'name', image: 'image', currentPrice: dp('250'), variation: 5);
+    test(
+        'WHEN conversionController.init THEN compare matchers with asset.id = ethereum',
+        () {
+      CryptoViewData model = CryptoViewData(
+          id: 'ethereum',
+          symbol: 'symbol',
+          name: 'name',
+          image: 'image',
+          currentPrice: dp('250'),
+          variation: 5);
       ConversionController newController = ConversionController();
-      newController.controllerInit(model,dp('250'), data, coinAmmountList);
+      newController.controllerInit(model, dp('250'), data, coinAmmountList);
       expect(newController.asset.id, 'ethereum');
       expect(newController.assetHelper, dp('0'));
       expect(newController.coinAmmount, dp('250'));

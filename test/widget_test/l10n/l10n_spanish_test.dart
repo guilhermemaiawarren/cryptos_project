@@ -23,8 +23,8 @@ void main() {
     expect(find.text('Saldo Disponible'), findsOneWidget);
     expect(find.text("¿Cuánto te gustaría convertir?"), findsOneWidget);
     expect(find.text('El valor no puede ser cero'), findsOneWidget);
-    expect(find.text('El primer carácter no puede ser especial.'),
-        findsOneWidget);
+    expect(
+        find.text('El primer carácter no puede ser especial.'), findsOneWidget);
     expect(find.text('Fondos insuficientes'), findsOneWidget);
     expect(find.text('Total Estimado'), findsOneWidget);
     expect(find.text('Revisar'), findsOneWidget);
@@ -34,8 +34,7 @@ void main() {
     expect(find.text('Cancelar'), findsOneWidget);
     expect(find.text('Concluir'), findsOneWidget);
     expect(find.text('Conversión realizada'), findsOneWidget);
-    expect(
-        find.text('¡Conversión de moneda exitosa!'), findsOneWidget);
+    expect(find.text('¡Conversión de moneda exitosa!'), findsOneWidget);
     expect(find.text('¡Ups! Ocurrio un error'), findsOneWidget);
     expect(find.text('Intentar nuevamente'), findsOneWidget);
   });

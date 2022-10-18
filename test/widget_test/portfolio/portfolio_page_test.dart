@@ -41,8 +41,6 @@ void main() {
       await tester.tap(find.byType(WarrenButton));
 
       await tester.pumpAndSettle();
-
-    
     },
   );
 }

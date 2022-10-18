@@ -22,20 +22,19 @@ void main() {
     });
     test('To Revision arguments TEST', () {
       final arguments = ReviewArguments(
-        convert: dp('250'),
-        recieve: dp('250'),
-        convertCoin: TestAsset.cryptoViewData,
-        recieveCoin: TestAsset.cryptoViewData,
-        data: []
-      );
+          convert: dp('250'),
+          recieve: dp('250'),
+          convertCoin: TestAsset.cryptoViewData,
+          recieveCoin: TestAsset.cryptoViewData,
+          data: []);
       expect(arguments.convertCoin, TestAsset.cryptoViewData);
       expect(arguments.recieveCoin, TestAsset.cryptoViewData);
       expect(arguments.convert, dp('250'));
       expect(arguments.recieve, dp('250'));
     });
     test('To Details arguments TEST', () {
-      final arguments =
-          DetailsArguments(crypto: TestAsset.cryptoViewData, coinAmmount: dp('250'));
+      final arguments = DetailsArguments(
+          crypto: TestAsset.cryptoViewData, coinAmmount: dp('250'));
 
       expect(arguments.crypto.id, TestAsset.cryptoViewData.id);
       expect(arguments.coinAmmount, dp('250'));

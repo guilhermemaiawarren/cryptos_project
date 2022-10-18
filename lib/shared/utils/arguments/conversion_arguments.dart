@@ -2,7 +2,6 @@ import 'package:decimal/decimal.dart';
 
 import '../../../portfolio/model/crypto_view_data.dart';
 
-
 class ConversionArguments {
   final Decimal cryptoAmmount;
   final CryptoViewData crypto;

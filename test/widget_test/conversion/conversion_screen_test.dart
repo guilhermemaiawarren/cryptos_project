@@ -34,8 +34,7 @@ void main() {
       ],
     );
   });
-  testWidgets(
-      'WHEN load ConversionScreen THEN tests attributes in all widgets',
+  testWidgets('WHEN load ConversionScreen THEN tests attributes in all widgets',
       (WidgetTester tester) async {
     mockNetworkImagesFor(
       () async {

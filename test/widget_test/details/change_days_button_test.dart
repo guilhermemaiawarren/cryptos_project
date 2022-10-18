@@ -15,12 +15,12 @@ void main() {
 
     expect(listView.scrollDirection, Axis.horizontal);
   });
-  testWidgets(
-      'WHEN load ChangeDaysButtons THEN tap button with Key 15',
+  testWidgets('WHEN load ChangeDaysButtons THEN tap button with Key 15',
       (WidgetTester tester) async {
     await loadPage(tester, const ChangeDaysButtons());
 
-    final dayButton = tester.widget<ChangeDayButton>(find.byKey(const Key('5')));
+    final dayButton =
+        tester.widget<ChangeDayButton>(find.byKey(const Key('5')));
 
     expect(dayButton.days, 5);
 
