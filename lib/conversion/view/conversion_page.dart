@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projeto_criptos/shared/utils/arguments/conversion_arguments.dart';
 
 import '../../l10n/core_strings.dart';
@@ -8,7 +8,7 @@ import '../provider/controller_provider.dart';
 import '../widgets/floating_cripto_button.dart';
 import 'conversion_screen.dart';
 
-class ConversionPage extends ConsumerStatefulWidget {
+class ConversionPage extends ConsumerWidget {
   const ConversionPage({
     Key? key,
     required this.arguments,
@@ -18,17 +18,12 @@ class ConversionPage extends ConsumerStatefulWidget {
   final ConversionArguments arguments;
 
   @override
-  ConsumerState<ConversionPage> createState() => _$ConversionPageState();
-}
-
-class _$ConversionPageState extends ConsumerState<ConversionPage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     ref.read(convertControllerProvider.notifier).controllerInit(
-          widget.arguments.crypto,
-          widget.arguments.cryptoAmmount,
-          widget.arguments.data,
-          widget.arguments.coinAmmountList,
+          arguments.crypto,
+          arguments.cryptoAmmount,
+          arguments.data,
+          arguments.coinAmmountList,
         );
     return Scaffold(
       resizeToAvoidBottomInset: false,

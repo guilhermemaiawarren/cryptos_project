@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../provider/days_provider.dart';
 
-class ChangeDayButton extends HookConsumerWidget {
+class ChangeDayButton extends ConsumerWidget {
   const ChangeDayButton({
     super.key,
     required this.days,

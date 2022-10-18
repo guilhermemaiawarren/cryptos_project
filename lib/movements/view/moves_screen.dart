@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../l10n/core_strings.dart';
 import '../../shared/user/movements_provider.dart';
 import '../../shared/templates/app_assets.dart';

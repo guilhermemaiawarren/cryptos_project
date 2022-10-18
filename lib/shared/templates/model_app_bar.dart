@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ModelAppBar extends HookConsumerWidget implements PreferredSizeWidget {
+class ModelAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ModelAppBar({
     super.key,
     required this.text,
@@ -9,7 +8,7 @@ class ModelAppBar extends HookConsumerWidget implements PreferredSizeWidget {
   final String text;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return AppBar(
       elevation: 1,
       leading: IconButton(

@@ -1,6 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../l10n/core_strings.dart';
 import '../../shared/templates/app_assets.dart';
@@ -10,7 +10,7 @@ import '../provider/balance_provider.dart';
 import '../provider/visible_provider.dart';
 import 'visibility_off_container.dart';
 
-class WalletVisibility extends StatefulHookConsumerWidget {
+class WalletVisibility extends ConsumerStatefulWidget {
   const WalletVisibility({Key? key}) : super(key: key);
   static const route = '/wallet';
 
@@ -21,7 +21,7 @@ class WalletVisibility extends StatefulHookConsumerWidget {
 class _WalletVisibilityState extends ConsumerState<WalletVisibility> {
   @override
   Widget build(BuildContext context) {
-    StateController<bool> visible = ref.watch(visibleProvider.state);
+    final visible = ref.watch(visibleProvider.state);
     Decimal balance = ref.watch(balanceProvider);
 
     return Padding(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:projeto_criptos/details/model/prices_view_data.dart';
 import 'package:projeto_criptos/details/provider/historic_data_provider.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
@@ -21,7 +21,7 @@ class SetupWidgetTesterOverrideProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final overrideCryptosProvider =
-        FutureProvider<List<CryptoViewData>>((ref) async {
+        FutureProvider.autoDispose<List<CryptoViewData>>((ref) async {
       return await FakeDataRepository.getAllCryptos();
     });
     final overrideHistoricDataProvider =

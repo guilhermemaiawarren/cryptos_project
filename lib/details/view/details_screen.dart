@@ -1,7 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../conversion/view/conversion_page.dart';
 import '../../l10n/core_strings.dart';
@@ -20,7 +20,7 @@ import '../widgets/graph_details.dart';
 import '../widgets/info_column.dart';
 import '../widgets/top_page_container.dart';
 
-class DetailsScreen extends HookConsumerWidget {
+class DetailsScreen extends ConsumerWidget {
   const DetailsScreen({
     super.key,
     required this.coin,

@@ -1,11 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../shared/templates/app_assets.dart';
 import '../provider/days_provider.dart';
 
-class GraphDetails extends HookConsumerWidget {
+class GraphDetails extends ConsumerWidget {
   const GraphDetails({Key? key, required this.historyCoinData})
       : super(key: key);
   final List<FlSpot> historyCoinData;

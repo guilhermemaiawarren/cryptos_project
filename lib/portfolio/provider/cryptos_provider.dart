@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../shared/repository/cryptos_repository_provider.dart';
 import '../model/crypto_view_data.dart';
@@ -12,7 +12,7 @@ final cryptosProviderUsecase = Provider(
   },
 );
 
-final cryptosProvider = FutureProvider<List<CryptoViewData>>(
+final cryptosProvider = FutureProvider.autoDispose<List<CryptoViewData>>(
   (ref) {
     return ref.read(cryptosProviderUsecase).execute();
   },

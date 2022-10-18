@@ -1,3 +1,3 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-var daysProvider = StateProvider((ref) => 5);
+var daysProvider = StateProvider.autoDispose((ref) => 5);

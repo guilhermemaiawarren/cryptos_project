@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../api/cryptos_endpoint_provider.dart';
 import 'cryptos_repository.dart';

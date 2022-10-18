@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../l10n/core_strings.dart';
 import 'warren_button.dart';
 
-class ErrorBody extends HookConsumerWidget {
+class ErrorBody extends ConsumerWidget {
   const ErrorBody({
     Key? key,
     required this.onRetry,

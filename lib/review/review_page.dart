@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projeto_criptos/shared/utils/arguments/review_arguments.dart';
 import '../l10n/core_strings.dart';
 import 'widgets/info_review_column.dart';

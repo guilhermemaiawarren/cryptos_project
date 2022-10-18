@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final userCoinAmmountProvider =
     StateNotifierProvider<AmmountNotifier, List<double>>(

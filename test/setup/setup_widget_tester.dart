@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:projeto_criptos/l10n/core_strings.dart';
 import 'package:projeto_criptos/route_controller.dart';
 import 'package:projeto_criptos/shared/theme/theme_data_criptos.dart';
