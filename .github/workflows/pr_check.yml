@@ -1,0 +1,58 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Dart
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  analyze:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Configuring flutter environment
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.1'
+          channel: 'stable'  
+      - name: "Flutter Analyze"
+        run: flutter analyze .
+
+  format:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Configuring flutter environment
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.2'
+          channel: 'stable'  
+      - name: "Flutter Format"
+        run: flutter format . --set-exit-if-changed  
+
+  test:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Configuring flutter environment
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.0.2'
+          channel: 'stable'  
+      - name: "Flutter Test"
+        run: flutter test .
