@@ -35,7 +35,7 @@ jobs:
       - name: Configuring flutter environment
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.2'
+          flutter-version: '3.3.1'
           channel: 'stable'  
       - name: "Flutter Format"
         run: flutter format . --set-exit-if-changed  
@@ -49,7 +49,7 @@ jobs:
       - name: Configuring flutter environment
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.0.2'
+          flutter-version: '3.3.1'
           channel: 'stable'  
       - name: "Flutter Test"
         run: flutter test .
