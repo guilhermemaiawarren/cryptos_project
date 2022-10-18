@@ -9,7 +9,7 @@ void main() {
   testWidgets('WHEN load TopPageContainer THEN find TopPageContainer',
       (WidgetTester tester) async {
     mockNetworkImagesFor(() async {
-      await loadPage(tester, TopPageContainer(model: TestAsset.model));
+      await loadPage(tester, TopPageContainer(model: TestAsset.cryptoViewData));
 
       await tester.pumpAndSettle();
 

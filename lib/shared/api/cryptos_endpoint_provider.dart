@@ -6,9 +6,7 @@ import 'cryptos_endpoint.dart';
 final cryptosEndpointProvider = Provider(
   (ref) {
     return CryptosEndpoint(
-      Dio(BaseOptions(
-        baseUrl: 'https://api.coingecko.com/api/v3'
-      )),
+      Dio(BaseOptions(baseUrl: 'https://api.coingecko.com/api/v3')),
     );
   },
 );

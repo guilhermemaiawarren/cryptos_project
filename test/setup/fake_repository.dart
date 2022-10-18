@@ -3,7 +3,9 @@ import 'package:projeto_criptos/details/model/prices_view_data.dart';
 import 'package:projeto_criptos/portfolio/model/crypto_view_data.dart';
 
 import 'common_asset.dart';
+
 Faker faker = Faker();
+
 class FakeDataRepository {
   static Future<List<CryptoViewData>> getAllCryptos() {
     Future<List<CryptoViewData>> cryptos =

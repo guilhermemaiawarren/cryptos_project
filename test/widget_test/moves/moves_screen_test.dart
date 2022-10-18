@@ -5,7 +5,8 @@ import 'package:projeto_criptos/movements/view/moves_screen.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load MovesScreen THEN return widgets by keys', (WidgetTester tester) async {
+  testWidgets('WHEN load MovesScreen THEN return widgets by keys',
+      (WidgetTester tester) async {
     await loadPage(tester, const MovesScreen());
 
     await tester.pumpAndSettle();

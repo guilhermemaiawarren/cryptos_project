@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:projeto_criptos/movements/widgets/movements_list_tile.dart';
@@ -8,7 +7,8 @@ import 'package:projeto_criptos/shared/utils/decimal_parse.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load MovementListTile THEN return widgets by key', (WidgetTester tester) async {
+  testWidgets('WHEN load MovementListTile THEN return widgets by key',
+      (WidgetTester tester) async {
     await loadPage(tester, MovementListTile(model: _model));
 
     await tester.pumpAndSettle();

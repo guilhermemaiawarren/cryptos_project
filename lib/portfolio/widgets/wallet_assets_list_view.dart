@@ -26,7 +26,10 @@ class _$WalletAssetsListViewState extends ConsumerState<WalletAssetsListView> {
     for (CryptoViewData asset in widget.cryptosData) {
       balance += asset.currentPrice *
           dp(
-            ref.watch(userCoinAmmountProvider)[widget.cryptosData.indexOf(asset)].toString(),
+            ref
+                .watch(
+                    userCoinAmmountProvider)[widget.cryptosData.indexOf(asset)]
+                .toString(),
           );
     }
     return balance;

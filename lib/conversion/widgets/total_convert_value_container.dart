@@ -2,7 +2,7 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 
 import '../../l10n/core_strings.dart';
-import '../../shared/common_model/crypto.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 import '../../shared/templates/app_assets.dart';
 
 class TotalConvertValueContainer extends StatelessWidget {
@@ -13,7 +13,7 @@ class TotalConvertValueContainer extends StatelessWidget {
   }) : super(key: key);
 
   final Decimal convertedCryptoHelper;
-  final CryptoEntity cryptoConverted;
+  final CryptoViewData cryptoConverted;
 
   @override
   Widget build(BuildContext context) {

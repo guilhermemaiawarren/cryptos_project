@@ -1,19 +1,9 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../common_model/move_model.dart';
-import '../utils/decimal_parse.dart';
 
-final movementsProvider = StateProvider(
+final movementsProvider = StateProvider<List<MoveModel>>(
   (ref) {
-    return [
-      MoveModel(
-        convert: dp('5.21'),
-        recieve: dp('2.21'),
-        data: DateTime.now(),
-        cashHelper: dp('52102.21'),
-        convertCoinId: 'BTC',
-        recieveCoinId: 'ETH',
-      ),
-    ];
+    return [];
   },
 );

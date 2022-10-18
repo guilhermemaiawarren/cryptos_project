@@ -18,7 +18,8 @@ void main() {
   ];
   ConversionController controller = ConversionController();
 
-  controller.controllerInit(TestAsset.cryptoViewData, dp('250'), data, [25, 25, 25, 25]);
+  controller.controllerInit(
+      TestAsset.cryptoViewData, dp('250'), data, [25, 25, 25, 25]);
   testWidgets(
     'WHEN load CoinButton THEN find widgets',
     (WidgetTester tester) async {
@@ -109,7 +110,7 @@ void main() {
           await tester.pump();
 
           await tester.drag(find.byKey(const Key('ListViewCoinButton')),
-              const Offset(400.0, 787.0));
+              const Offset(800, 600));
 
           await tester.pumpAndSettle();
 

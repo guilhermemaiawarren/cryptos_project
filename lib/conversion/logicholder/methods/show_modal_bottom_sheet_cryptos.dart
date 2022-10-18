@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import '../../../portfolio/model/crypto_view_data.dart';
 
-import '../../../shared/common_model/crypto.dart';
 import '../../../shared/templates/app_assets.dart';
 
 Future<void> showModalBottomSheetCryptos(
   BuildContext context,
-  List<CryptoEntity> data,
+  List<CryptoViewData> data,
   Widget child,
 ) {
   return showModalBottomSheet<void>(

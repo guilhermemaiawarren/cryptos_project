@@ -5,7 +5,8 @@ import '../../setup/setup_l10n_tester.dart';
 import '../../setup/setup_widget_tester.dart';
 
 void main() {
-  testWidgets('WHEN load L10nWidgetTester THEN test english texts', (WidgetTester tester) async {
+  testWidgets('WHEN load L10nWidgetTester THEN test english texts',
+      (WidgetTester tester) async {
     await loadPage(tester, const L10nWidgetTester(locale: Locale('en', '')));
 
     expect(find.text('Portfolio'), findsOneWidget);

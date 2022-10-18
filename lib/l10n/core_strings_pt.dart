@@ -77,7 +77,8 @@ class CoreStringsPt extends CoreStrings {
   String get concludedConvertsion => 'Conversão efetuada';
 
   @override
-  String get concludedConvertsionText => 'Conversão de moeda efetuada com sucesso!';
+  String get concludedConvertsionText =>
+      'Conversão de moeda efetuada com sucesso!';
 
   @override
   String get errorMessage => 'Ops! Ocorreu um erro';

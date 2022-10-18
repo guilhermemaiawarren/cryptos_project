@@ -1,8 +1,8 @@
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 
 import '../../l10n/core_strings.dart';
-import '../../shared/common_model/crypto.dart';
 import '../../shared/templates/default_info_row.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
@@ -21,7 +21,7 @@ class InfoColumn extends StatelessWidget {
   final int day;
   final double variation;
   final Decimal coinAmmount;
-  final CryptoEntity coin;
+  final CryptoViewData coin;
   final PricesViewData data;
 
   @override

@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import '../../portfolio/model/crypto_view_data.dart';
 
-import '../../shared/common_model/crypto.dart';
 import '../../shared/utils/currency_formater.dart';
 import '../../shared/utils/decimal_to_double.dart';
 
@@ -11,7 +11,7 @@ class TopPageContainer extends HookConsumerWidget {
     Key? key,
     required this.model,
   }) : super(key: key);
-  final CryptoEntity model;
+  final CryptoViewData model;
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(

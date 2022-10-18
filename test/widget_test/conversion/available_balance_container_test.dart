@@ -12,7 +12,7 @@ void main() {
     await loadPage(
         tester,
         AvailableBalanceContainer(
-            asset: TestAsset.model, coinAmmount: dp('250.21')));
+            asset: TestAsset.cryptoViewData, coinAmmount: dp('250.21')));
 
     final container = tester.widget<AvailableBalanceContainer>(
         find.byType(AvailableBalanceContainer));
